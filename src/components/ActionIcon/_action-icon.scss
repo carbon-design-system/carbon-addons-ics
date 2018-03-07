@@ -1,0 +1,70 @@
+@import '../../globals/theme/ics-theme';
+@import '../../globals/icons/icon-reset';
+@import 'carbon-components/src/globals/scss/vars';
+@import 'carbon-components/src/globals/scss/helper-mixins';
+@import 'carbon-components/src/globals/scss/import-once';
+
+@include exports('action-icon') {
+  .#{$prefix}--action-icon {
+    padding: 5px 0 1px;
+    border-bottom: 3px solid transparent;
+    display: inline-block;
+  }
+
+  .#{$prefix}--action-icon:focus {
+    outline: 1px solid transparent;
+  }
+
+  .#{$prefix}--action-icon--selected {
+    border-bottom: 3px solid $brand-01;
+  }
+
+  .#{$prefix}--action-icon_btn {
+    @include button-reset;
+    @include icon-reset;
+    padding: rem(3px) rem(3px);
+    border-radius: 4px;
+    border: 1px solid transparent;
+    box-sizing: content-box;
+
+    .#{$prefix}--action-icon_img {
+      fill: $ui-05;
+    }
+
+    &.#{$prefix}--icon-btn--selected {
+      &::after {
+        background: $brand-01;
+      }
+    }
+  }
+
+  .#{$prefix}--action-icon--sm {
+    .#{$prefix}--action-icon_btn,
+    .#{$prefix}--action-icon_img {
+      @include icon-reset('small');
+    }
+  }
+
+  .#{$prefix}--action-icon_btn:hover {
+    .#{$prefix}--action-icon_img {
+      fill: $text-01;
+    }
+  }
+
+  .#{$prefix}--action-icon_btn:focus {
+    border-color: $brand-01;
+    outline: none;
+  }
+
+  .#{$prefix}--action-icon_btn:disabled {
+    cursor: not-allowed;
+
+    .#{$prefix}--action-icon_img {
+      fill: $ui-04;
+    }
+  }
+
+  .#{$prefix}--action-icon_img {
+    @include icon-reset;
+  }
+}

@@ -1,0 +1,22 @@
+@import '../../globals/theme/ics-theme';
+@import 'carbon-components/src/components/file-uploader/file-uploader';
+@import 'carbon-components/src/globals/scss/css--helpers';
+@import '../../globals/type/ics-typography';
+@import '../Button/button';
+@import '../Form/form';
+
+@include exports('file-uploader--ics') {
+  .#{$prefix}--label-description {
+    @include type-scale-item(a, false);
+  }
+
+  .#{$prefix}--file {
+    &:focus {
+      outline: none;
+
+      > label {
+        box-shadow: 0px 0px 0px 1px $inverse-01, 0px 0px 0px 2px $ui-05;
+      }
+    }
+  }
+}

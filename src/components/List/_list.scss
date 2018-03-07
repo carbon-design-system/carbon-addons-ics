@@ -1,0 +1,35 @@
+@import '../../globals/theme/ics-theme';
+@import 'carbon-components/src/components/list/list';
+@import '../../globals/type/ics-typography';
+@import '../../globals/bidi/bidi';
+
+@include exports('list--ics') {
+  .#{$prefix}--list--nested,
+  .#{$prefix}--list--unordered,
+  .#{$prefix}--list--ordered {
+    @include type-scale-item(c, false);
+    @include bidi-margin-left(1.5rem);
+    direction: $direction;
+  }
+
+  .#{$prefix}--list--small,
+  .#{$prefix}--list--small .#{$prefix}--list--nested {
+    .#{$prefix}--list__item {
+      @include type-scale-item(b, false);
+    }
+  }
+
+  .#{$prefix}--list--unordered,
+  .#{$prefix}--list--ordered {
+    padding: 1rem 2rem;
+  }
+
+  .#{$prefix}--list--nested {
+    padding: 0;
+  }
+
+  .#{$prefix}--list__item {
+    @include bidi-padding-left(0.25rem);
+    @include type-scale-item(c, false);
+  }
+}

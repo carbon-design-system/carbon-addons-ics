@@ -1,0 +1,117 @@
+@import '../../globals/theme/ics-theme';
+@import 'carbon-components/src/components/dropdown/dropdown';
+@import '../../globals/type/ics-typography';
+@import '../../globals/layer/ics-layer';
+@import '../../globals/icons/icon-reset';
+
+@include exports('dropdown--ics') {
+  .#{$prefix}--dropdown {
+    max-width: 100%;
+    width: inherit;
+    display: inline-block;
+    border-bottom: 4px solid transparent;
+    background-color: transparent;
+
+    &:focus {
+      outline: 1px solid transparent;
+      .#{$prefix}--dropdown-toggle {
+        border-color: $brand-01;
+        outline: 1px solid transparent;
+      }
+    }
+
+    &.#{$prefix}--dropdown--open:focus {
+      outline: 1px solid transparent;
+      box-shadow: none;
+    }
+  }
+
+  .#{$prefix}--dropdown--open {
+    border-bottom: 4px solid $brand-01;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .#{$prefix}--dropdown-toggle {
+    @include type-scale-item(a, false);
+    display: flex;
+    align-items: center;
+    padding: rem(3px) rem(16px);
+    border-radius: 3px;
+    border: 1px solid transparent;
+    margin-bottom: rem(6px);
+
+    &:hover {
+      background-color: $brand-01;
+      color: $inverse-01;
+      fill: $inverse-01;
+      .#{$prefix}--dropdown-text {
+        color: $inverse-01;
+      }
+    }
+  }
+
+  .#{$prefix}--dropdown__arrow {
+    fill: currentColor;
+    top: 0;
+    right: 0;
+    position: relative;
+    @include icon-reset;
+  }
+
+  .#{$prefix}--dropdown[data-value=''] {
+    .#{$prefix}--dropdown-text {
+      color: $text-01;
+    }
+
+    .#{$prefix}--dropdown-toggle:hover,
+    .#{$prefix}--dropdown-toggle:focus {
+      .#{$prefix}--dropdown-text {
+        color: $inverse-01;
+      }
+    }
+  }
+
+  .#{$prefix}--dropdown-text {
+    @include type-scale-item(b, false);
+    padding: 0 rem(8px) 0 0;
+    border: none;
+    height: auto;
+  }
+
+  .#{$prefix}--dropdown-list {
+    @include layer('overlay');
+    min-width: rem(240px);
+    margin-top: 2px;
+  }
+
+  .#{$prefix}--dropdown-link {
+    @include type-scale-item(b, false);
+    color: $text-01;
+    padding: rem(10px) rem(24px);
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      background-color: $ui-03;
+      color: $text-01;
+      text-decoration: none;
+    }
+
+    &:focus {
+      outline: 1px solid transparent;
+      border-top: 1px solid $brand-01;
+      border-bottom: 1px solid $brand-01;
+    }
+  }
+
+  .#{$prefix}--dropdown--open {
+    &:focus {
+      .#{$prefix}--dropdown-list {
+        @include layer('overlay');
+      }
+    }
+  }
+}

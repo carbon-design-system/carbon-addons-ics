@@ -1,0 +1,34 @@
+@import '../../globals/theme/ics-theme';
+@import 'carbon-components/src/components/text-area/text-area';
+@import '../../globals/type/ics-typography';
+@import '../UnderlineMotion/underline-motion';
+
+// Child atoms
+@import '../Form/form';
+
+@include exports('text-area--ics') {
+  .#{$prefix}--text-area {
+    @include type-scale-item(c, false);
+    display: block;
+    border: none;
+    border-bottom: $input-border;
+
+    &:not(:placeholder-shown) {
+      box-shadow: 0 2px 0 $text-02;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+      @include mi-underline-focus;
+    }
+  }
+
+  .#{$prefix}--text-area__container {
+    ~ .#{$prefix}--label {
+      position: absolute;
+      left: 0;
+      top: rem(-20px);
+    }
+  }
+}

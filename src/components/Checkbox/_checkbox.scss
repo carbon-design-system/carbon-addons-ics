@@ -1,0 +1,50 @@
+@import '../../globals/theme/ics-theme';
+@import 'carbon-components/src/components/checkbox/checkbox';
+@import '../../globals/type/ics-typography';
+@import '../../globals/bidi/bidi';
+@import '../Form/form';
+
+@include exports('checkbox--ics') {
+  .#{$prefix}--checkbox,
+  .#{$prefix}--checkbox-label::before {
+    direction: $direction;
+    border-radius: 2px;
+    @include bidi-left(0);
+    @include bidi-text-align;
+  }
+
+  .#{$prefix}--checkbox-label {
+    @include type-scale-item(b, false);
+    @include bidi-padding-left(rem(24px));
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+  }
+
+  .#{$prefix}--checkbox-label::before {
+    height: 1rem;
+    width: 1rem;
+    @include bidi-left(0);
+  }
+
+  .#{$prefix}--checkbox-label::after {
+    width: 8px;
+    height: 3px;
+    @include bidi-left(3px);
+    outline: none;
+    /* draw the check */
+    border-left: 2px solid $ui-01;
+    border-bottom: 2px solid $ui-01;
+  }
+
+  .#{$prefix}--checkbox:checked + .#{$prefix}--checkbox-label::before {
+    background-color: $ui-05;
+    border-color: $ui-05;
+    border-radius: 2px;
+  }
+
+  .#{$prefix}--checkbox:focus + .#{$prefix}--checkbox-label::before,
+  .#{$prefix}--checkbox-label__focus::before {
+    box-shadow: 0 0 0 2px $inverse-01, 0 0 0 3px $brand-01;
+  }
+}

@@ -1,0 +1,24 @@
+@import 'carbon-components/src/globals/scss/import-once';
+@import 'grid';
+@import 'carbon-components/src/globals/grid/experimental/experimental';
+@import 'carbon-components/src/globals/grid/experimental/fallback';
+
+@include exports('grid--ics') {
+  @if global-variable-exists('css--use-experimental-grid') ==
+    true and
+    $css--use-experimental-grid ==
+    true
+  {
+    @if global-variable-exists('css--use-experimental-grid-fallback') ==
+      true and
+      $css--use-experimental-grid-fallback ==
+      true
+    {
+      @include grid-experimental-fallback;
+    } @else {
+      @include grid-experimental;
+    }
+  } @else {
+    @include grid;
+  }
+}

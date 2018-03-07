@@ -1,0 +1,84 @@
+@import '../../globals/theme/ics-theme';
+@import 'carbon-components/src/components/tooltip/tooltip';
+@import '../../globals/type/ics-typography';
+@import '../../globals/bidi/bidi';
+@import '../../globals/icons/icon-reset';
+
+// Child atoms
+@import '../Form/form';
+
+@include exports('tooltip--ics') {
+  .#{$prefix}--tooltip__icon {
+    @include icon-reset('small');
+    direction: $direction;
+    border-radius: rem(2px);
+    cursor: pointer;
+    transition: all 0.35s ease-in;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0px 0px 0px 1px $inverse-01, 0px 0px 0px 2px $brand-01;
+    }
+  }
+
+  .#{$prefix}--tooltip__trigger {
+    @include type-scale-item(c, false);
+    font-weight: 600;
+    direction: $direction;
+    @include bidi-text-align;
+    &:hover,
+    &:focus {
+      svg {
+        fill: $brand-01;
+        outline: none;
+      }
+    }
+
+    svg {
+      fill: $text-01;
+      @include bidi-margin-left(rem(8px));
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .#{$prefix}--tooltip__icon-container {
+    line-height: 0;
+  }
+
+  .#{$prefix}--tooltip {
+    direction: $direction;
+    margin-top: rem(8px);
+  }
+
+  .#{$prefix}--tooltip--simple {
+    direction: $direction;
+  }
+
+  // Simple CSS only tooltip
+  .#{$prefix}--tooltip--simple__top,
+  .#{$prefix}--tooltip--simple__bottom {
+    &:focus {
+      svg {
+        outline: none;
+        box-shadow: 0px 0px 0px 1px $inverse-01, 0px 0px 0px 2px $brand-01;
+      }
+    }
+
+    svg {
+      fill: $text-01;
+
+      &:hover {
+        outline: none;
+        fill: $brand-01;
+      }
+    }
+
+    &:before {
+      padding: 0.4rem;
+      left: 0;
+    }
+  }
+}

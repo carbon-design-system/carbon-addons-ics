@@ -1,0 +1,20 @@
+@import '../../globals/theme/ics-theme';
+@import 'carbon-components/src/components/link/link';
+@import '../../globals/type/ics-typography';
+
+@include exports('link--ics') {
+  .#{$prefix}--link {
+    @include type-scale-item(b, false);
+    transition: $transition--base;
+    text-decoration: none;
+
+    &:active,
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+      text-decoration-color: $brand-01;
+      outline: none;
+      color: $brand-01;
+    }
+  }
+}

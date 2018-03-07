@@ -1,0 +1,203 @@
+@mixin animation__skeleton {
+  background-image: linear-gradient(
+    to right,
+    lighten($ui-04, 5) 0%,
+    $ui-03 45%,
+    lighten($ui-04, 5) 55%,
+    lighten($ui-04, 5) 100%
+  );
+  background-size: 200% 200%;
+  animation: skeleton-load 2s ease infinite;
+}
+
+@mixin orb-x($orb) {
+  $margin-top: 0;
+  $margin-left: 0;
+  $animation-x: '';
+
+  @if $orb == 1 {
+    $margin-top: rem(-96px);
+    $margin-left: rem(54px);
+    $animation-x: orb1_x 2s infinite ease-in;
+  } @else if $orb == 2 {
+    $margin-top: rem(16px);
+    $margin-left: rem(40px);
+    $animation-x: orb2_x 2s infinite ease-in;
+  } @else if $orb == 3 {
+    $margin-top: rem(-112px);
+    $margin-left: rem(94.5px);
+    $animation-x: orb3_x 2s infinite ease-in;
+  } @else if $orb == 4 {
+    $margin-top: rem(32px);
+    $margin-left: rem(108px);
+    $animation-x: orb4_x 2s infinite ease-in;
+  } @else if $orb == 5 {
+    $margin-top: rem(20px);
+    $margin-left: rem(74.5px);
+    $animation-x: orb5_x 2s infinite ease-in;
+  }
+
+  margin-top: $margin-top;
+  margin-left: $margin-left;
+  animation: $animation-x;
+}
+
+@mixin orb-x-bidi($orb) {
+  $margin-top: 0;
+  $margin-right: 0;
+  $animation-x: '';
+
+  @if $orb == 1 {
+    $margin-top: rem(-92px);
+    $margin-right: rem(96px);
+    $animation-x: orb1_x 2s infinite ease-in;
+  } @else if $orb == 2 {
+    $margin-top: rem(16px);
+    $margin-right: rem(104px);
+    $animation-x: orb2_x 2s infinite ease-in;
+  } @else if $orb == 3 {
+    $margin-top: rem(-104px);
+    $margin-right: rem(56px);
+    $animation-x: orb3_x 2s infinite ease-in;
+  } @else if $orb == 4 {
+    $margin-top: rem(32px);
+    $margin-right: rem(52px);
+    $animation-x: orb4_x 2s infinite ease-in;
+  } @else if $orb == 5 {
+    $margin-top: rem(-4px);
+    $margin-right: rem(74.5px);
+    $animation-x: orb5_x 2s infinite ease-in;
+  }
+
+  margin-top: $margin-top;
+  margin-right: $margin-right;
+  animation: $animation-x;
+}
+
+@mixin orb-y($orb) {
+  $animation-y: '';
+  $size: rem(20px);
+
+  @if $orb == 1 {
+    $animation-y: orb1_y 2s infinite ease-in;
+  } @else if $orb == 2 {
+    $animation-y: orb2_y 2s infinite ease-in;
+  } @else if $orb == 3 {
+    $animation-y: orb3_y 2s infinite ease-in;
+    $size: rem(12px);
+  } @else if $orb == 4 {
+    $animation-y: orb4_y 2s infinite ease-in;
+    $size: rem(12px);
+  } @else if $orb == 5 {
+    $animation-y: orb5_y 2s infinite ease-in;
+  }
+
+  content: '';
+  position: absolute;
+  height: $size;
+  width: $size;
+  border-radius: 50%;
+  background-color: $brand-01;
+  color: $brand-01;
+  will-change: transform;
+  animation: $animation-y;
+}
+
+@mixin orb-x-animation($orb) {
+  $orb-x-from: translateX(0);
+  $orb-x-to: translateX(0);
+
+  @if $orb == 1 {
+    $orb-x-from: translateX(20px);
+    $orb-x-to: translateX(100px);
+  } @else if $orb == 2 {
+    $orb-x-from: translateX(35px);
+    $orb-x-to: translateX(-100px);
+  } @else if $orb == 3 {
+    $orb-x-from: translateX(-20px);
+    $orb-x-to: translateX(-100px);
+  } @else if $orb == 4 {
+    $orb-x-from: translateX(-35px);
+    $orb-x-to: translateX(100px);
+  } @else if $orb == 5 {
+    $orb-x-from: translateX(0px);
+    $orb-x-to: translateX(25px);
+  }
+  from {
+    transform: $orb-x-from;
+    -webkit-transform: $orb-x-from;
+  }
+  to {
+    animation-timing-function: ease-in;
+    transform: $orb-x-to;
+    -webkit-transform: $orb-x-to;
+  }
+}
+
+@mixin y-animation($orb-y) {
+  animation-timing-function: ease-out;
+  transform: $orb-y;
+  -webkit-transform: $orb-y;
+}
+
+@mixin orb-y-animation($orb) {
+  $orb-y-0: translateY(0);
+  $orb-y-25: translateY(0);
+  $orb-y-50: translateY(0);
+  $orb-y-75: translateY(0);
+  $orb-y-100: translateY(0);
+
+  @if $orb == 1 {
+    $orb-y-0: translateY(-5px) scale(0);
+    $orb-y-25: translateY(5px) scale(0.25);
+    $orb-y-50: translateY(0px) scale(0.5);
+    $orb-y-75: translateY(0px) scale(0);
+    $orb-y-100: translateY(85px) scale(0);
+  } @else if $orb == 2 {
+    $orb-y-0: translateY(-20px) scale(0);
+    $orb-y-25: translateY(-55px) scale(1);
+    $orb-y-50: translateY(0px) scale(1);
+    $orb-y-75: translateY(-55px) scale(0);
+    $orb-y-100: translateY(-80px) scale(0);
+  } @else if $orb == 3 {
+    $orb-y-0: translateY(-5px) scale(0);
+    $orb-y-25: translateY(0px) scale(1);
+    $orb-y-50: translateY(50px) scale(1);
+    $orb-y-75: translateY(100px) scale(0);
+    $orb-y-100: translateY(85px) scale(0);
+  } @else if $orb == 4 {
+    $orb-y-0: translateY(-20px) scale(0);
+    $orb-y-25: translateY(-85px) scale(1);
+    $orb-y-50: translateY(-85px) scale(1);
+    $orb-y-75: translateY(-105px) scale(0);
+    $orb-y-100: translateY(-80px) scale(0);
+  } @else if $orb == 5 {
+    $orb-y-0: translateY(-20px) scale(0);
+    $orb-y-25: translateY(-85px) scale(1);
+    $orb-y-50: translateY(-85px) scale(1);
+    $orb-y-75: translateY(-55px) scale(0);
+    $orb-y-100: translateY(-80px) scale(0);
+  }
+
+  0% {
+    @include y-animation($orb-y-0);
+  }
+  25% {
+    @include y-animation($orb-y-25);
+  }
+  50% {
+    @include y-animation($orb-y-50);
+  }
+  75% {
+    @include y-animation($orb-y-75);
+  }
+  100% {
+    @include y-animation($orb-y-100);
+  }
+}
+
+$orb-1-delay: 100ms;
+$orb-2-delay: 200ms;
+$orb-3-delay: 300ms;
+$orb-4-delay: 400ms;
+$orb-5-delay: 500ms;

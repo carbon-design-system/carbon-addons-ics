@@ -1,5 +1,232 @@
 {
   "name": "carbon-addons-ics",
+  "description": "ICS React and SCSS addons for Carbon",
   "version": "1.0.0",
-  "license": "Apache-2.0"
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "scripts": {
+    "check": "npm run lint && npm run test",
+    "ci-check": "npm run lint && npm run test --runInBand",
+    "lint": "eslint src",
+    "precommit": "lint-staged",
+    "prettier": "prettier --write \"**/*.{js,css,scss}\"",
+    "prepublish": "npm run build",
+    "prebuild": "rimraf ./lib ./es ./scss",
+    "build": "npm prune && npm run build:js && npm run build:scss",
+    "build:js": "cross-env BABEL_ENV=lib babel ./src ./src/index.js -d ./lib  -q --ignore test.js,story.js && cross-env BABEL_ENV=es babel ./src -d ./es  -q --ignore test.js,story.js && cross-env BABEL_ENV=es babel ./src/index.js -o ./es/index.js -q",
+    "build:scss": "cpx 'src/**/*.scss' scss",
+    "commitmsg": "validate-commit-msg",
+    "storybook": "start-storybook -s ./public -p 9000",
+    "build-storybook": "build-storybook -s ./public",
+    "start": "npm run storybook",
+    "test": "jest -u --coverage"
+  },
+  "keywords": [
+    "react",
+    "ICS",
+    "ICS-components"
+  ],
+  "files": [
+    "lib/**/*",
+    "es/**/*",
+    "scss/**/*"
+  ],
+  "license": "Apache-2.0",
+  "peerDependencies": {
+    "react": "^15.3.2 || ^16.2.0",
+    "react-dom": "^15.3.2 || ^16.2.0"
+  },
+  "dependencies": {
+    "carbon-components": "~8.16.3",
+    "carbon-components-react": "~5.24.3"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^3.4.0-alpha.9",
+    "@storybook/addon-info": "^3.4.0-alpha.9",
+    "@storybook/addon-options": "^3.4.0-alpha.9",
+    "@storybook/addons": "^3.4.0-alpha.9",
+    "@storybook/react": "^3.4.0-alpha.9",
+    "autoprefixer": "^8.0.0",
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^8.0.2",
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-1": "^6.16.0",
+    "commitizen": "^2.9.5",
+    "cpx": "^1.5.0",
+    "cross-env": "^1.0.7",
+    "css-loader": "^0.28.9",
+    "enzyme": "^3.1.1",
+    "enzyme-adapter-react-16": "^1.0.4",
+    "enzyme-to-json": "^3.2.2",
+    "eslint": "^4.11.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "hawk": "^7.0.7",
+    "husky": "^0.14.3",
+    "jest": "^21.2.1",
+    "lint-staged": "^6.0.1",
+    "node-sass": "^4.7.2",
+    "object-assign": "^4.1.1",
+    "object.values": "^1.0.4",
+    "postcss-loader": "^2.1.0",
+    "prettier": "^1.7.4",
+    "promise": "^8.0.1",
+    "prop-types": "^15.5.8",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-test-renderer": "^16.1.0",
+    "rimraf": "^2.6.1",
+    "sass-loader": "^6.0.5",
+    "storybook-readme": "^3.2.1",
+    "style-loader": "^0.20.1",
+    "validate-commit-msg": "^2.10.1",
+    "whatwg-fetch": "^2.0.3",
+    "window-or-global": "^1.0.1"
+  },
+  "config": {
+    "validate-commit-msg": {
+      "types": [
+        "feat",
+        "fix",
+        "docs",
+        "style",
+        "refactor",
+        "perf",
+        "test",
+        "chore",
+        "revert"
+      ],
+      "warnOnFail": false,
+      "maxSubjectLength": 100,
+      "subjectPattern": ".+",
+      "subjectPatternErrorMsg": "Subject does not match subject pattern!"
+    },
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog-components"
+    }
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "eslint:recommended",
+      "plugin:jsx-a11y/recommended"
+    ],
+    "plugins": [
+      "react",
+      "jsx-a11y"
+    ],
+    "rules": {
+      "react/jsx-uses-vars": 1,
+      "react/jsx-uses-react": 1,
+      "react/no-find-dom-node": 1,
+      "jsx-a11y/no-static-element-interactions": 1,
+      "jsx-a11y/no-noninteractive-element-interactions": 1,
+      "jsx-a11y/click-events-have-key-events": 1,
+      "jsx-a11y/anchor-is-valid": 1,
+      "jsx-a11y/interactive-supports-focus": 1,
+      "jsx-a11y/label-has-for": [
+        1,
+        {
+          "components": [
+            "Label"
+          ],
+          "required": {
+            "some": [
+              "nesting",
+              "id"
+            ]
+          },
+          "allowChildren": false
+        }
+      ]
+    },
+    "env": {
+      "node": true,
+      "browser": true,
+      "es6": true,
+      "jest": true,
+      "jasmine": true
+    }
+  },
+  "babel": {
+    "presets": [
+      "./scripts/env",
+      "react",
+      "stage-1"
+    ],
+    "plugins": [
+      "transform-object-assign"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carbon-design-system/carbon-addons-ics"
+  },
+  "jest": {
+    "coverageReporters": [
+      "json",
+      "html",
+      "lcov",
+      "text"
+    ],
+    "collectCoverageFrom": [
+      "src/components/**/*.js",
+      "!src/components/**/*-story.js",
+      "!src/components/**/index.js"
+    ],
+    "setupFiles": [
+      "<rootDir>/config/polyfills.js",
+      "<rootDir>/config/jest/setup.js"
+    ],
+    "testMatch": [
+      "<rootDir>/**/__tests__/**/*.js?(x)",
+      "<rootDir>/**/?(*-)(spec|test).js?(x)"
+    ],
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/config/jest/jsTransform.js",
+      "^.+\\.s?css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "testPathIgnorePatterns": [
+      "/config/",
+      "/lib/"
+    ],
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "prettier": {
+    "useTabs": false,
+    "printWidth": 100,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "trailingComma": "all",
+    "jsxBracketSameLine": false,
+    "semi": true
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier",
+      "eslint src",
+      "git add"
+    ],
+    "*.{css,scss}": [
+      "prettier",
+      "git add"
+    ]
+  }
 }

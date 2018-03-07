@@ -1,0 +1,39 @@
+.#{$prefix}--skeleton-list {
+  direction: $direction;
+  margin: 4rem 0;
+  width: 100%;
+  max-width: 750px;
+}
+
+.#{$prefix}--skeleton-list__item {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.#{$prefix}--skeleton-list__text {
+  flex: 1;
+}
+
+.#{$prefix}--skeleton-list__avatar {
+  @include bidi-margin-right(1rem);
+}
+
+.#{$prefix}--skeleton-circle {
+  height: rem(40px);
+  width: rem(40px);
+  border-radius: 50%;
+  background: $ui-04;
+  @include animation__skeleton;
+}
+
+.#{$prefix}--skeleton-line {
+  height: 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  background: $ui-04;
+  @include animation__skeleton;
+}
+
+.#{$prefix}--skeleton-line--short {
+  width: 50%;
+}
