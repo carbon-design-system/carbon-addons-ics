@@ -1,6 +1,6 @@
 {
   "name": "carbon-addons-ics",
-  "description": "ICS React and SCSS addons for Carbon",
+  "description": "ICS React and SCSS addons for the Carbon Design System",
   "version": "1.0.0",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -16,6 +16,7 @@
     "build:js": "cross-env BABEL_ENV=lib babel ./src ./src/index.js -d ./lib  -q --ignore test.js,story.js && cross-env BABEL_ENV=es babel ./src -d ./es  -q --ignore test.js,story.js && cross-env BABEL_ENV=es babel ./src/index.js -o ./es/index.js -q",
     "build:scss": "cpx 'src/**/*.scss' scss",
     "commitmsg": "validate-commit-msg",
+    "semantic-release": "semantic-release",
     "storybook": "start-storybook -s ./public -p 9000",
     "build-storybook": "build-storybook -s ./public",
     "start": "npm run storybook",
@@ -82,6 +83,7 @@
     "react-test-renderer": "^16.1.0",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.5",
+    "semantic-release": "^12.4.1",
     "storybook-readme": "^3.2.1",
     "style-loader": "^0.20.1",
     "validate-commit-msg": "^2.10.1",
