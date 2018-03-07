@@ -15,6 +15,12 @@
   .#{$prefix}--number {
     @include reset;
     display: flex;
+
+    .#{$prefix}--mi__underline {
+      position: absolute;
+      top: 64px;
+      width: calc(100% - 20px);
+    }
   }
 
   .#{$prefix}--number input[type='number'] {
@@ -68,6 +74,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    &:focus-within {
+      @include mi-underline-focus;
+    }
   }
 
   .#{$prefix}--number__control-btn {
