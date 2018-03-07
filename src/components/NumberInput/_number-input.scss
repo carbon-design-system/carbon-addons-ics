@@ -18,7 +18,7 @@
   }
 
   .#{$prefix}--number input[type='number'] {
-    @include fixedTypePrescription(c, false);
+    @include type-scale-item(c, false);
     box-sizing: border-box;
     display: inline-flex;
     width: 100%;
