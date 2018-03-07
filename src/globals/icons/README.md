@@ -44,8 +44,8 @@ All icons in the library are standarized so that they do not include `stroke` or
 
 ### Main files
 
-| filename | description | supported versions|
-|-----|--------|---------------|
+| filename | description |
+|-----|--------|
 |ics-icons.js| JS module created from ics-icons.svg, used in `Icon` React Component.
 
 ### Accessibility
