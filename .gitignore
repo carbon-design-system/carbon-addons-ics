@@ -18,9 +18,6 @@ storybook-static
 # a11y files
 a11y/results
 
-# we yarn folks here
-package-lock.json
-
 # IDE
 .idea/
 
