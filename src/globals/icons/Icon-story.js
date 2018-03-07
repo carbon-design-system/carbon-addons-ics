@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
-import icons from 'carbon-addons-ics-icons';
+import icons from './ics-icons';
 import { ActionIcon } from '../../index';
 
 const boxStyle = {
@@ -18,30 +18,14 @@ const boxStyle = {
 storiesOf('Globals|Icons', module)
   .addDecorator(withReadme(readme))
   .add(
-    'Regular icons',
+    'ICS icons',
     withInfo(``)(() => (
       <div className="bx--grid">
         <div className="bx--row">
           {icons.map(i => (
-            <div className="bx--col-xs-2" key={i.name}>
+            <div className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2" key={i.name}>
               <div style={boxStyle}>
-                <ActionIcon icon={i.name.split('--')[1]} />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    )),
-  )
-  .add(
-    'Small icons',
-    withInfo(``)(() => (
-      <div className="bx--grid">
-        <div className="bx--row">
-          {icons.map(i => (
-            <div className="bx--col-xs-2" key={i.name}>
-              <div style={boxStyle}>
-                <ActionIcon icon={i.name.split('--')[1]} small />
+                <ActionIcon icon={i.name} />
               </div>
             </div>
           ))}
