@@ -18,7 +18,7 @@ const boxStyle = {
 storiesOf('Globals|Icons', module)
   .addDecorator(withReadme(readme))
   .add(
-    'Regular icons',
+    'ICS icons',
     withInfo(``)(() => (
       <div className="bx--grid">
         <div className="bx--row">
@@ -26,22 +26,6 @@ storiesOf('Globals|Icons', module)
             <div className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2" key={i.name}>
               <div style={boxStyle}>
                 <ActionIcon icon={i.name} />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    )),
-  )
-  .add(
-    'Small icons',
-    withInfo(``)(() => (
-      <div className="bx--grid">
-        <div className="bx--row">
-          {icons.map(i => (
-            <div className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2" key={i.name}>
-              <div style={boxStyle}>
-                <ActionIcon icon={i.name} small />
               </div>
             </div>
           ))}
