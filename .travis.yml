@@ -1,6 +1,26 @@
 language: node_js
+
 node_js: 6
+
 install:
   - npm install
+
 script:
   - npm run ci-check
+
+after_success:
+  - npm run semantic-release
+
+before_deploy:
+  - npm run build-storybook
+
+deploy:
+  skip_cleanup: true
+  provider: cloudfoundry
+  username: apikey
+  password: $CLOUD_API_KEY
+  api: https://api.ng.bluemix.net
+  organization: carbon-design-system
+  space: production
+  on:
+    branch: master
