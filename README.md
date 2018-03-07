@@ -45,12 +45,13 @@ Component-specific Sass files are also included and can be imported in a similar
 
 ### Global styles
 
-carbon-addons-ics includes the following global style elements:
+carbon-addons-ics includes the following global elements:
 
 - ICS Theme & color
 - ICS Grid
-- Fixed type prescriptions
-- Elevation & shadow (layer)
+- ICS Icons
+- Type usage
+- Elevation & shadow
 - Bidi
 
 ## Component Support
