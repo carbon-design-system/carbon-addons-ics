@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalWrapper should render 1`] = `
+<ModalWrapper
+  buttonTriggerText="Test Modal"
+  disabled={false}
+  handleSubmit={[Function]}
+  id="modal"
+  modalHeading="Transactional Modal"
+  onKeyDown={[Function]}
+  primaryButtonText="Save"
+  secondaryButtonText="Cancel"
+  shouldCloseAfterSubmit={true}
+  triggerButtonkind="primary"
+>
+  <div
+    onKeyDown={[Function]}
+    role="presentation"
+  >
+    <Button
+      disabled={false}
+      iconDescription="Provide icon description if icon is used"
+      kind="primary"
+      onClick={[Function]}
+      small={false}
+      tabIndex={0}
+      type="button"
+    >
+      <button
+        className="bx--btn bx--btn--primary"
+        disabled={false}
+        onClick={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        Test Modal
+      </button>
+    </Button>
+    <Dialog
+      iconDescription="close the modal"
+      id="modal"
+      modalHeading="Transactional Modal"
+      onKeyDown={[Function]}
+      onRequestClose={[Function]}
+      onRequestSubmit={[Function]}
+      open={false}
+      passiveModal={false}
+      primaryButtonDisabled={false}
+      primaryButtonText="Save"
+      secondaryButtonText="Cancel"
+    >
+      <div
+        className="bx--modal bx--modal-tall"
+        id="modal"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="presentation"
+        tabIndex={-1}
+      >
+        <div
+          className="bx--modal-container"
+        >
+          <div
+            className="bx--modal-header"
+          >
+            <h2
+              className="bx--modal-header__heading"
+            >
+              Transactional Modal
+            </h2>
+            <button
+              className="bx--modal-close"
+              onClick={[Function]}
+              type="button"
+            >
+              <Icon
+                className="bx--modal-close__icon"
+                description="close the modal"
+                fillRule="evenodd"
+                name="close"
+                role="img"
+              >
+                <svg
+                  aria-label="close the modal"
+                  className="bx--modal-close__icon"
+                  fillRule="evenodd"
+                  height="24"
+                  name="close"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="24"
+                >
+                  <title>
+                    close the modal
+                  </title>
+                  <path
+                    d="M18 6.67L17.33 6 12 11.33 6.67 6 6 6.67 11.33 12 6 17.33l.67.67L12 12.67 17.33 18l.67-.67L12.67 12 18 6.67z"
+                    key="key0"
+                  />
+                </svg>
+              </Icon>
+            </button>
+          </div>
+          <div
+            className="bx--modal-content"
+          >
+            <p
+              className="bx--modal-content__text"
+            >
+              Text
+            </p>
+          </div>
+          <div
+            className="bx--modal-footer"
+          >
+            <div
+              className="bx--modal__buttons-container"
+            >
+              <Button
+                disabled={false}
+                iconDescription="Provide icon description if icon is used"
+                kind="primary"
+                onClick={[Function]}
+                small={false}
+                tabIndex={0}
+                type="button"
+              >
+                <button
+                  className="bx--btn bx--btn--primary"
+                  disabled={false}
+                  onClick={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  Save
+                </button>
+              </Button>
+              <Button
+                disabled={false}
+                iconDescription="Provide icon description if icon is used"
+                kind="secondary"
+                onClick={[Function]}
+                small={false}
+                tabIndex={0}
+                type="button"
+              >
+                <button
+                  className="bx--btn bx--btn--secondary"
+                  disabled={false}
+                  onClick={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  Cancel
+                </button>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Dialog>
+  </div>
+</ModalWrapper>
+`;
