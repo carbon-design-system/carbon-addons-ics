@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import icons from 'carbon-addons-ics-icons';
+import icons from '../../globals/icons/ics-icons';
 
 /**
  * Returns a single icon Object

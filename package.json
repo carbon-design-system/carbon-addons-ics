@@ -37,7 +37,6 @@
     "react-dom": "^15.3.2 || ^16.2.0"
   },
   "dependencies": {
-    "carbon-addons-ics-icons": "^1.0.0",
     "carbon-components": "~8.16.3",
     "carbon-components-react": "~5.24.3"
   },
