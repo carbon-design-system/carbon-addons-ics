@@ -29,10 +29,10 @@ To include ICS styles in your project, add the following to your existing styles
 
 ```scss
 // Default import path relative to `node_modules`
-@import 'carbon-addons-ics/scss/index-ics.scss';
+@import 'carbon-addons-ics/scss/index-themed.scss';
 
 // If you're using webpack, you can use `~` to alias a node module
-@import '~carbon-addons-ics/scss/index-ics.scss';
+@import '~carbon-addons-ics/scss/index-themed.scss';
 ```
 
 ### node-sass
