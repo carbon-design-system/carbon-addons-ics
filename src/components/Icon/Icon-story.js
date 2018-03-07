@@ -23,11 +23,11 @@ storiesOf('Components|Icon', module)
       <div className="bx--grid">
         <div className="bx--row">
           {icons.map(i => (
-            <div className="bx--col-xs-2" key={i.name}>
+            <div className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2" key={i.name}>
               <div style={boxStyle}>
-                <Icon name={i.name.split('--')[1]} />
+                <Icon name={i.name.split('icon--')[1]} />
                 <div className="ibm-type-a" style={{ paddingTop: '1rem' }}>
-                  {i.name.split('--')[1]}
+                  {i.name.split('icon--')[1]}
                 </div>
               </div>
             </div>
@@ -42,11 +42,11 @@ storiesOf('Components|Icon', module)
       <div className="bx--grid">
         <div className="bx--row">
           {icons.map(i => (
-            <div className="bx--col-xs-2" key={i.name}>
+            <div className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2" key={i.name}>
               <div style={boxStyle}>
-                <Icon name={i.name.split('--')[1]} height={16} width={16} />
+                <Icon name={i.name.split('icon--')[1]} height={16} width={16} />
                 <div className="ibm-type-a" style={{ paddingTop: '1rem' }}>
-                  {i.name.split('--')[1]}
+                  {i.name.split('icon--')[1]}
                 </div>
               </div>
             </div>

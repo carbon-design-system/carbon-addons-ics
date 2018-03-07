@@ -23,9 +23,9 @@ storiesOf('Globals|Icons', module)
       <div className="bx--grid">
         <div className="bx--row">
           {icons.map(i => (
-            <div className="bx--col-xs-2" key={i.name}>
+            <div className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2" key={i.name}>
               <div style={boxStyle}>
-                <ActionIcon icon={i.name.split('--')[1]} />
+                <ActionIcon icon={i.name} />
               </div>
             </div>
           ))}
@@ -39,9 +39,9 @@ storiesOf('Globals|Icons', module)
       <div className="bx--grid">
         <div className="bx--row">
           {icons.map(i => (
-            <div className="bx--col-xs-2" key={i.name}>
+            <div className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2" key={i.name}>
               <div style={boxStyle}>
-                <ActionIcon icon={i.name.split('--')[1]} small />
+                <ActionIcon icon={i.name} small />
               </div>
             </div>
           ))}
