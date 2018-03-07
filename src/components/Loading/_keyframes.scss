@@ -1,0 +1,98 @@
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-end-p1 {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-end-p2 {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Stroke animations */
+@keyframes init-stroke {
+  0% {
+    stroke-dashoffset: 240;
+  }
+  100% {
+    stroke-dashoffset: $loading__gap;
+  }
+}
+
+@keyframes stroke-end {
+  0% {
+    stroke-dashoffset: $loading__gap;
+  }
+  100% {
+    stroke-dashoffset: 240;
+  }
+}
+
+@keyframes expand {
+  $expand-0: scale(0);
+  $expand-100: scale(1);
+  0% {
+    -webkit-transform: $expand-0;
+    transform: $expand-0;
+  }
+  100% {
+    -webkit-transform: $expand-100;
+    transform: $expand-100;
+  }
+}
+
+@keyframes orb1_x {
+  @include orb-x-animation(1);
+}
+
+@keyframes orb1_y {
+  @include orb-y-animation(1);
+}
+
+@keyframes orb2_x {
+  @include orb-x-animation(2);
+}
+
+@keyframes orb2_y {
+  @include orb-y-animation(2);
+}
+@keyframes orb3_x {
+  @include orb-x-animation(3);
+}
+
+@keyframes orb3_y {
+  @include orb-y-animation(3);
+}
+@keyframes orb4_x {
+  @include orb-x-animation(4);
+}
+
+@keyframes orb4_y {
+  @include orb-y-animation(4);
+}
+@keyframes orb5_x {
+  @include orb-x-animation(5);
+}
+
+@keyframes orb5_y {
+  @include orb-y-animation(5);
+}
+
+@keyframes skeleton-load {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}

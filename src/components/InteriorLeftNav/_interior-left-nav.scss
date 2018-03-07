@@ -1,0 +1,127 @@
+@import '../../globals/theme/ics-theme';
+@import 'carbon-components/scss/globals/scss/typography';
+@import '../../globals/type/ics-typography';
+@import '../../globals/icons/icon-reset';
+@import '../../globals/bidi/bidi';
+
+@include exports('interior-left-nav--ics') {
+  .#{$prefix}--interior-left-nav {
+    @include font-family;
+    @include type-scale-item(b, false);
+    position: relative;
+    min-width: 12.5rem;
+    width: auto;
+    height: auto;
+  }
+
+  .left-nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+  }
+
+  .left-nav-list__item {
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    padding: 0;
+
+    &:focus {
+      outline: 1px solid transparent;
+
+      & > .left-nav-list__item-link {
+        border-color: $brand-01;
+      }
+    }
+  }
+
+  .left-nav-list__item--active {
+    font-weight: 600;
+
+    &:before {
+      top: 0;
+      position: absolute;
+      background-color: $brand-01;
+      height: 100%;
+      left: 0;
+      width: 3px;
+      content: '';
+      z-index: 1;
+    }
+  }
+
+  .left-nav-list__item-link {
+    color: $text-01;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    transition: background-color $transition--base;
+    padding: rem(9px) rem(24px);
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      background: $ui-03;
+    }
+
+    &:focus {
+      border-color: $brand-01;
+      outline: 1px solid transparent;
+    }
+  }
+
+  .left-nav-list__item-icon {
+    display: flex;
+    margin-left: 1rem;
+  }
+
+  .#{$prefix}--interior-left-nav__icon {
+    @include icon-reset;
+    fill: $text-02;
+    margin: 0;
+    transition: $transition--base;
+  }
+
+  .left-nav-list__item--expanded {
+    .left-nav-list--nested {
+      max-height: 100rem;
+      transition: $transition--expansion $bx--ease-in;
+      overflow: inherit;
+      opacity: 1;
+
+      .left-nav-list__item {
+        opacity: 1;
+      }
+    }
+
+    .bx--interior-left-nav__icon {
+      transform: rotate(-180deg);
+    }
+  }
+
+  .left-nav-list--nested {
+    overflow: hidden;
+    transition: $transition--expansion $bx--ease-in;
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+
+    .left-nav-list__item {
+      width: 100%;
+      transition: $transition--base;
+      position: relative;
+      padding: 0;
+      opacity: 0;
+    }
+
+    .left-nav-list__item-link {
+      padding: rem(9px) rem(24px) rem(9px) rem(52px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}

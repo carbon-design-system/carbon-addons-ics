@@ -1,0 +1,74 @@
+$direction: ltr !default;
+
+/* Bidi Mixins */
+@mixin bidi-left($val) {
+  @if ($direction == rtl) {
+    right: $val;
+  } @else {
+    left: $val;
+  }
+}
+
+@mixin bidi-right($val) {
+  @if ($direction == rtl) {
+    left: $val;
+  } @else {
+    right: $val;
+  }
+}
+
+@mixin bidi-margin-left($val) {
+  @if ($direction == rtl) {
+    margin-right: $val;
+  } @else {
+    margin-left: $val;
+  }
+}
+
+@mixin bidi-margin-right($val) {
+  @if ($direction == rtl) {
+    margin-left: $val;
+  } @else {
+    margin-right: $val;
+  }
+}
+
+@mixin bidi-margin($top, $right, $bottom, $left) {
+  @if $direction == rtl {
+    margin: $top $left $bottom $right;
+  } @else {
+    margin: $top $right $bottom $left;
+  }
+}
+
+@mixin bidi-text-align {
+  @if ($direction == rtl) {
+    text-align: right;
+  } @else {
+    text-align: left;
+  }
+}
+
+@mixin bidi-padding-left($val) {
+  @if ($direction == rtl) {
+    padding-right: $val;
+  } @else {
+    padding-left: $val;
+  }
+}
+
+@mixin bidi-padding-right($val) {
+  @if ($direction == rtl) {
+    padding-left: $val;
+  } @else {
+    padding-right: $val;
+  }
+}
+
+@mixin bidi-padding($top, $right, $bottom, $left) {
+  @if $direction == rtl {
+    padding: $top $left $bottom $right;
+  } @else {
+    padding: $top $right $bottom $left;
+  }
+}

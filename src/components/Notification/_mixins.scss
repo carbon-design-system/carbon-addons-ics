@@ -1,0 +1,23 @@
+//----------------------------------------------
+// Inline Notification
+// ---------------------------------------------
+
+@mixin inline-notification--color($color) {
+  border: none;
+
+  .#{$prefix}--inline-notification__icon {
+    fill: $color;
+  }
+}
+
+//----------------------------------------------
+// Toast Notification
+// ---------------------------------------------
+
+@mixin notification--color($color, $border-color) {
+  border: 2px solid rgba($border-color, 0.3);
+
+  .#{$prefix}--toast-notification__icon {
+    fill: $color;
+  }
+}

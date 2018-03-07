@@ -1,0 +1,66 @@
+//-------------------------
+// 🌍 Variables
+//-------------------------
+
+$css--plex: true !default;
+$css--body: true !default;
+
+$css--use-layer: false !default;
+$ics--use-layer: true !default;
+
+$css--typography: false !default;
+$ics--typography: true !default;
+
+$direction: ltr !default;
+
+//-------------------------
+// 🌍 Carbon globals
+//-------------------------
+
+@import 'carbon-components/src/globals/scss/css--font-face';
+@import 'carbon-components/src/globals/scss/css--body';
+
+//-------------------------
+// 🌍 ICS globals
+//-------------------------
+
+@import 'globals/mixins';
+@import 'globals/bidi/bidi';
+@import 'globals/layer/ics-layer';
+@import 'globals/type/ics-typography';
+@import 'globals/grid/ics-grid';
+
+//-------------------------
+// 🍕 Components
+//-------------------------
+
+@import 'components/ActionIcon/action-icon';
+@import 'components/Button/button';
+@import 'components/Card/card';
+@import 'components/Card-V2/cardv2';
+@import 'components/Checkbox/checkbox';
+@import 'components/DataTable/data-table-v2';
+@import 'components/Dropdown/dropdown';
+@import 'components/FileUploader/file-uploader';
+@import 'components/Form/form';
+@import 'components/InteriorLeftNav/interior-left-nav';
+@import 'components/Link/link';
+@import 'components/List/list';
+@import 'components/Loading/loading';
+@import 'components/Loading/skeleton';
+@import 'components/Modal/modal';
+@import 'components/Module/module';
+@import 'components/UnderlineMotion/underline-motion';
+@import 'components/Notification/inline-notification';
+@import 'components/Notification/toast-notification';
+@import 'components/OverflowMenu/overflow-menu';
+@import 'components/Pagination/pagination';
+@import 'components/RadioButton/radio-button';
+@import 'components/Search/search';
+@import 'components/Select/select';
+@import 'components/Table/table';
+@import 'components/Tabs/tabs';
+@import 'components/Tag/tag';
+@import 'components/TextInput/text-input';
+@import 'components/TextArea/text-area';
+@import 'components/Tooltip/tooltip';

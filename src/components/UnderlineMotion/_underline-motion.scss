@@ -1,0 +1,29 @@
+@import 'carbon-components/src/globals/scss/import-once';
+@import 'mixins';
+
+@include exports('mi-underline') {
+  .#{$prefix}--mi__underline {
+    position: relative;
+    top: 2px;
+    display: block;
+    width: 100%;
+
+    &:before,
+    &:after {
+      content: '';
+      height: 2px;
+      width: 0;
+      bottom: 1px;
+      position: absolute;
+      -webkit-transition: 0.35s ease all;
+      transition: 0.35s ease all;
+    }
+
+    &:before {
+      left: 50%;
+    }
+    &:after {
+      right: 50%;
+    }
+  }
+}

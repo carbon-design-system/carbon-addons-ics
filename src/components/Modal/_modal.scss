@@ -1,0 +1,93 @@
+@import '../../globals/theme/ics-theme';
+@import 'carbon-components/src/components/modal/modal';
+@import '../../globals/type/ics-typography';
+@import '../../globals/icons/icon-reset';
+@import '../../globals/layer/ics-layer';
+
+// Nested atoms
+@import '../Button/button';
+
+@include exports('modal--ics') {
+  .#{$prefix}--modal {
+    background-color: $inverse-01;
+
+    &.is-visible {
+      background: rgba(0, 0, 0, 0.75);
+    }
+  }
+
+  .#{$prefix}--modal-container {
+    @include layer('sticky-nav');
+    padding: rem(32px) 0;
+    border-top: none;
+
+    @media (min-width: 600px) {
+      max-width: 460px;
+      padding: rem(32px) 0;
+      border-top: none;
+    }
+
+    @media (min-width: 1024px) {
+      max-width: 460px;
+      border-top: none;
+    }
+  }
+
+  .#{$prefix}--modal-header {
+    margin-bottom: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .#{$prefix}--modal-header__heading {
+    @include type-scale-item(e, false);
+    margin-bottom: 1rem;
+    color: $text-01;
+  }
+
+  .#{$prefix}--modal-content {
+    margin-bottom: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .#{$prefix}--modal-content__text {
+    @include type-scale-item(c, true);
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .#{$prefix}--modal-footer {
+    margin: 2rem 0 0;
+    padding: 0 2rem;
+    text-align: left;
+    box-sizing: border-box;
+    background: $ui-01;
+
+    .#{$prefix}--btn--secondary + .#{$prefix}--btn--primary {
+      margin-left: 0;
+    }
+
+    .#{$prefix}--modal__buttons-container {
+      display: flex;
+      flex-wrap: wrap;
+
+      .#{$prefix}--btn {
+        flex: 1;
+
+        &:first-child {
+          margin-right: rem(4px);
+        }
+        &:last-child {
+          margin-left: rem(4px);
+        }
+      }
+    }
+  }
+
+  .#{$prefix}--modal-close__icon {
+    @include icon-reset;
+  }
+}

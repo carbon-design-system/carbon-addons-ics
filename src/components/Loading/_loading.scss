@@ -1,0 +1,126 @@
+$loading__gap: 40;
+$loading__size: 10.5rem;
+
+@import '../../globals/theme/ics-theme';
+@import 'carbon-components/src/components/loading/loading';
+@import 'mixins';
+@import 'keyframes';
+@import '../../globals/bidi/bidi';
+@import '../../globals/type/ics-typography';
+
+@include exports('loading--ics') {
+  .#{$prefix}--loading-overlay {
+    direction: $direction;
+  }
+
+  .#{$prefix}--loading-orbs {
+    @include reset;
+    width: $loading__size;
+    height: $loading__size;
+  }
+
+  // Animation (Spin by default)
+  .#{$prefix}--loading__svg {
+    stroke-width: 7;
+    stroke-linecap: butt;
+    stroke-dasharray: 240;
+    stroke-dashoffset: $loading__gap;
+  }
+
+  .#{$prefix}--loading__circle {
+    fill: transparent;
+    stroke: $brand-02;
+    animation: rotate 1.5s linear infinite;
+    stroke-width: 7;
+    stroke-linecap: butt;
+    stroke-dasharray: 240;
+    stroke-dashoffset: $loading__gap;
+  }
+
+  .#{$prefix}--loading__center-outer {
+    fill: $brand-01;
+    opacity: 0.15;
+    animation: expand 1.5s ease-in-out infinite;
+  }
+
+  .#{$prefix}--loading__center-inner {
+    fill: $inverse-01;
+    animation: expand 1.5s ease-in-out infinite;
+    animation-delay: 1.75s;
+  }
+
+  .#{$prefix}--loading__orb-1 {
+    @if $direction == rtl {
+      @include orb-x-bidi(1);
+    } @else {
+      @include orb-x(1);
+    }
+    &:after {
+      @include orb-y(1);
+      animation-delay: $orb-1-delay;
+    }
+  }
+
+  .#{$prefix}--loading__orb-2 {
+    @if $direction == rtl {
+      @include orb-x-bidi(2);
+    } @else {
+      @include orb-x(2);
+    }
+
+    &:after {
+      @include orb-y(2);
+      animation-delay: $orb-2-delay;
+    }
+  }
+
+  .#{$prefix}--loading__orb-3 {
+    @if $direction == rtl {
+      @include orb-x-bidi(3);
+    } @else {
+      @include orb-x(3);
+    }
+
+    &:after {
+      @include orb-y(3);
+      animation-delay: $orb-3-delay;
+    }
+  }
+
+  .#{$prefix}--loading__orb-4 {
+    @if $direction == rtl {
+      @include orb-x-bidi(4);
+    } @else {
+      @include orb-x(4);
+    }
+
+    &:after {
+      @include orb-y(4);
+      animation-delay: $orb-4-delay;
+    }
+  }
+
+  .#{$prefix}--loading__orb-5 {
+    @if $direction == rtl {
+      @include orb-x-bidi(5);
+    } @else {
+      @include orb-x(5);
+    }
+
+    &:after {
+      @include orb-y(5);
+      animation-delay: $orb-5-delay;
+    }
+  }
+
+  .#{$prefix}--loading--small {
+    @include animation__loading--spin;
+    width: 2rem;
+    height: 2rem;
+    animation-duration: 1000ms;
+
+    .#{$prefix}--loading__svg {
+      stroke: $ui-05;
+    }
+  }
+}

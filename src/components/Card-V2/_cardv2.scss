@@ -1,0 +1,53 @@
+@import '../../globals/theme/ics-theme';
+@import '../../globals/type/ics-typography';
+@import '../../globals/bidi/bidi';
+@import '../../globals/layer/ics-layer';
+
+// Nested atoms
+@import '../Button/button';
+
+@include exports('cardv2--ics') {
+  .#{$prefix}--cardv2 {
+    direction: $direction;
+    width: auto;
+    height: auto;
+    margin-bottom: 1rem;
+    @include layer('raised');
+
+    &:focus {
+      outline: 1px solid $brand-01;
+    }
+  }
+
+  .#{$prefix}--card__meta {
+    margin: 0 rem(24px);
+    padding-top: rem(24px);
+  }
+
+  .#{$prefix}--card__meta-primary {
+    @include type-scale-item(b, false);
+    margin-bottom: 0;
+  }
+
+  .#{$prefix}--card__meta-secondary {
+    @include type-scale-item(b, false);
+    color: $ui-05;
+    margin-bottom: 0;
+  }
+
+  .#{$prefix}--card__meta-padding {
+    padding: rem(16px) 0;
+  }
+
+  .#{$prefix}--card__text {
+    margin: 0 rem(24px);
+    padding: rem(24px) 0;
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .#{$prefix}--card__media-img {
+    width: 100%;
+  }
+}

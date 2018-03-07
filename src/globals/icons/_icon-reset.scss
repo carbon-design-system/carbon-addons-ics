@@ -1,0 +1,10 @@
+@mixin icon-reset($size: 'regular') {
+  @if $size == 'regular' {
+    height: 24px;
+    width: 24px;
+  } @else {
+    height: 16px;
+    width: 16px;
+  }
+  transform-origin: 50% 50% 0;
+}

@@ -1,0 +1,16 @@
+// Add to field focus state
+@mixin mi-underline-focus($bgcolor: $brand-01) {
+  ~ .#{$prefix}--mi__underline {
+    &:before {
+      width: 50%;
+      background: $bgcolor;
+    }
+  }
+
+  ~ .#{$prefix}--mi__underline {
+    &:after {
+      width: 50%;
+      background: $bgcolor;
+    }
+  }
+}

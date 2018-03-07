@@ -1,0 +1,75 @@
+@import '../../globals/theme/ics-theme';
+@import 'carbon-components/src/components/select/select';
+@import '../../globals/type/ics-typography';
+@import '../../globals/icons/icon-reset';
+@import '../UnderlineMotion/underline-motion';
+
+// Child atoms
+@import '../Form/form';
+
+@include exports('select--ics') {
+  .#{$prefix}--select {
+    max-width: rem(440px);
+  }
+
+  .#{$prefix}--select-input {
+    @include type-scale-item(c, false);
+    appearance: none;
+    display: block;
+    width: 100%;
+    padding: 0 2.75rem 0.75rem 0;
+    color: $text-02;
+    background-color: $ui-02;
+    border: none;
+    border-bottom: 1px solid $ui-04;
+    border-radius: 0;
+    cursor: pointer;
+
+    // Hide default select arrow in IE10+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &:focus {
+      outline: none;
+      @include mi-underline-focus;
+    }
+  }
+
+  .#{$prefix}--select__arrow {
+    color: $text-02;
+    fill: currentColor;
+    right: 0;
+    top: rem(4px);
+    @include icon-reset;
+  }
+
+  .#{$prefix}--select-optgroup,
+  .#{$prefix}--select-option {
+    color: $text-02; // For the options to show in IE11
+
+    &:disabled {
+      color: $text-02;
+    }
+  }
+
+  // Override some Firefox user-agent styles
+  @-moz-document url-prefix() {
+    .#{$prefix}--select-option {
+      color: $text-02;
+    }
+
+    .#{$prefix}--select-optgroup {
+      color: $text-02;
+    }
+  }
+
+  .#{$prefix}--select--inline {
+    display: inline-block;
+    margin-left: 0.5rem;
+    .#{$prefix}--select-input {
+      color: $text-02;
+      font-weight: 400;
+    }
+  }
+}

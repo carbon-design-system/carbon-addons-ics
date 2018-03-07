@@ -1,0 +1,37 @@
+@import '../../globals/theme/ics-theme';
+@import 'carbon-components/src/components/form/form';
+@import '../../globals/type/ics-typography';
+@import '../../globals/bidi/bidi';
+
+@include exports('form--ics') {
+  .#{$prefix}--form-item {
+    @include bidi-margin-right(rem(16px));
+    @include bidi-margin-left(0);
+    direction: $direction;
+
+    &:last-of-type {
+      margin-right: 1rem;
+    }
+  }
+
+  .#{$prefix}--label {
+    @include type-scale-item(a, false);
+    @include bidi-text-align;
+    color: $text-02;
+    margin-bottom: rem(4px);
+  }
+
+  input[data-invalid],
+  textarea[data-invalid],
+  select[data-invalid],
+  textarea:invalid,
+  select:invalid {
+    box-shadow: 0 1px 0px 0px $support-01;
+    border-color: $support-01;
+  }
+
+  .#{$prefix}--form-requirement {
+    @include type-scale-item(a, false);
+    margin: 0.75rem 0 0;
+  }
+}

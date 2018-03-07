@@ -1,0 +1,63 @@
+@import '../../globals/theme/ics-theme';
+@import 'carbon-components/src/components/text-input/text-input';
+@import '../../globals/type/ics-typography';
+@import '../UnderlineMotion/underline-motion';
+@import '../../globals/bidi/bidi';
+
+// Child atoms
+@import '../Form/form';
+
+@include exports('text-input--ics') {
+  .#{$prefix}--text-input__wrapper {
+    position: relative;
+    margin-top: rem(24px);
+  }
+
+  .#{$prefix}--text-input {
+    @include type-scale-item(c, false);
+    height: auto;
+    padding: 0 0 rem(6px);
+    background: none;
+    border: none;
+    border-bottom: 1px solid $ui-04;
+
+    &:focus,
+    &:active {
+      outline: none;
+      @include mi-underline-focus;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      &:hover {
+        border: none;
+        border-bottom: 1px solid $ui-04;
+      }
+    }
+
+    &.#{$prefix}--text-input--value {
+      border-bottom: 1px solid $text-02;
+      box-shadow: 0 1px 0 $text-02;
+    }
+
+    // Label animation
+    ~ .#{$prefix}--label {
+      @include type-scale-item(c, false);
+      position: absolute;
+      top: rem(-4px);
+      @include bidi-left(0);
+      -webkit-transition: 0.2s ease all;
+      transition: 0.2s ease all;
+      cursor: text;
+    }
+
+    &:focus ~ .#{$prefix}--label,
+    ~ .#{$prefix}--label-motion,
+    &[type^='date'] ~ .#{$prefix}--label {
+      @include type-scale-item(a, false);
+      color: $text-01;
+      top: rem(-20px);
+    }
+  }
+}

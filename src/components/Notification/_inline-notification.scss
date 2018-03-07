@@ -1,0 +1,107 @@
+@import '../../globals/theme/ics-theme';
+@import 'carbon-components/src/components/notification/inline-notification';
+@import 'mixins';
+@import '../../globals/type/ics-typography';
+
+@include exports('inline-notification--ics') {
+  .#{$prefix}--inline-notification {
+    @include type-scale-item(b, false);
+    color: $text-01;
+    display: flex;
+    max-width: 740px;
+    padding: 0.75rem 0;
+    margin-top: 0;
+  }
+
+  .#{$prefix}--inline-notification--error {
+    @include inline-notification--color($support-01);
+  }
+
+  .#{$prefix}--inline-notification--success {
+    @include inline-notification--color($support-02);
+  }
+
+  .#{$prefix}--inline-notification--info {
+    @include inline-notification--color($support-04);
+  }
+
+  .#{$prefix}--inline-notification--warning {
+    @include inline-notification--color($support-03);
+  }
+
+  .#{$prefix}--inline-notification__details {
+    align-items: stretch;
+  }
+
+  .#{$prefix}--inline-notification__icon {
+    height: 20px;
+    width: 20px;
+    flex: 0 0 20px;
+  }
+
+  .#{$prefix}--inline-notification__text-wrapper {
+    margin: 0 rem(16px) 0 rem(12px);
+    align-items: flex-start;
+  }
+
+  .#{$prefix}--inline-notification__title {
+    @include type-scale-item(b, false);
+    font-weight: 600;
+    margin-right: 0.25rem;
+  }
+
+  .#{$prefix}--inline-notification__subtitle {
+    @include type-scale-item(b, false);
+  }
+
+  .#{$prefix}--inline-notification__link {
+    @include type-scale-item(b, false);
+    font-weight: 600;
+    margin-left: rem(10px);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .#{$prefix}--inline-notification__inline-icon-container {
+    position: relative;
+    height: 12px;
+    width: 16px;
+    display: inline-block;
+    margin: 0 rem(4px);
+  }
+
+  .#{$prefix}--inline-notification__inline-icon {
+    position: absolute;
+    top: -1px;
+    overflow: visible;
+  }
+
+  .#{$prefix}--inline-notification__close-button {
+    margin-left: rem(8px);
+    margin-top: rem(2px);
+  }
+
+  .#{$prefix}--inline-notification--long {
+    padding: rem(12px) rem(24px);
+
+    .#{$prefix}--inline-notification__text-wrapper {
+      display: block;
+    }
+    .#{$prefix}--inline-notification__subtitle {
+      display: inline;
+    }
+
+    .#{$prefix}--inline-notification__link {
+      margin-left: rem(8px);
+      display: inline;
+    }
+
+    .#{$prefix}--inline-notification__title {
+      margin-right: 0;
+      display: inline;
+    }
+  }
+}
