@@ -1,7 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { FileUploader, FileUploaderButton } from 'carbon-components-react';
+import { FileUploaderButton } from 'carbon-components-react';
+import { FileUploader } from '../../index';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 
