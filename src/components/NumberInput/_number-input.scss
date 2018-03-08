@@ -18,7 +18,7 @@
 
     .#{$prefix}--mi__underline {
       position: absolute;
-      top: 64px;
+      top: rem(63px);
       width: calc(100% - 20px);
     }
   }
