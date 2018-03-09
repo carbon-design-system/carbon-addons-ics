@@ -66,6 +66,10 @@
     }
   }
 
+  .#{$prefix}--table-head .#{$prefix}--table-row {
+    border-bottom-color: $ui-05;
+  }
+
   .#{$prefix}--table-body .#{$prefix}--table-row {
     border: 1px solid transparent;
 
