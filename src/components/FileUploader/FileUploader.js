@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-// import { Tooltip } from '../../index';
+import { TooltipHover } from '../../index';
 import { Filename, FileUploaderButton } from 'carbon-components-react';
 
 export default class FileUploader extends Component {
@@ -11,13 +11,14 @@ export default class FileUploader extends Component {
     buttonLabel: PropTypes.string,
     buttonKind: PropTypes.oneOf(['primary', 'secondary']),
     filenameStatus: PropTypes.oneOf(['edit', 'complete', 'uploading']).isRequired,
-    labelDescription: PropTypes.oneOf([PropTypes.object, PropTypes.string]),
+    labelDescription: PropTypes.string,
     labelTitle: PropTypes.string,
     multiple: PropTypes.bool,
     onChange: PropTypes.func,
     onClick: PropTypes.func,
     className: PropTypes.string,
     accept: PropTypes.arrayOf(PropTypes.string),
+    labelTooltip: PropTypes.object,
   };
 
   static defaultProps = {
@@ -29,6 +30,7 @@ export default class FileUploader extends Component {
     onChange: () => {},
     onClick: () => {},
     accept: [],
+    labelTooltip: null,
   };
 
   state = {
@@ -83,7 +85,16 @@ export default class FileUploader extends Component {
     return (
       <div className={classes} {...rest}>
         <strong className="bx--label">{labelTitle}</strong>
-        <p className="bx--label-description">{labelDescription}</p>
+        <div className="bx--label-detail">
+          <p className="bx--label-description">{labelDescription}</p>
+          {this.props.labelTooltip && (
+            <TooltipHover
+              text={this.props.labelTooltip.text}
+              iconName={this.props.labelTooltip.iconName}
+              className="bx--label-tooltip"
+            />
+          )}
+        </div>
         <FileUploaderButton
           labelText={buttonLabel}
           multiple={multiple}
