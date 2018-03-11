@@ -17,4 +17,20 @@
       color: $brand-01;
     }
   }
+
+  .#{$prefix}--link--secondary {
+    color: $text-01;
+    font-weight: 600;
+
+    &:visited {
+      color: $text-01;
+    }
+
+    &:active,
+    &:hover,
+    &:focus {
+      text-decoration-color: $text-01;
+      color: $text-01;
+    }
+  }
 }
