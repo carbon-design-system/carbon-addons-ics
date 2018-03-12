@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { TooltipHover } from '../../index';
+import { Tooltip } from '../../index';
 import { Filename, FileUploaderButton } from 'carbon-components-react';
 
 export default class FileUploader extends Component {
@@ -88,11 +88,14 @@ export default class FileUploader extends Component {
         <div className="bx--label-detail">
           <p className="bx--label-description">{labelDescription}</p>
           {this.props.labelTooltip && (
-            <TooltipHover
-              text={this.props.labelTooltip.text}
+            <Tooltip
+              triggerText={null}
+              direction={this.props.labelTooltip.direction || 'bottom'}
               iconName={this.props.labelTooltip.iconName}
               className="bx--label-tooltip"
-            />
+            >
+              <p>{this.props.labelTooltip.text}</p>
+            </Tooltip>
           )}
         </div>
         <FileUploaderButton

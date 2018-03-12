@@ -47,7 +47,7 @@ storiesOf('Components|FileUploader', module)
     )),
   )
   .add(
-    'FileUploader with TooltipHover',
+    'FileUploader with Tooltip',
     withInfo(
       `
       The FileUploader components allow the user to upload any necessary files. This uses the FileUploaderButton and Filename components. Filename components will appear below the FileUploaderButton when files are added. Use the filenameStatus prop to control what icon appears in Filename ('edit', 'complete', or 'uploading').
