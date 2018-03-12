@@ -13,7 +13,7 @@
     "prepublish": "npm run build",
     "prebuild": "rimraf ./lib ./es ./scss",
     "build": "npm prune && npm run build:js && npm run build:scss",
-    "build:js": "cross-env BABEL_ENV=lib babel ./src ./src/index.js -d ./lib  -q --ignore test.js,story.js && cross-env BABEL_ENV=es babel ./src -d ./es  -q --ignore test.js,story.js && cross-env BABEL_ENV=es babel ./src/index.js -o ./es/index.js -q",
+    "build:js": "cross-env BABEL_ENV=cjs babel ./src ./src/index.js -d ./lib  -q --ignore test.js,story.js && cross-env BABEL_ENV=es babel ./src -d ./es  -q --ignore test.js,story.js && cross-env BABEL_ENV=es babel ./src/index.js -o ./es/index.js -q",
     "build:scss": "cpx 'src/**/*.scss' scss",
     "commitmsg": "validate-commit-msg",
     "semantic-release": "semantic-release",
