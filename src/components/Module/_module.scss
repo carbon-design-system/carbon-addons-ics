@@ -3,7 +3,7 @@
 @import '~carbon-components/src/globals/scss/import-once';
 @import '../../globals/type/ics-typography';
 
-@include exports('module--ics') {
+@include exports('module') {
   .#{$prefix}--module {
     @include reset;
     @include font-family;
