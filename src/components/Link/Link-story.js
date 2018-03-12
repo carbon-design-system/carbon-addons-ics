@@ -12,6 +12,7 @@ const linkProps = {
 };
 
 const link = 'bx--link';
+const secondaryLink = 'bx--link--secondary';
 
 storiesOf('Components|Link', module)
   .addDecorator(withReadme(readme))
@@ -19,6 +20,14 @@ storiesOf('Components|Link', module)
     'Link',
     withInfo(``)(() => (
       <Link href="#" className={link} {...linkProps}>
+        Link
+      </Link>
+    )),
+  )
+  .add(
+    'Secondary link',
+    withInfo(``)(() => (
+      <Link href="#" className={(link, secondaryLink)} {...linkProps}>
         Link
       </Link>
     )),
