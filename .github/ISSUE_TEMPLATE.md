@@ -20,7 +20,7 @@ Describe in detail the issue you're having. Is this a feature request (new compo
 
 
 
-> What version of the Carbon Design System are you using?
+> What version of the Carbon Design System and carbon-addons-ics are you using?
 
 
 
