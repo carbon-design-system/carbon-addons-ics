@@ -24,6 +24,11 @@ describe('Module', () => {
       expect(testModule.hasClass('bx--module--single')).toEqual(true);
     });
 
+    it('should render with specified class', () => {
+      testModule.setProps({ padding: true });
+      expect(testModule.hasClass('bx--module--padding')).toEqual(true);
+    });
+
     it('should render children as expected', () => {
       expect(testModule.find(ModuleBody).length).toEqual(1);
     });
