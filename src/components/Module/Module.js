@@ -31,7 +31,7 @@ const moduleBodydefaultProps = {
 
 const Module = ({ children, className, size, padding, ...rest }) => {
   const wrapperClasses = classNames(className, {
-    'bx--module': true,
+    'bx--module-ics': true,
     'bx--module--fluid': size === 'fluid',
     'bx--module--single': size === 'single',
     'bx--module--padding': padding,
