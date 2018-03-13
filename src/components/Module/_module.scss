@@ -2,11 +2,13 @@
 @import '~carbon-components/src/globals/scss/helper-mixins';
 @import '~carbon-components/src/globals/scss/import-once';
 @import '../../globals/type/ics-typography';
+@import '../../globals/layer/ics-layer';
 
 @include exports('module--ics') {
   .#{$prefix}--module {
     @include reset;
     @include font-family;
+    @include layer(flat);
     background-color: $ui-01;
     display: flex;
     flex-direction: column;
