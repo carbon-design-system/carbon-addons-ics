@@ -5,10 +5,9 @@
 @import '../../globals/layer/ics-layer';
 
 @include exports('module--ics') {
-  .#{$prefix}--module {
+  .#{$prefix}--module-ics {
     @include reset;
     @include font-family;
-    @include layer(flat);
     background-color: $ui-01;
     display: flex;
     flex-direction: column;

@@ -5,7 +5,7 @@
 @import '../../globals/bidi/bidi';
 
 @include exports('interior-left-nav--ics') {
-  .#{$prefix}--interior-left-nav {
+  .#{$prefix}--interior-left-nav-ics {
     @include font-family;
     @include type-scale-item(b, false);
     position: relative;
