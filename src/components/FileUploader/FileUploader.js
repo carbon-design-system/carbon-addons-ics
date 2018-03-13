@@ -74,6 +74,7 @@ export default class FileUploader extends Component {
       className,
       multiple,
       accept,
+      labelTooltip,
       ...rest
     } = this.props;
 
@@ -87,14 +88,15 @@ export default class FileUploader extends Component {
         <strong className="bx--label">{labelTitle}</strong>
         <div className="bx--label-detail">
           <p className="bx--label-description">{labelDescription}</p>
-          {this.props.labelTooltip && (
+          {labelTooltip && (
             <Tooltip
               triggerText={null}
-              direction={this.props.labelTooltip.direction || 'bottom'}
-              iconName={this.props.labelTooltip.iconName}
+              direction={labelTooltip.direction || 'bottom'}
+              iconName={labelTooltip.iconName}
               className="bx--label-tooltip"
+              menuOffset={labelTooltip.menuOffset}
             >
-              <p>{this.props.labelTooltip.text}</p>
+              <p>{labelTooltip.text}</p>
             </Tooltip>
           )}
         </div>

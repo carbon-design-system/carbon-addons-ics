@@ -6,9 +6,12 @@ import { FileUploader } from '../../index';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 
-const tooltipHoverData = {
+const tooltipProps = {
   text: 'only .jpg files at 500mb or less',
   iconName: 'info',
+  menuOffset: {
+    position: 'relative',
+  },
 };
 
 storiesOf('Components|FileUploader', module)
@@ -56,7 +59,7 @@ storiesOf('Components|FileUploader', module)
       <FileUploader
         labelTitle="Upload a file"
         labelDescription="Choose a file to upload"
-        labelTooltip={tooltipHoverData}
+        labelTooltip={tooltipProps}
         buttonLabel="Add files"
         filenameStatus="edit"
         buttonKind="secondary"
