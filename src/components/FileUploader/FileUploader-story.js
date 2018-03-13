@@ -1,9 +1,19 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { FileUploader, FileUploaderButton } from 'carbon-components-react';
+import { FileUploaderButton } from 'carbon-components-react';
+import { FileUploader } from '../../index';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
+
+const tooltipProps = {
+  text: 'only .jpg files at 500mb or less',
+  iconName: 'info',
+  menuOffset: {
+    top: -128,
+    left: 4,
+  },
+};
 
 storiesOf('Components|FileUploader', module)
   .addDecorator(withReadme(readme))
@@ -33,6 +43,24 @@ storiesOf('Components|FileUploader', module)
       <FileUploader
         labelTitle="Upload"
         labelDescription="only .jpg files at 500mb or less"
+        buttonLabel="Add files"
+        filenameStatus="edit"
+        buttonKind="secondary"
+        multiple
+      />
+    )),
+  )
+  .add(
+    'FileUploader with Tooltip',
+    withInfo(
+      `
+      The FileUploader components allow the user to upload any necessary files. This uses the FileUploaderButton and Filename components. Filename components will appear below the FileUploaderButton when files are added. Use the filenameStatus prop to control what icon appears in Filename ('edit', 'complete', or 'uploading').
+    `,
+    )(() => (
+      <FileUploader
+        labelTitle="Upload a file"
+        labelDescription="Choose a file to upload"
+        labelTooltip={tooltipProps}
         buttonLabel="Add files"
         filenameStatus="edit"
         buttonKind="secondary"
