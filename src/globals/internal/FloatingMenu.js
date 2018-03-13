@@ -308,7 +308,7 @@ class FloatingMenu extends React.Component {
             {
               left: `${pos.left}px`,
               top: `${pos.top}px`,
-              position: 'absolute',
+              position: 'relative',
               right: 'auto',
               margin: 0,
               opacity: 1,
