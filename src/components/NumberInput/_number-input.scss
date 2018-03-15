@@ -9,46 +9,27 @@
 
 @include exports('number-input--ics') {
   .#{$prefix}--number-input__wrapper {
+    margin-top: rem(24px);
     position: relative;
+    display: flex;
     min-width: 200px;
+
+    .#{$prefix}--mi__underline {
+      position: absolute;
+      top: rem(40px);
+      right: rem(15px);
+      width: calc(100% - 16px);
+    }
   }
 
   .#{$prefix}--number {
     @include reset;
-    display: flex;
-
-    .#{$prefix}--mi__underline {
-      position: absolute;
-      top: rem(62px);
-      width: calc(100% - 14px);
-    }
-
-    // Label animation
-    > .#{$prefix}--label {
-      @include type-scale-item(c, false);
-      position: absolute;
-      top: rem(-4px);
-      @include bidi-left(0);
-      -webkit-transition: 0.2s ease all;
-      transition: 0.2s ease all;
-      cursor: text;
-    }
-
-    &:focus > .#{$prefix}--label,
-    &:focus > .#{$prefix}--label-motion {
-      @include type-scale-item(a, false);
-      color: $text-01;
-      top: rem(-20px);
-    }
-  }
-
-  .#{$prefix}--number input[type='number'] {
     @include type-scale-item(c, false);
     box-sizing: border-box;
     display: inline-flex;
     width: 100%;
     min-width: 9.375rem;
-    padding: 0 0 rem(6px);
+    padding: 0;
     height: auto;
     color: $text-01;
     background-color: transparent;
@@ -71,9 +52,25 @@
       cursor: not-allowed;
       pointer-events: none;
     }
-  }
 
-  .#{$prefix}--number input[type='number'] {
+    ~ .#{$prefix}--label {
+      @include type-scale-item(c, false);
+      position: absolute;
+      top: rem(8px);
+      @include bidi-left(0);
+      -webkit-transition: 0.2s ease all;
+      transition: 0.2s ease all;
+      margin-bottom: 0;
+      cursor: text;
+    }
+
+    &:focus-within ~ .#{$prefix}--label,
+    ~ .#{$prefix}--label-motion {
+      @include type-scale-item(a, false);
+      color: $text-01;
+      top: rem(-8px);
+    }
+
     appearance: textfield; // Firefox: Hide spinner (up and down buttons)
 
     &::-ms-clear {

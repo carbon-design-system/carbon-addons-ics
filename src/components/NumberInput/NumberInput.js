@@ -123,7 +123,11 @@ export default class NumberInput extends Component {
       ...rest
     } = this.props;
 
-    const numberInputClasses = classNames('bx--number', className);
+    const numberInputClasses = classNames({
+      'bx--number-input__wrapper': true,
+      [className]: className,
+    });
+
     const labelClasses = classNames({
       'bx--label': true,
       'bx--label-motion': this.state.labelMotion,
@@ -155,22 +159,28 @@ export default class NumberInput extends Component {
     const span = <span className="bx--mi__underline" />;
 
     return (
-      <div className="bx--number-input__wrapper">
-        <div className={numberInputClasses} {...inputWrapperProps}>
-          <input type="number" pattern="[0-9]*" {...rest} {...props} ref={this._handleInputRef} />
-          <label htmlFor={id} className={labelClasses}>
-            {label}
-          </label>
-          <div className="bx--number__controls">
-            <button {...buttonProps} onClick={evt => this.handleArrowClick(evt, 'up')}>
-              <Icon className="up-icon" name="up" description={this.props.iconDescription} />
-            </button>
-            <button {...buttonProps} onClick={evt => this.handleArrowClick(evt, 'down')}>
-              <Icon className="down-icon" name="down" description={this.props.iconDescription} />
-            </button>
-          </div>
-          {span}
+      <div className={numberInputClasses} {...inputWrapperProps}>
+        <input
+          type="number"
+          pattern="[0-9]*"
+          className="bx--number"
+          {...rest}
+          {...props}
+          ref={this._handleInputRef}
+        />
+        <div className="bx--number__controls">
+          <button {...buttonProps} onClick={evt => this.handleArrowClick(evt, 'up')}>
+            <Icon className="up-icon" name="up" description={this.props.iconDescription} />
+          </button>
+          <button {...buttonProps} onClick={evt => this.handleArrowClick(evt, 'down')}>
+            <Icon className="down-icon" name="down" description={this.props.iconDescription} />
+          </button>
         </div>
+
+        <label htmlFor={id} className={labelClasses}>
+          {label}
+        </label>
+        {span}
         {error}
       </div>
     );
