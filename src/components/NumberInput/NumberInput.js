@@ -48,12 +48,16 @@ export default class NumberInput extends Component {
 
     this.state = {
       value,
+      labelMotion: !!props.defaultValue || !!props.value || props.defaultValue === 0,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.props.value) {
-      this.setState({ value: nextProps.value });
+      this.setState({
+        value: nextProps.value,
+        labelMotion: Boolean(nextProps.value),
+      });
     }
   }
 
@@ -120,6 +124,10 @@ export default class NumberInput extends Component {
     } = this.props;
 
     const numberInputClasses = classNames('bx--number', className);
+    const labelClasses = classNames({
+      'bx--label': true,
+      'bx--label-motion': this.state.labelMotion,
+    });
 
     const props = {
       disabled,
@@ -148,11 +156,11 @@ export default class NumberInput extends Component {
 
     return (
       <div className="bx--number-input__wrapper">
-        <label htmlFor={id} className="bx--label">
-          {label}
-        </label>
         <div className={numberInputClasses} {...inputWrapperProps}>
           <input type="number" pattern="[0-9]*" {...rest} {...props} ref={this._handleInputRef} />
+          <label htmlFor={id} className={labelClasses}>
+            {label}
+          </label>
           <div className="bx--number__controls">
             <button {...buttonProps} onClick={evt => this.handleArrowClick(evt, 'up')}>
               <Icon className="up-icon" name="up" description={this.props.iconDescription} />

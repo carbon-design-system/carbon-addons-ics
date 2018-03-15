@@ -10,6 +10,7 @@
 @include exports('number-input--ics') {
   .#{$prefix}--number-input__wrapper {
     position: relative;
+    min-width: 200px;
   }
 
   .#{$prefix}--number {
@@ -18,8 +19,26 @@
 
     .#{$prefix}--mi__underline {
       position: absolute;
-      top: rem(63px);
-      width: calc(100% - 20px);
+      top: rem(62px);
+      width: calc(100% - 14px);
+    }
+
+    // Label animation
+    > .#{$prefix}--label {
+      @include type-scale-item(c, false);
+      position: absolute;
+      top: rem(-4px);
+      @include bidi-left(0);
+      -webkit-transition: 0.2s ease all;
+      transition: 0.2s ease all;
+      cursor: text;
+    }
+
+    &:focus > .#{$prefix}--label,
+    &:focus > .#{$prefix}--label-motion {
+      @include type-scale-item(a, false);
+      color: $text-01;
+      top: rem(-20px);
     }
   }
 
@@ -69,11 +88,14 @@
   .#{$prefix}--number__controls {
     @include reset;
     position: relative;
-    display: block;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: rem(6px);
+    width: rem(16px);
+    height: rem(32px);
+    left: rem(-19px);
 
     &:focus-within {
       @include mi-underline-focus;
@@ -84,8 +106,8 @@
     @include button-reset;
     position: relative;
     bottom: 0;
-    width: rem(20px);
-    height: rem(20px);
+    width: rem(12px);
+    height: rem(12px);
 
     &:focus {
       outline: none;
@@ -96,20 +118,18 @@
     }
 
     &:hover svg {
-      border: 1px solid $brand-01;
-      border-radius: 4px;
+      fill: $text-01;
     }
   }
 
   .#{$prefix}--number__controls svg {
     @include icon-reset('small');
-    fill: $brand-01;
+    fill: $ui-05;
 
     // Hover styles for use with old HTML w/o button
     &:hover {
       cursor: pointer;
-      border: 1px solid $brand-01;
-      border-radius: 4px;
+      border: none;
     }
   }
 }
