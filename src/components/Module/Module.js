@@ -6,6 +6,7 @@ const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   size: PropTypes.oneOf(['single', 'fluid']),
+  padding: PropTypes.bool,
 };
 
 const moduleBodyPropTypes = {
@@ -21,14 +22,20 @@ const moduleHeaderPropTypes = {
 
 const defaultProps = {
   size: 'fluid',
+  padding: false,
 };
 
 const moduleBodydefaultProps = {
   centered: false,
 };
 
-const Module = ({ children, className, size, ...rest }) => {
-  const wrapperClasses = classNames(`bx--module bx--module--${size}`, className);
+const Module = ({ children, className, size, padding, ...rest }) => {
+  const wrapperClasses = classNames(className, {
+    'bx--module-ics': true,
+    'bx--module--fluid': size === 'fluid',
+    'bx--module--single': size === 'single',
+    'bx--module--padding': padding,
+  });
 
   return (
     <div className={wrapperClasses} {...rest}>

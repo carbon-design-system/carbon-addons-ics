@@ -10,6 +10,16 @@
     @include type-scale-item(a, false);
   }
 
+  .#{$prefix}--label-detail {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .#{$prefix}--label-tooltip {
+    position: relative;
+    bottom: rem(16px);
+  }
+
   .#{$prefix}--file {
     &:focus {
       outline: none;

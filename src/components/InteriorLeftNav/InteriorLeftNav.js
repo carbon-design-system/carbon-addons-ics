@@ -103,7 +103,7 @@ export default class InteriorLeftNav extends Component {
       return child;
     });
 
-    const classNames = classnames('bx--interior-left-nav', className);
+    const classNames = classnames('bx--interior-left-nav-ics', className);
 
     return (
       <nav
