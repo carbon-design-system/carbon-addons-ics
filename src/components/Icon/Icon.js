@@ -30,7 +30,7 @@ export function findIcon(name, iconsObj = icons) {
  */
 export function getSvgData(iconName) {
   const name = findIcon(iconName);
-  return name ? name.svgData : false;
+  return name ? name.childs : false;
 }
 
 /**
