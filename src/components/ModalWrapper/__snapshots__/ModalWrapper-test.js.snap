@@ -77,15 +77,16 @@ exports[`ModalWrapper should render 1`] = `
                 className="bx--modal-close__icon"
                 description="close the modal"
                 fillRule="evenodd"
+                height="24"
                 name="close"
                 role="img"
+                width="24"
               >
                 <svg
                   aria-label="close the modal"
                   className="bx--modal-close__icon"
                   fillRule="evenodd"
                   height="24"
-                  name="close"
                   role="img"
                   viewBox="0 0 24 24"
                   width="24"
@@ -95,7 +96,7 @@ exports[`ModalWrapper should render 1`] = `
                   </title>
                   <path
                     d="M18 6.67L17.33 6 12 11.33 6.67 6 6 6.67 11.33 12 6 17.33l.67.67L12 12.67 17.33 18l.67-.67L12.67 12 18 6.67z"
-                    key="key0"
+                    key="0"
                   />
                 </svg>
               </Icon>

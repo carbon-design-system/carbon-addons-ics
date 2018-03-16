@@ -47,15 +47,16 @@ exports[`DataTable.TableHeader should have an active and ascending class if sort
                       className="bx--table-sort-v2__icon"
                       description="Sort rows by this header in ascending order"
                       fillRule="evenodd"
+                      height="24"
                       name="down"
                       role="img"
+                      width="24"
                     >
                       <svg
                         aria-label="Sort rows by this header in ascending order"
                         className="bx--table-sort-v2__icon"
                         fillRule="evenodd"
                         height="24"
-                        name="down"
                         role="img"
                         viewBox="0 0 24 24"
                         width="24"
@@ -65,7 +66,7 @@ exports[`DataTable.TableHeader should have an active and ascending class if sort
                         </title>
                         <path
                           d="M17.3 9.4L12 14.6 6.7 9.4l-.7.7 6 5.9 6-5.9z"
-                          key="key0"
+                          key="0"
                         />
                       </svg>
                     </Icon>
@@ -128,15 +129,16 @@ exports[`DataTable.TableHeader should have an active class if it is the sort hea
                       className="bx--table-sort-v2__icon"
                       description="Sort rows by this header in ascending order"
                       fillRule="evenodd"
+                      height="24"
                       name="down"
                       role="img"
+                      width="24"
                     >
                       <svg
                         aria-label="Sort rows by this header in ascending order"
                         className="bx--table-sort-v2__icon"
                         fillRule="evenodd"
                         height="24"
-                        name="down"
                         role="img"
                         viewBox="0 0 24 24"
                         width="24"
@@ -146,7 +148,7 @@ exports[`DataTable.TableHeader should have an active class if it is the sort hea
                         </title>
                         <path
                           d="M17.3 9.4L12 14.6 6.7 9.4l-.7.7 6 5.9 6-5.9z"
-                          key="key0"
+                          key="0"
                         />
                       </svg>
                     </Icon>
@@ -209,15 +211,16 @@ exports[`DataTable.TableHeader should render 1`] = `
                       className="bx--table-sort-v2__icon"
                       description="Sort rows by this header in descending order"
                       fillRule="evenodd"
+                      height="24"
                       name="down"
                       role="img"
+                      width="24"
                     >
                       <svg
                         aria-label="Sort rows by this header in descending order"
                         className="bx--table-sort-v2__icon"
                         fillRule="evenodd"
                         height="24"
-                        name="down"
                         role="img"
                         viewBox="0 0 24 24"
                         width="24"
@@ -227,7 +230,7 @@ exports[`DataTable.TableHeader should render 1`] = `
                         </title>
                         <path
                           d="M17.3 9.4L12 14.6 6.7 9.4l-.7.7 6 5.9 6-5.9z"
-                          key="key0"
+                          key="0"
                         />
                       </svg>
                     </Icon>

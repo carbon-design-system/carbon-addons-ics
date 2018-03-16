@@ -13,7 +13,7 @@ describe('InteriorLeftNav', () => {
     });
 
     it('has the expected classes', () => {
-      expect(wrapper.children().hasClass('bx--interior-left-nav')).toEqual(true);
+      expect(wrapper.children().hasClass('bx--interior-left-nav-ics')).toEqual(true);
     });
 
     it('should add extra classes that are passed via className', () => {
