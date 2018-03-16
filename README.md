@@ -63,3 +63,9 @@ ICS addons provide both new components and component variants and overrides base
 ## Feedback
 
 We value your feedback! Feel free to submit an Issue or a PR.
+
+## Contributing
+
+- Fork the repo
+- run `npm install`
+- run `npm start` or `npm run storybook`
