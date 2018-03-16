@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
-import icons from '../../globals/icons/ics-icons';
+import { icons } from './Icon';
 import { Icon } from '../../index';
 
 const boxStyle = {
@@ -23,11 +23,11 @@ storiesOf('Components|Icon', module)
       <div className="bx--grid">
         <div className="bx--row">
           {icons.map(i => (
-            <div className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2" key={i.name}>
+            <div className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2" key={i.title}>
               <div style={boxStyle}>
-                <Icon name={i.name.split('icon--')[1]} />
+                <Icon name={i.title} />
                 <div className="ibm-type-a" style={{ paddingTop: '1rem' }}>
-                  {i.name.split('icon--')[1]}
+                  {i.title}
                 </div>
               </div>
             </div>
@@ -42,11 +42,11 @@ storiesOf('Components|Icon', module)
       <div className="bx--grid">
         <div className="bx--row">
           {icons.map(i => (
-            <div className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2" key={i.name}>
+            <div className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2" key={i.title}>
               <div style={boxStyle}>
-                <Icon name={i.name.split('icon--')[1]} height={16} width={16} />
+                <Icon name={i.title} height="16" width="16" />
                 <div className="ibm-type-a" style={{ paddingTop: '1rem' }}>
-                  {i.name.split('icon--')[1]}
+                  {i.title}
                 </div>
               </div>
             </div>
