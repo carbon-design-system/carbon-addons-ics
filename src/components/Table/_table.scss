@@ -67,7 +67,7 @@
   }
 
   .#{$prefix}--table-head .#{$prefix}--table-row {
-    border-bottom-color: $ui-05;
+    border-bottom: $data-table-heading-border-bottom;
   }
 
   .#{$prefix}--table-body .#{$prefix}--table-row {
