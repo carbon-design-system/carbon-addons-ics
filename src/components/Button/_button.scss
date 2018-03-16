@@ -56,7 +56,7 @@
   .#{$prefix}--btn--secondary {
     @include button-theme(transparent, transparent, $text-01, $text-01);
 
-    @include button-single-border($ui-05, $inverse-01, $text-01);
+    @include button-single-border($ui-05, transparent, $text-01);
 
     &:focus {
       @include button-double-border($inverse-01, $ui-05, 2px);

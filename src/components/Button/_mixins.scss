@@ -26,7 +26,7 @@
 }
 
 @mixin button-theme($bg-color, $border-color, $font-color, $icon-color) {
-  background-color: $bg-color;
+  background: $bg-color;
   border-width: $button-border-width;
   border-style: solid;
   border-color: $border-color;
@@ -53,7 +53,7 @@
 }
 
 @mixin button-darken($background, $text-color) {
-  background-color: darken($background, 20%);
+  background: darken($background, 20%);
   border-color: darken($background, 20%);
   box-shadow: 0 0 0 1px darken($background, 20%);
   color: $text-color;
