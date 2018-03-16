@@ -17,7 +17,7 @@
 
     th {
       border-top: none;
-      border-bottom: 1px solid $ui-05;
+      border-bottom: $data-table-heading-border-bottom;
       padding: 1rem 0 1rem 1rem;
       background: $ui-01;
 
