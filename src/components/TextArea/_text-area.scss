@@ -11,6 +11,8 @@
     @include type-scale-item(c, false);
     display: block;
     border: none;
+    padding: 1rem 0;
+    background: $field-01;
     border-bottom: $input-border;
 
     &:not(:placeholder-shown) {
@@ -21,6 +23,13 @@
       outline: none;
       box-shadow: none;
       @include mi-underline-focus;
+    }
+
+    &:disabled {
+      &:hover {
+        border: none;
+        border-bottom: $input-border;
+      }
     }
   }
 
