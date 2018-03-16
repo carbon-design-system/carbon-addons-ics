@@ -15,6 +15,7 @@
       @include type-scale-item(b, false);
       padding: rem(16px) rem(32px);
     }
+
     th {
       padding: rem(16px) rem(32px);
       @include type-scale-item(a, false);
