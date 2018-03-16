@@ -63,7 +63,7 @@ describe('Icon', () => {
     });
 
     it('throws if multiple icons are found from one name param', () => {
-      const json = [{ title: 'bob' }, { title: 'bob' }];
+      const json = [{ name: 'bob' }, { name: 'bob' }];
 
       expect(() => {
         findIcon('bob', json);
@@ -81,7 +81,7 @@ describe('Icon', () => {
 
   describe('svgShapes', () => {
     it('returns with SVG XML when given a valid icon name', () => {
-      const data = getSvgData('close');
+      const data = getSvgData('icon--search');
       const content = svgShapes(data);
       expect(content.length).toBeGreaterThan(0);
     });

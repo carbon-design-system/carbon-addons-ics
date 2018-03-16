@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import icons from '../../../icons/ics-icons.json';
+import icons from '../../globals/icons/ics-icons';
 
 /**
  * Returns a single icon Object
@@ -11,7 +11,8 @@ import icons from '../../../icons/ics-icons.json';
  * this.findIcon('copy-code', icons.json);
  */
 export function findIcon(name, iconsObj = icons) {
-  const icon = iconsObj.filter(obj => obj.title === name);
+  const icon = iconsObj.filter(obj => obj.name === name);
+
   if (icon.length === 0) {
     return false;
   } else if (icon.length > 1) {
@@ -30,7 +31,7 @@ export function findIcon(name, iconsObj = icons) {
  */
 export function getSvgData(iconName) {
   const name = findIcon(iconName);
-  return name ? name.childs : false;
+  return name ? name.svgData : false;
 }
 
 /**
@@ -44,11 +45,22 @@ export function getSvgData(iconName) {
 export function svgShapes(svgData) {
   const svgElements = Object.keys(svgData)
     .filter(key => svgData[key])
-    .map((svgProp, index) => {
+    .map(svgProp => {
       const data = svgData[svgProp];
 
-      if (data.name === 'path') {
-        return <path d={data.attrs.d} key={index} />;
+      if (svgProp === 'circles') {
+        return data.map((circle, index) => {
+          const circleProps = {
+            cx: circle.cx,
+            cy: circle.cy,
+            r: circle.r,
+            key: `circle${index}`,
+          };
+
+          return <circle {...circleProps} />;
+        });
+      } else if (svgProp === 'paths') {
+        return data.map((path, index) => <path d={path.d} key={`key${index}`} />);
       }
 
       return '';
@@ -61,10 +73,6 @@ export function isPrefixed(name) {
   return name.split('--')[0] === 'icon';
 }
 
-export function removePrefix(name) {
-  return name.split('--')[1];
-}
-
 const Icon = ({
   className,
   description,
@@ -75,24 +83,24 @@ const Icon = ({
   role,
   style,
   width,
-  ...rest
+  ...other
 }) => {
-  const icon = isPrefixed(name) ? findIcon(removePrefix(name)) : findIcon(name);
+  const icon = isPrefixed(name) ? findIcon(name) : findIcon(`icon--${name}`);
 
   const props = {
     className,
     fill,
-    fillRule: fillRule || icon.attrs.fillRule,
+    fillRule,
     height: height || icon.height,
-    name: isPrefixed ? removePrefix(name) : name,
+    name: isPrefixed ? name : `icon--${name}`,
     role,
     style,
-    viewBox: icon.attrs.viewBox,
+    viewBox: icon.viewBox,
     width: width || icon.width,
-    ...rest,
+    ...other,
   };
 
-  const svgContent = icon ? svgShapes(icon.childs) : '';
+  const svgContent = icon ? svgShapes(icon.svgData) : '';
 
   return (
     <svg {...props} aria-label={description}>
@@ -119,8 +127,6 @@ Icon.defaultProps = {
   fillRule: 'evenodd',
   role: 'img',
   description: 'Provide a description that will be used as the title',
-  height: '24',
-  width: '24',
 };
 
 export { icons };
