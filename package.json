@@ -10,12 +10,11 @@
     "lint": "eslint src",
     "precommit": "lint-staged",
     "prettier": "prettier --write \"**/*.{js,css,scss}\"",
-    "prepare": "npm run build",
-    "prebuild": "rimraf ./lib ./es ./scss ./icons",
-    "build": "npm prune && npm run build:js && npm run build:scss && npm run build:icons",
+    "prepublish": "npm run build",
+    "prebuild": "rimraf ./lib ./es ./scss",
+    "build": "npm prune && npm run build:js && npm run build:scss",
     "build:js": "cross-env BABEL_ENV=cjs babel ./src ./src/index.js -d ./lib  -q --ignore test.js,story.js && cross-env BABEL_ENV=es babel ./src -d ./es  -q --ignore test.js,story.js && cross-env BABEL_ENV=es babel ./src/index.js -o ./es/index.js -q",
     "build:scss": "cpx 'src/**/*.scss' scss",
-    "build:icons": "mkdir -p icons && svgson -i ./src/globals/icons/svg --pretty -t --svgo -o ./icons/ics-icons.json",
     "commitmsg": "validate-commit-msg",
     "semantic-release": "semantic-release",
     "storybook": "start-storybook -s ./public -p 9000",
@@ -26,14 +25,12 @@
   "keywords": [
     "react",
     "ICS",
-    "ICS-components",
-    "ICS-icons"
+    "ICS-components"
   ],
   "files": [
     "lib/**/*",
     "es/**/*",
-    "scss/**/*",
-    "icons/**/*"
+    "scss/**/*"
   ],
   "license": "Apache-2.0",
   "peerDependencies": {
@@ -90,7 +87,6 @@
     "semantic-release": "^12.4.1",
     "storybook-readme": "^3.2.1",
     "style-loader": "^0.20.1",
-    "svgson": "^2.1.0",
     "validate-commit-msg": "^2.10.1",
     "whatwg-fetch": "^2.0.3",
     "window-or-global": "^1.0.1"
