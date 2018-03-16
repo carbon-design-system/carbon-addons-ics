@@ -4,6 +4,7 @@ export Card from './components/Card';
 export CardContent from './components/CardContent';
 export TableHeader from './components/DataTable';
 export Dropdown from './components/Dropdown';
+export FileUploader from './components/FileUploader';
 export Icon from './components/Icon';
 export InteriorLeftNav from './components/InteriorLeftNav';
 export InteriorLeftNavList from './components/InteriorLeftNavList';
