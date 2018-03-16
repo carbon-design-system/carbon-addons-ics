@@ -8,7 +8,7 @@
   .#{$prefix}--module-ics {
     @include reset;
     @include font-family;
-    background-color: $ui-01;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     padding: 0;
