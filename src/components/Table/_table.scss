@@ -15,7 +15,6 @@
       @include type-scale-item(b, false);
       padding: rem(16px) rem(32px);
     }
-
     th {
       padding: rem(16px) rem(32px);
       @include type-scale-item(a, false);
@@ -64,10 +63,6 @@
         fill: $text-01;
       }
     }
-  }
-
-  .#{$prefix}--table-head .#{$prefix}--table-row {
-    border-bottom: $data-table-heading-border-bottom;
   }
 
   .#{$prefix}--table-body .#{$prefix}--table-row {
