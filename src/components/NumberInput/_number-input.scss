@@ -17,7 +17,7 @@
     .#{$prefix}--mi__underline {
       position: absolute;
       top: rem(40px);
-      right: rem(15px);
+      @include bidi-right(rem(15px));
       width: calc(100% - 16px);
     }
   }
@@ -45,6 +45,10 @@
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
+      &:hover {
+        border: none;
+        border-bottom: 1px solid $ui-04;
+      }
     }
 
     &:disabled ~ .#{$prefix}--number__controls {
@@ -92,7 +96,7 @@
     margin-bottom: rem(6px);
     width: rem(16px);
     height: rem(32px);
-    left: rem(-19px);
+    @include bidi-left(rem(-19px));
 
     &:focus-within {
       @include mi-underline-focus;
@@ -131,10 +135,16 @@
   }
 }
 
-.#{$prefix}--number[data-invalid] {
-  input[type='number'] {
-    box-shadow: 0 2px 0px 0px $support-01;
+.#{$prefix}--number-input__wrapper[data-invalid] {
+  .#{$prefix}--number {
+    @include mi-underline-focus($support-01);
   }
+
+  .#{$prefix}--mi__underline {
+    @include bidi-left(0);
+    width: calc(100% - 91px);
+  }
+
   ~ .#{$prefix}--form-requirement {
     max-height: rem(200px);
   }

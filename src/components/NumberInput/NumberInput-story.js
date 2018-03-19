@@ -40,7 +40,7 @@ storiesOf('Components|NumberInput', module)
         ${introText}
         The example below shows an disabled Number Input component.
       `,
-    )(() => <NumberInput disabled {...numberInputProps} value={null} />),
+    )(() => <NumberInput {...numberInputProps} disabled />),
   )
   .add(
     'invalid',
