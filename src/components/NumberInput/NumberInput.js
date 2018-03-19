@@ -14,6 +14,7 @@ export default class NumberInput extends Component {
     min: PropTypes.number,
     onChange: PropTypes.func,
     onClick: PropTypes.func,
+    value: PropTypes.number,
     step: PropTypes.number,
     invalid: PropTypes.bool,
     invalidText: PropTypes.string,
@@ -25,6 +26,7 @@ export default class NumberInput extends Component {
     label: ' ',
     onChange: () => {},
     onClick: () => {},
+    value: 0,
     step: 1,
     invalid: false,
     invalidText: 'Provide invalidText',
@@ -142,7 +144,7 @@ export default class NumberInput extends Component {
       min,
       step,
       onChange: this.handleChange,
-      value: this.props.value === null ? null : this.state.value,
+      value: this.props.value == null ? null : this.state.value,
     };
 
     const buttonProps = {

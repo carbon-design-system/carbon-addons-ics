@@ -15,7 +15,7 @@ const numberInputProps = {
   min: -10,
   max: 100,
   step: 10,
-  invalidText: 'Number is not valid',
+  invalidText: 'Invalid number format',
 };
 
 const introText = `
@@ -31,7 +31,12 @@ storiesOf('Components|NumberInput', module)
         ${introText}
         The example below shows an enabled Number Input component.
       `,
-    )(() => <NumberInput {...numberInputProps} value={0} />),
+    )(() => (
+      <div>
+        <NumberInput {...numberInputProps} />
+        <NumberInput {...numberInputProps} value={42} />
+      </div>
+    )),
   )
   .add(
     'disabled',
@@ -40,7 +45,7 @@ storiesOf('Components|NumberInput', module)
         ${introText}
         The example below shows an disabled Number Input component.
       `,
-    )(() => <NumberInput {...numberInputProps} disabled />),
+    )(() => <NumberInput {...numberInputProps} disabled value={null} />),
   )
   .add(
     'invalid',

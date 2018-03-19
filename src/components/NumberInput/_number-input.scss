@@ -140,12 +140,23 @@
     @include mi-underline-focus($support-01);
   }
 
-  .#{$prefix}--mi__underline {
-    @include bidi-left(0);
-    width: calc(100% - 91px);
+  .#{$prefix}--label {
+    color: $support-01;
   }
 
-  ~ .#{$prefix}--form-requirement {
+  .#{$prefix}--mi__underline {
+    @include bidi-left(0);
+  }
+
+  .#{$prefix}--form-requirement {
+    color: $support-01;
+    position: absolute;
+    top: rem(36px);
+    width: 100%;
     max-height: rem(200px);
+
+    &:before {
+      content: 'Error:\00a0 ';
+    }
   }
 }
