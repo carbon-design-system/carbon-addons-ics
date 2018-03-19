@@ -31,10 +31,10 @@ storiesOf('Components|ModalWrapper', module)
         modalProps={modalProps}
         id="transactional-dialog"
         buttonTriggerText="Transactional Dialog"
-        modalText="This is a transactional dialog"
         modalHeading="Transactional Dialog"
         primaryButtonText="Save"
         secondaryButtonText="Cancel"
+        onRequestClose={action('onRequestClose')}
         handleSubmit={action('onSubmit')}
       >
         <p className="bx--modal-content__text">
@@ -80,6 +80,7 @@ storiesOf('Components|ModalWrapper', module)
         modalText="This is a passive dialog"
         modalHeading="Passive Dialog"
         passiveModal
+        onRequestClose={action('onRequestClose')}
       >
         <p className="bx--modal-content__text">
           Passive modal notifications should only appear if there is an action the user needs to
