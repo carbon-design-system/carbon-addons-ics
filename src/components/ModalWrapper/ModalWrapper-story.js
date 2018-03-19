@@ -7,17 +7,6 @@ import { SelectItem, RadioButtonGroup, RadioButton } from 'carbon-components-rea
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 
-const modalProps = {
-  onBlur: action('onBlur'),
-  onClick: action('onClick'),
-  onFocus: action('onFocus'),
-  onMouseDown: action('onMouseDown'),
-  onMouseEnter: action('onMouseEnter'),
-  onMouseLeave: action('onMouseLeave'),
-  onMouseUp: action('onMouseUp'),
-  className: 'some-class',
-};
-
 storiesOf('Components|ModalWrapper', module)
   .addDecorator(withReadme(readme))
   .add(
@@ -28,7 +17,6 @@ storiesOf('Components|ModalWrapper', module)
     `,
     )(() => (
       <ModalWrapper
-        modalProps={modalProps}
         id="transactional-dialog"
         buttonTriggerText="Transactional Dialog"
         modalHeading="Transactional Dialog"
