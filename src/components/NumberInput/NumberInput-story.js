@@ -8,7 +8,7 @@ import readme from './README.md';
 
 const numberInputProps = {
   className: 'some-class',
-  id: 'tj-input',
+  id: 'some-id',
   label: 'Number Input label',
   onChange: action('onChange'),
   onClick: action('onClick'),
