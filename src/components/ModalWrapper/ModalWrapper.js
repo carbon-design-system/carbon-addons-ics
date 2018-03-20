@@ -15,20 +15,25 @@ export default class ModalWrapper extends React.Component {
     status: PropTypes.string,
     handleOpen: PropTypes.func,
     children: PropTypes.node,
-    id: PropTypes.string,
     buttonTriggerText: PropTypes.string,
-    modalHeading: PropTypes.string,
-    modalText: PropTypes.string,
-    passiveModal: PropTypes.bool,
     withHeader: PropTypes.bool,
     modalBeforeContent: PropTypes.bool,
-    primaryButtonText: PropTypes.string,
-    secondaryButtonText: PropTypes.string,
     handleSubmit: PropTypes.func,
     disabled: PropTypes.bool,
     triggerButtonkind: PropTypes.oneOf(['primary', 'secondary', 'danger', 'ghost']),
     shouldCloseAfterSubmit: PropTypes.bool,
+    // Modal Props
+    id: PropTypes.string,
+    modalHeading: PropTypes.string,
+    passiveModal: PropTypes.bool,
+    primaryButtonText: PropTypes.string,
+    secondaryButtonText: PropTypes.string,
+    onRequestClose: PropTypes.func,
+    onRequestSubmit: PropTypes.func,
     onKeyDown: PropTypes.func,
+    iconDescription: PropTypes.string,
+    primaryButtonDisabled: PropTypes.bool,
+    onSecondarySubmit: PropTypes.func,
   };
 
   static defaultProps = {
@@ -36,6 +41,7 @@ export default class ModalWrapper extends React.Component {
     secondaryButtonText: 'Cancel',
     triggerButtonkind: 'primary',
     disabled: false,
+    onRequestClose: () => {},
     onKeyDown: () => {},
   };
 
@@ -46,6 +52,7 @@ export default class ModalWrapper extends React.Component {
   };
 
   handleClose = () => {
+    this.props.onRequestClose();
     this.setState({
       open: false,
     });
@@ -80,6 +87,9 @@ export default class ModalWrapper extends React.Component {
       handleSubmit, // eslint-disable-line no-unused-vars
       disabled,
       onKeyDown, // eslint-disable-line no-unused-vars
+      iconDescription,
+      primaryButtonDisabled,
+      onSecondarySubmit,
     } = this.props;
 
     const props = {
@@ -91,6 +101,10 @@ export default class ModalWrapper extends React.Component {
       open: this.state.open,
       onRequestClose: this.handleClose,
       onRequestSubmit: this.handleOnRequestSubmit,
+      onKeyDown,
+      iconDescription,
+      primaryButtonDisabled,
+      onSecondarySubmit,
     };
 
     return (
