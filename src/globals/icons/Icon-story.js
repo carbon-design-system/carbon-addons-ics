@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
-import icons from './ics-icons';
+import { icons } from '../../components/Icon';
 import { ActionIcon } from '../../index';
 
 const boxStyle = {
@@ -23,9 +23,9 @@ storiesOf('Globals|Icons', module)
       <div className="bx--grid">
         <div className="bx--row">
           {icons.map(i => (
-            <div className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2" key={i.name}>
+            <div className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2" key={i.title}>
               <div style={boxStyle}>
-                <ActionIcon icon={i.name} />
+                <ActionIcon icon={i.title} iconDescription={`${i.title} icon`} />
               </div>
             </div>
           ))}
