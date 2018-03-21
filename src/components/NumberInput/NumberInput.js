@@ -64,6 +64,7 @@ export default class NumberInput extends Component {
 
   handleChange = evt => {
     if (!this.props.disabled) {
+      // access the event properties in an asynchronous way
       evt.persist();
       evt.imaginaryTarget = this._inputRef;
       this.setState(
