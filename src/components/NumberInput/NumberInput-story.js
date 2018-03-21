@@ -33,8 +33,8 @@ storiesOf('Components|NumberInput', module)
       `,
     )(() => (
       <div>
-        <NumberInput {...numberInputProps} />
-        <NumberInput {...numberInputProps} value={42} />
+        <NumberInput {...numberInputProps} label={'One Step Example'} step={1} />
+        <NumberInput {...numberInputProps} label={'Ten Step Example'} value={42} />
       </div>
     )),
   )
