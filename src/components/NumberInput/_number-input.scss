@@ -1,0 +1,162 @@
+@import '../../globals/theme/ics-theme';
+@import 'carbon-components/src/components/number-input/number-input';
+@import '../../globals/type/ics-typography';
+@import '../UnderlineMotion/underline-motion';
+@import '../../globals/bidi/bidi';
+
+// Child atoms
+@import '../Form/form';
+
+@include exports('number-input--ics') {
+  .#{$prefix}--number-input__wrapper {
+    margin-top: rem(24px);
+    position: relative;
+    display: flex;
+    min-width: 200px;
+
+    .#{$prefix}--mi__underline {
+      position: absolute;
+      top: rem(40px);
+      @include bidi-right(rem(15px));
+      width: calc(100% - 16px);
+    }
+  }
+
+  .#{$prefix}--number {
+    @include reset;
+    @include type-scale-item(c, false);
+    box-sizing: border-box;
+    display: inline-flex;
+    width: 100%;
+    min-width: 9.375rem;
+    padding: 0;
+    height: auto;
+    color: $text-01;
+    background-color: $field-01;
+    border: none;
+    border-bottom: 1px solid $ui-04;
+
+    &:focus,
+    &:active {
+      outline: none;
+      @include mi-underline-focus;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      &:hover {
+        border: none;
+        border-bottom: 1px solid $ui-04;
+      }
+    }
+
+    &:disabled ~ .#{$prefix}--number__controls {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    ~ .#{$prefix}--label {
+      @include type-scale-item(c, false);
+      position: absolute;
+      top: rem(8px);
+      @include bidi-left(0);
+      -webkit-transition: 0.2s ease all;
+      transition: 0.2s ease all;
+      margin-bottom: 0;
+      cursor: text;
+    }
+
+    &:focus-within ~ .#{$prefix}--label,
+    ~ .#{$prefix}--label-motion {
+      @include type-scale-item(a, false);
+      color: $text-01;
+      top: rem(-8px);
+    }
+
+    appearance: textfield; // Firefox: Hide spinner (up and down buttons)
+
+    &::-ms-clear {
+      display: none; // IE: Hide "clear-field" `x` button on input field
+    }
+
+    &::-webkit-inner-spin-button {
+      appearance: none; // Safari: Hide number spinner
+    }
+  }
+
+  .#{$prefix}--number__controls {
+    @include reset;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: rem(6px);
+    width: rem(16px);
+    height: rem(32px);
+    @include bidi-left(rem(-19px));
+
+    &:focus-within {
+      @include mi-underline-focus;
+    }
+  }
+
+  .#{$prefix}--number__control-btn {
+    @include button-reset;
+    position: relative;
+    bottom: 0;
+    width: rem(12px);
+    height: rem(12px);
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover svg {
+      fill: $text-01;
+    }
+  }
+
+  .#{$prefix}--number__controls svg {
+    @include icon-reset('small');
+    fill: $ui-05;
+
+    // Hover styles for use with old HTML w/o button
+    &:hover {
+      cursor: pointer;
+      border: none;
+    }
+  }
+}
+
+.#{$prefix}--number-input__wrapper[data-invalid] {
+  .#{$prefix}--number {
+    @include mi-underline-focus($support-01);
+  }
+
+  .#{$prefix}--label {
+    color: $support-01;
+  }
+
+  .#{$prefix}--mi__underline {
+    @include bidi-left(0);
+  }
+
+  .#{$prefix}--form-requirement {
+    color: $support-01;
+    position: absolute;
+    top: rem(36px);
+    width: 100%;
+    max-height: rem(200px);
+
+    &:before {
+      content: 'Error:\00a0 ';
+    }
+  }
+}
