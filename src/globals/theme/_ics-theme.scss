@@ -17,13 +17,13 @@ $brand-02: #1d3458 !default; // blue-80
 $brand-03: #40d5bb !default; // teal-20
 $inverse-01: #ffffff !default; // white
 $ui-01: #ffffff !default; // white
-$ui-02: #ffffff !default; // white
+$ui-02: #f9f9f9 !default; // neutral-white-2
 $ui-03: #f9f9f9 !default; // neutral-white-2
 $ui-04: #d8d8d8 !default; // gray-10
-$ui-05: #777677 !default; // gray-50
+$ui-05: #595859 !default; // gray-60
 $text-01: #000000 !default; // black-100
-$text-02: #777677 !default; // gray-50
-//$text-03: $color__navy-gray-6 !default;
+$text-02: #595859 !default; // gray-60
+$text-03: #777677 !default; // gray-50
 $field-01: transparent !default; // neutral-white-2
 $support-01: #ff5c49 !default; // red-40
 $support-02: #34bc6e !default; // green-30
@@ -52,7 +52,7 @@ $checkbox-border-width: 2px !default;
 
 // Data Table
 $data-table-heading-transform: uppercase !default;
-$data-table-heading-border-bottom: 1px solid $brand-01 !default;
+$data-table-heading-border-bottom: 1px solid $ui-04 !default;
 $data-table-row-height: 2rem !default;
 
 // Modal
