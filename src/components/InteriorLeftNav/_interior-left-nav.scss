@@ -8,6 +8,7 @@
   .#{$prefix}--interior-left-nav-ics {
     @include font-family;
     @include type-scale-item(b, false);
+    background: $ui-01;
     position: relative;
     min-width: 12.5rem;
     width: auto;
