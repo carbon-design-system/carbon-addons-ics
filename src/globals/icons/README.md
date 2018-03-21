@@ -46,7 +46,7 @@ All icons in the library are standarized so that they do not include `stroke` or
 
 | filename | description |
 |-----|--------|
-|ics-icons.js| JS module created from ics-icons.svg, used in `Icon` React Component.
+|ics-icons.json | JSON generated from files in the SVG directory, used in `Icon` React Component.
 
 ### Accessibility
 

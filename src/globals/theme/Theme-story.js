@@ -36,7 +36,7 @@ const colors = [
   },
   {
     name: '$ui-02',
-    value: '#ffffff',
+    value: '#f9f9f9',
   },
   {
     name: '$ui-03',
@@ -48,7 +48,7 @@ const colors = [
   },
   {
     name: '$ui-05',
-    value: '#777677',
+    value: '#595859',
   },
   {
     name: '$text-01',
@@ -56,11 +56,15 @@ const colors = [
   },
   {
     name: '$text-02',
+    value: '#595859',
+  },
+  {
+    name: '$text-03',
     value: '#777677',
   },
   {
     name: '$field-01',
-    value: '#f9f9f9',
+    value: 'transparent',
   },
   {
     name: '$support-01',
