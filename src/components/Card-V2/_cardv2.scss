@@ -8,6 +8,7 @@
 
 @include exports('cardv2--ics') {
   .#{$prefix}--cardv2 {
+    background: $ui-01;
     direction: $direction;
     width: auto;
     height: auto;
@@ -49,5 +50,6 @@
 
   .#{$prefix}--card__media-img {
     width: 100%;
+    display: block;
   }
 }
