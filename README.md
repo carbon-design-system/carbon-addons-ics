@@ -66,6 +66,4 @@ We value your feedback! Feel free to submit an Issue or a PR.
 
 ## Contributing
 
-- Fork the repo
-- run `npm install`
-- run `npm start` or `npm run storybook`
+Contribution docs can be found here: https://github.com/carbon-design-system/carbon-addons-ics/blob/master/CONTRIBUTING.md
