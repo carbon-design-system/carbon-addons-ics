@@ -7,17 +7,6 @@ import { SelectItem, RadioButtonGroup, RadioButton } from 'carbon-components-rea
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 
-const modalProps = {
-  onBlur: action('onBlur'),
-  onClick: action('onClick'),
-  onFocus: action('onFocus'),
-  onMouseDown: action('onMouseDown'),
-  onMouseEnter: action('onMouseEnter'),
-  onMouseLeave: action('onMouseLeave'),
-  onMouseUp: action('onMouseUp'),
-  className: 'some-class',
-};
-
 storiesOf('Components|ModalWrapper', module)
   .addDecorator(withReadme(readme))
   .add(
@@ -28,13 +17,12 @@ storiesOf('Components|ModalWrapper', module)
     `,
     )(() => (
       <ModalWrapper
-        modalProps={modalProps}
         id="transactional-dialog"
         buttonTriggerText="Transactional Dialog"
-        modalText="This is a transactional dialog"
         modalHeading="Transactional Dialog"
         primaryButtonText="Save"
         secondaryButtonText="Cancel"
+        onRequestClose={action('onRequestClose')}
         handleSubmit={action('onSubmit')}
       >
         <p className="bx--modal-content__text">
@@ -80,6 +68,7 @@ storiesOf('Components|ModalWrapper', module)
         modalText="This is a passive dialog"
         modalHeading="Passive Dialog"
         passiveModal
+        onRequestClose={action('onRequestClose')}
       >
         <p className="bx--modal-content__text">
           Passive modal notifications should only appear if there is an action the user needs to
