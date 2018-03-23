@@ -34,10 +34,12 @@
     ~ .#{$prefix}--form-requirement {
       color: $support-01;
     }
+
     ~ .#{$prefix}--form-requirement:before {
       content: '';
       display: none;
     }
+
     &:focus ~ .#{$prefix}--mi__underline {
       &:before,
       &:after {
