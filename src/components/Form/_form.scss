@@ -28,6 +28,22 @@
   select:invalid {
     box-shadow: 0 1px 0px 0px $support-01;
     border-color: $support-01;
+
+    &:focus ~ .#{$prefix}--label,
+    ~ .#{$prefix}--label-motion,
+    ~ .#{$prefix}--form-requirement {
+      color: $support-01;
+    }
+    ~ .#{$prefix}--form-requirement:before {
+      content: '';
+      display: none;
+    }
+    &:focus ~ .#{$prefix}--mi__underline {
+      &:before,
+      &:after {
+        background: $support-01;
+      }
+    }
   }
 
   .#{$prefix}--form-requirement {
