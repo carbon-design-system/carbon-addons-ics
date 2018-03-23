@@ -63,3 +63,7 @@ ICS addons provide both new components and component variants and overrides base
 ## Feedback
 
 We value your feedback! Feel free to submit an Issue or a PR.
+
+## Contributing
+
+Contribution docs can be found [here](https://github.com/carbon-design-system/carbon-addons-ics/blob/master/CONTRIBUTING.md).
