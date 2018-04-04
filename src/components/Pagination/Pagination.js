@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { Tab } from 'carbon-components-react';
+import { Tab, Icon } from 'carbon-components-react';
 
 export default class Pagination extends Component {
   constructor(props) {
@@ -128,9 +128,7 @@ export default class Pagination extends Component {
 
   render() {
     const {
-      backwardText,
       className,
-      forwardText,
       hintText,
       isLastPage,
       totalItems,
@@ -153,7 +151,7 @@ export default class Pagination extends Component {
             onClick={this.decrementPage}
             disabled={this.props.disabled || statePage === 1}
           >
-            {backwardText}
+            <Icon className="bx--pagination__previous" name="left" height="16" width="16" />
           </button>
         </div>
         <div className="bx--pagination__center">
@@ -172,7 +170,7 @@ export default class Pagination extends Component {
             onClick={this.incrementPage}
             disabled={this.props.disabled || statePage === totalItems || isLastPage}
           >
-            {forwardText}
+            <Icon className="bx--pagination__next" name="right" height="16" width="16" />
           </button>
         </div>
       </div>
