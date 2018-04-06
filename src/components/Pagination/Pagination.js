@@ -1,121 +1,172 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { Tab, Icon } from 'carbon-components-react';
+import { Icon } from '../../index';
 
 export default class Pagination extends Component {
   constructor(props) {
     super(props);
+    const pageNum =
+      this.props.totalItems.length <= this.props.max ? this.props.totalItems : this.props.max;
     this.state = {
       page: this.props.page,
+      pages: Array.from(new Array(this.props.totalItems), (val, index) => index + 1),
       hint: false,
+      pageQueue: new Array(pageNum),
     };
   }
 
   static propTypes = {
-    backwardText: PropTypes.string,
     className: PropTypes.string,
     disabled: PropTypes.bool,
-    forwardText: PropTypes.string,
     hintText: PropTypes.string,
     isLastPage: PropTypes.bool,
     onChange: PropTypes.func,
     page: PropTypes.number,
     totalItems: PropTypes.number,
+    max: PropTypes.number,
+    mid: PropTypes.number,
   };
 
   static defaultProps = {
-    backwardText: 'Backward',
     disabled: false,
-    forwardText: 'Forward',
     hintText: 'Use ← left and right → arrow keys to navigate',
     isLastPage: false,
     onChange: () => {},
     page: 1,
+    max: 5,
+    mid: 3,
+  };
+
+  updatePageQueue = () => {
+    if (this.state.page <= this.props.mid) {
+      this.state.pageQueue = (
+        <ul className="bx--pagination__page-list">
+          {this.state.pages.slice(0, this.props.max).map(page => {
+            const selected = this.state.page === page;
+            const classes = classnames('bx--pagination__page-item', {
+              'bx--tabs__page-item--selected': selected,
+            });
+            return (
+              <li
+                key={`pagination-page-${page}`}
+                index={page}
+                label={page.toString()}
+                onClick={this.handleClick}
+                onFocus={this.showHint}
+                onBlur={this.hideHint}
+                ref={li => {
+                  this[`pagination-page-${page}`] = li;
+                }}
+                className={classes}
+              >
+                {page}
+              </li>
+            );
+          })}
+        </ul>
+      );
+    } else if (this.state.page >= this.props.totalItems - this.props.mid) {
+      this.state.pageQueue = (
+        <ul className="bx--pagination__page-list">
+          {this.state.pages
+            .slice(this.props.totalItems - this.props.max, this.props.totalItems)
+            .map(page => {
+              const selected = this.state.page === page;
+              const classes = classnames('bx--pagination__page-item', {
+                'bx--tabs__page-item--selected': selected,
+              });
+              return (
+                <li
+                  key={`pagination-page-${page}`}
+                  index={page}
+                  label={page.toString()}
+                  onClick={this.handleClick}
+                  onFocus={this.showHint}
+                  onBlur={this.hideHint}
+                  ref={li => {
+                    this[`pagination-page-${page}`] = li;
+                  }}
+                  className={classes}
+                >
+                  {page}
+                </li>
+              );
+            })}
+        </ul>
+      );
+    } else {
+      this.state.pageQueue = (
+        <ul className="bx--pagination__page-list">
+          {this.state.pages.slice(this.state.page - 3, this.state.page + 2).map(page => {
+            const selected = this.state.page === page;
+            const classes = classnames('bx--pagination__page-item', {
+              'bx--tabs__page-item--selected': selected,
+            });
+            return (
+              <li
+                key={`pagination-page-${page}`}
+                index={page}
+                label={page.toString()}
+                onClick={this.handleClick}
+                onFocus={this.showHint}
+                onBlur={this.hideHint}
+                ref={li => {
+                  this[`pagination-page-${page}`] = li;
+                }}
+                className={classes}
+              >
+                {page}
+              </li>
+            );
+          })}
+        </ul>
+      );
+    }
   };
 
   incrementPage = () => {
     const page = this.state.page + 1;
     this.setState({ page });
-    const tab = this[`tab${page}`];
-    tab.tabAnchor.focus();
+    this.setState({ selected: page });
+    this.updatePageQueue();
+    this[`pagination-page-${page}`].focus();
     this.props.onChange({ page });
   };
 
   decrementPage = () => {
     const page = this.state.page - 1;
     this.setState({ page });
-    const tab = this[`tab${page}`];
-    tab.tabAnchor.focus();
+    this.updatePageQueue();
+    this.props.onChange({ page });
+  };
+
+  rewind = () => {
+    const page = 1;
+    this.setState({ page });
+    this.updatePageQueue();
+    this.props.onChange({ page });
+  };
+
+  fastForward = () => {
+    const page = this.props.totalItems;
+    this.setState({ page });
+    this.updatePageQueue();
     this.props.onChange({ page });
   };
 
   handlePageChange = page => {
-    if (page > 0 && page <= this.props.totalItems) {
+    if (page && page <= this.props.totalItems) {
+      debugger; // eslint-disable-line
       this.setState({ page });
+      this.updatePageQueue();
       this.props.onChange({ page });
     }
   };
 
-  handleClick = (page, label, evt) => {
-    evt.preventDefault();
+  handleClick = page => {
+    debugger; // eslint-disable-line
     this.handlePageChange(page);
-  };
-
-  handleTabKeyDown = (page, label, evt) => {
-    const key = evt.key || evt.which;
-    if (key === 'Enter' || key === 13 || key === ' ' || key === 32) {
-      this.handlePageChange(page);
-    }
-  };
-
-  getTabAt = index => {
-    return this[`tab${index}`] || React.Children.toArray(this.props.children)[index];
-  };
-
-  handleTabAnchorFocus = page => {
-    const tabCount = this.props.totalItems;
-    let tabIndex = page;
-
-    if (page <= 0) {
-      tabIndex = tabCount;
-    } else if (page > tabCount) {
-      tabIndex = 1;
-    }
-
-    const tab = this.getTabAt(tabIndex);
-    if (tab) {
-      this.handlePageChange(tabIndex);
-      if (tab.tabAnchor) {
-        tab.tabAnchor.focus();
-      }
-    }
-  };
-
-  renderTabItems = () => {
-    let page = 1;
-    let tabs = [];
-    while (page <= this.props.totalItems) {
-      const selected = this.state.page === page;
-      tabs.push(
-        <Tab
-          key={`pagination-tab-${page}`}
-          index={page}
-          label={page.toString()}
-          handleTabClick={this.handleClick}
-          handleTabKeyDown={this.handleTabKeyDown}
-          handleTabAnchorFocus={this.handleTabAnchorFocus}
-          onFocus={this.showHint}
-          onBlur={this.hideHint}
-          selected={selected}
-          ref={pageTab => {
-            pageTab && (this[`tab${pageTab.props.index}`] = pageTab);
-          }}
-        />,
-      );
-      page++;
-    }
-    return tabs;
   };
 
   showHint = () => {
@@ -124,6 +175,25 @@ export default class Pagination extends Component {
 
   hideHint = () => {
     this.setState({ hint: false });
+  };
+
+  buildIcon = iconInfo => {
+    return (
+      <Icon
+        name={iconInfo.name}
+        description={iconInfo.description}
+        className="bx--pagination__button-icon"
+      />
+    );
+  };
+
+  setButtonClassNames = type => {
+    return classnames({
+      'bx--btn': true,
+      'bx--btn--secondary': true,
+      'bx--pagination__button': true,
+      [`bx--pagination__button--${type}`]: true,
+    });
   };
 
   render() {
@@ -135,44 +205,77 @@ export default class Pagination extends Component {
       page: pageNumber, // eslint-disable-line no-unused-vars
       ...rest
     } = this.props;
-
     const statePage = this.state.page;
     const classNames = classnames({
       'bx--pagination': true,
       [className]: className,
     });
-    const tabItems = this.renderTabItems();
+
+    const backwardIcon = {
+      name: 'left',
+      description: 'prev',
+    };
+    const forwardIcon = {
+      name: 'right',
+      description: 'next',
+    };
+
+    const rewindIcon = {
+      name: 'left',
+      description: 'rewind',
+    };
+
+    const fastForwardIcon = {
+      name: 'right',
+      description: 'fast forward',
+    };
+
+    this.updatePageQueue();
 
     return (
       <div className={classNames} {...rest}>
-        <div className="bx--pagination__left">
-          <button
-            className="bx--btn bx--btn--secondary"
-            onClick={this.decrementPage}
-            disabled={this.props.disabled || statePage === 1}
-          >
-            <Icon className="bx--pagination__previous" name="left" height="16" width="16" />
-          </button>
-        </div>
-        <div className="bx--pagination__center">
-          <nav className="bx--tabs">
-            <ul className="bx--tabs__nav bx--tabs__nav--hidden" role="tablist">
-              {tabItems}
-            </ul>
-          </nav>
-          <div className="bx--pagination__hint" style={{ opacity: this.state.hint ? 1 : 0 }}>
-            {hintText}
+        {statePage > 1 && (
+          <div className="bx--pagination__left">
+            <button
+              className={this.setButtonClassNames('rewind')}
+              onClick={this.rewind}
+              disabled={false}
+            >
+              {this.buildIcon(rewindIcon)}
+            </button>
+            <button
+              className={this.setButtonClassNames('backward')}
+              onClick={this.decrementPage}
+              disabled={false}
+            >
+              {this.buildIcon(backwardIcon)}
+            </button>
           </div>
+        )}
+
+        <div className="bx--pagination__center">
+          {this.state.pageQueue}
+          <p className="bx--pagination__hint">{hintText}</p>
         </div>
-        <div className="bx--pagination__right">
-          <button
-            className="bx--btn bx--btn--secondary"
-            onClick={this.incrementPage}
-            disabled={this.props.disabled || statePage === totalItems || isLastPage}
-          >
-            <Icon className="bx--pagination__next" name="right" height="16" width="16" />
-          </button>
-        </div>
+
+        {statePage < this.props.totalItems && (
+          <div className="bx--pagination__right">
+            <button
+              className={this.setButtonClassNames('forward')}
+              onClick={this.incrementPage}
+              disabled={this.props.disabled || statePage === totalItems || isLastPage}
+            >
+              {this.buildIcon(forwardIcon)}
+            </button>
+            <button
+              className={this.setButtonClassNames('fastforward')}
+              onClick={this.fastForward}
+              disabled={this.props.disabled || statePage === totalItems || isLastPage}
+            >
+              {this.buildIcon(fastForwardIcon)}
+            </button>
+          </div>
+        )}
       </div>
     );
   }

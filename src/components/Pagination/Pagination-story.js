@@ -8,6 +8,7 @@ import readme from './README.md';
 const props = {
   totalItems: 10,
   className: 'some-class',
+  max: 5,
 };
 
 storiesOf('Components|Pagination', module)
