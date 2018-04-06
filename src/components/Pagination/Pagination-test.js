@@ -4,9 +4,7 @@ import Pagination from '../Pagination';
 
 describe('Pagination', () => {
   describe('Renders common props as expected', () => {
-    const wrapper = mount(
-      <Pagination totalItems={10} className="extra-class" backwardText="prev" forwardText="next" />,
-    );
+    const wrapper = mount(<Pagination totalItems={10} maxPageView={5} className="extra-class" />);
 
     it('Renders the component as expected', () => {
       expect(wrapper.length).toEqual(1);
@@ -20,16 +18,8 @@ describe('Pagination', () => {
       expect(wrapper.hasClass('extra-class')).toEqual(true);
     });
 
-    it('Renders the expected increment text', () => {
-      expect(wrapper.find('.bx--pagination__right .bx--btn').text()).toEqual('next');
-    });
-
-    it('Renders the expected decrement text', () => {
-      expect(wrapper.find('.bx--pagination__left .bx--btn').text()).toEqual('prev');
-    });
-
-    it('Renders the expected amount of tabs', () => {
-      expect(wrapper.find('.bx--tabs__nav-item').length).toBe(10);
+    it('Renders the expected amount of li', () => {
+      expect(wrapper.find('.bx--pagination__page-item').length).toBe(5);
     });
 
     it('Renders the expected start page', () => {
@@ -42,14 +32,26 @@ describe('Pagination', () => {
 
     it('Increases the page value on increment', () => {
       expect(wrapper.state().page).toBe(2);
-      wrapper.find('.bx--pagination__right .bx--btn').simulate('click');
+      wrapper.find('.bx--pagination__button--forward').simulate('click');
       expect(wrapper.state().page).toBe(3);
     });
 
     it('Decreases the page value on decrement', () => {
       expect(wrapper.state().page).toBe(3);
-      wrapper.find('.bx--pagination__left .bx--btn').simulate('click');
+      wrapper.find('.bx--pagination__button--backward').simulate('click');
       expect(wrapper.state().page).toBe(2);
+    });
+
+    it('Rewinds the page value on rewind', () => {
+      expect(wrapper.state().page).toBe(2);
+      wrapper.find('.bx--pagination__button--rewind').simulate('click');
+      expect(wrapper.state().page).toBe(1);
+    });
+
+    it('Fast forwards the page value on fast forward', () => {
+      expect(wrapper.state().page).toBe(1);
+      wrapper.find('.bx--pagination__button--fastforward').simulate('click');
+      expect(wrapper.state().page).toBe(10);
     });
 
     it('Selects the page value on enter', () => {
@@ -97,7 +99,7 @@ describe('Pagination', () => {
         .find('.bx--tabs__nav-item')
         .first()
         .simulate('click');
-      expect(wrapper.find('.bx--pagination__left .bx--btn').props().disabled).toEqual(true);
+      expect(wrapper.find('.bx--pagination__button--backward').props().disabled).toEqual(true);
     });
 
     it('Renders to increment button as disabled if on last page', () => {
@@ -105,7 +107,7 @@ describe('Pagination', () => {
         .find('.bx--tabs__nav-item')
         .last()
         .simulate('click');
-      expect(wrapper.find('.bx--pagination__right .bx--btn').props().disabled).toEqual(true);
+      expect(wrapper.find('.bx--pagination__button--forward').props().disabled).toEqual(true);
     });
 
     it('Displays hint if tab is focused', () => {
