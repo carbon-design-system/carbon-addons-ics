@@ -26,7 +26,7 @@ storiesOf('Components|InteriorLeftNav', module)
             <a href="#example-3">Icons</a>
           </InteriorLeftNavItem>
           <InteriorLeftNavItem>
-            <a href="#example-4">Gradients</a>
+            <a href="/iframe.html">Gradients</a>
           </InteriorLeftNavItem>
           <InteriorLeftNavItem>
             <a href="#example-5">Icons</a>

@@ -1,3 +1,4 @@
+//import window from 'window-or-global';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classnames from 'classnames';
@@ -7,9 +8,14 @@ import Icon from '../Icon';
 export default class InteriorLeftNavList extends Component {
   constructor(props) {
     super(props);
+
+    //const activePath = activeHref || (window.location && window.location.hash);
+
     this.state = {
       open: this.props.open,
     };
+
+    //this.props.children.filter(child => (child.props.href === this.props.activeHref)) ? true :
   }
 
   static propTypes = {
@@ -52,6 +58,11 @@ export default class InteriorLeftNavList extends Component {
     const { onItemClick, activeHref } = this.props;
 
     const key = `listitem-${index}`;
+
+    // eslint-disable-next-line no-console
+    //console.log(child.props.children.props.href); //
+    //const childHref = child.props.children.props.href === undefined ? child.props.children.props.to : child.props.children.props.href;
+
     return (
       <InteriorLeftNavItem
         {...child.props}
