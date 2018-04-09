@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { Icon } from '../../index';
+import { TooltipHover } from '../../index';
 
 export default class Pagination extends Component {
   constructor(props) {
@@ -11,7 +11,6 @@ export default class Pagination extends Component {
     this.state = {
       page: this.props.page,
       pages: Array.from(new Array(this.props.totalItems), (val, index) => index + 1),
-      hint: false,
       pageQueue: new Array(pageNum),
     };
   }
@@ -19,7 +18,6 @@ export default class Pagination extends Component {
   static propTypes = {
     className: PropTypes.string,
     disabled: PropTypes.bool,
-    hintText: PropTypes.string,
     isLastPage: PropTypes.bool,
     onChange: PropTypes.func,
     page: PropTypes.number,
@@ -30,7 +28,6 @@ export default class Pagination extends Component {
 
   static defaultProps = {
     disabled: false,
-    hintText: 'Use ← left and right → arrow keys to navigate',
     isLastPage: false,
     onChange: () => {},
     page: 1,
@@ -165,7 +162,6 @@ export default class Pagination extends Component {
   };
 
   handleClick = page => {
-    debugger; // eslint-disable-line
     this.handlePageChange(page);
   };
 
@@ -173,15 +169,11 @@ export default class Pagination extends Component {
     this.setState({ hint: true });
   };
 
-  hideHint = () => {
-    this.setState({ hint: false });
-  };
-
-  buildIcon = iconInfo => {
+  buildTooltip = iconInfo => {
     return (
-      <Icon
-        name={iconInfo.name}
-        description={iconInfo.description}
+      <TooltipHover
+        text={iconInfo.description}
+        iconName={iconInfo.name}
         className="bx--pagination__button-icon"
       />
     );
@@ -199,7 +191,6 @@ export default class Pagination extends Component {
   render() {
     const {
       className,
-      hintText,
       isLastPage,
       totalItems,
       page: pageNumber, // eslint-disable-line no-unused-vars
@@ -213,21 +204,21 @@ export default class Pagination extends Component {
 
     const backwardIcon = {
       name: 'left',
-      description: 'prev',
+      description: 'previous page',
     };
     const forwardIcon = {
       name: 'right',
-      description: 'next',
+      description: 'next page',
     };
 
     const rewindIcon = {
-      name: 'left',
-      description: 'rewind',
+      name: 'skip-left',
+      description: 'go to first page',
     };
 
     const fastForwardIcon = {
-      name: 'right',
-      description: 'fast forward',
+      name: 'skip-right',
+      description: 'go to last page',
     };
 
     this.updatePageQueue();
@@ -241,22 +232,19 @@ export default class Pagination extends Component {
               onClick={this.rewind}
               disabled={false}
             >
-              {this.buildIcon(rewindIcon)}
+              {this.buildTooltip(rewindIcon)}
             </button>
             <button
               className={this.setButtonClassNames('backward')}
               onClick={this.decrementPage}
               disabled={false}
             >
-              {this.buildIcon(backwardIcon)}
+              {this.buildTooltip(backwardIcon)}
             </button>
           </div>
         )}
 
-        <div className="bx--pagination__center">
-          {this.state.pageQueue}
-          <p className="bx--pagination__hint">{hintText}</p>
-        </div>
+        <div className="bx--pagination__center">{this.state.pageQueue}</div>
 
         {statePage < this.props.totalItems && (
           <div className="bx--pagination__right">
@@ -265,14 +253,14 @@ export default class Pagination extends Component {
               onClick={this.incrementPage}
               disabled={this.props.disabled || statePage === totalItems || isLastPage}
             >
-              {this.buildIcon(forwardIcon)}
+              {this.buildTooltip(forwardIcon)}
             </button>
             <button
               className={this.setButtonClassNames('fastforward')}
               onClick={this.fastForward}
               disabled={this.props.disabled || statePage === totalItems || isLastPage}
             >
-              {this.buildIcon(fastForwardIcon)}
+              {this.buildTooltip(fastForwardIcon)}
             </button>
           </div>
         )}

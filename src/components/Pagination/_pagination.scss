@@ -1,5 +1,4 @@
 @import '../../globals/theme/ics-theme';
-@import 'carbon-components/src/components/pagination/pagination';
 @import '../../globals/type/ics-typography';
 @import 'mixins';
 
@@ -8,27 +7,11 @@
 @import '../Tabs/tabs';
 
 @include exports('pagination--ics') {
-  .#{$prefix}--pagination__hint {
-    @include type-scale-item(b, false);
-    @include hint-transition;
-    opacity: 0;
-    text-align: center;
-    width: 100%;
-    top: rem(64px);
-    position: absolute;
-    color: $ui-05;
-  }
-
   .#{$prefix}--pagination {
     @include reset;
     width: 100%;
     border: none;
-
-    &:hover > .#{$prefix}--pagination__hint,
-    &:focus > .#{$prefix}--pagination__hint {
-      opacity: 1;
-      height: 100%;
-    }
+    @include type-scale-item(c);
   }
 
   .#{$prefix}--pagination__center {
@@ -36,33 +19,26 @@
     flex: 1;
     justify-content: center;
     flex-direction: column;
-    margin: 0 rem(4px);
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
     position: absolute;
     max-width: rem(186px);
-    @include bidi-left(rem(80px));
+    @include bidi-left(rem(78px));
   }
 
   .#{$prefix}--pagination__left {
     position: absolute;
     @include bidi-left(0);
+    @include bidi-margin-right(15px);
   }
 
   .#{$prefix}--pagination__right {
     position: absolute;
-    @include bidi-left(rem(264px));
-  }
-
-  .#{$prefix}--pagination__text {
-    @include type-scale-item(a, false);
-    color: $text-01;
+    @include bidi-left(rem(236.05px));
   }
 
   .#{$prefix}--pagination__page-item {
     display: inline-block;
-    padding: rem(4px);
-    margin: 0 rem(8px);
+    padding: 0 rem(4px);
+    margin: 0 rem(5px);
     border-radius: 4px;
     border: 1px solid transparent;
 
@@ -80,32 +56,55 @@
 
   .#{$prefix}--pagination__page-list {
     display: flex;
-    color: $ui-05;
+    color: $text-01;
+  }
+
+  .#{$prefix}--pagination__button--rewind {
+    .#{$prefix}--pagination__tooltip-icon {
+      @include bidi-right(2px);
+    }
   }
 
   .#{$prefix}--pagination__button {
+    border: 1px solid $field-01;
+    margin: 0 rem(5px);
     border-radius: 50%;
-    height: rem(32px);
-    width: rem(32px);
+    height: rem(24px);
+    width: rem(24px);
     padding: 0;
-    margin: rem(4px);
     &:hover {
-      .#{$prefix}--pagination__button-icon {
+      background: $brand-01;
+      border-color: $brand-01;
+      .#{$prefix}--tooltip__icon {
         fill: $inverse-01;
+        border-radius: 50%;
       }
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+      border: none;
     }
   }
 
   .#{$prefix}--pagination__button-icon {
-    height: rem(24px);
-    width: rem(24px);
-    fill: $ui-05;
-    position: relative;
-    top: rem(2px);
+    .#{$prefix}--tooltip__icon {
+      height: rem(24px);
+      width: rem(24px);
+      fill: $ui-05;
+      position: relative;
+      border-radius: 50%;
+      bottom: rem(1px);
+      @include bidi-right(9px);
+      border: 1px solid $field-01;
+    }
   }
 
   .#{$prefix}--tabs__page-item--selected {
     border: 1px solid $brand-01;
+    @include type-scale-item(d, false);
+    color: $brand-01;
 
     &::before {
       content: ' ';
