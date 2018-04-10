@@ -11,7 +11,7 @@ storiesOf('Components|InteriorLeftNav', module)
     'default',
     withInfo(``)(() => (
       <InteriorLeftNav className="some-class">
-        <InteriorLeftNavList title="Start here">
+        <InteriorLeftNavList open={true} title="Start here">
           <InteriorLeftNavItem>
             <a target="_blank" href="#example-1">
               Developers

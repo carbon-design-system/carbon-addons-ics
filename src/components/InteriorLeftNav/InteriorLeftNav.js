@@ -48,7 +48,7 @@ export default class InteriorLeftNav extends Component {
   };
 
   buildNewListChild = (child, index) => {
-    let open = false;
+    let open = child.props.open;
 
     React.Children.map(child.props.children, c => {
       const { href, to } = c.props.children.props;
