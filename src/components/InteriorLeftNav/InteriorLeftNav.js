@@ -48,6 +48,13 @@ export default class InteriorLeftNav extends Component {
   };
 
   buildNewListChild = (child, index) => {
+    let open = false;
+    React.Children.map(child.props.children, c => {
+      const { href, to } = c.props.children.props;
+      const childHref = href === undefined ? to : href;
+      if (childHref === this.state.activeHref) open = true;
+    });
+
     const key = `list-${index}`;
     return (
       <InteriorLeftNavList
@@ -58,6 +65,7 @@ export default class InteriorLeftNav extends Component {
         onListClick={this.handleListClick}
         onItemClick={this.handleItemClick}
         activeHref={this.state.activeHref}
+        open={open}
       />
     );
   };

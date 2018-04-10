@@ -60,6 +60,9 @@ export default class InteriorLeftNavList extends Component {
     const key = `listitem-${index}`;
 
     // eslint-disable-next-line no-console
+    //console.log(child);
+
+    // eslint-disable-next-line no-console
     //console.log(child.props.children.props.href); //
     //const childHref = child.props.children.props.href === undefined ? child.props.children.props.to : child.props.children.props.href;
 
