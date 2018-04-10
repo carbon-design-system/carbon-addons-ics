@@ -1,14 +1,17 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
+import { action } from '@storybook/addon-actions';
 import { Pagination } from '../../index';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 
 const props = {
-  totalItems: 10,
+  totalItems: 6,
   className: 'some-class',
   max: 5,
+  onClick: action('onClick'),
+  onChange: action('onChange'),
 };
 
 storiesOf('Components|Pagination', module)

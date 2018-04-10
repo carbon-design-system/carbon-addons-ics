@@ -24,36 +24,38 @@ export default class Pagination extends Component {
     totalItems: PropTypes.number,
     max: PropTypes.number,
     mid: PropTypes.number,
+    onClick: PropTypes.func,
   };
 
   static defaultProps = {
     disabled: false,
     isLastPage: false,
     onChange: () => {},
+    onClick: () => {},
     page: 1,
     max: 5,
     mid: 3,
   };
 
   updatePageQueue = () => {
+    // build pager layout for first page grouping
     if (this.state.page <= this.props.mid) {
       this.state.pageQueue = (
-        <ul className="bx--pagination__page-list">
+        <ul className="bx--pager__page-list">
           {this.state.pages.slice(0, this.props.max).map(page => {
             const selected = this.state.page === page;
-            const classes = classnames('bx--pagination__page-item', {
-              'bx--tabs__page-item--selected': selected,
+            const classes = classnames('bx--pager__page-item', {
+              'bx--pager-item--selected': selected,
             });
             return (
               <li
-                key={`pagination-page-${page}`}
+                key={`pager-page-${page}`}
                 index={page}
                 label={page.toString()}
                 onClick={this.handleClick}
-                onFocus={this.showHint}
-                onBlur={this.hideHint}
+                onFocus={this.handlePageChange}
                 ref={li => {
-                  this[`pagination-page-${page}`] = li;
+                  this[`pager-page-${page}`] = li;
                 }}
                 className={classes}
               >
@@ -63,26 +65,26 @@ export default class Pagination extends Component {
           })}
         </ul>
       );
-    } else if (this.state.page >= this.props.totalItems - this.props.mid) {
+    } else if (this.state.page >= this.props.totalItems - this.props.mid + 1) {
+      // build pager layout for last page grouping
       this.state.pageQueue = (
-        <ul className="bx--pagination__page-list">
+        <ul className="bx--pager__page-list">
           {this.state.pages
             .slice(this.props.totalItems - this.props.max, this.props.totalItems)
             .map(page => {
               const selected = this.state.page === page;
-              const classes = classnames('bx--pagination__page-item', {
-                'bx--tabs__page-item--selected': selected,
+              const classes = classnames('bx--pager__page-item', {
+                'bx--pager-item--selected': selected,
               });
               return (
                 <li
-                  key={`pagination-page-${page}`}
+                  key={`pager-page-${page}`}
                   index={page}
                   label={page.toString()}
-                  onClick={this.handleClick}
-                  onFocus={this.showHint}
-                  onBlur={this.hideHint}
+                  onClick={this.handlePageChange}
+                  onFocus={this.handlePageChange}
                   ref={li => {
-                    this[`pagination-page-${page}`] = li;
+                    this[`pager-page-${page}`] = li;
                   }}
                   className={classes}
                 >
@@ -93,23 +95,23 @@ export default class Pagination extends Component {
         </ul>
       );
     } else {
+      // build pager layout for middle page grouping
       this.state.pageQueue = (
-        <ul className="bx--pagination__page-list">
+        <ul className="bx--pager__page-list">
           {this.state.pages.slice(this.state.page - 3, this.state.page + 2).map(page => {
             const selected = this.state.page === page;
-            const classes = classnames('bx--pagination__page-item', {
-              'bx--tabs__page-item--selected': selected,
+            const classes = classnames('bx--pager__page-item', {
+              'bx--pager-item--selected': selected,
             });
             return (
               <li
-                key={`pagination-page-${page}`}
+                key={`pager-page-${page}`}
                 index={page}
                 label={page.toString()}
                 onClick={this.handleClick}
-                onFocus={this.showHint}
-                onBlur={this.hideHint}
+                onFocus={this.handlePageChange}
                 ref={li => {
-                  this[`pagination-page-${page}`] = li;
+                  this[`pager-page-${page}`] = li;
                 }}
                 className={classes}
               >
@@ -127,7 +129,7 @@ export default class Pagination extends Component {
     this.setState({ page });
     this.setState({ selected: page });
     this.updatePageQueue();
-    this[`pagination-page-${page}`].focus();
+    this[`pager-page-${page}`].focus();
     this.props.onChange({ page });
   };
 
@@ -153,8 +155,7 @@ export default class Pagination extends Component {
   };
 
   handlePageChange = page => {
-    if (page && page <= this.props.totalItems) {
-      debugger; // eslint-disable-line
+    if (page && page.target.innterHTML <= this.props.totalItems) {
       this.setState({ page });
       this.updatePageQueue();
       this.props.onChange({ page });
@@ -163,10 +164,7 @@ export default class Pagination extends Component {
 
   handleClick = page => {
     this.handlePageChange(page);
-  };
-
-  showHint = () => {
-    this.setState({ hint: true });
+    this.props.onClick({ page });
   };
 
   buildTooltip = iconInfo => {
@@ -174,7 +172,7 @@ export default class Pagination extends Component {
       <TooltipHover
         text={iconInfo.description}
         iconName={iconInfo.name}
-        className="bx--pagination__button-icon"
+        className="bx--pager__button-icon"
       />
     );
   };
@@ -183,8 +181,8 @@ export default class Pagination extends Component {
     return classnames({
       'bx--btn': true,
       'bx--btn--secondary': true,
-      'bx--pagination__button': true,
-      [`bx--pagination__button--${type}`]: true,
+      'bx--pager__button': true,
+      [`bx--pager__button--${type}`]: true,
     });
   };
 
@@ -198,7 +196,7 @@ export default class Pagination extends Component {
     } = this.props;
     const statePage = this.state.page;
     const classNames = classnames({
-      'bx--pagination': true,
+      'bx--pager': true,
       [className]: className,
     });
 
@@ -226,7 +224,7 @@ export default class Pagination extends Component {
     return (
       <div className={classNames} {...rest}>
         {statePage > 1 && (
-          <div className="bx--pagination__left">
+          <div className="bx--pager__left">
             <button
               className={this.setButtonClassNames('rewind')}
               onClick={this.rewind}
@@ -244,10 +242,10 @@ export default class Pagination extends Component {
           </div>
         )}
 
-        <div className="bx--pagination__center">{this.state.pageQueue}</div>
+        <div className="bx--pager__center">{this.state.pageQueue}</div>
 
         {statePage < this.props.totalItems && (
-          <div className="bx--pagination__right">
+          <div className="bx--pager__right">
             <button
               className={this.setButtonClassNames('forward')}
               onClick={this.incrementPage}

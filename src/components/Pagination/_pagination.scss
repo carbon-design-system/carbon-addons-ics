@@ -6,15 +6,15 @@
 @import '../Button/button';
 @import '../Tabs/tabs';
 
-@include exports('pagination--ics') {
-  .#{$prefix}--pagination {
+@include exports('pager--ics') {
+  .#{$prefix}--pager {
     @include reset;
     width: 100%;
     border: none;
     @include type-scale-item(c);
   }
 
-  .#{$prefix}--pagination__center {
+  .#{$prefix}--pager__center {
     display: flex;
     flex: 1;
     justify-content: center;
@@ -24,18 +24,19 @@
     @include bidi-left(rem(78px));
   }
 
-  .#{$prefix}--pagination__left {
+  .#{$prefix}--pager__left {
     position: absolute;
     @include bidi-left(0);
     @include bidi-margin-right(15px);
   }
 
-  .#{$prefix}--pagination__right {
+  .#{$prefix}--pager__right {
     position: absolute;
     @include bidi-left(rem(236.05px));
   }
 
-  .#{$prefix}--pagination__page-item {
+  .#{$prefix}--pager__page-item {
+    position: relative;
     display: inline-block;
     padding: 0 rem(4px);
     margin: 0 rem(5px);
@@ -44,28 +45,26 @@
 
     &:focus {
       outline: none;
-      border: 1px solid $brand-01;
     }
 
     &:hover {
       cursor: pointer;
-      color: $inverse-01;
-      background: $brand-01;
+      border: 1px solid $brand-01;
     }
   }
 
-  .#{$prefix}--pagination__page-list {
+  .#{$prefix}--pager__page-list {
     display: flex;
     color: $text-01;
   }
 
-  .#{$prefix}--pagination__button--rewind {
-    .#{$prefix}--pagination__tooltip-icon {
+  .#{$prefix}--pager__button--rewind {
+    .#{$prefix}--pager__tooltip-icon {
       @include bidi-right(2px);
     }
   }
 
-  .#{$prefix}--pagination__button {
+  .#{$prefix}--pager__button {
     border: 1px solid $field-01;
     margin: 0 rem(5px);
     border-radius: 50%;
@@ -88,7 +87,7 @@
     }
   }
 
-  .#{$prefix}--pagination__button-icon {
+  .#{$prefix}--pager__button-icon {
     .#{$prefix}--tooltip__icon {
       height: rem(24px);
       width: rem(24px);
@@ -101,14 +100,17 @@
     }
   }
 
-  .#{$prefix}--tabs__page-item--selected {
-    border: 1px solid $brand-01;
+  .#{$prefix}--pager-item--selected {
     @include type-scale-item(d, false);
     color: $brand-01;
 
     &::before {
-      content: ' ';
+      content: '';
+      position: absolute;
+      top: rem(28px);
+      width: 100%;
       height: rem(4px);
+      @include bidi-left(0);
       background: $brand-01;
     }
   }
