@@ -10,7 +10,7 @@ const props = {
   totalItems: 6,
   className: 'some-class',
   max: 5,
-  onClick: action('onClick'),
+  onKeyUp: action('onKeyUp'),
   onChange: action('onChange'),
 };
 

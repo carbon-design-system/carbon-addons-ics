@@ -35,6 +35,16 @@
     @include bidi-left(rem(236.05px));
   }
 
+  .#{$prefix}--pager__list-item {
+    @include reset;
+    width: 100%;
+    border: none;
+    @include type-scale-item(c, false);
+    &:focus {
+      outline: none;
+    }
+  }
+
   .#{$prefix}--pager__page-item {
     position: relative;
     display: inline-block;

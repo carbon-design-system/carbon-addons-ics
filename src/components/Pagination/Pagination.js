@@ -3,6 +3,25 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { TooltipHover } from '../../index';
 
+class PagerListItem extends Component {
+  static propTypes = {
+    onClick: PropTypes.func,
+    onKeyUp: PropTypes.func,
+  };
+
+  render() {
+    return (
+      <button
+        className="bx--pager__list-item"
+        onClick={this.props.onClick}
+        onKeyUp={this.props.onKeyUp}
+      >
+        {this.props.children}
+      </button>
+    );
+  }
+}
+
 export default class Pagination extends Component {
   constructor(props) {
     super(props);
@@ -19,19 +38,19 @@ export default class Pagination extends Component {
     className: PropTypes.string,
     disabled: PropTypes.bool,
     isLastPage: PropTypes.bool,
-    onChange: PropTypes.func,
     page: PropTypes.number,
     totalItems: PropTypes.number,
     max: PropTypes.number,
     mid: PropTypes.number,
     onClick: PropTypes.func,
+    onKeyUp: PropTypes.func,
   };
 
   static defaultProps = {
     disabled: false,
     isLastPage: false,
-    onChange: () => {},
     onClick: () => {},
+    onKeyUp: () => {},
     page: 1,
     max: 5,
     mid: 3,
@@ -52,14 +71,18 @@ export default class Pagination extends Component {
                 key={`pager-page-${page}`}
                 index={page}
                 label={page.toString()}
-                onClick={this.handleClick}
                 onFocus={this.handlePageChange}
                 ref={li => {
                   this[`pager-page-${page}`] = li;
                 }}
                 className={classes}
               >
-                {page}
+                <PagerListItem
+                  onClick={this.handleClick.bind(this)}
+                  onKeyUp={this.onKeyUp.bind(this)}
+                >
+                  {page}
+                </PagerListItem>
               </li>
             );
           })}
@@ -81,14 +104,18 @@ export default class Pagination extends Component {
                   key={`pager-page-${page}`}
                   index={page}
                   label={page.toString()}
-                  onClick={this.handlePageChange}
                   onFocus={this.handlePageChange}
                   ref={li => {
                     this[`pager-page-${page}`] = li;
                   }}
                   className={classes}
                 >
-                  {page}
+                  <PagerListItem
+                    onClick={this.handleClick.bind(this)}
+                    onKeyUp={this.onKeyUp.bind(this)}
+                  >
+                    {page}
+                  </PagerListItem>
                 </li>
               );
             })}
@@ -108,14 +135,18 @@ export default class Pagination extends Component {
                 key={`pager-page-${page}`}
                 index={page}
                 label={page.toString()}
-                onClick={this.handleClick}
                 onFocus={this.handlePageChange}
                 ref={li => {
                   this[`pager-page-${page}`] = li;
                 }}
                 className={classes}
               >
-                {page}
+                <PagerListItem
+                  onClick={this.handleClick.bind(this)}
+                  onKeyUp={this.onKeyUp.bind(this)}
+                >
+                  {page}
+                </PagerListItem>
               </li>
             );
           })}
@@ -124,45 +155,60 @@ export default class Pagination extends Component {
     }
   };
 
+  onKeyUp = e => {
+    switch (e.keyCode) {
+      case 37:
+        this.decrementPage();
+        break;
+      case 39:
+        this.incrementPage();
+        break;
+      case 13:
+        this.handleClick(e);
+        break;
+    }
+    this.props.onKeyUp();
+  };
+
   incrementPage = () => {
     const page = this.state.page + 1;
-    this.setState({ page });
-    this.setState({ selected: page });
-    this.updatePageQueue();
-    this[`pager-page-${page}`].focus();
-    this.props.onChange({ page });
+    if (page && page <= this.props.totalItems) {
+      this.setState({ page });
+      this.setState({ selected: page });
+      this.updatePageQueue();
+      this[`pager-page-${page}`].focus();
+    }
   };
 
   decrementPage = () => {
     const page = this.state.page - 1;
-    this.setState({ page });
-    this.updatePageQueue();
-    this.props.onChange({ page });
+    if (page && page >= 1) {
+      this.setState({ page });
+      this.updatePageQueue();
+    }
   };
 
   rewind = () => {
     const page = 1;
     this.setState({ page });
     this.updatePageQueue();
-    this.props.onChange({ page });
   };
 
   fastForward = () => {
     const page = this.props.totalItems;
     this.setState({ page });
     this.updatePageQueue();
-    this.props.onChange({ page });
   };
 
   handlePageChange = page => {
-    if (page && page.target.innterHTML <= this.props.totalItems) {
+    if (page && page <= this.props.totalItems) {
       this.setState({ page });
       this.updatePageQueue();
-      this.props.onChange({ page });
     }
   };
 
-  handleClick = page => {
+  handleClick = e => {
+    const page = Number(e.target.innerHTML);
     this.handlePageChange(page);
     this.props.onClick({ page });
   };
@@ -194,6 +240,7 @@ export default class Pagination extends Component {
       page: pageNumber, // eslint-disable-line no-unused-vars
       ...rest
     } = this.props;
+
     const statePage = this.state.page;
     const classNames = classnames({
       'bx--pager': true,
@@ -208,12 +255,10 @@ export default class Pagination extends Component {
       name: 'right',
       description: 'next page',
     };
-
     const rewindIcon = {
       name: 'skip-left',
       description: 'go to first page',
     };
-
     const fastForwardIcon = {
       name: 'skip-right',
       description: 'go to last page',
