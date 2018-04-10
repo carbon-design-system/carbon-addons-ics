@@ -53,7 +53,9 @@ export default class InteriorLeftNav extends Component {
     React.Children.map(child.props.children, c => {
       const { href, to } = c.props.children.props;
       const childHref = href === undefined ? to : href;
-      if (childHref === this.state.activeHref) open = true;
+      const activePath =
+        window.location && window.location.hash ? window.location.hash : this.state.activeHref;
+      if (childHref === activePath) open = true;
     });
 
     const key = `list-${index}`;
