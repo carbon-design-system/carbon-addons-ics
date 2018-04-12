@@ -15,7 +15,7 @@ storiesOf('Components|Tooltip', module)
     `,
     )(() => (
       <div style={{ marginTop: '2rem' }}>
-        <Tooltip triggerText="Tooltip label" menuOffset={{ top: 8, left: 4 }}>
+        <Tooltip triggerText="Tooltip label">
           <p className="bx--tooltip__label">Tooltip subtitle</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor

@@ -77,27 +77,28 @@ const getFloatingPosition = ({
   const { top = 0, left = 0 } = offset;
   const refCenterHorizontal = (refLeft + refRight) / 2;
   const refCenterVertical = (refTop + refBottom) / 2;
+  const caretWidth = 8;
 
   switch (direction) {
     case DIRECTION_LEFT:
       return {
-        left: refLeft - width - left,
+        left: refLeft - width - left - caretWidth,
         top: refCenterVertical - height / 2 + scrollY + top,
       };
     case DIRECTION_TOP:
       return {
         left: refCenterHorizontal - width / 2 + left,
-        top: refTop - height + scrollY - top,
+        top: refTop - height + scrollY - top - caretWidth,
       };
     case DIRECTION_RIGHT:
       return {
-        left: refRight + left,
+        left: refRight + left + caretWidth,
         top: refCenterVertical - height / 2 + scrollY + top,
       };
     case DIRECTION_BOTTOM:
       return {
         left: refCenterHorizontal - width / 2 + left,
-        top: refBottom + scrollY + top,
+        top: refBottom + scrollY + top + caretWidth,
       };
   }
   return {};
@@ -316,7 +317,6 @@ class FloatingMenu extends React.Component {
             {
               left: `${pos.left}px`,
               top: `${pos.top}px`,
-              bottom: 'unset', // dont know if we can/should remove this
               position: 'absolute',
               right: 'auto',
               margin: 0,

@@ -9,10 +9,6 @@ import readme from './README.md';
 const tooltipProps = {
   text: 'only .jpg files at 500mb or less',
   iconName: 'info',
-  menuOffset: {
-    top: 8,
-    left: 4,
-  },
 };
 
 storiesOf('Components|FileUploader', module)
