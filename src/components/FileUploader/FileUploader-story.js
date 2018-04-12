@@ -10,7 +10,7 @@ const tooltipProps = {
   text: 'only .jpg files at 500mb or less',
   iconName: 'info',
   menuOffset: {
-    top: -128,
+    top: 8,
     left: 4,
   },
 };
