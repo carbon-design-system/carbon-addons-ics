@@ -15,6 +15,7 @@ export default class Tooltip extends Component {
     showIcon: PropTypes.bool,
     iconName: PropTypes.string,
     iconDescription: PropTypes.string,
+    openOnHover: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -25,10 +26,11 @@ export default class Tooltip extends Component {
     iconDescription: 'tooltip',
     triggerText: 'Provide triggerText',
     menuOffset: {},
+    openOnHover: false,
   };
 
   state = {
-    open: this.props.open,
+    open: !this.props.openOnHover && this.props.open,
   };
 
   componentDidMount() {
@@ -45,9 +47,15 @@ export default class Tooltip extends Component {
     }
   };
 
-  handleFocus = direction => {
+  /**
+   * Function to toggle open state, calling getTriggerPosition when opening
+   * @param {boolean} open - what state to toggle to
+   * @memberof Tooltip
+   */
+  toggleOpen = open => {
+    const nextOpenState = typeof open === 'boolean' ? open : !this.state.open;
     /* istanbul ignore next */
-    if (direction === 'focus') {
+    if (nextOpenState) {
       this.getTriggerPosition();
       this.setState({ open: true });
     } else {
@@ -65,6 +73,7 @@ export default class Tooltip extends Component {
       iconName,
       iconDescription,
       menuOffset,
+      openOnHover,
       ...rest
     } = this.props;
 
@@ -73,6 +82,17 @@ export default class Tooltip extends Component {
       { 'bx--tooltip--shown': this.state.open },
       className,
     );
+
+    let triggerProps = {
+      onFocus: () => this.toggleOpen(true),
+      onBlur: () => this.toggleOpen(false),
+    };
+    if (openOnHover) {
+      triggerProps = {
+        onMouseEnter: () => this.toggleOpen(true),
+        onMouseLeave: () => this.toggleOpen(false),
+      };
+    }
 
     return (
       <div>
@@ -83,9 +103,8 @@ export default class Tooltip extends Component {
               ref={node => {
                 this.triggerEl = node;
               }}
-              onFocus={() => this.handleFocus('focus')}
-              onBlur={() => this.handleFocus('blur')}
               className="bx--tooltip__icon-container"
+              {...triggerProps}
             >
               <Icon
                 role="button"
@@ -102,8 +121,7 @@ export default class Tooltip extends Component {
             ref={node => {
               this.triggerEl = node;
             }}
-            onFocus={() => this.handleMouse('over')}
-            onBlur={() => this.handleMouse('out')}
+            {...triggerProps}
           >
             {triggerText}
           </div>
