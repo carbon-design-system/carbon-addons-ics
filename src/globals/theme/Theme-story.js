@@ -68,7 +68,7 @@ const colors = [
   },
   {
     name: '$support-01',
-    value: '#ff5c49',
+    value: '#e62325',
   },
   {
     name: '$support-02',
