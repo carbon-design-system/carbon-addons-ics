@@ -34,6 +34,11 @@
       outline: none;
       @include mi-underline-focus;
     }
+
+    &:-moz-focusring {
+      color: transparent;
+      text-shadow: 0 0 0 $text-01;
+    }
   }
 
   .#{$prefix}--select__arrow {
@@ -51,6 +56,10 @@
     &:disabled {
       color: $text-02;
     }
+  }
+
+  .#{$prefix}--select-option {
+    padding: 0.25rem;
   }
 
   // Override some Firefox user-agent styles

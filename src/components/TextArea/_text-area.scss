@@ -16,7 +16,7 @@
     border-bottom: $input-border;
 
     &:not(:placeholder-shown) {
-      box-shadow: 0 2px 0 $text-02;
+      border-bottom-color: $text-02;
     }
 
     &:focus {
