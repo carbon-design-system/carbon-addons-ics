@@ -1,257 +1,137 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { TooltipHover } from '../../index';
-
-class PagerListItem extends Component {
-  static propTypes = {
-    onClick: PropTypes.func,
-    onKeyUp: PropTypes.func,
-  };
-
-  render() {
-    return (
-      <button
-        className={this.props.className}
-        onClick={this.props.onClick}
-        onKeyUp={this.props.onKeyUp} // eslint-disable-line
-        tabIndex={-1}
-      >
-        {this.props.children}
-      </button>
-    );
-  }
-}
+import { Tab } from 'carbon-components-react';
 
 export default class Pagination extends Component {
   constructor(props) {
     super(props);
-    const pageNum =
-      this.props.totalItems.length <= this.props.max ? this.props.totalItems : this.props.max;
     this.state = {
       page: this.props.page,
-      pages: Array.from(new Array(this.props.totalItems), (val, index) => index + 1),
-      pageQueue: new Array(pageNum),
+      hint: false,
     };
   }
 
   static propTypes = {
+    backwardText: PropTypes.string,
     className: PropTypes.string,
     disabled: PropTypes.bool,
+    forwardText: PropTypes.string,
+    hintText: PropTypes.string,
     isLastPage: PropTypes.bool,
+    onChange: PropTypes.func,
     page: PropTypes.number,
     totalItems: PropTypes.number,
-    max: PropTypes.number,
-    mid: PropTypes.number,
-    onClick: PropTypes.func,
-    onKeyUp: PropTypes.func,
-    backwardText: PropTypes.string,
-    forwardText: PropTypes.string,
-    fastforwardText: PropTypes.string,
-    rewindText: PropTypes.string,
   };
 
   static defaultProps = {
+    backwardText: 'Backward',
     disabled: false,
+    forwardText: 'Forward',
+    hintText: 'Use ← left and right → arrow keys to navigate',
     isLastPage: false,
-    onClick: () => {},
-    onKeyUp: () => {},
+    onChange: () => {},
     page: 1,
-    max: 5,
-    mid: 3,
-    backwardText: 'previous page',
-    forwardText: 'next page',
-    fastforwardText: 'go to last page',
-    rewindText: 'go to first page',
-  };
-
-  updatePageQueue = () => {
-    // build pager layout for first page grouping
-    if (this.state.page <= this.props.mid) {
-      this.state.pageQueue = (
-        <ul className="bx--pager__page-list">
-          {this.state.pages.slice(0, this.props.max).map(page => {
-            const selected = this.state.page === page;
-            const classes = classnames('bx--pager__page-item', {
-              'bx--pager-item--selected': selected,
-            });
-            return (
-              <li
-                key={`pager-${page}`}
-                index={page}
-                ref={li => {
-                  this[`pager-${page}`] = li;
-                }}
-              >
-                <PagerListItem
-                  label={page.toString()}
-                  onClick={this.handleClick.bind(this)}
-                  onKeyUp={this.onKeyUp.bind(this)}
-                  className={classes}
-                >
-                  {page}
-                </PagerListItem>
-              </li>
-            );
-          })}
-        </ul>
-      );
-    } else if (this.state.page >= this.props.totalItems - this.props.mid + 1) {
-      // build pager layout for last page grouping
-      this.state.pageQueue = (
-        <ul className="bx--pager__page-list">
-          {this.state.pages
-            .slice(this.props.totalItems - this.props.max, this.props.totalItems)
-            .map(page => {
-              const selected = this.state.page === page;
-              const classes = classnames('bx--pager__page-item', {
-                'bx--pager-item--selected': selected,
-              });
-              return (
-                <li
-                  key={`pager-${page}`}
-                  index={page}
-                  ref={li => {
-                    this[`pager-${page}`] = li;
-                  }}
-                >
-                  <PagerListItem
-                    label={page.toString()}
-                    onClick={this.handleClick.bind(this)}
-                    onKeyUp={this.onKeyUp.bind(this)}
-                    className={classes}
-                  >
-                    {page}
-                  </PagerListItem>
-                </li>
-              );
-            })}
-        </ul>
-      );
-    } else {
-      // build pager layout for middle page grouping
-      this.state.pageQueue = (
-        <ul className="bx--pager__page-list">
-          {this.state.pages
-            .slice(this.state.page - this.props.mid, this.state.page + 2)
-            .map(page => {
-              const selected = this.state.page === page;
-              const classes = classnames('bx--pager__page-item', {
-                'bx--pager-item--selected': selected,
-              });
-              return (
-                <li
-                  key={`pager-${page}`}
-                  index={page}
-                  ref={li => {
-                    this[`pager-${page}`] = li;
-                  }}
-                >
-                  <PagerListItem
-                    label={page.toString()}
-                    onClick={this.handleClick.bind(this)}
-                    onKeyUp={this.onKeyUp.bind(this)}
-                    className={classes}
-                  >
-                    {page}
-                  </PagerListItem>
-                </li>
-              );
-            })}
-        </ul>
-      );
-    }
-  };
-
-  onKeyUp = e => {
-    switch (e.key) {
-      case 'ArrowLeft':
-        this.decrementPage();
-        break;
-      case 'ArrowRight':
-        this.incrementPage();
-        break;
-      default:
-        return;
-    }
-    e.preventDefault();
-    this.props.onKeyUp();
   };
 
   incrementPage = () => {
     const page = this.state.page + 1;
-    if (page && page <= this.props.totalItems) {
-      this.setState({ page });
-      this.setState({ selected: page });
-      this.updatePageQueue();
-      debugger; //eslint-disable-line
-      this[`pager-${page}`].focus();
-    }
+    this.setState({ page });
+    const tab = this[`tab${page}`];
+    tab.tabAnchor.focus();
+    this.props.onChange({ page });
   };
 
   decrementPage = () => {
     const page = this.state.page - 1;
-    if (page && page >= 1) {
-      this.setState({ page });
-      this.setState({ selected: page });
-      this.updatePageQueue();
-      this[`pager-${page}`].focus();
-    }
-  };
-
-  rewind = () => {
-    const page = 1;
     this.setState({ page });
-    this.setState({ selected: page });
-    this.updatePageQueue();
-    this[`pager-${page}`].focus();
-  };
-
-  fastForward = () => {
-    const page = this.props.totalItems;
-    this.setState({ page });
-    this.setState({ selected: page });
-    this.updatePageQueue();
-    this[`pager-${page}`].focus();
+    const tab = this[`tab${page}`];
+    tab.tabAnchor.focus();
+    this.props.onChange({ page });
   };
 
   handlePageChange = page => {
-    if (page && page <= this.props.totalItems) {
+    if (page > 0 && page <= this.props.totalItems) {
       this.setState({ page });
-      this.setState({ selected: page });
-      this.updatePageQueue();
-      this[`pager-${page}`].focus();
+      this.props.onChange({ page });
     }
   };
 
-  handleClick = e => {
-    const page = Number(e.target.innerHTML);
+  handleClick = (page, label, evt) => {
+    evt.preventDefault();
     this.handlePageChange(page);
-    this.props.onClick({ page });
   };
 
-  buildTooltip = iconInfo => {
-    return (
-      <TooltipHover
-        text={iconInfo.description}
-        iconName={iconInfo.name}
-        className="bx--pager__button-icon"
-      />
-    );
+  handleTabKeyDown = (page, label, evt) => {
+    const key = evt.key || evt.which;
+    if (key === 'Enter' || key === 13 || key === ' ' || key === 32) {
+      this.handlePageChange(page);
+    }
   };
 
-  setButtonClassNames = type => {
-    return classnames({
-      'bx--btn': true,
-      'bx--btn--secondary': true,
-      'bx--pager__button': true,
-      [`bx--pager__button--${type}`]: true,
-    });
+  getTabAt = index => {
+    return this[`tab${index}`] || React.Children.toArray(this.props.children)[index];
+  };
+
+  handleTabAnchorFocus = page => {
+    const tabCount = this.props.totalItems;
+    let tabIndex = page;
+
+    if (page <= 0) {
+      tabIndex = tabCount;
+    } else if (page > tabCount) {
+      tabIndex = 1;
+    }
+
+    const tab = this.getTabAt(tabIndex);
+    if (tab) {
+      this.handlePageChange(tabIndex);
+      if (tab.tabAnchor) {
+        tab.tabAnchor.focus();
+      }
+    }
+  };
+
+  renderTabItems = () => {
+    let page = 1;
+    let tabs = [];
+    while (page <= this.props.totalItems) {
+      const selected = this.state.page === page;
+      tabs.push(
+        <Tab
+          key={`pagination-tab-${page}`}
+          index={page}
+          label={page.toString()}
+          handleTabClick={this.handleClick}
+          handleTabKeyDown={this.handleTabKeyDown}
+          handleTabAnchorFocus={this.handleTabAnchorFocus}
+          onFocus={this.showHint}
+          onBlur={this.hideHint}
+          selected={selected}
+          ref={pageTab => {
+            pageTab && (this[`tab${pageTab.props.index}`] = pageTab);
+          }}
+        />,
+      );
+      page++;
+    }
+    return tabs;
+  };
+
+  showHint = () => {
+    this.setState({ hint: true });
+  };
+
+  hideHint = () => {
+    this.setState({ hint: false });
   };
 
   render() {
     const {
+      backwardText,
       className,
+      forwardText,
+      hintText,
       isLastPage,
       totalItems,
       page: pageNumber, // eslint-disable-line no-unused-vars
@@ -260,70 +140,41 @@ export default class Pagination extends Component {
 
     const statePage = this.state.page;
     const classNames = classnames({
-      'bx--pager': true,
+      'bx--pagination': true,
       [className]: className,
     });
-
-    const backwardIcon = {
-      name: 'left',
-      description: this.props.backwardText,
-    };
-    const forwardIcon = {
-      name: 'right',
-      description: this.props.forwardText,
-    };
-    const rewindIcon = {
-      name: 'skip-left',
-      description: this.props.rewindText,
-    };
-    const fastForwardIcon = {
-      name: 'skip-right',
-      description: this.props.fastforwardText,
-    };
-
-    this.updatePageQueue();
+    const tabItems = this.renderTabItems();
 
     return (
       <div className={classNames} {...rest}>
-        {statePage > 1 && (
-          <div className="bx--pager__left">
-            <button
-              className={this.setButtonClassNames('rewind')}
-              onClick={this.rewind}
-              disabled={false}
-            >
-              {this.buildTooltip(rewindIcon)}
-            </button>
-            <button
-              className={this.setButtonClassNames('backward')}
-              onClick={this.decrementPage}
-              disabled={false}
-            >
-              {this.buildTooltip(backwardIcon)}
-            </button>
+        <div className="bx--pagination__left">
+          <button
+            className="bx--btn bx--btn--secondary"
+            onClick={this.decrementPage}
+            disabled={this.props.disabled || statePage === 1}
+          >
+            {backwardText}
+          </button>
+        </div>
+        <div className="bx--pagination__center">
+          <nav className="bx--tabs">
+            <ul className="bx--tabs__nav bx--tabs__nav--hidden" role="tablist">
+              {tabItems}
+            </ul>
+          </nav>
+          <div className="bx--pagination__hint" style={{ opacity: this.state.hint ? 1 : 0 }}>
+            {hintText}
           </div>
-        )}
-
-        <div className="bx--pager__center">{this.state.pageQueue}</div>
-
-        {statePage < this.props.totalItems && (
-          <div className="bx--pager__right">
-            <button
-              className={this.setButtonClassNames('forward')}
-              onClick={this.incrementPage}
-              disabled={this.props.disabled || statePage === totalItems || isLastPage}
-            >
-              {this.buildTooltip(forwardIcon)}
-            </button>
-            <button
-              className={this.setButtonClassNames('fastforward')}
-              onClick={this.fastForward}
-              disabled={this.props.disabled || statePage === totalItems || isLastPage}
-            >
-              {this.buildTooltip(fastForwardIcon)}
-            </button>
-          </div>
-        )}
+        </div>
+        <div className="bx--pagination__right">
+          <button
+            className="bx--btn bx--btn--secondary"
+            onClick={this.incrementPage}
+            disabled={this.props.disabled || statePage === totalItems || isLastPage}
+          >
+            {forwardText}
+          </button>
+        </div>
       </div>
     );
   }

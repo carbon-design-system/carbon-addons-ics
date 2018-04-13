@@ -1,4 +1,5 @@
 @import '../../globals/theme/ics-theme';
+@import 'carbon-components/src/components/pagination/pagination';
 @import '../../globals/type/ics-typography';
 @import 'mixins';
 
@@ -6,115 +7,92 @@
 @import '../Button/button';
 @import '../Tabs/tabs';
 
-@include exports('pager--ics') {
-  .#{$prefix}--pager {
+@include exports('pagination--ics') {
+  .#{$prefix}--pagination__hint {
+    @include type-scale-item(b, false);
+    @include hint-transition;
+    opacity: 0;
+    text-align: center;
+    width: 100%;
+    bottom: 0px;
+    position: absolute;
+    color: $ui-05;
+    text-align: center;
+  }
+
+  .#{$prefix}--pagination {
     @include reset;
     width: 100%;
     border: none;
-    @include type-scale-item(c);
+    background: transparent;
+
+    &:hover + .#{$prefix}--pagination__hint,
+    &:focus + .#{$prefix}--pagination__hint {
+      opacity: 1;
+      height: 100%;
+    }
+
+    .#{$prefix}--tabs__nav {
+      justify-content: center;
+    }
   }
 
-  .#{$prefix}--pager__center {
+  .#{$prefix}--pagination__center {
     display: flex;
     flex: 1;
     justify-content: center;
     flex-direction: column;
-    position: absolute;
-    max-width: rem(186px);
-    @include bidi-left(rem(78px));
-  }
-
-  .#{$prefix}--pager__left {
-    position: absolute;
-    @include bidi-left(0);
-    @include bidi-margin-right(15px);
-  }
-
-  .#{$prefix}--pager__right {
-    position: absolute;
-    @include bidi-left(rem(258px));
-  }
-
-  .#{$prefix}--pager__page-item {
-    @include type-scale-item(c, false);
-    @include reset;
-    width: rem(24px);
+    margin: 0 rem(4px);
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     position: relative;
-    display: inline-block;
-    margin: 0 rem(5px);
-    border-radius: 4px;
-    border: 1px solid transparent;
-    background: $field-01;
-
-    &:focus {
-      outline: none;
-    }
-
-    &:hover {
-      cursor: pointer;
-      border: 1px solid $brand-01;
-    }
   }
 
-  .#{$prefix}--pager__page-list {
-    display: flex;
+  .#{$prefix}--pagination__right {
+    @include left-right;
+  }
+
+  .#{$prefix}--pagination__text {
+    @include type-scale-item(a, false);
     color: $text-01;
   }
 
-  .#{$prefix}--pager__button--rewind {
-    .#{$prefix}--pager__tooltip-icon {
-      @include bidi-right(2px);
+  .#{$prefix}--pagination__page-item {
+    display: inline-block;
+    padding: rem(4px);
+    margin: 0 rem(8px);
+    border-radius: 4px;
+    border: 1px solid transparent;
+  }
+
+  .#{$prefix}--pagination__button-icon {
+    position: relative;
+    top: 1px;
+    fill: $brand-01;
+  }
+
+  .#{$prefix}--pagination__button--backward {
+    .#{$prefix}--pagination__button-icon {
+      transform: rotate(180deg);
+      right: 1px;
     }
   }
 
-  .#{$prefix}--pager__button {
-    border: 1px solid $field-01;
-    margin: 0 rem(5px);
-    border-radius: 50%;
-    height: rem(24px);
-    width: rem(24px);
-    padding: 0;
-    &:hover {
-      background: $brand-01;
-      border-color: $brand-01;
-      .#{$prefix}--tooltip__icon {
-        fill: $inverse-01;
-        border-radius: 50%;
-      }
-    }
-
-    &:focus {
-      outline: none;
-      box-shadow: none;
-      border: none;
+  .#{$prefix}--pagination__button--forward {
+    margin-left: rem(28px);
+    margin-right: rem(20px);
+    .#{$prefix}--pagination__button-icon {
+      left: 1px;
     }
   }
 
-  .#{$prefix}--pager__button-icon {
-    .#{$prefix}--tooltip__icon {
-      height: rem(24px);
-      width: rem(24px);
-      fill: $ui-05;
-      position: relative;
-      border-radius: 50%;
-      bottom: rem(1px);
-      @include bidi-right(9px);
-      border: 1px solid $field-01;
-    }
+  .#{$prefix}--pagination__page {
+    border-radius: 4px;
+    padding: 0 8px;
   }
 
-  .#{$prefix}--pager-item--selected {
-    @include type-scale-item(d, false);
-    color: $brand-01;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: rem(28px);
-      width: 100%;
-      height: rem(4px);
-      @include bidi-left(0);
-      background: $brand-01;
-    }
+  .#{$prefix}--pagination__page-ellipsis {
+    border-bottom: none;
+    line-height: 2;
   }
 }

@@ -1,0 +1,120 @@
+@import '../../globals/theme/ics-theme';
+@import '../../globals/type/ics-typography';
+@import 'mixins';
+
+// Nested atoms
+@import '../Button/button';
+@import '../Tabs/tabs';
+
+@include exports('pager--ics') {
+  .#{$prefix}--pager {
+    @include reset;
+    width: 100%;
+    border: none;
+    @include type-scale-item(c);
+  }
+
+  .#{$prefix}--pager__center {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    max-width: rem(186px);
+    @include bidi-left(rem(78px));
+  }
+
+  .#{$prefix}--pager__left {
+    position: absolute;
+    @include bidi-left(0);
+    @include bidi-margin-right(15px);
+  }
+
+  .#{$prefix}--pager__right {
+    position: absolute;
+    @include bidi-left(rem(258px));
+  }
+
+  .#{$prefix}--pager__page-item {
+    @include type-scale-item(c, false);
+    @include reset;
+    width: rem(24px);
+    position: relative;
+    display: inline-block;
+    margin: 0 rem(5px);
+    border-radius: 4px;
+    border: 1px solid transparent;
+    background: $field-01;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $brand-01;
+    }
+  }
+
+  .#{$prefix}--pager__page-list {
+    display: flex;
+    color: $text-01;
+  }
+
+  .#{$prefix}--pager__button--rewind {
+    .#{$prefix}--pager__tooltip-icon {
+      @include bidi-right(2px);
+    }
+  }
+
+  .#{$prefix}--pager__button {
+    border: 1px solid $field-01;
+    margin: 0 rem(5px);
+    border-radius: 50%;
+    height: rem(24px);
+    width: rem(24px);
+    padding: 0;
+    &:hover {
+      background: $brand-01;
+      border-color: $brand-01;
+      .#{$prefix}--tooltip__icon {
+        fill: $inverse-01;
+        border-radius: 50%;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+      border: none;
+    }
+  }
+
+  .#{$prefix}--pager__button-icon {
+    .#{$prefix}--tooltip__icon {
+      height: rem(24px);
+      width: rem(24px);
+      fill: $ui-05;
+      position: relative;
+      border-radius: 50%;
+      bottom: rem(1px);
+      @include bidi-right(9px);
+      border: 1px solid $field-01;
+    }
+  }
+
+  .#{$prefix}--pager-item--selected {
+    @include type-scale-item(d, false);
+    color: $brand-01;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: rem(28px);
+      width: 100%;
+      height: rem(4px);
+      @include bidi-left(0);
+      background: $brand-01;
+    }
+  }
+}
