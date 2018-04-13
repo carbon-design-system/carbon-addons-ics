@@ -58,6 +58,10 @@
     }
   }
 
+  .#{$prefix}--select-option {
+    padding: 0.25rem;
+  }
+
   // Override some Firefox user-agent styles
   @-moz-document url-prefix() {
     .#{$prefix}--select-option {
