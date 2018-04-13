@@ -36,7 +36,7 @@
 
     svg {
       fill: $text-01;
-      @include bidi-margin-left(rem(8px));
+      margin: 0 rem(8px);
 
       &:focus {
         outline: none;
