@@ -32,26 +32,19 @@
 
   .#{$prefix}--pager__right {
     position: absolute;
-    @include bidi-left(rem(236.05px));
-  }
-
-  .#{$prefix}--pager__list-item {
-    @include reset;
-    width: 100%;
-    border: none;
-    @include type-scale-item(c, false);
-    &:focus {
-      outline: none;
-    }
+    @include bidi-left(rem(258px));
   }
 
   .#{$prefix}--pager__page-item {
+    @include type-scale-item(c, false);
+    @include reset;
+    width: rem(24px);
     position: relative;
     display: inline-block;
-    padding: 0 rem(4px);
     margin: 0 rem(5px);
     border-radius: 4px;
     border: 1px solid transparent;
+    background: $field-01;
 
     &:focus {
       outline: none;
