@@ -13,30 +13,36 @@ storiesOf('Components|InteriorLeftNav', module)
       <InteriorLeftNav className="some-class">
         <InteriorLeftNavList title="Start here">
           <InteriorLeftNavItem>
-            <a target="_blank" href="#example-1">
+            <a target="_blank" href="https://github.com/carbon-design-system/carbon-addons-ics">
               Developers
             </a>
           </InteriorLeftNavItem>
         </InteriorLeftNavList>
         <InteriorLeftNavList title="Style">
           <InteriorLeftNavItem>
-            <a href="#example-2">Color</a>
-          </InteriorLeftNavItem>
-          <InteriorLeftNavItem>
-            <a href="#example-3">Icons</a>
+            <a href="https://github.com/carbon-design-system/carbon-addons-ics/tree/master/src/globals/grid">
+              Grid
+            </a>
           </InteriorLeftNavItem>
           <InteriorLeftNavItem>
             <a href="/iframe.html">Gradients</a>
           </InteriorLeftNavItem>
           <InteriorLeftNavItem>
-            <a href="#example-5">Icons</a>
+            <a href="https://github.com/carbon-design-system/carbon-addons-ics/tree/master/src/globals/icons">
+              Icons
+            </a>
           </InteriorLeftNavItem>
         </InteriorLeftNavList>
         <InteriorLeftNavItem>
-          <a href="#example-6">Resources</a>
+          <a href="https://github.com/carbon-design-system/carbon-addons-ics/tree/master/src">
+            Resources
+          </a>
         </InteriorLeftNavItem>
         <InteriorLeftNavItem>
-          <a href="#example-7" target="_blank">
+          <a
+            href="https://github.com/carbon-design-system/carbon-addons-ics/releases"
+            target="_blank"
+          >
             Version tracker
           </a>
         </InteriorLeftNavItem>
