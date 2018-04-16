@@ -255,6 +255,10 @@ export default class Pager extends Component {
       isLastPage,
       totalItems,
       page: pageNumber, // eslint-disable-line no-unused-vars
+      backwardText,
+      forwardText,
+      rewindText,
+      fastforwardText,
       ...rest
     } = this.props;
 
@@ -266,19 +270,19 @@ export default class Pager extends Component {
 
     const backwardIcon = {
       name: 'left',
-      description: this.props.backwardText,
+      description: backwardText,
     };
     const forwardIcon = {
       name: 'right',
-      description: this.props.forwardText,
+      description: forwardText,
     };
     const rewindIcon = {
       name: 'skip-left',
-      description: this.props.rewindText,
+      description: rewindText,
     };
     const fastForwardIcon = {
       name: 'skip-right',
-      description: this.props.fastforwardText,
+      description: fastforwardText,
     };
 
     this.updatePageQueue();
