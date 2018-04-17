@@ -8,22 +8,18 @@ export default class Tag extends Component {
     super(props);
 
     this.state = {
-      action: this.props.action,
-      actionIconName: this.props.action,
-      actionDescription: '',
-      actionFunction: null,
       showTag: true,
     };
   }
 
   static propTypes = {
+    action: PropTypes.string,
     children: PropTypes.node,
     className: PropTypes.string,
     style: PropTypes.oneOf(['dark', 'light']),
     role: PropTypes.string,
     tabindex: PropTypes.string,
     remove: PropTypes.bool,
-    action: PropTypes.string,
     onBlur: PropTypes.func,
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
@@ -43,45 +39,35 @@ export default class Tag extends Component {
     action: null,
   };
 
-  componentDidMount() {
-    switch (this.props.action) {
-      case 'add':
-        this.setState({
-          actionDescription: 'add tag',
-          actionFunction: this.props.onClick || this.state.actionFunction,
-        });
-        break;
-      case 'success':
-        this.setState({
-          actionDescription: 'success"',
-        });
-        break;
-      case 'remove':
-        this.setState({
-          actionIconName: 'error',
-          actionDescription: 'remove tag',
-          actionFunction: this.props.onClick || this.removeTag.bind(this),
-        });
-        break;
-    }
-  }
+  buildAction = () => {
+    const { action } = this.props;
 
-  removeTag() {
+    if (action) {
+      const actionClasses = classNames({
+        'bx--tag--left': true,
+        [`bx--tag--left__${action}`]: true,
+      });
+
+      return (
+        <Icon
+          name={action === 'remove' ? 'error' : this.props.action}
+          className={actionClasses}
+          description={this.props.actionDescription}
+          tabIndex="0"
+          onClick={action === 'remove' ? this.removeTag : this.props.actionFunction}
+        />
+      );
+    }
+
+    return;
+  };
+
+  removeTag = () => {
     this.setState({ showTag: false });
-  }
+  };
 
   render() {
-    const {
-      children,
-      className,
-      style,
-      role,
-      tabindex,
-      remove,
-      leftAction, // eslint-disable-line no-unused-vars
-      action,
-      ...rest
-    } = this.props;
+    const { children, className, style, role, tabindex, remove, ...rest } = this.props;
 
     const tagClasses = classNames({
       'bx--tag': true,
@@ -91,22 +77,11 @@ export default class Tag extends Component {
       [className]: className,
     });
 
-    const actionClasses = classNames({
-      'bx--tag--left': true,
-      [`bx--tag--left__${action}`]: true,
-    });
+    const actionIcon = this.buildAction();
 
     return this.state.showTag ? (
       <li className="bx--tag--item">
-        {action && (
-          <Icon
-            name={this.state.actionIconName}
-            className={actionClasses}
-            description={this.state.actionDescription}
-            tabIndex="0"
-            onClick={this.state.actionFunction}
-          />
-        )}
+        {actionIcon}
         <span className={tagClasses} tabIndex={tabindex} role={role} {...rest}>
           {children}
           {remove && (
@@ -114,7 +89,7 @@ export default class Tag extends Component {
               name="close"
               className="bx--remove__icon"
               description="remove tag"
-              onClick={this.props.onClick || this.removeTag.bind(this)}
+              onClick={this.props.onClick || this.removeTag}
             />
           )}
         </span>

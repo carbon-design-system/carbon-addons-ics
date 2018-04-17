@@ -40,7 +40,7 @@
 }
 
 .#{$prefix}--tag--dark {
-  @include tag-theme($field-01, $text-01);
+  @include tag-theme($ui-02, $text-01);
 }
 
 .#{$prefix}--remove__icon,
