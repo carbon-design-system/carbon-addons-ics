@@ -7,9 +7,8 @@ import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 
 const props = {
-  totalItems: 20,
+  totalItems: 10,
   className: 'some-class',
-  max: 5,
   onKeyUp: action('onKeyUp'),
   onChange: action('onChange'),
 };

@@ -48,11 +48,13 @@
 
     &:focus {
       outline: none;
+      border: 1px solid $brand-01;
     }
 
     &:hover {
       cursor: pointer;
-      border: 1px solid $brand-01;
+      color: $ui-01;
+      background: $brand-01;
     }
   }
 
