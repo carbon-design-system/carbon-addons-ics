@@ -17,11 +17,6 @@ export default class InteriorLeftNav extends Component {
     children: PropTypes.node,
     className: PropTypes.string,
     activeHref: PropTypes.string,
-    onToggle: PropTypes.func,
-  };
-
-  static defaultProps = {
-    onToggle: () => {},
   };
 
   componentWillReceiveProps = nextProps => {
@@ -52,13 +47,17 @@ export default class InteriorLeftNav extends Component {
     });
   };
 
-  toggle = evt => {
-    evt.stopPropagation();
-    this.props.onToggle(!this.state.open);
-    this.setState({ open: !this.state.open });
-  };
-
   buildNewListChild = (child, index) => {
+    let open = child.props.open;
+
+    React.Children.map(child.props.children, c => {
+      const { href, to } = c.props.children.props;
+      const childHref = href === undefined ? to : href;
+      const activePath =
+        window.location && window.location.hash ? window.location.hash : this.state.activeHref;
+      if (childHref === activePath) open = true;
+    });
+
     const key = `list-${index}`;
     return (
       <InteriorLeftNavList
@@ -69,6 +68,7 @@ export default class InteriorLeftNav extends Component {
         onListClick={this.handleListClick}
         onItemClick={this.handleItemClick}
         activeHref={this.state.activeHref}
+        open={open}
       />
     );
   };
@@ -90,7 +90,6 @@ export default class InteriorLeftNav extends Component {
       className,
       children,
       activeHref, // eslint-disable-line no-unused-vars
-      onToggle, // eslint-disable-line no-unused-vars
       ...rest
     } = this.props;
 
@@ -111,8 +110,6 @@ export default class InteriorLeftNav extends Component {
         tabIndex={-1}
         aria-label="Interior Left Navigation"
         className={classNames}
-        onClick={!this.state.open ? this.toggle : () => {}}
-        onKeyPress={!this.state.open ? this.toggle : () => {}}
         {...rest}
       >
         <ul key="main_list" className="left-nav-list" role="menubar">
