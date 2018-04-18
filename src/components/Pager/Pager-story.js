@@ -8,7 +8,6 @@ import readme from './README.md';
 
 const props = {
   totalItems: 10,
-  initialPage: 2,
   className: 'some-class',
   onKeyUp: action('onKeyUp'),
   onChange: action('onChange'),
