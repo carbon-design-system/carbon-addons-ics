@@ -26,7 +26,11 @@ class TagUpdate extends React.Component {
     return (
       <LightWrapper>
         <TagWrapper aria-label="Tags">
-          <Tag action={this.state.action} actionFunction={this.tagClick}>
+          <Tag
+            action={this.state.action}
+            actionFunction={this.tagClick}
+            actionDescription="Add a point"
+          >
             Offering Managment &middot; {this.state.count}
           </Tag>
         </TagWrapper>
@@ -42,6 +46,7 @@ const actionTagProps = {
   onFocus: action('onFocus'),
   onKeyUp: action('onKeyUp'),
   onKeyDown: action('onKeyDown'),
+  actionDescription: 'Enter an icon description',
 };
 
 const LightWrapper = props => (
@@ -99,7 +104,7 @@ storiesOf('Components|Tag', module)
     )),
   )
   .add(
-    'with Action',
+    'with action',
     withInfo(
       `
         The example below shows how the Tag component can be used with left side action icons.
@@ -122,7 +127,7 @@ storiesOf('Components|Tag', module)
     )),
   )
   .add(
-    'with Action function',
+    'with action function',
     withInfo(
       `
         The example below shows how the Tag component can be used with left side action icons.
@@ -131,7 +136,7 @@ storiesOf('Components|Tag', module)
     )(() => <TagUpdate />),
   )
   .add(
-    'Light',
+    'light',
     withInfo(
       `
         The example below shows how the Tag component can be used on a dark background.
@@ -145,7 +150,12 @@ storiesOf('Components|Tag', module)
           <Tag style={'light'} remove className="some-class">
             Development
           </Tag>
-          <Tag style={'light'} leftAction action={'remove'} className="some-class">
+          <Tag
+            style={'light'}
+            action={'remove'}
+            actionDescription={'Remove this tag'}
+            className="some-class"
+          >
             Design
           </Tag>
         </TagWrapper>

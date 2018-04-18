@@ -50,6 +50,8 @@
   .#{$prefix}--action-icon--rounded {
     padding-top: 0;
     border-bottom: none;
+    height: 24px;
+    width: 24px;
 
     .#{$prefix}--action-icon_btn {
       border-radius: 50%;

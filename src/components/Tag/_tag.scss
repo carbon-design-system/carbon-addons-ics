@@ -12,7 +12,7 @@
   direction: $direction;
   display: inline-flex;
   align-items: center;
-  padding: 1rem;
+  padding: rem(6px) rem(16px);
   margin: rem(3px);
   border-radius: rem(25px);
   text-overflow: ellipsis;
@@ -20,6 +20,7 @@
   border: 1px solid transparent;
   border-radius: rem(25px);
   transition: all $transition--expansion ease-in;
+  height: auto;
 
   &:not(:first-child) {
     @include bidi-margin-left(0);
@@ -45,7 +46,10 @@
 
 .#{$prefix}--remove__icon,
 .#{$prefix}--add__icon {
-  @include bidi-margin-left(rem(10px));
+  @include bidi-margin-left(rem(6px));
+  height: rem(20px);
+  display: inline-flex;
+  align-items: flex-end;
 }
 
 .#{$prefix}--tag--light {

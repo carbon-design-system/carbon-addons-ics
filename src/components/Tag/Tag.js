@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import Icon from '../Icon';
 import ActionIcon from '../ActionIcon';
 
 export default class Tag extends Component {
@@ -73,6 +72,7 @@ export default class Tag extends Component {
   render() {
     const {
       actionFunction, // eslint-disable-line no-unused-vars
+      actionDescription, // eslint-disable-line no-unused-vars
       children,
       className,
       style,
@@ -98,12 +98,14 @@ export default class Tag extends Component {
         <span className={tagClasses} tabIndex={tabindex} role={role} {...rest}>
           {children}
           {remove && (
-            <Icon
-              name="close"
-              className="bx--remove__icon"
-              description="remove tag"
-              onClick={this.props.onClick || this.removeTag}
-            />
+            <div className="bx--remove__icon">
+              <ActionIcon
+                rounded
+                icon="close"
+                iconDescription="remove tag"
+                onClick={this.props.onClick || this.removeTag}
+              />
+            </div>
           )}
         </span>
       </li>
