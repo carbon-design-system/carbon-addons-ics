@@ -21,7 +21,7 @@
     flex-direction: column;
     position: absolute;
     max-width: rem(186px);
-    @include bidi-left(rem(78px));
+    @include bidi-left(rem(49px));
   }
 
   .#{$prefix}--pager__left {
@@ -32,7 +32,7 @@
 
   .#{$prefix}--pager__right {
     position: absolute;
-    @include bidi-left(rem(258px));
+    @include bidi-left(rem(229px));
   }
 
   .#{$prefix}--pager__page-item {
@@ -118,5 +118,10 @@
       @include bidi-left(0);
       background: $brand-01;
     }
+  }
+
+  .#{$prefix}--pager-ellipsis {
+    width: 24px;
+    text-align: center;
   }
 }

@@ -9,21 +9,27 @@ class PagerListItem extends Component {
     onKeyUp: PropTypes.func,
     currentPage: PropTypes.number,
     selected: PropTypes.bool,
+    id: PropTypes.func,
   };
 
   render() {
+    const { selected, currentPage } = this.props;
     const classes = classnames('bx--pager__page-item', {
-      'bx--pager-item--selected': this.props.selected,
+      'bx--pager-item--selected': selected,
     });
 
     return (
       <button
-        onClick={this.props.onClick}
         onKeyUp={this.props.onKeyUp}
+        onClick={this.props.onClick}
+        onKeyDown={e => {
+          e.key === 'Enter' ? e.preventDefault() : '';
+        }}
         className={classes}
-        tabIndex={-1}
+        type="button"
+        ref={this.props.id}
       >
-        {this.props.currentPage}
+        {currentPage}
       </button>
     );
   }
@@ -40,7 +46,6 @@ export default class Pager extends Component {
 
     this.state = {
       activePage: this.props.initialPage,
-      pages: pagesArr,
       leftPageQueue: lower,
       rightPageQueue: higher,
       activeQueue: isSmall ? pagesArr : lower,
@@ -48,8 +53,6 @@ export default class Pager extends Component {
       showLower: this.props.initialPage === 1,
       showCenter: this.props.initialPage > this.props.mid,
       showHigher: this.props.initialPage >= this.props.totalItems - 2,
-      isLastPage: this.props.initialPage === this.props.totalItems,
-      isFirstPage: this.props.initialPage === 1,
     };
   }
 
@@ -77,35 +80,50 @@ export default class Pager extends Component {
 
   updatePageQueue = () => {
     const { small, activePage } = this.state;
+    const pageFocus = `pager-${activePage}`;
     // Less than or equal to 3
     if (small) return;
     if (activePage <= this.props.mid) {
-      this.setState({
-        activeQueue: this.state.leftPageQueue,
-        showLower: true,
-        showCenter: false,
-        showHigher: false,
-      });
-      return;
+      this.setState(
+        {
+          activeQueue: this.state.leftPageQueue,
+          showLower: true,
+          showCenter: false,
+          showHigher: false,
+        },
+        () => {
+          this[pageFocus].focus();
+        },
+      );
     } else if (activePage >= this.props.totalItems - this.props.mid + 1) {
-      this.setState({
-        activeQueue: this.state.rightPageQueue,
-        showLower: false,
-        showCenter: false,
-        showHigher: true,
-      });
-      return;
+      this.setState(
+        {
+          activeQueue: this.state.rightPageQueue,
+          showLower: false,
+          showCenter: false,
+          showHigher: true,
+        },
+        () => {
+          this[pageFocus].focus();
+        },
+      );
     } else {
-      this.setState({
-        showLower: false,
-        showCenter: true,
-        showHigher: false,
-      });
-      return;
+      this.setState(
+        {
+          showLower: false,
+          showCenter: true,
+          showHigher: false,
+        },
+        () => {
+          this[pageFocus].focus();
+        },
+      );
     }
   };
 
   onKeyUp = e => {
+    e.preventDefault();
+    e.stopPropagation();
     switch (e.key) {
       case 'ArrowLeft':
         this.decrementPage();
@@ -114,12 +132,11 @@ export default class Pager extends Component {
         this.incrementPage();
         break;
       case 'Enter':
-        this.handlePageChange();
+        this.handlePageChange(this.state.activePage);
         break;
       default:
         return;
     }
-    e.preventDefault();
     this.props.onKeyUp();
   };
 
@@ -131,15 +148,10 @@ export default class Pager extends Component {
   };
 
   decrementPage = () => {
-    this.handlePageChange(this.state.activePage - 1);
-  };
-
-  rewind = () => {
-    this.handlePageChange(1);
-  };
-
-  fastForward = () => {
-    this.handlePageChange(this.props.totalItems);
+    const page = this.state.activePage - 1;
+    if (page && page <= this.props.totalItems) {
+      this.handlePageChange(page);
+    }
   };
 
   handlePageChange = page => {
@@ -156,17 +168,8 @@ export default class Pager extends Component {
 
   handleClick = e => {
     const page = Number(e.target.innerHTML);
-    if (page && page <= this.props.totalItems) {
-      this.setState(
-        {
-          activePage: page,
-          selected: page,
-        },
-        () => {
-          this.props.onClick({ page });
-        },
-      );
-    }
+    this.handlePageChange(page);
+    this.props.onClick({ page });
   };
 
   buildTooltip = iconInfo => {
@@ -188,10 +191,15 @@ export default class Pager extends Component {
     });
   };
 
+  componentDidMount = () => {
+    const pageFocus = `pager-${this.state.activePage}`;
+    this[pageFocus].focus();
+  };
+
   render() {
     const { className, totalItems, backwardText, forwardText, ...rest } = this.props;
+    const { activePage, activeQueue, small, showLower, showCenter, showHigher } = this.state;
 
-    const statePage = this.state.activePage;
     const classNames = classnames({
       'bx--pager': true,
       [className]: className,
@@ -206,23 +214,20 @@ export default class Pager extends Component {
       description: forwardText,
     };
 
-    const ellipsis = '...';
+    const ellipsis = <span className="bx--pager-ellipsis">...</span>;
 
-    const pageQueue = this.state.activeQueue.map(page => {
+    const pageQueue = activeQueue.map(page => {
       return (
-        <li
-          key={`pager-${page}`}
-          index={page}
-          ref={li => {
-            this[`pager-${page}`] = li;
-          }}
-        >
+        <li key={`pager-${page}`} index={page}>
           <PagerListItem
             label={page.toString()}
             onClick={this.handleClick.bind(this)}
             onKeyUp={this.onKeyUp.bind(this)}
-            selected={statePage === page}
+            selected={activePage === page}
             currentPage={page}
+            id={button => {
+              this[`pager-${page}`] = button;
+            }}
           />
         </li>
       );
@@ -230,7 +235,7 @@ export default class Pager extends Component {
 
     return (
       <div className={classNames} {...rest}>
-        {statePage > 1 && (
+        {activePage > 1 && (
           <div className="bx--pager__left">
             <button className={this.setButtonClassNames('backward')} onClick={this.decrementPage}>
               {this.buildTooltip(backwardIcon)}
@@ -239,45 +244,53 @@ export default class Pager extends Component {
         )}
 
         <div className="bx--pager__center">
-          {this.state.small && <ul className="bx--pager__page-list">{pageQueue}</ul>}
-          {!this.state.small && (
+          {small && <ul className="bx--pager__page-list">{pageQueue}</ul>}
+          {!small && (
             <ul className="bx--pager__page-list">
-              <li key={'pager-1'} index={this.state.pages[0]}>
+              <li key={'pager-1'} index={1}>
                 <PagerListItem
-                  onClick={this.rewind}
+                  onClick={this.handleClick.bind(this)}
                   onKeyUp={this.onKeyUp.bind(this)}
-                  selected={statePage === 1}
-                  currentPage={this.state.pages[0]}
+                  selected={activePage === 1}
+                  currentPage={1}
+                  id={button => {
+                    this[`pager-1`] = button;
+                  }}
                 />
               </li>
-              {this.state.showLower && pageQueue}
-              {(this.state.showLower || this.state.showCenter) && ellipsis}
-              {this.state.showCenter &&
-                !this.state.small && (
-                  <li key={`pager-${statePage}`} index={statePage}>
+              {showLower && pageQueue}
+              {(showLower || showCenter) && ellipsis}
+              {showCenter &&
+                !small && (
+                  <li key={`pager-${activePage}`} index={activePage}>
                     <PagerListItem
                       onClick={this.handleClick.bind(this)}
                       onKeyUp={this.onKeyUp.bind(this)}
                       selected={true}
-                      currentPage={statePage}
+                      currentPage={activePage}
+                      id={button => {
+                        this[`pager-${activePage}`] = button;
+                      }}
                     />
                   </li>
                 )}
-              {(this.state.showHigher || this.state.showCenter) && ellipsis}
-              {this.state.showHigher && pageQueue}
-              <li key={`pager-${totalItems}`} index={this.state.pages[totalItems - 1]}>
+              {(showHigher || showCenter) && ellipsis}
+              {showHigher && pageQueue}
+              <li key={`pager-${totalItems}`} index={totalItems}>
                 <PagerListItem
-                  onClick={this.fastForward}
+                  onClick={this.handleClick.bind(this)}
                   onKeyUp={this.onKeyUp.bind(this)}
-                  selected={statePage === totalItems}
-                  currentPage={this.state.pages[totalItems - 1]}
+                  selected={activePage === totalItems}
+                  currentPage={totalItems}
+                  id={button => {
+                    this[`pager-${totalItems}`] = button;
+                  }}
                 />
               </li>
             </ul>
           )}
         </div>
-
-        {statePage < totalItems && (
+        {activePage < totalItems && (
           <div className="bx--pager__right">
             <button className={this.setButtonClassNames('forward')} onClick={this.incrementPage}>
               {this.buildTooltip(forwardIcon)}
