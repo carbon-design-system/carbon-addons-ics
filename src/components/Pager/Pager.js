@@ -39,7 +39,7 @@ export default class Pager extends Component {
   constructor(props) {
     super(props);
     const { totalItems, initialPage, mid } = this.props;
-    const lower = [initialPage + 1, initialPage + 2];
+    const lower = [2, 3];
     const higher = [totalItems - 2, totalItems - 1];
     const isSmall = totalItems <= this.props.max;
     const pagesArr = Array.from(new Array(totalItems), (val, index) => index + 1);
@@ -50,7 +50,7 @@ export default class Pager extends Component {
       rightPageQueue: higher,
       activeQueue: isSmall ? pagesArr : lower,
       small: isSmall,
-      showLower: initialPage === 1,
+      showLower: initialPage < mid,
       showCenter: initialPage > mid,
       showHigher: initialPage >= totalItems - 2,
     };
@@ -189,11 +189,6 @@ export default class Pager extends Component {
       'bx--pager__button': true,
       [`bx--pager__button--${type}`]: true,
     });
-  };
-
-  componentDidMount = () => {
-    const pageFocus = `pager-${this.state.activePage}`;
-    this[pageFocus].focus();
   };
 
   render() {
