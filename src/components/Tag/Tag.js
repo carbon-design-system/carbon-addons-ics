@@ -41,7 +41,8 @@ export default class Tag extends Component {
   };
 
   buildAction = () => {
-    const { action } = this.props;
+    const { action, actionDescription, actionFunction, onClick } = this.props;
+    const iconFunction = actionFunction ? actionFunction : onClick;
 
     if (action) {
       const actionClasses = classNames({
@@ -53,10 +54,10 @@ export default class Tag extends Component {
         <div className={actionClasses}>
           <ActionIcon
             rounded
-            icon={action === 'remove' ? 'error' : this.props.action}
-            iconDescription={this.props.actionDescription}
+            icon={action === 'remove' ? 'error' : action}
+            iconDescription={actionDescription}
             tabIndex={0}
-            onClick={action === 'remove' ? this.removeTag : this.props.actionFunction}
+            onClick={action === 'remove' ? this.removeTag : iconFunction}
           />
         </div>
       );
