@@ -78,26 +78,22 @@
 
 .#{$prefix}--tag--item {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .#{$prefix}--tag--left {
   cursor: pointer;
   height: rem(24px);
   width: rem(24px);
-  position: absolute;
-  top: rem(7px);
   border: 1px solid transparent;
   border-radius: 50%;
   transition: all 0.35s ease-in;
+  @include bidi-margin-right(rem(10px));
 
   &:focus {
     outline: none;
     box-shadow: 0 0 0 1px $brand-01, 0 0 0 2px $inverse-01;
-  }
-
-  + span {
-    position: relative;
-    @include bidi-left(rem(32px));
   }
 }
 

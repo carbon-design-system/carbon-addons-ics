@@ -14,12 +14,9 @@ export default class Tag extends Component {
 
   static propTypes = {
     action: PropTypes.string,
+    actionDescription: PropTypes.string,
     children: PropTypes.node,
     className: PropTypes.string,
-    style: PropTypes.oneOf(['dark', 'light']),
-    role: PropTypes.string,
-    tabindex: PropTypes.string,
-    remove: PropTypes.bool,
     onBlur: PropTypes.func,
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
@@ -29,14 +26,18 @@ export default class Tag extends Component {
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,
     onMouseUp: PropTypes.func,
+    remove: PropTypes.bool,
+    role: PropTypes.string,
+    style: PropTypes.oneOf(['dark', 'light']),
+    tabindex: PropTypes.string,
   };
 
   static defaultProps = {
-    style: 'dark',
-    role: 'tag',
-    tabindex: '0',
-    remove: false,
     action: null,
+    remove: false,
+    role: 'tag',
+    style: 'dark',
+    tabindex: '0',
   };
 
   buildAction = () => {
@@ -67,7 +68,16 @@ export default class Tag extends Component {
   };
 
   render() {
-    const { children, className, style, role, tabindex, remove, ...rest } = this.props;
+    const {
+      actionFunction, // eslint-disable-line no-unused-vars
+      children,
+      className,
+      style,
+      role,
+      tabindex,
+      remove,
+      ...rest
+    } = this.props;
 
     const tagClasses = classNames({
       'bx--tag': true,

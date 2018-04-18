@@ -1,12 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-// import { action } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
 import { Tag, TagWrapper } from '../../index';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 
-class TagWrap extends React.Component {
+class TagUpdate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +25,7 @@ class TagWrap extends React.Component {
       <LightWrapper>
         <TagWrapper aria-label="Tags">
           <Tag action={this.state.action} actionFunction={this.tagClick}>
-            Offering Managment
+            Offering Management
           </Tag>
         </TagWrapper>
       </LightWrapper>
@@ -33,16 +33,14 @@ class TagWrap extends React.Component {
   }
 }
 
-/**
 const actionTagProps = {
-  leftAction: true,
   className: 'some-class',
   onClick: action('onClick'),
   onBlur: action('onBlur'),
   onFocus: action('onFocus'),
   onKeyUp: action('onKeyUp'),
   onKeyDown: action('onKeyDown'),
-};**/
+};
 
 const LightWrapper = props => (
   <div style={{ background: '#fff', padding: '1rem' }}>{props.children}</div>
@@ -107,9 +105,28 @@ storiesOf('Components|Tag', module)
       `,
     )(() => (
       <LightWrapper>
-        <TagWrap />
+        <TagWrapper aria-label="Tags">
+          <Tag action={'add'} {...actionTagProps}>
+            Offering Managment
+          </Tag>
+          <Tag action={'success'} {...actionTagProps}>
+            Development
+          </Tag>
+          <Tag action={'remove'} {...actionTagProps}>
+            Design
+          </Tag>
+        </TagWrapper>
       </LightWrapper>
     )),
+  )
+  .add(
+    'With Action function',
+    withInfo(
+      `
+        The example below shows how the Tag component can be used with left side action icons.
+        Actions include add, success and remove.
+      `,
+    )(() => <TagUpdate />),
   )
   .add(
     'Light',
