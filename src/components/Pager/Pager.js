@@ -73,7 +73,7 @@ export default class Pager extends Component {
     onKeyUp: () => {},
     initialPage: 1,
     max: 5,
-    mid: 3,
+    mid: 3, // number of pages to show on lower/higher ends
     backwardText: 'previous page',
     forwardText: 'next page',
   };
