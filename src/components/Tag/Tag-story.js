@@ -11,12 +11,14 @@ class TagUpdate extends React.Component {
     super(props);
     this.state = {
       action: 'emoji',
+      count: 14,
     };
   }
 
   tagClick = () => {
     this.setState({
       action: 'success',
+      count: 15,
     });
   };
 
@@ -25,7 +27,7 @@ class TagUpdate extends React.Component {
       <LightWrapper>
         <TagWrapper aria-label="Tags">
           <Tag action={this.state.action} actionFunction={this.tagClick}>
-            Offering Management
+            Offering Managment &middot; {this.state.count}
           </Tag>
         </TagWrapper>
       </LightWrapper>
@@ -97,7 +99,7 @@ storiesOf('Components|Tag', module)
     )),
   )
   .add(
-    'With Action',
+    'with Action',
     withInfo(
       `
         The example below shows how the Tag component can be used with left side action icons.
@@ -120,7 +122,7 @@ storiesOf('Components|Tag', module)
     )),
   )
   .add(
-    'With Action function',
+    'with Action function',
     withInfo(
       `
         The example below shows how the Tag component can be used with left side action icons.

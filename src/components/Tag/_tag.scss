@@ -19,7 +19,7 @@
   overflow: hidden;
   border: 1px solid transparent;
   border-radius: rem(25px);
-  transition: all 0.35s ease-in;
+  transition: all $transition--expansion ease-in;
 
   &:not(:first-child) {
     @include bidi-margin-left(0);
@@ -52,12 +52,6 @@
   @include tag-theme($inverse-01, $text-01);
 }
 
-/*Background*/
-.#{$prefix}--tag--container-dark {
-  background-color: $ui-03;
-  padding: rem(32px);
-}
-
 /*Tags specific for the design guide*/
 .#{$prefix}--tag--not-ready {
   @include tag-theme($support-01, $ui-01);
@@ -84,12 +78,10 @@
 
 .#{$prefix}--tag--left {
   cursor: pointer;
-  height: rem(24px);
-  width: rem(24px);
   border: 1px solid transparent;
   border-radius: 50%;
-  transition: all 0.35s ease-in;
-  @include bidi-margin-right(rem(10px));
+  transition: all $transition--expansion ease-in;
+  @include bidi-margin-right(rem(6px));
 
   &:focus {
     outline: none;
@@ -98,22 +90,15 @@
 }
 
 .#{$prefix}--tag--left__success {
-  fill: $brand-01;
-}
-
-.#{$prefix}--tag--left__st {
-  stroke: $text-01;
-  stroke-width: 1;
-}
-
-.#{$prefix}--tag--left__remove,
-.#{$prefix}--tag--left__add {
-  fill: $text-01;
-
-  &:hover {
+  .#{$prefix}--action-icon_img {
     fill: $brand-01;
-    .#{$prefix}--tag--left__st {
-      stroke: $brand-01;
+  }
+}
+
+.#{$prefix}--tag--left {
+  .#{$prefix}--action-icon_img {
+    &:hover {
+      fill: $brand-01;
     }
   }
 }

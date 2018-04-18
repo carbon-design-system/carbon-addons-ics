@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon';
+import ActionIcon from '../ActionIcon';
 
 export default class Tag extends Component {
   constructor(props) {
@@ -50,13 +51,15 @@ export default class Tag extends Component {
       });
 
       return (
-        <Icon
-          name={action === 'remove' ? 'error' : this.props.action}
-          className={actionClasses}
-          description={this.props.actionDescription}
-          tabIndex="0"
-          onClick={action === 'remove' ? this.removeTag : this.props.actionFunction}
-        />
+        <div className={actionClasses}>
+          <ActionIcon
+            rounded
+            icon={action === 'remove' ? 'error' : this.props.action}
+            iconDescription={this.props.actionDescription}
+            tabIndex={0}
+            onClick={action === 'remove' ? this.removeTag : this.props.actionFunction}
+          />
+        </div>
       );
     }
 
