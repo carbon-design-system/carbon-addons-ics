@@ -38,21 +38,21 @@ class PagerListItem extends Component {
 export default class Pager extends Component {
   constructor(props) {
     super(props);
-    const { totalItems, initialPage } = this.props;
+    const { totalItems, initialPage, mid } = this.props;
     const lower = [initialPage + 1, initialPage + 2];
     const higher = [totalItems - 2, totalItems - 1];
     const isSmall = totalItems <= this.props.max;
     const pagesArr = Array.from(new Array(totalItems), (val, index) => index + 1);
 
     this.state = {
-      activePage: this.props.initialPage,
+      activePage: initialPage,
       leftPageQueue: lower,
       rightPageQueue: higher,
       activeQueue: isSmall ? pagesArr : lower,
       small: isSmall,
-      showLower: this.props.initialPage === 1,
-      showCenter: this.props.initialPage > this.props.mid,
-      showHigher: this.props.initialPage >= this.props.totalItems - 2,
+      showLower: initialPage === 1,
+      showCenter: initialPage > mid,
+      showHigher: initialPage >= totalItems - 2,
     };
   }
 
@@ -261,7 +261,8 @@ export default class Pager extends Component {
               {showLower && pageQueue}
               {(showLower || showCenter) && ellipsis}
               {showCenter &&
-                !small && (
+                activePage !== totalItems &&
+                activePage !== 1 && (
                   <li key={`pager-${activePage}`} index={activePage}>
                     <PagerListItem
                       onClick={this.handleClick.bind(this)}
