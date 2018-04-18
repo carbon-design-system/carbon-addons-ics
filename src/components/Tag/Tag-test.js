@@ -1,7 +1,7 @@
 import React from 'react';
 import Tag from './Tag';
 import ActionIcon from '../ActionIcon';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 describe('Tag', () => {
   describe('Renders as expected', () => {
@@ -40,9 +40,8 @@ describe('Tag', () => {
   it('should support remove style', () => {
     const wrapper = shallow(<Tag remove={true} />);
     const tag = wrapper.find('span');
-    //const icon = wrapper.find('.bx--tag--left');
     expect(tag.hasClass('bx--tag--remove')).toEqual(true);
-    //expect(icon.hasClass('bx--remove__icon')).toEqual(true);
+    expect(tag.find('.bx--remove__icon').length).toEqual(1);
   });
 
   it('should support extra class names', () => {
@@ -53,7 +52,7 @@ describe('Tag', () => {
 
   describe('Check that functions passed in as props are called', () => {
     const onClick = jest.fn();
-    const wrapper = mount(<Tag action={'add'} onClick={onClick} />);
+    const wrapper = shallow(<Tag action={'add'} onClick={onClick} />);
     const icon = wrapper.find(ActionIcon);
 
     it('should call onClick', () => {
@@ -61,7 +60,7 @@ describe('Tag', () => {
       expect(onClick).toBeCalled();
     });
 
-    const remove = mount(<Tag action={'remove'} />);
+    const remove = shallow(<Tag action={'remove'} />);
     const removeIcon = remove.find(ActionIcon);
     it('should call default remove if onClick not set for remove', () => {
       removeIcon.simulate('click');
