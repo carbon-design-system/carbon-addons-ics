@@ -1,29 +1,22 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import Icon from '../Icon';
+import ActionIcon from '../ActionIcon';
 
 export default class Tag extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      action: this.props.action,
-      actionIconName: this.props.action,
-      actionDescription: '',
-      actionFunction: null,
       showTag: true,
     };
   }
 
   static propTypes = {
+    action: PropTypes.string,
+    actionDescription: PropTypes.string,
     children: PropTypes.node,
     className: PropTypes.string,
-    style: PropTypes.oneOf(['dark', 'light']),
-    role: PropTypes.string,
-    tabindex: PropTypes.string,
-    remove: PropTypes.bool,
-    action: PropTypes.string,
     onBlur: PropTypes.func,
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
@@ -33,53 +26,60 @@ export default class Tag extends Component {
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,
     onMouseUp: PropTypes.func,
+    remove: PropTypes.bool,
+    role: PropTypes.string,
+    style: PropTypes.oneOf(['dark', 'light']),
+    tabindex: PropTypes.string,
   };
 
   static defaultProps = {
-    style: 'dark',
-    role: 'tag',
-    tabindex: '0',
-    remove: false,
     action: null,
+    remove: false,
+    role: 'tag',
+    style: 'dark',
+    tabindex: '0',
   };
 
-  componentDidMount() {
-    switch (this.props.action) {
-      case 'add':
-        this.setState({
-          actionDescription: 'add tag',
-          actionFunction: this.props.onClick || this.state.actionFunction,
-        });
-        break;
-      case 'success':
-        this.setState({
-          actionDescription: 'success"',
-        });
-        break;
-      case 'remove':
-        this.setState({
-          actionIconName: 'error',
-          actionDescription: 'remove tag',
-          actionFunction: this.props.onClick || this.removeTag.bind(this),
-        });
-        break;
-    }
-  }
+  buildAction = () => {
+    const { action, actionDescription, actionFunction, onClick } = this.props;
+    const iconFunction = actionFunction ? actionFunction : onClick;
 
-  removeTag() {
+    if (action) {
+      const actionClasses = classNames({
+        'bx--tag__left': true,
+        [`bx--tag__left--${action}`]: true,
+      });
+
+      return (
+        <div className={actionClasses}>
+          <ActionIcon
+            rounded
+            icon={action === 'remove' ? 'error' : action}
+            iconDescription={actionDescription}
+            tabIndex={0}
+            onClick={action === 'remove' ? this.removeTag : iconFunction}
+          />
+        </div>
+      );
+    }
+
+    return;
+  };
+
+  removeTag = () => {
     this.setState({ showTag: false });
-  }
+  };
 
   render() {
     const {
+      actionFunction, // eslint-disable-line no-unused-vars
+      actionDescription, // eslint-disable-line no-unused-vars
       children,
       className,
       style,
       role,
       tabindex,
       remove,
-      leftAction, // eslint-disable-line no-unused-vars
-      action,
       ...rest
     } = this.props;
 
@@ -91,31 +91,22 @@ export default class Tag extends Component {
       [className]: className,
     });
 
-    const actionClasses = classNames({
-      'bx--tag--left': true,
-      [`bx--tag--left__${action}`]: true,
-    });
+    const actionIcon = this.buildAction();
 
     return this.state.showTag ? (
-      <li className="bx--tag--item">
-        {action && (
-          <Icon
-            name={this.state.actionIconName}
-            className={actionClasses}
-            description={this.state.actionDescription}
-            tabIndex="0"
-            onClick={this.state.actionFunction}
-          />
-        )}
+      <li className="bx--tag__item">
+        {actionIcon}
         <span className={tagClasses} tabIndex={tabindex} role={role} {...rest}>
           {children}
           {remove && (
-            <Icon
-              name="close"
-              className="bx--remove__icon"
-              description="remove tag"
-              onClick={this.props.onClick || this.removeTag.bind(this)}
-            />
+            <div className="bx--tag__remove-icon">
+              <ActionIcon
+                rounded
+                icon="close"
+                iconDescription="remove tag"
+                onClick={this.props.onClick || this.removeTag}
+              />
+            </div>
           )}
         </span>
       </li>
