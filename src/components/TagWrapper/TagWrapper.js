@@ -1,9 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import classNames from 'classnames';
 
-const TagWrapper = ({ children, ...rest }) => {
+const TagWrapper = ({ children, light, ...rest }) => {
+  const wrapperClasses = classNames({
+    'bx--tag__list': true,
+    'bx--tag__list--light': light,
+  });
+
   return (
-    <ul className="bx--tag--list" {...rest}>
+    <ul className={wrapperClasses} {...rest}>
       {children}
     </ul>
   );

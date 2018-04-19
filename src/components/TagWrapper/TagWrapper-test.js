@@ -5,6 +5,6 @@ import { shallow } from 'enzyme';
 describe('TagWrapper', () => {
   it('should render with the default class', () => {
     const wrapper = shallow(<TagWrapper />);
-    expect(wrapper.hasClass('bx--tag--list')).toEqual(true);
+    expect(wrapper.hasClass('bx--tag__list')).toEqual(true);
   });
 });

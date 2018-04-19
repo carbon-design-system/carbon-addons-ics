@@ -13,12 +13,14 @@ const ActionIcon = ({
   selected,
   icon,
   iconDescription,
+  rounded,
   ...rest
 }) => {
   const containerClasses = classNames(className, {
     'bx--action-icon': true,
     'bx--action-icon--selected': selected,
     'bx--action-icon--sm': small,
+    'bx--action-icon--rounded': rounded,
   });
 
   const commonProps = {
