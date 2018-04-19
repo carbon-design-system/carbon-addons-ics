@@ -6,14 +6,45 @@ import { Tag, TagWrapper } from '../../index';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 
+class TagUpdate extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      action: 'emoji',
+      count: 14,
+    };
+  }
+
+  tagClick = () => {
+    this.setState({
+      action: 'success',
+      count: 15,
+    });
+  };
+
+  render() {
+    return (
+      <TagWrapper light aria-label="Tags">
+        <Tag
+          action={this.state.action}
+          actionFunction={this.tagClick}
+          actionDescription="Add a point"
+        >
+          Offering Managment &middot; {this.state.count}
+        </Tag>
+      </TagWrapper>
+    );
+  }
+}
+
 const actionTagProps = {
-  leftAction: true,
   className: 'some-class',
   onClick: action('onClick'),
   onBlur: action('onBlur'),
   onFocus: action('onFocus'),
   onKeyUp: action('onKeyUp'),
   onKeyDown: action('onKeyDown'),
+  actionDescription: 'Enter an icon description',
 };
 
 storiesOf('Components|Tag', module)
@@ -27,7 +58,7 @@ storiesOf('Components|Tag', module)
         light background. To use multiple tags use the TagWrapper component.
       `,
     )(() => (
-      <TagWrapper aria-label="Tags">
+      <TagWrapper light aria-label="Tags">
         <Tag className="some-class">Offering Managment &middot; 72</Tag>
         <Tag className="some-class">Development &middot; 63</Tag>
         <Tag className="some-class">RTP &middot; 51</Tag>
@@ -43,7 +74,7 @@ storiesOf('Components|Tag', module)
         This shows how the Tag component can be used with a remove option.
       `,
     )(() => (
-      <TagWrapper aria-label="Tags">
+      <TagWrapper light aria-label="Tags">
         <Tag remove className="some-class">
           Offering Managment
         </Tag>
@@ -63,14 +94,14 @@ storiesOf('Components|Tag', module)
     )),
   )
   .add(
-    'With Action',
+    'with action',
     withInfo(
       `
         The example below shows how the Tag component can be used with left side action icons.
         Actions include add, success and remove.
       `,
     )(() => (
-      <TagWrapper aria-label="Tags">
+      <TagWrapper light aria-label="Tags">
         <Tag action={'add'} {...actionTagProps}>
           Offering Managment
         </Tag>
@@ -84,24 +115,36 @@ storiesOf('Components|Tag', module)
     )),
   )
   .add(
-    'Light',
+    'with action function',
+    withInfo(
+      `
+        The example below shows how the Tag component can be used with left side action icons.
+        Actions include add, success and remove.
+      `,
+    )(() => <TagUpdate />),
+  )
+  .add(
+    'light',
     withInfo(
       `
         The example below shows how the Tag component can be used on a dark background.
       `,
     )(() => (
-      <div className="bx--dark--tag--wrapper">
-        <TagWrapper aria-label="Tags">
-          <Tag style={'light'} className="some-class">
-            Offering Managment &middot; 72
-          </Tag>
-          <Tag style={'light'} remove className="some-class">
-            Development
-          </Tag>
-          <Tag style={'light'} leftAction action={'remove'} className="some-class">
-            Design
-          </Tag>
-        </TagWrapper>
-      </div>
+      <TagWrapper aria-label="Tags">
+        <Tag style={'light'} className="some-class">
+          Offering Managment &middot; 72
+        </Tag>
+        <Tag style={'light'} remove className="some-class">
+          Development
+        </Tag>
+        <Tag
+          style={'light'}
+          action={'remove'}
+          actionDescription={'Remove this tag'}
+          className="some-class"
+        >
+          Design
+        </Tag>
+      </TagWrapper>
     )),
   );

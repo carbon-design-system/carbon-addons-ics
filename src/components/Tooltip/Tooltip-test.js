@@ -61,24 +61,35 @@ describe('Tooltip', () => {
 
   describe('events', () => {
     it('changes state on click', () => {
-      const wrapper = mount(<Tooltip triggerText="Tooltip" />);
+      const wrapper = mount(<Tooltip showIcon={false} triggerText="Tooltip" />);
       const trigger = wrapper.find('.bx--tooltip__trigger');
-      trigger.simulate('click');
-      expect(wrapper.state().open).toEqual(false);
+      jest.spyOn(wrapper.instance(), 'getTriggerPosition');
+      trigger.simulate('focus');
+      expect(wrapper.state().open).toEqual(true);
+      expect(wrapper.instance().getTriggerPosition).toHaveBeenCalled();
     });
 
     it('focus/blur changes state with icon', () => {
-      const wrapper = mount(<Tooltip triggerText="Tooltip" />);
-      const trigger = wrapper.find('.bx--tooltip__trigger');
-      trigger.simulate('click');
-      expect(wrapper.state().open).toEqual(false);
+      const wrapper = mount(<Tooltip showIcon triggerText="Tooltip" />);
+      const trigger = wrapper.find('.bx--tooltip__icon-container');
+      trigger.simulate('focus');
+      expect(wrapper.state().open).toEqual(true);
       trigger.simulate('blur');
+      expect(wrapper.state().open).toEqual(false);
+    });
+
+    it('if given openOnHover prop, changes state on hover', () => {
+      const wrapper = mount(<Tooltip openOnHover showIcon triggerText="Tooltip" />);
+      const trigger = wrapper.find('.bx--tooltip__icon-container');
+      trigger.simulate('mouseEnter');
+      expect(wrapper.state().open).toEqual(true);
+      trigger.simulate('mouseLeave');
       expect(wrapper.state().open).toEqual(false);
     });
 
     it('A different key press does not change state', () => {
       const wrapper = mount(<Tooltip triggerText="Tooltip" />);
-      const trigger = wrapper.find('.bx--tooltip__trigger');
+      const trigger = wrapper.find('.bx--tooltip__icon-container');
       trigger.simulate('keyDown', { which: 'x' });
       expect(wrapper.state().open).toEqual(false);
     });

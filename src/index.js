@@ -23,6 +23,7 @@ export {
 export NumberInput from './components/NumberInput';
 export OverflowMenu from './components/OverflowMenu';
 export OrderedList from './components/List/OrderedList';
+export Pager from './components/Pager';
 export Pagination from './components/Pagination';
 export Search from './components/Search';
 export Select from './components/Select';

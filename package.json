@@ -21,7 +21,7 @@
     "storybook": "start-storybook -s ./public -p 9000",
     "build-storybook": "build-storybook -s ./public",
     "start": "npm run build:icons && npm run storybook",
-    "test": "jest -u --coverage"
+    "test": "jest --coverage"
   },
   "keywords": [
     "react",
