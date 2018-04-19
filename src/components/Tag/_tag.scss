@@ -3,105 +3,110 @@
 @import '../../globals/type/ics-typography';
 @import '../../globals/bidi/bidi';
 
-.#{$prefix}--tag--list {
-  direction: $direction;
-}
+@include exports('tag--ics') {
+  .#{$prefix}--tag {
+    @include type-scale-item(b, false);
+    direction: $direction;
+    display: inline-flex;
+    align-items: center;
+    padding: rem(6px) rem(16px);
+    margin: rem(3px);
+    border-radius: rem(25px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: rem(25px);
+    transition: all $transition--expansion ease-in;
+    height: auto;
 
-.#{$prefix}--tag {
-  @include type-scale-item(b, false);
-  direction: $direction;
-  display: inline-flex;
-  align-items: center;
-  padding: rem(6px) rem(16px);
-  margin: rem(3px);
-  border-radius: rem(25px);
-  text-overflow: ellipsis;
-  overflow: hidden;
-  border: 1px solid transparent;
-  border-radius: rem(25px);
-  transition: all $transition--expansion ease-in;
-  height: auto;
+    &:not(:first-child) {
+      @include bidi-margin-left(0);
+    }
 
-  &:not(:first-child) {
-    @include bidi-margin-left(0);
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 1px $inverse-01, 0 0 0 2px $brand-01;
-  }
-}
-
-.#{$prefix}--tag--basic {
-  @include tag-theme($ui-01, $text-01);
-}
-
-.#{$prefix}--tag--dark {
-  @include tag-theme($ui-02, $text-01);
-}
-
-.#{$prefix}--remove__icon,
-.#{$prefix}--add__icon {
-  @include bidi-margin-left(rem(6px));
-  height: rem(20px);
-  display: inline-flex;
-  align-items: flex-end;
-}
-
-.#{$prefix}--tag--light {
-  @include tag-theme($inverse-01, $text-01);
-}
-
-/*Tags specific for the design guide*/
-.#{$prefix}--tag--not-ready {
-  @include tag-theme($support-01, $ui-01);
-}
-
-.#{$prefix}--tag--ready {
-  @include tag-theme($support-02, $text-01);
-}
-
-.#{$prefix}--tag--beta {
-  @include tag-theme($support-03, $text-01);
-}
-
-.#{$prefix}--tag--circle.#{$prefix}--tag--beta {
-  border: 2px solid $support-03;
-  background-color: transparent;
-}
-
-.#{$prefix}--tag--item {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.#{$prefix}--tag--left {
-  cursor: pointer;
-  border: 1px solid transparent;
-  border-radius: 50%;
-  transition: all $transition--expansion ease-in;
-  @include bidi-margin-right(rem(6px));
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 1px $brand-01, 0 0 0 2px $inverse-01;
-  }
-}
-
-.#{$prefix}--tag--left__success {
-  .#{$prefix}--action-icon_img {
-    fill: $brand-01;
-  }
-}
-
-.#{$prefix}--tag--left {
-  .#{$prefix}--action-icon_img {
     &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 1px $inverse-01, 0 0 0 2px $brand-01;
+    }
+  }
+
+  .#{$prefix}--tag__list {
+    direction: $direction;
+  }
+
+  .#{$prefix}--tag__list--light {
+    background: $ui-01;
+    padding: 1rem;
+  }
+
+  .#{$prefix}--tag--basic {
+    @include tag-theme($ui-01, $text-01);
+  }
+
+  .#{$prefix}--tag--dark {
+    @include tag-theme($ui-02, $text-01);
+  }
+
+  .#{$prefix}--tag__remove-icon,
+  .#{$prefix}--tag__add-icon {
+    @include bidi-margin-left(rem(6px));
+    height: rem(20px);
+    display: inline-flex;
+    align-items: flex-end;
+  }
+
+  .#{$prefix}--tag--light {
+    @include tag-theme($inverse-01, $text-01);
+  }
+
+  /*Tags specific for the design guide*/
+  .#{$prefix}--tag--not-ready {
+    @include tag-theme($support-01, $ui-01);
+  }
+
+  .#{$prefix}--tag--ready {
+    @include tag-theme($support-02, $text-01);
+  }
+
+  .#{$prefix}--tag--beta {
+    @include tag-theme($support-03, $text-01);
+  }
+
+  .#{$prefix}--tag--circle.#{$prefix}--tag--beta {
+    border: 2px solid $support-03;
+    background-color: transparent;
+  }
+
+  .#{$prefix}--tag__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .#{$prefix}--tag__left {
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    transition: all $transition--expansion ease-in;
+    @include bidi-margin-right(rem(6px));
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 1px $brand-01, 0 0 0 2px $inverse-01;
+    }
+
+    .#{$prefix}--action-icon_img {
+      &:hover {
+        fill: $brand-01;
+      }
+    }
+  }
+
+  .#{$prefix}--tag__left--success {
+    .#{$prefix}--action-icon_img {
       fill: $brand-01;
     }
   }

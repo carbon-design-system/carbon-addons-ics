@@ -46,8 +46,8 @@ export default class Tag extends Component {
 
     if (action) {
       const actionClasses = classNames({
-        'bx--tag--left': true,
-        [`bx--tag--left__${action}`]: true,
+        'bx--tag__left': true,
+        [`bx--tag__left--${action}`]: true,
       });
 
       return (
@@ -94,12 +94,12 @@ export default class Tag extends Component {
     const actionIcon = this.buildAction();
 
     return this.state.showTag ? (
-      <li className="bx--tag--item">
+      <li className="bx--tag__item">
         {actionIcon}
         <span className={tagClasses} tabIndex={tabindex} role={role} {...rest}>
           {children}
           {remove && (
-            <div className="bx--remove__icon">
+            <div className="bx--tag__remove-icon">
               <ActionIcon
                 rounded
                 icon="close"
