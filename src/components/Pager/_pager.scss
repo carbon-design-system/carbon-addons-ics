@@ -62,12 +62,6 @@
     color: $text-01;
   }
 
-  .#{$prefix}--pager__button--rewind {
-    .#{$prefix}--pager__tooltip-icon {
-      @include bidi-right(2px);
-    }
-  }
-
   .#{$prefix}--pager__button {
     border: 1px solid $field-01;
     margin: 0 rem(5px);
@@ -88,6 +82,7 @@
       outline: none;
       box-shadow: none;
       border: none;
+      box-shadow: 0 0 0 1px $ui-01, 0 0 0 2px $brand-01;
     }
   }
 

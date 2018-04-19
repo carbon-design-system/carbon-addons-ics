@@ -38,20 +38,21 @@ class PagerListItem extends Component {
 export default class Pager extends Component {
   constructor(props) {
     super(props);
-    const { totalItems, initialPage, mid } = this.props;
+    const { totalItems, initialPage } = this.props;
     const lower = [2, 3];
     const higher = [totalItems - 2, totalItems - 1];
-    const isSmall = totalItems <= this.props.max;
     const pagesArr = Array.from(new Array(totalItems), (val, index) => index + 1);
+    const maxDisplayPages = 5;
+    const maxQueuePages = 3;
 
     this.state = {
       activePage: initialPage,
       leftPageQueue: lower,
       rightPageQueue: higher,
-      activeQueue: isSmall ? pagesArr : lower,
-      small: isSmall,
-      showLower: initialPage < mid,
-      showCenter: initialPage > mid,
+      activeQueue: totalItems <= maxDisplayPages ? pagesArr : lower,
+      truncate: totalItems > maxDisplayPages,
+      showLower: initialPage < maxQueuePages,
+      showCenter: initialPage > maxQueuePages,
       showHigher: initialPage >= totalItems - 2,
     };
   }
@@ -60,8 +61,6 @@ export default class Pager extends Component {
     className: PropTypes.string,
     initialPage: PropTypes.number,
     totalItems: PropTypes.number,
-    max: PropTypes.number,
-    mid: PropTypes.number,
     onClick: PropTypes.func,
     onKeyUp: PropTypes.func,
     backwardText: PropTypes.string,
@@ -72,18 +71,17 @@ export default class Pager extends Component {
     onClick: () => {},
     onKeyUp: () => {},
     initialPage: 1,
-    max: 5,
-    mid: 3, // number of pages to show on lower/higher ends
     backwardText: 'previous page',
     forwardText: 'next page',
   };
 
   updatePageQueue = () => {
-    const { small, activePage } = this.state;
+    const { truncate, activePage } = this.state;
     const pageFocus = `pager-${activePage}`;
-    // Less than or equal to 3
-    if (small) return;
-    if (activePage <= this.props.mid) {
+    const maxQueuePages = 3;
+
+    if (!truncate) return;
+    if (activePage <= maxQueuePages) {
       this.setState(
         {
           activeQueue: this.state.leftPageQueue,
@@ -95,7 +93,7 @@ export default class Pager extends Component {
           this[pageFocus].focus();
         },
       );
-    } else if (activePage >= this.props.totalItems - this.props.mid + 1) {
+    } else if (activePage >= this.props.totalItems - maxQueuePages + 1) {
       this.setState(
         {
           activeQueue: this.state.rightPageQueue,
@@ -193,7 +191,7 @@ export default class Pager extends Component {
 
   render() {
     const { className, totalItems, backwardText, forwardText, ...rest } = this.props;
-    const { activePage, activeQueue, small, showLower, showCenter, showHigher } = this.state;
+    const { activePage, activeQueue, truncate, showLower, showCenter, showHigher } = this.state;
 
     const classNames = classnames({
       'bx--pager': true,
@@ -239,8 +237,8 @@ export default class Pager extends Component {
         )}
 
         <div className="bx--pager__center">
-          {small && <ul className="bx--pager__page-list">{pageQueue}</ul>}
-          {!small && (
+          {!truncate && <ul className="bx--pager__page-list">{pageQueue}</ul>}
+          {truncate && (
             <ul className="bx--pager__page-list">
               <li key={'pager-1'} index={1}>
                 <PagerListItem
