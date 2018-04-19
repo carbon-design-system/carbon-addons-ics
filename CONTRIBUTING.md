@@ -147,6 +147,8 @@ Test your changes by running our test commands:
   npm run test
   ```
 
+	* to update the Jest snapshots when desired, run `npm run test -- -u`
+
 * Run both linting and unit tests:
 
   ```
