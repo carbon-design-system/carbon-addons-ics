@@ -2,7 +2,7 @@ $loading__gap: 40;
 $loading__size: 10.5rem;
 
 @import '../../globals/theme/ics-theme';
-@import '~carbon-components/src/components/loading/_loading.scss';
+@import 'carbon-components/src/components/loading/_loading.scss';
 @import 'mixins';
 @import 'keyframes';
 @import '../../globals/bidi/bidi';
