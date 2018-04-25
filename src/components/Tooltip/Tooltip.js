@@ -104,15 +104,11 @@ export default class Tooltip extends Component {
                 this.triggerEl = node;
               }}
               className="bx--tooltip__icon-container"
+              role="button"
+              tabIndex="0"
               {...triggerProps}
             >
-              <Icon
-                role="button"
-                tabIndex="0"
-                name={iconName}
-                description={iconDescription}
-                className="bx--tooltip__icon"
-              />
+              <Icon name={iconName} description={iconDescription} className="bx--tooltip__icon" />
             </div>
           </div>
         ) : (
@@ -121,6 +117,8 @@ export default class Tooltip extends Component {
             ref={node => {
               this.triggerEl = node;
             }}
+            role="button"
+            tabIndex="0"
             {...triggerProps}
           >
             {triggerText}
