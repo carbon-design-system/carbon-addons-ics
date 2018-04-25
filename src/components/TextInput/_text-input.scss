@@ -44,6 +44,10 @@
     ~ .#{$prefix}--label {
       @include type-scale-item(c, false);
       position: absolute;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       top: rem(-4px);
       @include bidi-left(0);
       -webkit-transition: 0.2s ease all;
