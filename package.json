@@ -6,7 +6,7 @@
   "module": "es/index.js",
   "scripts": {
     "check": "npm run lint && npm run test",
-    "ci-check": "npm run lint && npm run test --runInBand",
+    "ci-check": "npm run build:icons && npm run lint && npm run test --runInBand",
     "lint": "eslint src",
     "precommit": "lint-staged",
     "prettier": "prettier --write \"**/*.{js,css,scss}\"",
