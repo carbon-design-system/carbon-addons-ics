@@ -21,6 +21,12 @@
     margin-bottom: rem(4px);
   }
 
+  fieldset[data-invalid] {
+    .#{$prefix}--form__requirements {
+      color: $support-01;
+    }
+  }
+
   input[data-invalid],
   textarea[data-invalid],
   select[data-invalid],
@@ -48,7 +54,8 @@
     }
   }
 
-  .#{$prefix}--form-requirement {
+  .#{$prefix}--form-requirement,
+  .#{$prefix}--form__requirements {
     @include type-scale-item(a, false);
     margin: 0.75rem 0 0;
   }
