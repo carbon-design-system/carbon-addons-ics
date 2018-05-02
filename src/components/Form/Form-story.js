@@ -124,12 +124,7 @@ storiesOf('Components|Form', module)
     'default',
     withInfo(``)(() => (
       <Form {...additionalProps}>
-        <FormGroup
-          invalid={true}
-          message={true}
-          messageText="There is an error"
-          {...fieldsetCheckboxProps}
-        >
+        <FormGroup {...fieldsetCheckboxProps}>
           <Checkbox defaultChecked {...checkboxEvents} id="checkbox-0" />
           <Checkbox {...checkboxEvents} id="checkbox-1" />
           <Checkbox disabled {...checkboxEvents} id="checkbox-2" />
@@ -201,7 +196,7 @@ storiesOf('Components|Form', module)
           />
         </FormGroup>
         <FormGroup {...fieldsetTextareaProps}>
-          <TextArea invalid={true} invalidText="This is wrong" {...textareaProps} />
+          <TextArea {...textareaProps} />
         </FormGroup>
         <div>
           <Button type="submit" className="some-class" {...buttonEvents}>
