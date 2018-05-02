@@ -7,6 +7,8 @@
 // Child atoms
 @import '../Form/form';
 
+$focused-box-shadow: 0px 0px 0px 1px $inverse-01, 0px 0px 0px 2px $brand-01;
+
 @include exports('tooltip--ics') {
   .#{$prefix}--tooltip__icon {
     @include icon-reset('small');
@@ -14,11 +16,6 @@
     border-radius: rem(2px);
     cursor: pointer;
     transition: all 0.35s ease-in;
-
-    &:focus {
-      outline: none;
-      box-shadow: 0px 0px 0px 1px $inverse-01, 0px 0px 0px 2px $brand-01;
-    }
   }
 
   .#{$prefix}--tooltip__trigger {
@@ -33,19 +30,25 @@
         outline: none;
       }
     }
+    &:focus {
+      outline: none;
+      box-shadow: $focused-box-shadow;
+    }
 
     svg {
       fill: $text-01;
       margin: 0 rem(8px);
-
-      &:focus {
-        outline: none;
-      }
     }
   }
 
   .#{$prefix}--tooltip__icon-container {
     line-height: 0;
+    &:focus {
+      outline: none;
+      svg {
+        box-shadow: $focused-box-shadow;
+      }
+    }
   }
 
   .#{$prefix}--tooltip {
