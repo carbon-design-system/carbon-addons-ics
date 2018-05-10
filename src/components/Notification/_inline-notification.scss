@@ -8,9 +8,10 @@
     @include type-scale-item(b, false);
     @include border-radius-type('b');
     color: $text-01;
+    background: $ui-01;
     display: flex;
     max-width: 740px;
-    padding: 0.75rem 0;
+    padding: rem(14px) 0;
     margin-top: 0;
   }
 
@@ -37,11 +38,11 @@
   .#{$prefix}--inline-notification__icon {
     height: 20px;
     width: 20px;
-    flex: 0 0 20px;
+    @include bidi-margin-left(16px);
   }
 
   .#{$prefix}--inline-notification__text-wrapper {
-    margin: 0 rem(16px) 0 rem(12px);
+    margin: 0 rem(16px) 0 rem(8px);
     align-items: flex-start;
   }
 
