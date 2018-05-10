@@ -19,9 +19,9 @@
 }
 
 .#{$prefix}--skeleton-circle {
+  @include border-radius-type('c');
   height: rem(40px);
   width: rem(40px);
-  border-radius: 50%;
   background: $ui-04;
   @include animation__skeleton;
 }

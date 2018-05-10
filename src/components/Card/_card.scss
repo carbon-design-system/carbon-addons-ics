@@ -13,7 +13,7 @@
     direction: $direction;
     width: auto;
     height: auto;
-    border-radius: rem(2px);
+    @include border-radius-type;
     margin-bottom: 1rem;
   }
 
@@ -76,9 +76,9 @@
 
   .#{$prefix}--about__icon {
     .#{$prefix}--about__icon--img {
+      @include border-radius-type('c');
       width: rem(50px);
       height: rem(50px);
-      border-radius: 50%;
     }
   }
 }

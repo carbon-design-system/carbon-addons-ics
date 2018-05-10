@@ -61,7 +61,7 @@
     display: inline-block;
     padding: rem(4px);
     margin: 0 rem(8px);
-    border-radius: 4px;
+    @include border-radius-type('b');
     border: 1px solid transparent;
   }
 
@@ -87,7 +87,7 @@
   }
 
   .#{$prefix}--pagination__page {
-    border-radius: 4px;
+    @include border-radius-type('b');
     padding: 0 8px;
   }
 

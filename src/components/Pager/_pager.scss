@@ -36,12 +36,12 @@
 
   .#{$prefix}--pager__page-item {
     @include type-scale-item(c, false);
+    @include border-radius-type('b');
     @include reset;
     width: rem(24px);
     position: relative;
     display: inline-block;
     margin: 0 rem(5px);
-    border-radius: 4px;
     border: 1px solid transparent;
     background: $field-01;
 
@@ -63,9 +63,9 @@
   }
 
   .#{$prefix}--pager__button {
+    @include border-radius-type('c');
     border: 1px solid $field-01;
     margin: 0 rem(5px);
-    border-radius: 50%;
     height: rem(24px);
     width: rem(24px);
     padding: 0;
@@ -73,8 +73,8 @@
       background: $brand-01;
       border-color: $brand-01;
       .#{$prefix}--tooltip__icon {
+        @include border-radius-type('c');
         fill: $inverse-01;
-        border-radius: 50%;
       }
     }
 
@@ -92,7 +92,7 @@
       width: rem(24px);
       fill: $ui-05;
       position: relative;
-      border-radius: 50%;
+      @include border-radius-type('b');
       bottom: rem(1px);
       @include bidi-right(9px);
       border: 1px solid $field-01;

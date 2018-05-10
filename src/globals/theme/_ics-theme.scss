@@ -34,6 +34,25 @@ $support-04: #3c6df0 !default; // ultramarine-50
 $input-border: 1px solid $ui-04 !default;
 $input-label-weight: 500 !default;
 
+// Border Radius
+$border-radius-a: 2px;
+$border-radius-b: 4px;
+$border-radius-c: 50%;
+
+$ics-border-radius: (
+  a: $border-radius-a,
+  b: $border-radius-b,
+  c: $border-radius-c
+);
+
+@mixin border-radius-type($type: 'a') {
+  @if map-has-key($ics-border-radius, $type) {
+    border-radius: #{map-get($ics-border-radius, $type)};
+  } @else {
+    @warn '#{$type} is not a valid border radius.';
+  }
+}
+
 // Button Theme Variables
 $button-font-weight: 400 !default;
 $button-font-size: 0.875rem !default;

@@ -93,10 +93,10 @@
   }
 
   content: '';
+  @include border-radius-type('c');
   position: absolute;
   height: $size;
   width: $size;
-  border-radius: 50%;
   background-color: $brand-01;
   color: $brand-01;
   will-change: transform;

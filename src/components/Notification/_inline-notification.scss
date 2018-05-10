@@ -6,6 +6,7 @@
 @include exports('inline-notification--ics') {
   .#{$prefix}--inline-notification {
     @include type-scale-item(b, false);
+    @include border-radius-type('b');
     color: $text-01;
     display: flex;
     max-width: 740px;

@@ -3,7 +3,7 @@
 // ---------------------------------------------
 
 @mixin inline-notification--color($color) {
-  border: none;
+  border: 1px solid $color;
 
   .#{$prefix}--inline-notification__icon {
     fill: $color;
