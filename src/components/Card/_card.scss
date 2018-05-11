@@ -13,7 +13,7 @@
     direction: $direction;
     width: auto;
     height: auto;
-    @include border-radius-type;
+    @include border-radius-type('a');
     margin-bottom: 1rem;
   }
 

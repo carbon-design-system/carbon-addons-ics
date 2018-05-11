@@ -67,7 +67,7 @@
 
     .#{$prefix}--table-sort-v2 {
       @include type-scale-item(a, false);
-      @include border-radius-type;
+      @include border-radius-type('a');
       font-weight: 600;
       display: flex;
       flex-direction: row;
