@@ -79,7 +79,7 @@
     @include type-scale-item(b, false);
     padding: rem(7px) rem(10px);
     border: 1px solid transparent;
-    border-radius: 2px;
+    @include border-radius-type('a');
 
     @include breakpoint(bp--sm--major) {
       &:hover {

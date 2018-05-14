@@ -6,19 +6,19 @@
 
 @include exports('overflow-menu--ics') {
   .#{$prefix}--overflow-menu {
+    @include border-radius-type('b');
     cursor: pointer;
     height: rem(32px);
     min-width: rem(32px);
     border: 1px solid transparent;
-    border-radius: rem(4px);
     display: flex;
     align-items: center;
     justify-content: center;
 
     &:focus {
+      @include border-radius-type('b');
       outline: 1px solid transparent;
       border: 1px solid $brand-01;
-      border-radius: rem(4px);
     }
 
     &:hover {
@@ -38,8 +38,8 @@
   }
 
   .#{$prefix}--overflow-menu__link {
+    @include border-radius-type('b');
     padding: rem(8px) rem(16px);
-    border-radius: rem(4px);
     color: $text-02;
     @include type-scale-item(b, false);
 

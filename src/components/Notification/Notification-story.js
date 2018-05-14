@@ -19,8 +19,8 @@ const notificationProps = {
   },
   inline: {
     className: 'some-class',
-    title: 'this is a title',
-    subtitle: 'subtitle',
+    title: 'Title',
+    subtitle: 'This is the subtitle',
     iconDescription: 'describes the close button',
   },
 };

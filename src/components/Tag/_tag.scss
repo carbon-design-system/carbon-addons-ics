@@ -89,7 +89,7 @@
   .#{$prefix}--tag__left {
     cursor: pointer;
     border: 1px solid transparent;
-    border-radius: 50%;
+    @include border-radius-type('c');
     transition: all $transition--expansion ease-in;
     @include bidi-margin-right(rem(6px));
 

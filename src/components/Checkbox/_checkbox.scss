@@ -7,8 +7,8 @@
 @include exports('checkbox--ics') {
   .#{$prefix}--checkbox,
   .#{$prefix}--checkbox-label::before {
+    @include border-radius-type('a');
     direction: $direction;
-    border-radius: 2px;
     @include bidi-left(0);
     @include bidi-text-align;
   }
@@ -38,9 +38,9 @@
   }
 
   .#{$prefix}--checkbox:checked + .#{$prefix}--checkbox-label::before {
+    @include border-radius-type('a');
     background-color: $ui-05;
     border-color: $ui-05;
-    border-radius: 2px;
   }
 
   .#{$prefix}--checkbox:focus + .#{$prefix}--checkbox-label::before,
