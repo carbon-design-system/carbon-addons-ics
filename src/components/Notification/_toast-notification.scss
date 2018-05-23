@@ -9,12 +9,11 @@
   .#{$prefix}--toast-notification {
     @include type-scale-item(b, false);
     @include layer('sticky-nav');
+    @include border-radius-type(b);
     background-color: $ui-01;
-    border-radius: 32px;
     padding: rem(8px) rem(16px);
     min-height: rem(40px);
-    margin-top: 1rem;
-    margin-bottom: rem(24px);
+    margin: 1rem 14px;
     display: flex;
     border: 2px solid rgba($ui-05, 0.3);
     max-width: 740px;
@@ -73,6 +72,7 @@
 
   .#{$prefix}--toast-notification__subtitle {
     @include type-scale-item(b, false);
+    color: $text-01;
     display: inline;
   }
 
@@ -113,7 +113,9 @@
 
   .#{$prefix}--toast-notification__close-icon {
     @include icon-reset;
-    fill: $text-03;
+    fill: $text-02;
+    height: 16px;
+    width: 16px;
   }
 
   .#{$prefix}--toast-notification--long {

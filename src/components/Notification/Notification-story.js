@@ -38,7 +38,11 @@ storiesOf('Components|Notifications', module)
         <ToastNotification {...notificationProps.toast} kind="error" />
         <ToastNotification {...notificationProps.toast} kind="info" />
         <ToastNotification {...notificationProps.toast} kind="success" />
-        <ToastNotification {...notificationProps.toast} kind="warning" />
+        <ToastNotification
+          {...notificationProps.toast}
+          subtitle="Here is a two line subtitle. If your toast notification has more info this is what the layout of the notification will look like. "
+          kind="warning"
+        />
       </div>
     )),
   )
