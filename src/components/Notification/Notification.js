@@ -19,12 +19,10 @@ export class NotificationButton extends Component {
   render() {
     const { ariaLabel, className, iconDescription, name, ...rest } = this.props;
 
+    const classes = classNames('bx--toast-notification__close-button', className);
+
     return (
-      <button
-        {...rest}
-        type="button"
-        className={`bx--toast-notification__close-button ${className}`}
-      >
+      <button {...rest} type="button" className={classes}>
         <Icon
           description={iconDescription}
           className="bx--toast-notification__close-icon"
