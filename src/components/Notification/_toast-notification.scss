@@ -79,7 +79,7 @@
   .#{$prefix}--toast-notification__link {
     @include type-scale-item(b, false);
     font-weight: 600;
-    margin-left: rem(10px);
+    margin-left: rem(8px);
     text-decoration: none;
     display: inline;
 
@@ -109,6 +109,8 @@
     width: auto;
     margin-left: rem(8px);
     margin-top: rem(2px);
+    position: absolute;
+    @include bidi-right(14px);
   }
 
   .#{$prefix}--toast-notification__close-icon {

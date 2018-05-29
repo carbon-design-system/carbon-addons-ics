@@ -11,16 +11,16 @@ const notificationProps = {
     onCloseButtonClick: action('onCloseButtonClick'),
     className: 'some-class',
     title: 'Title:',
-    subtitle: 'Here is the subtitle',
+    subtitle: 'Here is the subtitle.',
     link: '#',
-    linkTitle: 'Undo?',
+    linkTitle: 'Undo',
     iconDescription: 'describes the close button',
     style: { marginBottom: '.5rem' },
   },
   inline: {
     className: 'some-class',
     title: 'Title',
-    subtitle: 'This is the subtitle',
+    subtitle: 'This is the subtitle.',
     iconDescription: 'describes the close button',
   },
 };
@@ -35,19 +35,23 @@ storiesOf('Components|Notifications', module)
     `,
     )(() => (
       <div>
-        <ToastNotification {...notificationProps.toast} kind="error" />
-        <ToastNotification {...notificationProps.toast} kind="info" />
-        <ToastNotification {...notificationProps.toast} kind="success" />
-        <ToastNotification
-          {...notificationProps.toast}
-          subtitle="Here is a two line subtitle. If your toast notification has more info this is what the layout of the notification will look like. "
-          kind="warning"
-        />
+        <div style={{ maxWidth: '345px' }}>
+          <ToastNotification {...notificationProps.toast} kind="error" />
+          <ToastNotification {...notificationProps.toast} kind="info" />
+          <ToastNotification {...notificationProps.toast} kind="success" />
+        </div>
+        <div>
+          <ToastNotification
+            {...notificationProps.toast}
+            subtitle="Here is a two line subtitle. If your toast notification has more info this is what the layout of the notification will look like."
+            kind="warning"
+          />
+        </div>
       </div>
     )),
   )
   .add(
-    'inline',
+    'Inline',
     withInfo(
       `
       "Inline" notifications occur within the context of the action that was taken.
