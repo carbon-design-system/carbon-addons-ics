@@ -8,7 +8,7 @@
   .#{$prefix}--list--unordered,
   .#{$prefix}--list--ordered {
     @include type-scale-item(c, false);
-    @include bidi-margin-left(1.5rem);
+    @include bidi-margin-left(0);
     direction: $direction;
   }
 
@@ -21,7 +21,7 @@
 
   .#{$prefix}--list--unordered,
   .#{$prefix}--list--ordered {
-    padding: 1rem 2rem;
+    padding: 1rem 2rem 1rem 1.25rem;
   }
 
   .#{$prefix}--list--nested {
