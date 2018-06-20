@@ -1,5 +1,4 @@
 @import '../../globals/theme/ics-theme';
-@import 'carbon-components/src/components/card/_card.scss';
 @import '../../globals/type/ics-typography';
 @import '../../globals/bidi/bidi';
 @import '../../globals/layer/ics-layer';
@@ -8,6 +7,9 @@
 @import '../Button/button';
 
 @include exports('card--ics') {
+  @warn 'Deprecated code found! This code will be removed in the next release of carbon-addons-ics.
+  REASON: Accessing the `card` component from the `carbon-addons-ics` package is deprecated. Use the `CardV2` component instead.';
+
   .#{$prefix}--card {
     @include layer('raised');
     direction: $direction;
