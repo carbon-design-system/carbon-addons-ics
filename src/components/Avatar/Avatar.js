@@ -48,7 +48,7 @@ class Avatar extends Component {
       ...rest
     } = this.props;
 
-    const cardClasses = classNames({
+    const avatarClasses = classNames({
       'bx--avatar': true,
       [className]: className,
     });
@@ -83,7 +83,7 @@ class Avatar extends Component {
 
     return (
       <div
-        className={cardClasses}
+        className={avatarClasses}
         style={{
           height: avatarSize,
           width: avatarSize,
