@@ -76,7 +76,7 @@ class Avatar extends Component {
           width={iconSize}
           description={description}
           name={'profiles--glyph'}
-          fill={'white'}
+          fill={'#ffffff'}
         />
       </div>
     );
