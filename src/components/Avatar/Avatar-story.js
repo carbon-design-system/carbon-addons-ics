@@ -1,16 +1,17 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import Avatar from '../Avatar';
+import { withReadme } from 'storybook-readme';
+import { Avatar } from '../../index';
+import readme from './README.md';
 
 storiesOf('Components|Avatar', module)
+  .addDecorator(withReadme(readme))
   .add(
     'default',
     withInfo(
       `
-      This card is an example of how a card might appear but can be updated and
-      modified to display any data that is needed within the context of your product.
-      This example uses CardMeta and CardText components.
+      This is the default example of an avatar without an image provided. Users have the ability to upload pictures for their avatar but until they do so they are provided with a default avatar.
     `,
     )(() => (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>

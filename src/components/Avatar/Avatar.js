@@ -12,7 +12,7 @@ const avatarSizes = {
   xxl: { avatar: 176, icon: 72 },
 };
 
-export default class Avatar extends Component {
+class Avatar extends Component {
   state = {
     imgLoaded: false,
   };
@@ -97,3 +97,5 @@ Avatar.propTypes = {
 Avatar.defaultProps = {
   size: 'md',
 };
+
+export default Avatar;
