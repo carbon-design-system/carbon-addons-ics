@@ -1,9 +1,7 @@
-@import '../../globals/theme/ics-theme';
 @import 'carbon-components/src/globals/scss/import-once';
 
 @include exports('avatar') {
   .#{$prefix}--avatar {
-    background: $ui-04;
     border-radius: 50%;
     display: flex;
     align-items: center;

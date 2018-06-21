@@ -11,5 +11,14 @@ storiesOf('Components|Avatar', module).add(
       modified to display any data that is needed within the context of your product.
       This example uses CardMeta and CardText components.
     `,
-  )(() => <Avatar size={112} />),
+  )(() => (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
+      <Avatar size={'xs'} />
+      <Avatar size={'sm'} />
+      <Avatar size={'md'} />
+      <Avatar size={'lg'} />
+      <Avatar size={'xl'} />
+      <Avatar size={'xxl'} />
+    </div>
+  )),
 );
