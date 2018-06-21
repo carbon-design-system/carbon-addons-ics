@@ -4,26 +4,25 @@ import classNames from 'classnames';
 import Icon from '../Icon';
 
 const avatarSizes = {
-  xs: 32,
-  sm: 40,
-  md: 56,
-  lg: 80,
-  xl: 112,
-  xxl: 176,
+  xs: { avatar: 32, icon: 16 },
+  sm: { avatar: 40, icon: 20 },
+  md: { avatar: 56, icon: 28 },
+  lg: { avatar: 80, icon: 36 },
+  xl: { avatar: 112, icon: 48 },
+  xxl: { avatar: 176, icon: 72 },
 };
 
 export default class Avatar extends Component {
   render() {
-    const { className, size, name, ...rest } = this.props;
+    const { className, size, description, ...rest } = this.props;
 
     const cardClasses = classNames({
       'bx--avatar': true,
       [className]: className,
     });
 
-    const avatarSize = avatarSizes[size];
-
-    const iconSize = (avatarSize - 10).toString();
+    const avatarSize = avatarSizes[size].avatar;
+    const iconSize = avatarSizes[size].icon.toString();
 
     return (
       <div
@@ -38,7 +37,7 @@ export default class Avatar extends Component {
         <Icon
           height={iconSize}
           width={iconSize}
-          description={name}
+          description={description}
           name={'profiles--glyph'}
           fill={'white'}
         />

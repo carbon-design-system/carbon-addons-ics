@@ -13,12 +13,24 @@ storiesOf('Components|Avatar', module).add(
     `,
   )(() => (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
-      <Avatar size={'xs'} />
-      <Avatar size={'sm'} />
-      <Avatar size={'md'} />
-      <Avatar size={'lg'} />
-      <Avatar size={'xl'} />
-      <Avatar size={'xxl'} />
+      <div style={{ padding: 10 }}>
+        <Avatar size={'xs'} description="Here is a description" />
+      </div>
+      <div style={{ padding: 10 }}>
+        <Avatar size={'sm'} description="Here is a description" />
+      </div>
+      <div style={{ padding: 10 }}>
+        <Avatar size={'md'} description="Here is a description" />
+      </div>
+      <div style={{ padding: 10 }}>
+        <Avatar size={'lg'} description="Here is a description" />
+      </div>
+      <div style={{ padding: 10 }}>
+        <Avatar size={'xl'} description="Here is a description" />
+      </div>
+      <div style={{ padding: 10 }}>
+        <Avatar size={'xxl'} description="Here is a description" />
+      </div>
     </div>
   )),
 );
