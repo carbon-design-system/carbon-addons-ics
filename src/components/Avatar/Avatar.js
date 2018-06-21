@@ -17,6 +17,16 @@ class Avatar extends Component {
     imgLoaded: false,
   };
 
+  componentWillMount() {
+    this.setState({ imgUrl: this.props.imgUrl, ImgError: false, ImgLoaded: false });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.imgUrl !== nextProps.imgUrl) {
+      this.setState({ imgUrl: nextProps.imgUrl, ImgError: false, ImgLoaded: false });
+    }
+  }
+
   onImgLoad() {
     if (this.imageDOM.naturalWidth < 2 && this.imageDOM.naturalHeight < 2 && !this.state.ImgError) {
       this.onImgErr();
@@ -30,7 +40,13 @@ class Avatar extends Component {
   }
 
   render() {
-    const { className, size, description, imgUrl, ...rest } = this.props;
+    const {
+      className,
+      description,
+      size,
+      imgUrl, // eslint-disable-line no-unused-vars
+      ...rest
+    } = this.props;
 
     const cardClasses = classNames({
       'bx--avatar': true,
@@ -40,28 +56,21 @@ class Avatar extends Component {
     const avatarSize = avatarSizes[size].avatar;
     const iconSize = avatarSizes[size].icon.toString();
 
-    let imageElement;
-    let imageAlt = '';
+    const imageElement = this.state.imgUrl ? (
+      <img
+        ref={ref => (this.imageDOM = ref)}
+        onError={() => this.onImgErr()}
+        onLoad={() => this.onImgLoad()}
+        src={this.state.imgUrl}
+        alt={description}
+        height={avatarSize}
+        width={avatarSize}
+        className={'bx--avatar_img'}
+      />
+    ) : null;
 
-    if (this.state.imgLoaded) {
-      imageAlt = description;
-    }
-
-    if (this.props.imgUrl) {
-      imageElement = (
-        <img
-          ref={ref => (this.imageDOM = ref)}
-          onError={() => this.onImgErr()}
-          onLoad={() => this.onImgLoad()}
-          src={imgUrl}
-          alt={imageAlt}
-          height={avatarSize}
-          width={avatarSize}
-          className={'bx--avatar_img'}
-        />
-      );
-    } else {
-      imageElement = (
+    const iconElement = (
+      <div className={'bx--avatar_icon'}>
         <Icon
           height={iconSize}
           width={iconSize}
@@ -69,8 +78,8 @@ class Avatar extends Component {
           name={'profiles--glyph'}
           fill={'white'}
         />
-      );
-    }
+      </div>
+    );
 
     return (
       <div
@@ -83,6 +92,7 @@ class Avatar extends Component {
         {...rest}
       >
         {imageElement}
+        {iconElement}
       </div>
     );
   }

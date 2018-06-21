@@ -1,15 +1,31 @@
 @import 'carbon-components/src/globals/scss/import-once';
+@import '../../globals/theme/ics_border-radius';
 
 @include exports('avatar') {
   .#{$prefix}--avatar {
-    border-radius: 50%;
+    @include border-radius-type(c);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    position: relative;
   }
 
   .#{$prefix}--avatar_img {
     -webkit-user-drag: none;
+    position: relative;
+    z-index: 1;
+  }
+
+  .#{$prefix}--avatar_icon {
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
   }
 }
