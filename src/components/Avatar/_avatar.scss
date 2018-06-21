@@ -6,5 +6,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+  }
+
+  .#{$prefix}--avatar_img {
+    -webkit-user-drag: none;
   }
 }
