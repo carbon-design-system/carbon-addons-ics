@@ -90,8 +90,9 @@ class Avatar extends Component {
 
 Avatar.propTypes = {
   className: PropTypes.string,
-  size: PropTypes.string,
+  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', 'xxl']),
   imgUrl: PropTypes.string,
+  description: PropTypes.string.isRequired,
 };
 
 Avatar.defaultProps = {

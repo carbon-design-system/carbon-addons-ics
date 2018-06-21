@@ -11,7 +11,7 @@ storiesOf('Components|Avatar', module)
     'default',
     withInfo(
       `
-      This is the default example of an avatar without an image provided. Users have the ability to upload pictures for their avatar but until they do so they are provided with a default avatar.
+      This is the default example of an Avatar without an image provided. Users have the ability to upload pictures for their avatar but until they do so they are provided with a default Avatar.
     `,
     )(() => (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
@@ -40,9 +40,7 @@ storiesOf('Components|Avatar', module)
     'with image',
     withInfo(
       `
-      Media Cards provide an at-a glance preview of media content. The example
-      below uses the CardMedia and CardMeta component. The CardMeta has metaPadding
-      prop that provides 16px padding when used above or below a CardMedia component.
+       This is the default example of an Avatar with an image provided. Images provided to the Avatar component should be square shaped, having an equal height and width.
     `,
     )(() => (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
