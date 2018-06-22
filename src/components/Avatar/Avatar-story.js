@@ -16,7 +16,7 @@ storiesOf('Components|Avatar', module)
     )(() => (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
         <div style={{ padding: 10 }}>
-          <Avatar size={'xs'} description="Here is a description" />
+          <Avatar size={'xs'} />
         </div>
         <div style={{ padding: 10 }}>
           <Avatar size={'sm'} description="Here is a description" />
