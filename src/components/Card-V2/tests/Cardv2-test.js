@@ -1,13 +1,13 @@
 import React from 'react';
-import Cardv2 from '../Cardv2';
+import Cardv2, { UnwrappedComponent } from '../Cardv2';
 import { shallow, mount } from 'enzyme';
 
 describe('Cardv2', () => {
   describe('Renders as expected', () => {
     const wrapper = shallow(
-      <Cardv2 className="extra-class">
+      <UnwrappedComponent className="extra-class">
         <div className="child">Test</div>
-      </Cardv2>,
+      </UnwrappedComponent>,
     );
 
     it('renders children as expected', () => {
@@ -28,8 +28,16 @@ describe('Cardv2', () => {
   });
 
   describe('Check that functions passed in as props are called', () => {
-    const onClick = jest.fn();
-    const wrapper = mount(<Cardv2 onClick={onClick} />);
+    let onClick;
+    let wrapper;
+    beforeEach(() => {
+      onClick = jest.fn();
+      wrapper = mount(<Cardv2 onClick={onClick} />);
+    });
+
+    afterEach(() => {
+      wrapper.unmount();
+    });
 
     it('should call onClick', () => {
       wrapper.simulate('click');

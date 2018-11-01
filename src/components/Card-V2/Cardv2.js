@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import WithRef from '../../globals/internal/WithRef';
 
-export default class Cardv2 extends Component {
+class Cardv2 extends Component {
   static propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
@@ -16,6 +17,8 @@ export default class Cardv2 extends Component {
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,
     onMouseUp: PropTypes.func,
+    // added by WithRef higher order component
+    // _innerRef: PropTypes.object,
   };
 
   static defaultProps = {
@@ -23,7 +26,7 @@ export default class Cardv2 extends Component {
   };
 
   render() {
-    const { className, children, tabIndex, ...rest } = this.props;
+    const { className, children, tabIndex, _innerRef, ...rest } = this.props;
 
     const cardClasses = classNames({
       'bx--cardv2': true,
@@ -31,9 +34,12 @@ export default class Cardv2 extends Component {
     });
 
     return (
-      <div {...rest} className={cardClasses} tabIndex={tabIndex}>
+      <div {...rest} className={cardClasses} tabIndex={tabIndex} ref={_innerRef}>
         {children}
       </div>
     );
   }
 }
+
+export default WithRef(Cardv2);
+export const UnwrappedComponent = Cardv2;

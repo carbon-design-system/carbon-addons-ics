@@ -95,4 +95,28 @@ storiesOf('Components|Card-V2', module)
         </Cardv2>
       </div>
     )),
+  )
+  .add(
+    'With ref',
+    withInfo(`
+      You can use a ref to target the top-level dom element to focus it directly.
+      More info here: https://reactjs.org/docs/forwarding-refs.html
+    `)(() => {
+      const cardRef = React.createRef();
+      return (
+        <div>
+          <button onClick={() => cardRef.current.focus()}>Focus the card</button>
+          <Cardv2 {...cardProps} ref={cardRef}>
+            <CardMeta {...cardMetaProps} />
+            <CardText className="some-class">
+              <p>
+                This card is an example of how a card might appear but can be updated and modified
+                to display any data that is needed within the context of your product.
+              </p>
+            </CardText>
+            <CardMedia className="some-class" type="img" src={mediaSrc} altText={mediaAlt} />
+          </Cardv2>
+        </div>
+      );
+    }),
   );

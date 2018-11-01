@@ -37,8 +37,8 @@
   ],
   "license": "Apache-2.0",
   "peerDependencies": {
-    "react": "^15.3.2 || ^16.2.0",
-    "react-dom": "^15.3.2 || ^16.2.0"
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0"
   },
   "dependencies": {
     "carbon-components": "~8.16.3",
@@ -66,7 +66,7 @@
     "css-loader": "^0.28.9",
     "cz-conventional-changelog-components": "^1.0.0",
     "enzyme": "^3.1.1",
-    "enzyme-adapter-react-16": "^1.0.4",
+    "enzyme-adapter-react-16": "^1.6.0",
     "enzyme-to-json": "^3.2.2",
     "eslint": "^4.11.0",
     "eslint-loader": "^1.9.0",
@@ -83,8 +83,8 @@
     "prettier": "^1.7.4",
     "promise": "^8.0.1",
     "prop-types": "^15.5.8",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
     "react-test-renderer": "^16.1.0",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.5",

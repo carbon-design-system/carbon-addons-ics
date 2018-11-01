@@ -98,7 +98,9 @@ storiesOf('Components|DataTable', module)
                 {rows.map(row => (
                   <TableRow key={row.id}>
                     <TableSelectRow {...getSelectionProps({ row })} />
-                    {row.cells.map(cell => <TableCell key={cell.id}>{cell.value}</TableCell>)}
+                    {row.cells.map(cell => (
+                      <TableCell key={cell.id}>{cell.value}</TableCell>
+                    ))}
                   </TableRow>
                 ))}
               </TableBody>
@@ -127,7 +129,9 @@ storiesOf('Components|DataTable', module)
               <TableBody>
                 {rows.map(row => (
                   <TableRow key={row.id}>
-                    {row.cells.map(cell => <TableCell key={cell.id}>{cell.value}</TableCell>)}
+                    {row.cells.map(cell => (
+                      <TableCell key={cell.id}>{cell.value}</TableCell>
+                    ))}
                   </TableRow>
                 ))}
               </TableBody>
@@ -158,7 +162,9 @@ storiesOf('Components|DataTable', module)
                 {rows.map(row => (
                   <TableRow key={row.id}>
                     <TableSelectRow {...getSelectionProps({ row })} />
-                    {row.cells.map(cell => <TableCell key={cell.id}>{cell.value}</TableCell>)}
+                    {row.cells.map(cell => (
+                      <TableCell key={cell.id}>{cell.value}</TableCell>
+                    ))}
                   </TableRow>
                 ))}
               </TableBody>
@@ -190,7 +196,9 @@ storiesOf('Components|DataTable', module)
                 {rows.map(row => (
                   <TableRow key={row.id}>
                     <TableSelectRow {...getSelectionProps({ row })} />
-                    {row.cells.map(cell => <TableCell key={cell.id}>{cell.value}</TableCell>)}
+                    {row.cells.map(cell => (
+                      <TableCell key={cell.id}>{cell.value}</TableCell>
+                    ))}
                     <TableCell>
                       <OverflowMenu flipped floatingMenu>
                         <OverflowMenuItem itemText="Option 1" />
