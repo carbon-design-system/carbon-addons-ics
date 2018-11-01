@@ -6,7 +6,7 @@ $border-radius-c: 50%;
 $ics-border-radius: (
   a: $border-radius-a,
   b: $border-radius-b,
-  c: $border-radius-c
+  c: $border-radius-c,
 );
 
 @mixin border-radius-type($type: 'a') {
