@@ -43,6 +43,7 @@ class Avatar extends Component {
     const {
       className,
       description,
+      defaultIconName,
       size,
       imgUrl, // eslint-disable-line no-unused-vars
       ...rest
@@ -75,7 +76,7 @@ class Avatar extends Component {
           height={iconSize}
           width={iconSize}
           description={description}
-          name={'profiles--glyph'}
+          name={defaultIconName}
           fill={'#ffffff'}
         />
       </div>
@@ -103,10 +104,12 @@ Avatar.propTypes = {
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', 'xxl']),
   imgUrl: PropTypes.string,
   description: PropTypes.string.isRequired,
+  defaultIconName: PropTypes.string,
 };
 
 Avatar.defaultProps = {
   size: 'md',
+  defaultIconName: 'profiles--glyph',
 };
 
 export default Avatar;
