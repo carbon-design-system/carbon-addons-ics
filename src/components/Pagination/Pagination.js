@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import classnames from 'classnames';
 import { Tab } from 'carbon-components-react';
 
@@ -10,6 +10,7 @@ export default class Pagination extends Component {
       page: this.props.page,
       hint: false,
     };
+    this.tabRefs = Array.from(Array(this.props.totalItems), createRef);
   }
 
   static propTypes = {
@@ -37,7 +38,7 @@ export default class Pagination extends Component {
   incrementPage = () => {
     const page = this.state.page + 1;
     this.setState({ page });
-    const tab = this[`tab${page}`];
+    const tab = this.tabRefs[page - 1].current;
     tab.tabAnchor.focus();
     this.props.onChange({ page });
   };
@@ -45,7 +46,7 @@ export default class Pagination extends Component {
   decrementPage = () => {
     const page = this.state.page - 1;
     this.setState({ page });
-    const tab = this[`tab${page}`];
+    const tab = this.tabRefs[page - 1].current;
     tab.tabAnchor.focus();
     this.props.onChange({ page });
   };
@@ -70,7 +71,8 @@ export default class Pagination extends Component {
   };
 
   getTabAt = index => {
-    return this[`tab${index}`] || React.Children.toArray(this.props.children)[index];
+    const tabRef = this.tabRefs[index - 1];
+    return (tabRef && tabRef.current) || React.Children.toArray(this.props.children)[index];
   };
 
   handleTabAnchorFocus = page => {
@@ -108,9 +110,7 @@ export default class Pagination extends Component {
           onFocus={this.showHint}
           onBlur={this.hideHint}
           selected={selected}
-          ref={pageTab => {
-            pageTab && (this[`tab${pageTab.props.index}`] = pageTab);
-          }}
+          ref={this.tabRefs[page - 1]}
         />,
       );
       page++;

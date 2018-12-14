@@ -1,5 +1,5 @@
 /* eslint react/no-multi-comp: "off" */
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Tooltip } from '../../index';
@@ -46,19 +46,22 @@ export default class FileUploader extends Component {
     }
   }
   handleChange = evt => {
-    this.setState({ filenames: [...evt.target.files].map(file => file.name) });
+    this.nodes = evt.target.files.map(createRef);
+    this.setState({ filenames: evt.target.files.map(file => file.name) });
     this.props.onChange(evt);
   };
 
   handleClick = (evt, index) => {
     const filteredArray = this.state.filenames.filter(
-      filename => filename !== this.nodes[index].innerText.trim(),
+      filename => filename !== this.nodes[index].current.innerText.trim(),
     );
+    this.nodes = filteredArray.map(createRef);
     this.setState({ filenames: filteredArray });
     this.props.onClick(evt);
   };
 
   clearFiles = () => {
+    this.nodes = [];
     // A clearFiles function that resets filenames and can be referenced using a ref by the parent.
     this.setState({ filenames: [], filenameStatus: '' });
   };
@@ -115,7 +118,7 @@ export default class FileUploader extends Component {
                 <span
                   key={index}
                   className="bx--file__selected-file"
-                  ref={node => (this.nodes[index] = node)} // eslint-disable-line
+                  ref={this.nodes[index]} // eslint-disable-line
                   {...rest}
                 >
                   <p className="bx--file-filename">{name}</p>

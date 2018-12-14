@@ -113,7 +113,7 @@ describe('Avatar', () => {
       spyOn(component, 'onImgErr');
       component.setState({ ImgLoaded: false });
 
-      component.imageDOM = {
+      component.imageDOM.current = {
         naturalWidth: 1,
         naturalHeight: 1,
       };

@@ -96,6 +96,7 @@
     margin-bottom: rem(6px);
     width: rem(16px);
     height: rem(32px);
+    top: 0;
     @include bidi-left(rem(-19px));
 
     &:focus-within {

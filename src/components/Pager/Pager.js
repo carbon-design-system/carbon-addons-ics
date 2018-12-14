@@ -1,41 +1,39 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, forwardRef, createRef } from 'react';
 import classnames from 'classnames';
 import { TooltipHover } from '../../index';
 
-class PagerListItem extends Component {
-  static propTypes = {
-    onClick: PropTypes.func,
-    onKeyUp: PropTypes.func,
-    currentPage: PropTypes.number,
-    selected: PropTypes.bool,
-    id: PropTypes.func,
-  };
+const PagerListItem = forwardRef(({ selected, currentPage, onKeyUp, onClick }, ref) => {
+  const classes = classnames('bx--pager__page-item', {
+    'bx--pager-item--selected': selected,
+  });
 
-  render() {
-    const { selected, currentPage } = this.props;
-    const classes = classnames('bx--pager__page-item', {
-      'bx--pager-item--selected': selected,
-    });
+  return (
+    <button
+      onKeyUp={onKeyUp}
+      onClick={onClick}
+      onKeyDown={e => {
+        e.key === 'Enter' ? e.preventDefault() : '';
+      }}
+      className={classes}
+      type="button"
+      ref={ref}
+    >
+      {currentPage}
+    </button>
+  );
+});
 
-    return (
-      <button
-        onKeyUp={this.props.onKeyUp}
-        onClick={this.props.onClick}
-        onKeyDown={e => {
-          e.key === 'Enter' ? e.preventDefault() : '';
-        }}
-        className={classes}
-        type="button"
-        ref={this.props.id}
-      >
-        {currentPage}
-      </button>
-    );
-  }
-}
+PagerListItem.propTypes = {
+  onClick: PropTypes.func,
+  onKeyUp: PropTypes.func,
+  currentPage: PropTypes.number,
+  selected: PropTypes.bool,
+  id: PropTypes.func,
+};
 
 export default class Pager extends Component {
+  static maxQueuePages = 3;
   constructor(props) {
     super(props);
     const { totalItems, initialPage } = this.props;
@@ -43,7 +41,6 @@ export default class Pager extends Component {
     const higher = [totalItems - 2, totalItems - 1];
     const pagesArr = Array.from(new Array(totalItems), (val, index) => index + 1);
     const maxDisplayPages = 5;
-    const maxQueuePages = 3;
 
     this.state = {
       activePage: initialPage,
@@ -51,10 +48,12 @@ export default class Pager extends Component {
       rightPageQueue: higher,
       activeQueue: totalItems <= maxDisplayPages ? pagesArr : lower,
       truncate: totalItems > maxDisplayPages,
-      showLower: initialPage < maxQueuePages,
-      showCenter: initialPage > maxQueuePages,
+      showLower: initialPage < Pager.maxQueuePages,
+      showCenter: initialPage > Pager.maxQueuePages,
       showHigher: initialPage >= totalItems - 2,
     };
+    // this technically creates too many refs, but refs are pretty cheap so its ok to make extras
+    this.pagerRefs = Array.from(new Array(totalItems), createRef);
   }
 
   static propTypes = {
@@ -77,11 +76,9 @@ export default class Pager extends Component {
 
   updatePageQueue = () => {
     const { truncate, activePage } = this.state;
-    const pageFocus = `pager-${activePage}`;
-    const maxQueuePages = 3;
 
     if (!truncate) return;
-    if (activePage <= maxQueuePages) {
+    if (activePage <= Pager.maxQueuePages) {
       this.setState(
         {
           activeQueue: this.state.leftPageQueue,
@@ -90,10 +87,10 @@ export default class Pager extends Component {
           showHigher: false,
         },
         () => {
-          this[pageFocus].focus();
+          this.pagerRefs[activePage - 1].current.focus();
         },
       );
-    } else if (activePage >= this.props.totalItems - maxQueuePages + 1) {
+    } else if (activePage >= this.props.totalItems - Pager.maxQueuePages + 1) {
       this.setState(
         {
           activeQueue: this.state.rightPageQueue,
@@ -102,7 +99,7 @@ export default class Pager extends Component {
           showHigher: true,
         },
         () => {
-          this[pageFocus].focus();
+          this.pagerRefs[activePage - 1].current.focus();
         },
       );
     } else {
@@ -113,7 +110,7 @@ export default class Pager extends Component {
           showHigher: false,
         },
         () => {
-          this[pageFocus].focus();
+          this.pagerRefs[activePage - 1].current.focus();
         },
       );
     }
@@ -218,9 +215,7 @@ export default class Pager extends Component {
             onKeyUp={this.onKeyUp.bind(this)}
             selected={activePage === page}
             currentPage={page}
-            id={button => {
-              this[`pager-${page}`] = button;
-            }}
+            ref={this.pagerRefs[page - 1]}
           />
         </li>
       );
@@ -246,9 +241,7 @@ export default class Pager extends Component {
                   onKeyUp={this.onKeyUp.bind(this)}
                   selected={activePage === 1}
                   currentPage={1}
-                  id={button => {
-                    this[`pager-1`] = button;
-                  }}
+                  ref={this.pagerRefs[0]}
                 />
               </li>
               {showLower && pageQueue}
@@ -262,9 +255,7 @@ export default class Pager extends Component {
                       onKeyUp={this.onKeyUp.bind(this)}
                       selected={true}
                       currentPage={activePage}
-                      id={button => {
-                        this[`pager-${activePage}`] = button;
-                      }}
+                      ref={this.pagerRefs[activePage - 1]}
                     />
                   </li>
                 )}
@@ -276,9 +267,7 @@ export default class Pager extends Component {
                   onKeyUp={this.onKeyUp.bind(this)}
                   selected={activePage === totalItems}
                   currentPage={totalItems}
-                  id={button => {
-                    this[`pager-${totalItems}`] = button;
-                  }}
+                  id={this.pagerRefs[totalItems - 1]}
                 />
               </li>
             </ul>

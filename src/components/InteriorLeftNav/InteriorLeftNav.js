@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import window from 'window-or-global';
 import classnames from 'classnames';
 import InteriorLeftNavList from '../InteriorLeftNavList';
@@ -11,6 +11,10 @@ export default class InteriorLeftNav extends Component {
     this.state = {
       activeHref: this.props.activeHref || (window.location && window.location.pathname),
     };
+    this.listRefs = React.Children.map(
+      this.props.children,
+      child => (child.type === InteriorLeftNavList ? createRef() : null),
+    );
   }
 
   static propTypes = {
@@ -41,7 +45,7 @@ export default class InteriorLeftNav extends Component {
       if (child.type === InteriorLeftNavList) {
         const childId = `list-${index}`;
         if (childId !== id && !child.props.isExpanded) {
-          this.refs[childId].close();
+          this.listRefs[index].current.close();
         }
       }
     });
@@ -63,7 +67,7 @@ export default class InteriorLeftNav extends Component {
       <InteriorLeftNavList
         {...child.props}
         key={key}
-        ref={key}
+        ref={this.listRefs[index]}
         id={key}
         onListClick={this.handleListClick}
         onItemClick={this.handleItemClick}

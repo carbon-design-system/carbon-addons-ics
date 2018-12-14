@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
 import classNames from 'classnames';
@@ -33,6 +33,8 @@ export default class Tooltip extends Component {
     open: !this.props.openOnHover && this.props.open,
   };
 
+  triggerEl = createRef();
+
   componentDidMount() {
     requestAnimationFrame(() => {
       /* istanbul ignore next */
@@ -41,8 +43,8 @@ export default class Tooltip extends Component {
   }
 
   getTriggerPosition = () => {
-    if (this.triggerEl) {
-      const triggerPosition = this.triggerEl.getBoundingClientRect();
+    if (this.triggerEl && this.triggerEl.current) {
+      const triggerPosition = this.triggerEl.current.getBoundingClientRect();
       this.setState({ triggerPosition });
     }
   };
@@ -100,9 +102,7 @@ export default class Tooltip extends Component {
           <div className="bx--tooltip__trigger">
             {triggerText}
             <div
-              ref={node => {
-                this.triggerEl = node;
-              }}
+              ref={this.triggerEl}
               className="bx--tooltip__icon-container"
               role="button"
               tabIndex="0"
@@ -114,9 +114,7 @@ export default class Tooltip extends Component {
         ) : (
           <div
             className="bx--tooltip__trigger"
-            ref={node => {
-              this.triggerEl = node;
-            }}
+            ref={this.triggerEl}
             role="button"
             tabIndex="0"
             {...triggerProps}

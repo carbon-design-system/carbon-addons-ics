@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon';
 
@@ -20,13 +20,15 @@ export default class Search extends Component {
     labelText: 'Provide labelText',
   };
 
+  input = createRef();
+
   state = {
     hasContent: this.props.value || this.props.defaultValue || false,
   };
 
   clearInput = evt => {
     if (!this.props.value) {
-      this.input.value = '';
+      this.input.current.value = '';
       this.props.onChange(evt);
     } else {
       const clearedEvt = Object.assign({}, evt.target, {
@@ -37,7 +39,7 @@ export default class Search extends Component {
       this.props.onChange(clearedEvt);
     }
 
-    this.setState({ hasContent: false }, () => this.input.focus());
+    this.setState({ hasContent: false }, () => this.input.current.focus());
   };
 
   handleChange = evt => {
@@ -74,9 +76,7 @@ export default class Search extends Component {
             id={id}
             placeholder={placeHolderText}
             onChange={this.handleChange}
-            ref={input => {
-              this.input = input;
-            }}
+            ref={this.input}
           />
           <span className="bx--mi__underline" />
           <label htmlFor={id} className="bx--label">

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon';
 import { Button } from 'carbon-components-react';
@@ -32,6 +32,8 @@ export default class Dialog extends Component {
     modalHeading: 'Provide a heading',
   };
 
+  innerModal = createRef();
+
   handleKeyDown = evt => {
     if (evt.which === 27) {
       this.props.onRequestClose();
@@ -39,7 +41,11 @@ export default class Dialog extends Component {
   };
 
   handleClick = evt => {
-    if (this.innerModal && !this.innerModal.contains(evt.target)) {
+    if (
+      this.innerModal &&
+      this.innerModal.current &&
+      !this.innerModal.current.contains(evt.target)
+    ) {
       this.props.onRequestClose();
     }
   };
@@ -75,12 +81,7 @@ export default class Dialog extends Component {
     );
 
     const modalBody = (
-      <div
-        ref={modal => {
-          this.innerModal = modal;
-        }}
-        className="bx--modal-container"
-      >
+      <div ref={this.innerModal} className="bx--modal-container">
         <div className="bx--modal-header">
           {passiveModal && modalButton}
           <h2 className="bx--modal-header__heading">{modalHeading}</h2>

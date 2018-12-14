@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import Icon from '../Icon';
 import classNames from 'classnames';
 
@@ -32,11 +32,7 @@ export default class NumberInput extends Component {
     invalidText: 'Provide invalidText',
   };
 
-  /**
-   * The DOM node refernce to the `<input>`.
-   * @type {HTMLInputElement}
-   */
-  _inputRef = null;
+  _inputRef = createRef();
 
   constructor(props) {
     super(props);
@@ -66,7 +62,7 @@ export default class NumberInput extends Component {
     if (!this.props.disabled) {
       // access the event properties in an asynchronous way
       evt.persist();
-      evt.imaginaryTarget = this._inputRef;
+      evt.imaginaryTarget = this._inputRef.current;
       this.setState(
         {
           value: evt.target.value,
@@ -91,7 +87,7 @@ export default class NumberInput extends Component {
     if (!disabled && conditional) {
       value = direction === 'down' ? value - step : value + step;
       evt.persist();
-      evt.imaginaryTarget = this._inputRef;
+      evt.imaginaryTarget = this._inputRef.current;
       this.setState(
         {
           value,
@@ -103,14 +99,6 @@ export default class NumberInput extends Component {
         },
       );
     }
-  };
-
-  /**
-   * Preserves the DOM node ref of `<input>`.
-   * @param {HTMLInputElement} ref The DOM node ref of `<input>`.
-   */
-  _handleInputRef = ref => {
-    this._inputRef = ref;
   };
 
   render() {
@@ -125,6 +113,7 @@ export default class NumberInput extends Component {
       step,
       invalid,
       invalidText,
+      _inputRef,
       ...rest
     } = this.props;
 
@@ -187,7 +176,7 @@ export default class NumberInput extends Component {
           className="bx--number"
           {...rest}
           {...props}
-          ref={this._handleInputRef}
+          ref={_inputRef}
         />
         {buttonControls}
         {labelText}

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import classNames from 'classnames';
 import ClickListener from 'carbon-components-react/lib/internal/ClickListener';
 import FloatingMenu from 'carbon-components-react/lib/internal/FloatingMenu';
@@ -7,6 +7,8 @@ import OptimizedResize from 'carbon-components-react/lib/internal/OptimizedResiz
 import Icon from '../Icon';
 
 export default class OverflowMenu extends Component {
+  menuEl = createRef();
+
   constructor(props) {
     super(props);
     this.state = {
@@ -67,8 +69,8 @@ export default class OverflowMenu extends Component {
   }
 
   getMenuPosition = () => {
-    if (this.menuEl) {
-      const menuPosition = this.menuEl.getBoundingClientRect();
+    if (this.menuEl && this.menuEl.current) {
+      const menuPosition = this.menuEl.current.getBoundingClientRect();
       this.setState({ menuPosition });
     }
   };
@@ -92,10 +94,6 @@ export default class OverflowMenu extends Component {
 
   closeMenu = () => {
     this.setState({ open: false });
-  };
-
-  bindMenuEl = menuEl => {
-    this.menuEl = menuEl;
   };
 
   render() {
@@ -155,7 +153,7 @@ export default class OverflowMenu extends Component {
           aria-label={ariaLabel}
           id={id}
           tabIndex={tabIndex}
-          ref={this.bindMenuEl}
+          ref={this.menuEl}
         >
           <Icon
             onClick={this.handleClick}

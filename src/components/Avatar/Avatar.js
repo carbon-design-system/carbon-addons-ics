@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Icon from '../Icon';
@@ -17,6 +17,8 @@ class Avatar extends Component {
     imgLoaded: false,
   };
 
+  imageDOM = createRef();
+
   componentWillMount() {
     this.setState({ imgUrl: this.props.imgUrl, ImgError: false, ImgLoaded: false });
   }
@@ -28,7 +30,12 @@ class Avatar extends Component {
   }
 
   onImgLoad() {
-    if (this.imageDOM.naturalWidth < 2 && this.imageDOM.naturalHeight < 2 && !this.state.ImgError) {
+    if (
+      this.imageDOM.current &&
+      this.imageDOM.current.naturalWidth < 2 &&
+      this.imageDOM.current.naturalHeight < 2 &&
+      !this.state.ImgError
+    ) {
       this.onImgErr();
     } else {
       this.setState({ ImgLoaded: true });
@@ -59,7 +66,7 @@ class Avatar extends Component {
 
     const imageElement = this.state.imgUrl ? (
       <img
-        ref={ref => (this.imageDOM = ref)}
+        ref={this.imageDOM}
         onError={() => this.onImgErr()}
         onLoad={() => this.onImgLoad()}
         src={this.state.imgUrl}
