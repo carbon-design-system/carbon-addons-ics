@@ -29,7 +29,6 @@ PagerListItem.propTypes = {
   onKeyUp: PropTypes.func,
   currentPage: PropTypes.number,
   selected: PropTypes.bool,
-  id: PropTypes.func,
 };
 
 export default class Pager extends Component {
@@ -210,7 +209,6 @@ export default class Pager extends Component {
       return (
         <li key={`pager-${page}`} index={page}>
           <PagerListItem
-            label={page.toString()}
             onClick={this.handleClick.bind(this)}
             onKeyUp={this.onKeyUp.bind(this)}
             selected={activePage === page}
@@ -267,7 +265,7 @@ export default class Pager extends Component {
                   onKeyUp={this.onKeyUp.bind(this)}
                   selected={activePage === totalItems}
                   currentPage={totalItems}
-                  id={this.pagerRefs[totalItems - 1]}
+                  ref={this.pagerRefs[totalItems - 1]}
                 />
               </li>
             </ul>

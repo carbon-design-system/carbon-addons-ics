@@ -30,6 +30,9 @@
   .#{$prefix}--checkbox-label::after {
     width: 8px;
     height: 3px;
+    box-sizing: content-box;
+    top: 5.5px;
+    margin-top: 0;
     @include bidi-left(3px);
     outline: none;
     /* draw the check */

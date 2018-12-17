@@ -24,6 +24,7 @@
     &:focus,
     &:active {
       outline: none;
+      box-shadow: none;
       @include mi-underline-focus;
     }
 

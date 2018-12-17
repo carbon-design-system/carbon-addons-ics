@@ -34,6 +34,7 @@
   }
 
   .#{$prefix}--text-area__container {
+    display: block;
     ~ .#{$prefix}--label {
       position: absolute;
       left: 0;

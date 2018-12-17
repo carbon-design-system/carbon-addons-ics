@@ -15,7 +15,7 @@
   }
 
   .#{$prefix}--search-bar {
-    display: flex;
+    display: block;
     position: relative;
     width: 100%;
     flex-direction: column;

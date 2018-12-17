@@ -10,6 +10,12 @@
 @include exports('select--ics') {
   .#{$prefix}--select {
     max-width: rem(440px);
+    display: block;
+
+    // nested for specificity
+    & &-input:hover {
+      background: transparent;
+    }
   }
 
   .#{$prefix}--select-input {
@@ -32,6 +38,7 @@
 
     &:focus {
       outline: none;
+      box-shadow: none;
       @include mi-underline-focus;
     }
 
@@ -75,10 +82,16 @@
 
   .#{$prefix}--select--inline {
     display: inline-block;
-    margin-left: 0.5rem;
     .#{$prefix}--select-input {
       color: $text-02;
       font-weight: 400;
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+      & ~ .#{$prefix}--select__arrow {
+        top: 0.25rem;
+      }
     }
   }
 }
