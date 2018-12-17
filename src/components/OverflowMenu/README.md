@@ -1,8 +1,7 @@
 ### Usage
 
 ```js
-import { OverflowMenu } from 'carbon-addons-ics';
-import { OverflowMenuItem } from 'carbon-components-react';
+import { OverflowMenu, OverflowMenuItem } from 'carbon-components-react';
 ```
 
 ### About

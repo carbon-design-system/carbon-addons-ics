@@ -11,7 +11,7 @@
     height: rem(32px);
     min-width: rem(32px);
     border: 1px solid transparent;
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
 
@@ -32,9 +32,12 @@
   }
 
   .#{$prefix}--overflow-menu__icon {
-    padding: 0;
     fill: $text-01;
     @include icon-reset;
+    height: 20px;
+    width: 20px;
+    padding: rem(5px);
+    box-sizing: content-box; // so the click target is as large as the button
   }
 
   .#{$prefix}--overflow-menu__link {
@@ -61,7 +64,6 @@
   }
 
   .#{$prefix}--overflow-menu-options--open {
-    margin-top: rem(12px);
     padding: 0;
 
     &:focus {

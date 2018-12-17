@@ -2,7 +2,7 @@ import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
 import classNames from 'classnames';
-import FloatingMenu from '../../globals/internal/FloatingMenu';
+import FloatingMenu from 'carbon-components-react/lib/internal/FloatingMenu';
 
 export default class Tooltip extends Component {
   static propTypes = {

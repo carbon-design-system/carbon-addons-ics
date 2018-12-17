@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from '../Icon';
-import FloatingMenu from '../../globals/internal/FloatingMenu';
+import FloatingMenu from 'carbon-components-react/lib/internal/FloatingMenu';
 import Tooltip from '../Tooltip';
 import { mount } from 'enzyme';
 
