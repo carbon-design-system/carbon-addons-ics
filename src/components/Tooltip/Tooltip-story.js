@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { Tooltip } from '../../index';
+import { Tooltip } from 'carbon-components-react';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 
@@ -15,7 +15,7 @@ storiesOf('Components|Tooltip', module)
     `,
     )(() => (
       <div style={{ marginTop: '2rem' }}>
-        <Tooltip triggerText="Tooltip label">
+        <Tooltip clickToOpen triggerText="Tooltip label">
           <p className="bx--tooltip__label">Tooltip subtitle</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -30,10 +30,10 @@ storiesOf('Components|Tooltip', module)
     )),
   )
   .add(
-    'Complex tooltip on hover',
+    'Tooltip on hover',
     withInfo('This example shows a floating tooltip that appears on hover.')(() => (
       <div style={{ marginTop: '2rem' }}>
-        <Tooltip openOnHover triggerText="Tooltip label">
+        <Tooltip triggerText="Tooltip label">
           <p className="bx--tooltip__label">Tooltip subtitle</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor

@@ -1,7 +1,7 @@
 ### Usage
 
 ```js
-import { Tooltip } from 'carbon-addons-ics';
+import { Tooltip } from 'carbon-components-react';
 ```
 
 ### About

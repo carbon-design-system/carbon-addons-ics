@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component, forwardRef, createRef } from 'react';
 import classnames from 'classnames';
-import { TooltipHover } from '../../index';
+import { Tooltip } from 'carbon-components-react';
 
 const PagerListItem = forwardRef(({ selected, currentPage, onKeyUp, onClick }, ref) => {
   const classes = classnames('bx--pager__page-item', {
@@ -168,11 +168,9 @@ export default class Pager extends Component {
 
   buildTooltip = iconInfo => {
     return (
-      <TooltipHover
-        text={iconInfo.description}
-        iconName={iconInfo.name}
-        className="bx--pager__button-icon"
-      />
+      <Tooltip triggerText="" iconName={iconInfo.name} className="bx--pager__button-icon">
+        {iconInfo.description}
+      </Tooltip>
     );
   };
 
@@ -189,17 +187,16 @@ export default class Pager extends Component {
     const { className, totalItems, backwardText, forwardText, ...rest } = this.props;
     const { activePage, activeQueue, truncate, showLower, showCenter, showHigher } = this.state;
 
-    const classNames = classnames({
+    const classNames = classnames(className, {
       'bx--pager': true,
-      [className]: className,
     });
 
     const backwardIcon = {
-      name: 'left',
+      name: 'chevron--left',
       description: backwardText,
     };
     const forwardIcon = {
-      name: 'right',
+      name: 'chevron--right',
       description: forwardText,
     };
 

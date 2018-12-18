@@ -26,7 +26,11 @@ $focused-box-shadow: 0px 0px 0px 1px $inverse-01, 0px 0px 0px 2px $brand-01;
     &:hover,
     &:focus {
       svg {
-        fill: $brand-01;
+        path,
+        polygon,
+        circle {
+          fill: $inverse-01;
+        }
         outline: none;
       }
     }
@@ -36,7 +40,11 @@ $focused-box-shadow: 0px 0px 0px 1px $inverse-01, 0px 0px 0px 2px $brand-01;
     }
 
     svg {
-      fill: $text-01;
+      path,
+      polygon,
+      circle {
+        fill: $text-01;
+      }
       margin: 0 rem(8px);
     }
   }
