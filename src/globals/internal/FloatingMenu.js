@@ -249,7 +249,7 @@ class FloatingMenu extends React.Component {
             refPosition,
             direction: menuDirection,
             offset,
-            scrollY: window.scrollY,
+            scrollY: window.pageYOffset,
           }),
         });
       }
