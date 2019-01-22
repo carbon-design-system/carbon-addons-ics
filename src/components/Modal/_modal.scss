@@ -9,8 +9,6 @@
 
 @include exports('modal--ics') {
   .#{$prefix}--modal {
-    background-color: $inverse-01;
-
     &.is-visible {
       background: rgba(0, 0, 0, 0.75);
     }
