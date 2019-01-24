@@ -123,7 +123,7 @@ If you decide to not install a linter addon, or cannot, you can run `npm run lin
 
 ## Commit Message Guidelines
 
-We use commit message guidelines based on the [Angular Commit Conventions](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit), using `Commitizen` as a CLI wizard to walk developers through writing their commit message.  
+We use commit message guidelines based on the [Angular Commit Conventions](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit), using `Commitizen` as a CLI wizard to walk developers through writing their commit message.
 
 This CLI wizard can either be installed by the developer to the global `npm` scope by running `npm i -g commitizen`, or it can be used as a dev dependency on this project by running `npm run commit`.
 
