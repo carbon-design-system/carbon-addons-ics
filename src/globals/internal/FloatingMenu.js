@@ -77,31 +77,25 @@ const getFloatingPosition = ({
   const { top = 0, left = 0 } = offset;
   const refCenterHorizontal = (refLeft + refRight) / 2;
   const refCenterVertical = (refTop + refBottom) / 2;
-  const caretWidth = 8;
 
-  switch (direction) {
-    case DIRECTION_LEFT:
-      return {
-        left: refLeft - width - left - caretWidth,
-        top: refCenterVertical - height / 2 + scrollY + top,
-      };
-    case DIRECTION_TOP:
-      return {
-        left: refCenterHorizontal - width / 2 + left,
-        top: refTop - height + scrollY - top - caretWidth,
-      };
-    case DIRECTION_RIGHT:
-      return {
-        left: refRight + left + caretWidth,
-        top: refCenterVertical - height / 2 + scrollY + top,
-      };
-    case DIRECTION_BOTTOM:
-      return {
-        left: refCenterHorizontal - width / 2 + left,
-        top: refBottom + scrollY + top + caretWidth,
-      };
-  }
-  return {};
+  return {
+    [DIRECTION_LEFT]: () => ({
+      left: refLeft - width - left,
+      top: refCenterVertical - height / 2 + scrollY + top,
+    }),
+    [DIRECTION_TOP]: () => ({
+      left: refCenterHorizontal - width / 2 + left,
+      top: refTop - height + scrollY - top,
+    }),
+    [DIRECTION_RIGHT]: () => ({
+      left: refRight + left,
+      top: refCenterVertical - height / 2 + scrollY + top,
+    }),
+    [DIRECTION_BOTTOM]: () => ({
+      left: refCenterHorizontal - width / 2 + left,
+      top: refBottom + scrollY + top,
+    }),
+  }[direction]();
 };
 
 /**
@@ -150,6 +144,16 @@ class FloatingMenu extends React.Component {
      * The additional styles to put to the floating menu.
      */
     styles: PropTypes.object,
+
+    /**
+     * The callback called when the menu body has been mounted to/will be unmounted from the DOM.
+     */
+    menuRef: PropTypes.func,
+
+    /**
+     * The callback called when the menu body has been mounted and positioned.
+     */
+    onPlace: PropTypes.func,
   };
 
   static defaultProps = {
@@ -158,13 +162,15 @@ class FloatingMenu extends React.Component {
     menuDirection: DIRECTION_BOTTOM,
   };
 
+  // `true` if the menu body is mounted and calculation of the position is in progress.
+  _placeInProgress = false;
+
   state = {
     /**
      * The position of the menu, relative to the top-left corner of the viewport.
      * @type {FloatingMenu~offset}
      */
     floatingPosition: undefined,
-    menuRendered: false,
   };
 
   /**
@@ -188,16 +194,6 @@ class FloatingMenu extends React.Component {
       this.el = document.createElement('div');
     }
   }
-
-  /**
-   * A callback called when a new menu ref is available.
-   * @private
-   */
-  _onNewMenuRef = menu => {
-    if (hasCreatePortal) {
-      this._menuBody = menu && menu.firstChild;
-    }
-  };
 
   /**
    * Calculates the position in the viewport of floating menu,
@@ -232,8 +228,7 @@ class FloatingMenu extends React.Component {
       oldRefPosition.bottom !== refPosition.bottom ||
       oldRefPosition.left !== refPosition.left ||
       hasChangeInOffset(oldMenuOffset, menuOffset) ||
-      oldMenuDirection !== menuDirection ||
-      !this.state.menuRendered
+      oldMenuDirection !== menuDirection
     ) {
       const menuSize = menuBody.getBoundingClientRect();
       const offset =
@@ -241,9 +236,8 @@ class FloatingMenu extends React.Component {
       // Skips if either in the following condition:
       // a) Menu body has `display:none`
       // b) `menuOffset` as a callback returns `undefined` (The callback saw that it couldn't calculate the value)
-      if (menuSize.width > 0 && menuSize.height > 0 && offset) {
+      if ((menuSize.width > 0 && menuSize.height > 0) || !offset) {
         this.setState({
-          menuRendered: true,
           floatingPosition: getFloatingPosition({
             menuSize,
             refPosition,
@@ -257,14 +251,23 @@ class FloatingMenu extends React.Component {
   };
 
   componentDidUpdate(prevProps) {
+    const invokeOnPlace = () => {
+      const { onPlace } = this.props;
+      if (this._placeInProgress && this.state.floatingPosition && typeof onPlace === 'function') {
+        onPlace(this._menuBody);
+        this._placeInProgress = false;
+      }
+    };
     if (!hasCreatePortal) {
-      ReactDOM.render(this._getChildrenWithProps(), this._menuContainer);
+      ReactDOM.render(this._getChildrenWithProps(), this._menuContainer, invokeOnPlace);
     } else {
       this._updateMenuSize(prevProps);
+      invokeOnPlace();
     }
   }
 
   componentDidMount() {
+    const { menuRef } = this.props;
     if (!hasCreatePortal) {
       this._menuContainer = document.createElement('div');
       document.body.appendChild(this._menuContainer);
@@ -276,20 +279,28 @@ class FloatingMenu extends React.Component {
         style,
       });
       ReactDOM.render(childrenWithProps, this._menuContainer, () => {
+        this._placeInProgress = true;
         this._menuBody = this._menuContainer.firstChild;
         this._updateMenuSize();
-        ReactDOM.render(this._getChildrenWithProps(), this._menuContainer);
+        ReactDOM.render(this._getChildrenWithProps(), this._menuContainer, () => {
+          menuRef && menuRef(this._menuBody);
+        });
       });
     } else {
       if (this.el && this.el.firstChild) {
         this._menuBody = this.el.firstChild;
         document.body.appendChild(this._menuBody);
+        this._placeInProgress = true;
+        menuRef && menuRef(this._menuBody);
       }
       this._updateMenuSize();
     }
   }
 
   componentWillUnmount() {
+    const { menuRef } = this.props;
+    menuRef && menuRef(null);
+    this._placeInProgress = false;
     if (!hasCreatePortal) {
       const menuContainer = this._menuContainer;
       ReactDOM.unmountComponentAtNode(menuContainer);
@@ -310,21 +321,27 @@ class FloatingMenu extends React.Component {
   _getChildrenWithProps = () => {
     const { styles, children } = this.props;
     const { floatingPosition: pos } = this.state;
-    return !pos
-      ? children
-      : React.cloneElement(children, {
-          style: Object.assign(
-            {
-              left: `${pos.left}px`,
-              top: `${pos.top}px`,
-              position: 'absolute',
-              right: 'auto',
-              margin: 0,
-              opacity: 1,
-            },
-            styles,
-          ),
-        });
+    // If no pos available, we need to hide the element (offscreen to the left)
+    // This is done so we can measure the content before positioning it correctly.
+    const positioningStyle = pos
+      ? {
+          left: `${pos.left}px`,
+          top: `${pos.top}px`,
+          right: 'auto',
+        }
+      : {
+          visibility: 'hidden',
+          top: '0px',
+        };
+    return React.cloneElement(children, {
+      style: {
+        ...styles,
+        ...positioningStyle,
+        position: 'absolute',
+        margin: 0,
+        opacity: 1,
+      },
+    });
   };
 
   render() {
