@@ -16,60 +16,50 @@ $grid-gutter-breakpoints: (
   sm: 8px,
   md: 36px
 );
-
 @mixin grid {
   .#{$prefix}--grid {
     margin-left: grid-gutter('xs');
     margin-right: grid-gutter('xs');
     padding-left: 0;
     padding-right: 0;
-
     @media (min-width: breakpoint('sm')) {
       margin-left: grid-gutter('sm');
       margin-right: grid-gutter('sm');
     }
-
     @media (min-width: breakpoint('md')) {
       margin-left: grid-gutter('md');
       margin-right: grid-gutter('md');
     }
-
     &.max {
       max-width: $max-width;
-
       @media (min-width: breakpoint('xl')) {
         margin-left: auto;
         margin-right: auto;
       }
     }
   }
-
   .#{$prefix}--row {
     display: flex;
     flex-wrap: wrap;
     margin: 0;
   }
-
   [class*='#{$prefix}--col'] {
     position: relative;
     width: 100%;
     min-height: 1px;
     padding: 0 gutter('xs');
   }
-
   @for $i from 1 through $columns {
     .#{$prefix}--col-xs-#{$i} {
       flex-basis: (100% * $i / $columns);
     }
   }
-
   @each $breakpoint in map-keys($grid-breakpoints) {
     @media (min-width: breakpoint($breakpoint)) {
       .#{$prefix}--col-#{$breakpoint}-auto {
         flex: 0 0 auto;
         width: auto;
       }
-
       @for $i from 1 through $columns {
         .#{$prefix}--col-#{$breakpoint}-#{$i} {
           flex-basis: (100% * $i / $columns);
@@ -77,7 +67,6 @@ $grid-gutter-breakpoints: (
       }
     }
   }
-
   .#{$prefix}--col-xs,
   .#{$prefix}--col-sm,
   .#{$prefix}--col-md,
@@ -88,7 +77,6 @@ $grid-gutter-breakpoints: (
     max-width: 100%;
   }
 }
-
 // map functions
 @function breakpoint($breakpoint) {
   @if map-has-key($grid-breakpoints, $breakpoint) {
@@ -97,7 +85,6 @@ $grid-gutter-breakpoints: (
     @warn 'breakpoint: could not find #{$breakpoint} in $grid-breakpoints map. Please make sure it is defined';
   }
 }
-
 @function gutter($breakpoint) {
   @if map-has-key($gutter-breakpoints, $breakpoint) {
     @return map-get($gutter-breakpoints, $breakpoint);
@@ -105,7 +92,6 @@ $grid-gutter-breakpoints: (
     @warn 'gutter: could not find #{$breakpoint} in $gutter-breakpoints map. Please make sure it is defined';
   }
 }
-
 @function grid-gutter($breakpoint) {
   @if map-has-key($grid-gutter-breakpoints, $breakpoint) {
     @return map-get($grid-gutter-breakpoints, $breakpoint);
@@ -113,10 +99,8 @@ $grid-gutter-breakpoints: (
     @warn 'grid-gutter: could not find #{$breakpoint} in $grid-breakpoints map. Please make sure it is defined';
   }
 }
-
 @mixin column-size($col-num) {
   flex-basis: (100% * $col-num / $columns);
   max-width: (100% * $col-num / $columns);
 }
-
 @include grid;
