@@ -61,16 +61,13 @@ $ics-type-prescription-map: (
       margin-bottom: 1rem
     )
 );
-
 @mixin disable-font-smoothing {
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
 }
-
 @function rem($px) {
   @return ($px / $base-font-size) * 1rem;
 }
-
 @mixin type-scale-item($prescription, $margin: true, $max-width: false) {
   $step: map-get($ics-type-prescription-map, $prescription);
   @include disable-font-smoothing;
@@ -78,73 +75,58 @@ $ics-type-prescription-map: (
   font-weight: map-get($step, 'font-weight');
   line-height: map-get($step, 'line-height');
   letter-spacing: map-get($step, 'letter-spacing');
-
   @if $margin == true {
     margin-bottom: map-get($step, 'margin-bottom');
   }
-
   @if $max-width == true {
     max-width: map-get($step, 'max-width');
   }
 }
-
 @mixin ics-typography {
   strong {
     font-weight: 600;
   }
-
   p {
     @include type-scale-item(c, true, true);
-
     a:hover {
       text-decoration: underline;
     }
   }
-
   em {
     font-style: italic;
   }
-
   a {
     color: $brand-01;
     word-break: break-all;
     text-decoration: none;
   }
-
   h1,
   .ibm-type-h {
     @include type-scale-item(h, true, true);
   }
-
   h2,
   .ibm-type-g {
     @include type-scale-item(g, true, true);
   }
-
   h3,
   .ibm-type-e {
     @include type-scale-item(e, true, true);
   }
-
   h4,
   .ibm-type-d {
     @include type-scale-item(d, true, true);
   }
-
   .ibm-type-c {
     @include type-scale-item(c, true, true);
   }
-
   caption,
   .ibm-type-b {
     @include type-scale-item(b, true, true);
   }
-
   .ibm-type-a {
     @include type-scale-item(a, true, true);
   }
 }
-
 @include exports('ics--typography') {
   @if global-variable-exists('ics--typography') == false or $ics--typography == true {
     @include ics-typography;

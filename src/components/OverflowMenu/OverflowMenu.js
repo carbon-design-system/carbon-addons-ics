@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import ClickListener from 'carbon-components-react/lib/internal/ClickListener';
-import FloatingMenu from 'carbon-components-react/lib/internal/FloatingMenu';
+import FloatingMenu from '../../globals/internal/FloatingMenu';
 import OptimizedResize from 'carbon-components-react/lib/internal/OptimizedResize';
 import Icon from '../Icon';
 
