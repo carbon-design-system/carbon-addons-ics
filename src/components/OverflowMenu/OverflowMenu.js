@@ -5,7 +5,6 @@ import ClickListener from 'carbon-components-react/lib/internal/ClickListener';
 import FloatingMenu from '../../globals/internal/FloatingMenu';
 import OptimizedResize from 'carbon-components-react/lib/internal/OptimizedResize';
 import Icon from '../Icon';
-// import { Icon } from 'carbon-components-react';
 
 const matchesFuncName =
   typeof Element !== 'undefined' &&
@@ -150,11 +149,6 @@ export default class OverflowMenu extends Component {
      * The CSS class for the icon.
      */
     iconClass: PropTypes.string,
-
-    /**
-     * Function called to override icon rendering.
-     */
-    // renderIcon: PropTypes.func,
   };
 
   static defaultProps = {
@@ -317,7 +311,6 @@ export default class OverflowMenu extends Component {
       menuOffsetFlip,
       iconClass,
       onClick, // eslint-disable-line
-      // renderIcon,
       ...other
     } = this.props;
 
@@ -363,14 +356,6 @@ export default class OverflowMenu extends Component {
         </FloatingMenu>
       </div>
     );
-
-    // const iconProps = {
-    //   onClick: this.handleClick,
-    //   onKeyDown: this.handleKeyDown,
-    //   className: overflowMenuIconClasses,
-    //   description: iconDescription,
-    //   focusable: 'false', // Prevent `<svg>` in trigger icon from getting focus for IE11
-    // };
 
     return (
       <ClickListener onClickOutside={this.handleClickOutside}>
