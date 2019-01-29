@@ -77,6 +77,7 @@ const getFloatingPosition = ({
   const { top = 0, left = 0 } = offset;
   const refCenterHorizontal = (refLeft + refRight) / 2;
   const refCenterVertical = (refTop + refBottom) / 2;
+  const caretWidth = 8;
 
   return {
     [DIRECTION_LEFT]: () => ({
@@ -85,7 +86,7 @@ const getFloatingPosition = ({
     }),
     [DIRECTION_TOP]: () => ({
       left: refCenterHorizontal - width / 2 + left,
-      top: refTop - height + scrollY - top,
+      top: refTop - height + scrollY - top - caretWidth,
     }),
     [DIRECTION_RIGHT]: () => ({
       left: refRight + left,
@@ -93,7 +94,7 @@ const getFloatingPosition = ({
     }),
     [DIRECTION_BOTTOM]: () => ({
       left: refCenterHorizontal - width / 2 + left,
-      top: refBottom + scrollY + top,
+      top: refBottom + scrollY + top + caretWidth,
     }),
   }[direction]();
 };
@@ -171,6 +172,7 @@ class FloatingMenu extends React.Component {
      * @type {FloatingMenu~offset}
      */
     floatingPosition: undefined,
+    menuRendered: false,
   };
 
   /**
@@ -228,7 +230,8 @@ class FloatingMenu extends React.Component {
       oldRefPosition.bottom !== refPosition.bottom ||
       oldRefPosition.left !== refPosition.left ||
       hasChangeInOffset(oldMenuOffset, menuOffset) ||
-      oldMenuDirection !== menuDirection
+      oldMenuDirection !== menuDirection ||
+      !this.state.menuRendered
     ) {
       const menuSize = menuBody.getBoundingClientRect();
       const offset =
@@ -236,8 +239,9 @@ class FloatingMenu extends React.Component {
       // Skips if either in the following condition:
       // a) Menu body has `display:none`
       // b) `menuOffset` as a callback returns `undefined` (The callback saw that it couldn't calculate the value)
-      if ((menuSize.width > 0 && menuSize.height > 0) || !offset) {
+      if (menuSize.width > 0 && menuSize.height > 0 && offset) {
         this.setState({
+          menuRendered: true,
           floatingPosition: getFloatingPosition({
             menuSize,
             refPosition,
