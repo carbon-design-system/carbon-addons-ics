@@ -55,6 +55,7 @@ const hasChangeInOffset = (oldMenuOffset = {}, menuOffset = {}) => {
  * @param {FloatingMenu~position} params.refPosition The position of the triggering element.
  * @param {FloatingMenu~offset} [params.offset={ left: 0, top: 0 }] The position offset of the menu.
  * @param {string} [params.direction=bottom] The menu direction.
+ * @param {number} [params.scrollX=0] The scroll position of the viewport.
  * @param {number} [params.scrollY=0] The scroll position of the viewport.
  * @returns {FloatingMenu~offset} The position of the menu, relative to the top-left corner of the viewport.
  * @private
@@ -64,6 +65,7 @@ const getFloatingPosition = ({
   refPosition,
   offset = {},
   direction = DIRECTION_BOTTOM,
+  scrollX = 0,
   scrollY = 0,
 }) => {
   const {
@@ -81,19 +83,19 @@ const getFloatingPosition = ({
 
   return {
     [DIRECTION_LEFT]: () => ({
-      left: refLeft - width - left,
+      left: refLeft - width + scrollX - left,
       top: refCenterVertical - height / 2 + scrollY + top,
     }),
     [DIRECTION_TOP]: () => ({
-      left: refCenterHorizontal - width / 2 + left,
+      left: refCenterHorizontal - width / 2 + scrollX + left,
       top: refTop - height + scrollY - top - caretWidth,
     }),
     [DIRECTION_RIGHT]: () => ({
-      left: refRight + left,
+      left: refRight + scrollX + left,
       top: refCenterVertical - height / 2 + scrollY + top,
     }),
     [DIRECTION_BOTTOM]: () => ({
-      left: refCenterHorizontal - width / 2 + left,
+      left: refCenterHorizontal - width / 2 + scrollX + left,
       top: refBottom + scrollY + top + caretWidth,
     }),
   }[direction]();
@@ -247,6 +249,7 @@ class FloatingMenu extends React.Component {
             refPosition,
             direction: menuDirection,
             offset,
+            scrollX: window.pageXOffset,
             scrollY: window.pageYOffset,
           }),
         });
