@@ -8,8 +8,6 @@
 @import '../Form/form';
 
 @include exports('text-input--ics') {
-  $clear-width: rem(24px);
-
   .#{$prefix}--text-input__wrapper {
     position: relative;
     margin-top: rem(24px);
@@ -22,8 +20,6 @@
     background: $field-01;
     border: none;
     border-bottom: $input-border;
-    display: inline-block;
-    vertical-align: top;
 
     &:focus,
     &:active {
@@ -44,10 +40,6 @@
       border-bottom: 1px solid $text-02;
     }
 
-    &.#{$prefix}--text-input--clearable {
-      width: calc(100% - #{$clear-width});
-    }
-
     // Label animation
     ~ .#{$prefix}--label {
       @include type-scale-item(c, false);
@@ -66,12 +58,5 @@
       color: $text-01;
       top: rem(-20px);
     }
-  }
-
-  .#{$prefix}--text-input__clear {
-    display: inline-block;
-    width: $clear-width;
-    vertical-align: top;
-    transition: opacity 0.5s;
   }
 }

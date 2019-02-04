@@ -1,6 +1,5 @@
 import React from 'react';
 import TextInput from './TextInput';
-import Icon from '../Icon';
 import { mount, shallow } from 'enzyme';
 
 describe('TextInput', () => {
@@ -62,19 +61,6 @@ describe('TextInput', () => {
         expect(renderedLabel.text()).toEqual('Email Input');
       });
     });
-
-    describe('clear', () => {
-      wrapper.setProps({ clearable: true });
-      const renderedIcon = wrapper.find(Icon);
-
-      it('renders an icon', () => {
-        expect(renderedIcon.length).toBe(1);
-      });
-
-      it('has the expected classes', () => {
-        expect(renderedIcon.hasClass('bx--text-input__clear')).toEqual(true);
-      });
-    });
   });
 
   describe('events', () => {
@@ -128,23 +114,6 @@ describe('TextInput', () => {
       it('should invoke onChange when input value is changed', () => {
         input.simulate('change', eventObject);
         expect(onChange).toBeCalledWith(eventObject);
-      });
-    });
-
-    describe('clear input', () => {
-      const onClick = jest.fn();
-      const onClear = jest.fn();
-
-      const wrapper = mount(
-        <TextInput labelText="testlabel" id="test" onClick={onClick} onClear={onClear} clearable />,
-      );
-
-      const renderedIcon = wrapper.find(Icon);
-
-      it('should invoke onClear when clear icon is clicked', () => {
-        renderedIcon.simulate('click');
-        expect(wrapper.state('labelMotion')).toBe(false);
-        expect(onClear).toBeCalled();
       });
     });
   });
