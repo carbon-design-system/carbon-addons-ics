@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import Icon from '../Icon';
 
 export default class TextInput extends Component {
   constructor(props) {
@@ -8,6 +9,7 @@ export default class TextInput extends Component {
     this.state = {
       labelMotion: !!props.defaultValue || !!props.value || props.defaultValue === 0,
     };
+    this.inputRef = null;
   }
   componentWillReceiveProps(nextProps) {
     const { value } = nextProps;
@@ -28,6 +30,9 @@ export default class TextInput extends Component {
     hideLabel: PropTypes.bool,
     invalid: PropTypes.bool,
     invalidText: PropTypes.string,
+    clearable: PropTypes.bool,
+    clearDescription: PropTypes.string,
+    onClear: PropTypes.func,
   };
 
   static defaultProps = {
@@ -40,6 +45,9 @@ export default class TextInput extends Component {
     invalid: false,
     labelText: '',
     invalidText: 'Provide invalidText',
+    clearable: false,
+    clearDescription: 'Clear',
+    onClear: () => {},
   };
 
   _onChange = evt => {
@@ -60,18 +68,38 @@ export default class TextInput extends Component {
     }
   };
 
+  onClear = () => {
+    if (!this.props.disabled) {
+      this.inputRef.value = '';
+      this.setState({ labelMotion: false });
+      this.props.onClear();
+    }
+  };
+
   render() {
-    const { labelText, id, type, hideLabel, invalid, invalidText, ...rest } = this.props;
+    const {
+      labelText,
+      id,
+      type,
+      hideLabel,
+      invalid,
+      invalidText,
+      clearable,
+      clearDescription,
+      ...rest
+    } = this.props;
+    const { labelMotion } = this.state;
 
     const textInputClasses = classNames({
       'bx--text-input': true,
       [this.props.className]: this.props.className,
-      'bx--text-input--value': this.state.labelMotion,
+      'bx--text-input--value': labelMotion,
+      'bx--text-input--clearable': clearable,
     });
 
     const labelClasses = classNames({
       'bx--label': true,
-      'bx--label-motion': this.state.labelMotion,
+      'bx--label-motion': labelMotion,
       'bx--visually-hidden': hideLabel,
     });
 
@@ -94,6 +122,7 @@ export default class TextInput extends Component {
         onChange={this._onChange.bind(this)}
         data-invalid
         placeholder={null}
+        ref={el => (this.inputRef = el)}
       />
     ) : (
       <input
@@ -105,14 +134,26 @@ export default class TextInput extends Component {
         onClick={this._onClick.bind(this)}
         onChange={this._onChange.bind(this)}
         placeholder={null}
+        ref={el => (this.inputRef = el)}
       />
     );
 
     const span = <span className="bx--mi__underline" />;
 
+    const clear = clearable ? (
+      <Icon
+        name="close"
+        className="bx--text-input__clear"
+        description={clearDescription}
+        onClick={this.onClear}
+        style={{ opacity: labelMotion ? 1 : 0 }}
+      />
+    ) : null;
+
     return (
       <div className="bx--text-input__wrapper">
         {input}
+        {clear}
         {span}
         {label}
         {error}
