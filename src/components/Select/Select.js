@@ -29,10 +29,18 @@ const Select = ({
       </label>
 
       <div className={selectClasses}>
-        <select {...rest} id={id} className="bx--select-input" disabled={disabled}>
+        <select
+          {...rest}
+          id={id}
+          className="bx--select-input"
+          disabled={disabled}>
           {children}
         </select>
-        <Icon name="down" className="bx--select__arrow" description={iconDescription} />
+        <Icon
+          name="down"
+          className="bx--select__arrow"
+          description={iconDescription}
+        />
         <span className="bx--mi__underline" />
       </div>
     </div>

@@ -25,8 +25,7 @@ storiesOf('Globals|Layer', module)
             <div
               style={{
                 ...boxStyle,
-              }}
-            >
+              }}>
               <div className="ibm-type-b">flat</div>
             </div>
           </div>
@@ -34,9 +33,9 @@ storiesOf('Globals|Layer', module)
             <div
               style={{
                 ...boxStyle,
-                boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 2px 2px 0 rgba(0, 0, 0, 0.1)',
-              }}
-            >
+                boxShadow:
+                  '0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 2px 2px 0 rgba(0, 0, 0, 0.1)',
+              }}>
               <div className="ibm-type-b">raised</div>
             </div>
           </div>
@@ -44,9 +43,9 @@ storiesOf('Globals|Layer', module)
             <div
               style={{
                 ...boxStyle,
-                boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 4px 4px 0 rgba(0, 0, 0, 0.1)',
-              }}
-            >
+                boxShadow:
+                  '0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 4px 4px 0 rgba(0, 0, 0, 0.1)',
+              }}>
               <div className="ibm-type-b">overlay</div>
             </div>
           </div>
@@ -54,9 +53,9 @@ storiesOf('Globals|Layer', module)
             <div
               style={{
                 ...boxStyle,
-                boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 8px 8px 0 rgba(0, 0, 0, 0.1)',
-              }}
-            >
+                boxShadow:
+                  '0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 8px 8px 0 rgba(0, 0, 0, 0.1)',
+              }}>
               <div className="ibm-type-b">pop-out</div>
             </div>
           </div>
@@ -64,9 +63,9 @@ storiesOf('Globals|Layer', module)
             <div
               style={{
                 ...boxStyle,
-                boxShadow: '0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 16px 16px 0 rgba(0, 0, 0, 0.05)',
-              }}
-            >
+                boxShadow:
+                  '0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 16px 16px 0 rgba(0, 0, 0, 0.05)',
+              }}>
               <div className="ibm-type-b">temporary-nav</div>
             </div>
           </div>
@@ -74,13 +73,13 @@ storiesOf('Globals|Layer', module)
             <div
               style={{
                 ...boxStyle,
-                boxShadow: '0 16px 24px 0 rgba(0, 0, 0, 0.1), 0 24px 24px 0 rgba(0, 0, 0, 0.05)',
-              }}
-            >
+                boxShadow:
+                  '0 16px 24px 0 rgba(0, 0, 0, 0.1), 0 24px 24px 0 rgba(0, 0, 0, 0.05)',
+              }}>
               <div className="ibm-type-b">sticky-nav</div>
             </div>
           </div>
         </div>
       </div>
-    )),
+    ))
   );

@@ -81,11 +81,11 @@ export default class InteriorLeftNavList extends Component {
       {
         'left-nav-list__item--expanded': this.state.open,
       },
-      className,
+      className
     );
 
     const newChildren = React.Children.map(children, (child, index) =>
-      this.buildNewItemChild(child, index),
+      this.buildNewItemChild(child, index)
     );
 
     return (
@@ -94,8 +94,7 @@ export default class InteriorLeftNavList extends Component {
         tabIndex={tabIndex}
         onClick={this.toggle}
         onKeyPress={this.toggle}
-        role="menuitem"
-      >
+        role="menuitem">
         <div className="left-nav-list__item-link">
           {title}
           <div className="left-nav-list__item-icon">
@@ -106,7 +105,10 @@ export default class InteriorLeftNavList extends Component {
             />
           </div>
         </div>
-        <ul role="menu" className="left-nav-list left-nav-list--nested" aria-hidden>
+        <ul
+          role="menu"
+          className="left-nav-list left-nav-list--nested"
+          aria-hidden>
           {newChildren}
         </ul>
       </li>

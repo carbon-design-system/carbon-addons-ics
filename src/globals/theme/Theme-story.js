@@ -96,8 +96,7 @@ storiesOf('Globals|Theme', module)
               <div
                 style={{
                   ...boxStyle,
-                }}
-              >
+                }}>
                 <div
                   style={{
                     height: '48px',
@@ -115,5 +114,5 @@ storiesOf('Globals|Theme', module)
           ))}
         </div>
       </div>
-    )),
+    ))
   );

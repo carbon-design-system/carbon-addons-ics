@@ -32,7 +32,7 @@ storiesOf('Components|Notifications', module)
     withInfo(
       `
       "Toast" notifications appear at the top of the screen and out of the way of the user.
-    `,
+    `
     )(() => (
       <div>
         <div style={{ maxWidth: '345px' }}>
@@ -48,14 +48,14 @@ storiesOf('Components|Notifications', module)
           />
         </div>
       </div>
-    )),
+    ))
   )
   .add(
     'Inline',
     withInfo(
       `
       "Inline" notifications occur within the context of the action that was taken.
-    `,
+    `
     )(() => (
       <div>
         <InlineNotification {...notificationProps.inline} kind="error" />
@@ -63,5 +63,5 @@ storiesOf('Components|Notifications', module)
         <InlineNotification {...notificationProps.inline} kind="success" />
         <InlineNotification {...notificationProps.inline} kind="warning" />
       </div>
-    )),
+    ))
   );

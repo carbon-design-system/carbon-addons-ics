@@ -18,17 +18,29 @@ class Avatar extends Component {
   };
 
   componentWillMount() {
-    this.setState({ imgUrl: this.props.imgUrl, ImgError: false, ImgLoaded: false });
+    this.setState({
+      imgUrl: this.props.imgUrl,
+      ImgError: false,
+      ImgLoaded: false,
+    });
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.imgUrl !== nextProps.imgUrl) {
-      this.setState({ imgUrl: nextProps.imgUrl, ImgError: false, ImgLoaded: false });
+      this.setState({
+        imgUrl: nextProps.imgUrl,
+        ImgError: false,
+        ImgLoaded: false,
+      });
     }
   }
 
   onImgLoad() {
-    if (this.imageDOM.naturalWidth < 2 && this.imageDOM.naturalHeight < 2 && !this.state.ImgError) {
+    if (
+      this.imageDOM.naturalWidth < 2 &&
+      this.imageDOM.naturalHeight < 2 &&
+      !this.state.ImgError
+    ) {
       this.onImgErr();
     } else {
       this.setState({ ImgLoaded: true });
@@ -90,8 +102,7 @@ class Avatar extends Component {
           width: avatarSize,
           backgroundColor: '#A6A5A6', // gray-30: This is an intentionally hardcoded, non-themeable color value
         }}
-        {...rest}
-      >
+        {...rest}>
         {imageElement}
         {iconElement}
       </div>

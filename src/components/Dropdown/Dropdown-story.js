@@ -39,34 +39,32 @@ storiesOf('Components|Dropdown', module)
       <Dropdown
         {...dropdownEvents}
         onChange={selectedItemInfo => console.log(selectedItemInfo)} // eslint-disable-line no-console
-        defaultText="Choose something.."
-      >
+        defaultText="Choose something..">
         <DropdownItem itemText="All" value="all" />
         <DropdownItem itemText="Cloud Foundry API" value="cloudFoundry" />
         <DropdownItem itemText="Staging" value="staging" />
         <DropdownItem itemText="Droplet Execution Agent" value="dea" />
         <DropdownItem itemText="Router" value="router" />
       </Dropdown>
-    )),
+    ))
   )
   .add(
     'disabled',
     withInfo(
       `
       This is an example of a disabled dropdown.
-      `,
+      `
     )(() => (
       <Dropdown
         {...dropdownEvents}
         onChange={selectedItemInfo => console.log(selectedItemInfo)} // eslint-disable-line no-console
         defaultText="Choose something.."
-        disabled
-      >
+        disabled>
         <DropdownItem itemText="All" value="all" />
         <DropdownItem itemText="Cloud Foundry API" value="cloudFoundry" />
         <DropdownItem itemText="Staging" value="staging" />
         <DropdownItem itemText="Droplet Execution Agent" value="dea" />
         <DropdownItem itemText="Router" value="router" />
       </Dropdown>
-    )),
+    ))
   );

@@ -41,8 +41,13 @@
   }
 }
 
-@mixin button-double-border($inner-border-color, $outer-border-color, $outer-border-width) {
-  box-shadow: 0 0 0 1px $inner-border-color, 0 0 0 $outer-border-width $outer-border-color;
+@mixin button-double-border(
+  $inner-border-color,
+  $outer-border-color,
+  $outer-border-width
+) {
+  box-shadow: 0 0 0 1px $inner-border-color,
+    0 0 0 $outer-border-width $outer-border-color;
   border-color: transparent;
 }
 

@@ -20,7 +20,12 @@ export default class ModalWrapper extends React.Component {
     modalBeforeContent: PropTypes.bool,
     handleSubmit: PropTypes.func,
     disabled: PropTypes.bool,
-    triggerButtonkind: PropTypes.oneOf(['primary', 'secondary', 'danger', 'ghost']),
+    triggerButtonkind: PropTypes.oneOf([
+      'primary',
+      'secondary',
+      'danger',
+      'ghost',
+    ]),
     shouldCloseAfterSubmit: PropTypes.bool,
     // Modal Props
     id: PropTypes.string,
@@ -109,7 +114,10 @@ export default class ModalWrapper extends React.Component {
 
     return (
       <div role="presentation" onKeyDown={this.handleKeyDown.bind(this)}>
-        <Button disabled={disabled} kind={triggerButtonkind} onClick={this.handleOpen}>
+        <Button
+          disabled={disabled}
+          kind={triggerButtonkind}
+          onClick={this.handleOpen}>
           {buttonTriggerText}
         </Button>
         <Modal {...props}>{this.props.children}</Modal>

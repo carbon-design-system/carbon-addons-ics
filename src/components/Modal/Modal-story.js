@@ -23,20 +23,20 @@ storiesOf('Components|Modal', module)
         open
         modalHeading="Dialog Example"
         primaryButtonText="Primary Button"
-        secondaryButtonText="Secondary Button"
-      >
+        secondaryButtonText="Secondary Button">
         <p className="bx--modal-content__text">
-          Please see ModalWrapper for more examples and demo of the functionality.
+          Please see ModalWrapper for more examples and demo of the
+          functionality.
         </p>
       </Modal>
-    )),
+    ))
   )
   .add(
     'passive',
     withInfo(
       `
       Passive modals are modals without footers. Add passiveModal prop or set to true to render passive modal.
-    `,
+    `
     )(() => (
       <Modal
         {...modalProps}
@@ -44,11 +44,11 @@ storiesOf('Components|Modal', module)
         passiveModal
         modalHeading="Dialog Example"
         primaryButtonText="Primary Button"
-        secondaryButtonText="Secondary Button"
-      >
+        secondaryButtonText="Secondary Button">
         <p className="bx--modal-content__text">
-          Please see ModalWrapper for more examples and demo of the functionality.
+          Please see ModalWrapper for more examples and demo of the
+          functionality.
         </p>
       </Modal>
-    )),
+    ))
   );

@@ -42,7 +42,10 @@ export default class Dropdown extends PureComponent {
 
     let matchingChild;
     React.Children.forEach(children, child => {
-      if (child && (child.props.itemText === selectedText || child.props.value === value)) {
+      if (
+        child &&
+        (child.props.itemText === selectedText || child.props.value === value)
+      ) {
         matchingChild = child;
       }
     });
@@ -79,7 +82,9 @@ export default class Dropdown extends PureComponent {
   handleItemClick = info => {
     this.props.onChange(info);
     this.setState({
-      selectedText: this.props.updateText ? info.itemText : this.props.defaultText,
+      selectedText: this.props.updateText
+        ? info.itemText
+        : this.props.defaultText,
       value: info.value,
     });
   };
@@ -102,7 +107,7 @@ export default class Dropdown extends PureComponent {
             child.props.onClick && child.props.onClick(...args);
             this.handleItemClick(...args);
           },
-        }),
+        })
       );
 
     const dropdownClasses = classNames({
@@ -121,11 +126,14 @@ export default class Dropdown extends PureComponent {
           value={this.state.value}
           className={dropdownClasses}
           tabIndex={tabIndex}
-          role="presentation"
-        >
+          role="presentation">
           <li className="bx--dropdown-toggle">
             <div className="bx--dropdown-text">{this.state.selectedText}</div>
-            <Icon name="down" className="bx--dropdown__arrow" description={iconDescription} />
+            <Icon
+              name="down"
+              className="bx--dropdown__arrow"
+              description={iconDescription}
+            />
           </li>
           <li>
             <ul className="bx--dropdown-list">{children}</ul>

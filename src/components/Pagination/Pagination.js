@@ -70,7 +70,9 @@ export default class Pagination extends Component {
   };
 
   getTabAt = index => {
-    return this[`tab${index}`] || React.Children.toArray(this.props.children)[index];
+    return (
+      this[`tab${index}`] || React.Children.toArray(this.props.children)[index]
+    );
   };
 
   handleTabAnchorFocus = page => {
@@ -111,7 +113,7 @@ export default class Pagination extends Component {
           ref={pageTab => {
             pageTab && (this[`tab${pageTab.props.index}`] = pageTab);
           }}
-        />,
+        />
       );
       page++;
     }
@@ -151,8 +153,7 @@ export default class Pagination extends Component {
           <button
             className="bx--btn bx--btn--secondary"
             onClick={this.decrementPage}
-            disabled={this.props.disabled || statePage === 1}
-          >
+            disabled={this.props.disabled || statePage === 1}>
             {backwardText}
           </button>
         </div>
@@ -162,7 +163,9 @@ export default class Pagination extends Component {
               {tabItems}
             </ul>
           </nav>
-          <div className="bx--pagination__hint" style={{ opacity: this.state.hint ? 1 : 0 }}>
+          <div
+            className="bx--pagination__hint"
+            style={{ opacity: this.state.hint ? 1 : 0 }}>
             {hintText}
           </div>
         </div>
@@ -170,8 +173,9 @@ export default class Pagination extends Component {
           <button
             className="bx--btn bx--btn--secondary"
             onClick={this.incrementPage}
-            disabled={this.props.disabled || statePage === totalItems || isLastPage}
-          >
+            disabled={
+              this.props.disabled || statePage === totalItems || isLastPage
+            }>
             {forwardText}
           </button>
         </div>

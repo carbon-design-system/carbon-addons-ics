@@ -14,9 +14,14 @@ storiesOf('Components|Avatar', module)
     withInfo(
       `
       This is the default example of an Avatar without an image provided. Users have the ability to upload pictures for their avatar but until they do so they are provided with a default Avatar.
-    `,
+    `
     )(() => (
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-around',
+        }}>
         <div style={{ padding: 10 }}>
           <Avatar size={'xs'} />
         </div>
@@ -36,36 +41,71 @@ storiesOf('Components|Avatar', module)
           <Avatar size={'xxl'} description="Here is a description" />
         </div>
       </div>
-    )),
+    ))
   )
   .add(
     'with image',
     withInfo(
       `
        This is the default example of an Avatar with an image provided. Images provided to the Avatar component should be square shaped, having an equal height and width.
-    `,
+    `
     )(() => (
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-around',
+        }}>
         <div style={{ padding: 10 }}>
-          <Avatar imgUrl={imgUrl} key={imgUrl} size={'xs'} description="Here is a description" />
+          <Avatar
+            imgUrl={imgUrl}
+            key={imgUrl}
+            size={'xs'}
+            description="Here is a description"
+          />
         </div>
         <div style={{ padding: 10 }}>
-          <Avatar imgUrl={imgUrl} key={imgUrl} size={'sm'} description="Here is a description" />
+          <Avatar
+            imgUrl={imgUrl}
+            key={imgUrl}
+            size={'sm'}
+            description="Here is a description"
+          />
         </div>
         <div style={{ padding: 10 }}>
-          <Avatar imgUrl={imgUrl} key={imgUrl} size={'md'} description="Here is a description" />
+          <Avatar
+            imgUrl={imgUrl}
+            key={imgUrl}
+            size={'md'}
+            description="Here is a description"
+          />
         </div>
         <div style={{ padding: 10 }}>
-          <Avatar imgUrl={imgUrl} key={imgUrl} size={'lg'} description="Here is a description" />
+          <Avatar
+            imgUrl={imgUrl}
+            key={imgUrl}
+            size={'lg'}
+            description="Here is a description"
+          />
         </div>
         <div style={{ padding: 10 }}>
-          <Avatar imgUrl={imgUrl} key={imgUrl} size={'xl'} description="Here is a description" />
+          <Avatar
+            imgUrl={imgUrl}
+            key={imgUrl}
+            size={'xl'}
+            description="Here is a description"
+          />
         </div>
         <div style={{ padding: 10 }}>
-          <Avatar imgUrl={imgUrl} key={imgUrl} size={'xxl'} description="Here is a description" />
+          <Avatar
+            imgUrl={imgUrl}
+            key={imgUrl}
+            size={'xxl'}
+            description="Here is a description"
+          />
         </div>
       </div>
-    )),
+    ))
   )
   .add(
     'custom default image',
@@ -73,26 +113,55 @@ storiesOf('Components|Avatar', module)
       This is an example of how to override the default image shown by the avatar element
     `)(() => (
       <React.Fragment>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+          }}>
           <div style={{ padding: 10 }}>
-            <Avatar defaultIconName="group" size="xs" description="Here is a description" />
+            <Avatar
+              defaultIconName="group"
+              size="xs"
+              description="Here is a description"
+            />
           </div>
           <div style={{ padding: 10 }}>
-            <Avatar defaultIconName="group" size="sm" description="Here is a description" />
+            <Avatar
+              defaultIconName="group"
+              size="sm"
+              description="Here is a description"
+            />
           </div>
           <div style={{ padding: 10 }}>
-            <Avatar defaultIconName="group" size="md" description="Here is a description" />
+            <Avatar
+              defaultIconName="group"
+              size="md"
+              description="Here is a description"
+            />
           </div>
           <div style={{ padding: 10 }}>
-            <Avatar defaultIconName="group" size="lg" description="Here is a description" />
+            <Avatar
+              defaultIconName="group"
+              size="lg"
+              description="Here is a description"
+            />
           </div>
           <div style={{ padding: 10 }}>
-            <Avatar defaultIconName="group" size="xl" description="Here is a description" />
+            <Avatar
+              defaultIconName="group"
+              size="xl"
+              description="Here is a description"
+            />
           </div>
           <div style={{ padding: 10 }}>
-            <Avatar defaultIconName="group" size="xxl" description="Here is a description" />
+            <Avatar
+              defaultIconName="group"
+              size="xxl"
+              description="Here is a description"
+            />
           </div>
         </div>
       </React.Fragment>
-    )),
+    ))
   );

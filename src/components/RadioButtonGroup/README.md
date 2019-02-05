@@ -1,5 +1,9 @@
 ### Usage
 
 ```js
-import { RadioButton, RadioButtonGroup, FormGroup } from 'carbon-components-react';
+import {
+  RadioButton,
+  RadioButtonGroup,
+  FormGroup,
+} from 'carbon-components-react';
 ```

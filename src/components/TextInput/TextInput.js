@@ -6,7 +6,8 @@ export default class TextInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      labelMotion: !!props.defaultValue || !!props.value || props.defaultValue === 0,
+      labelMotion:
+        !!props.defaultValue || !!props.value || props.defaultValue === 0,
     };
   }
   componentWillReceiveProps(nextProps) {
@@ -61,7 +62,15 @@ export default class TextInput extends Component {
   };
 
   render() {
-    const { labelText, id, type, hideLabel, invalid, invalidText, ...rest } = this.props;
+    const {
+      labelText,
+      id,
+      type,
+      hideLabel,
+      invalid,
+      invalidText,
+      ...rest
+    } = this.props;
 
     const textInputClasses = classNames({
       'bx--text-input': true,
@@ -81,7 +90,9 @@ export default class TextInput extends Component {
       </label>
     ) : null;
 
-    const error = invalid ? <div className="bx--form-requirement">{invalidText}</div> : null;
+    const error = invalid ? (
+      <div className="bx--form-requirement">{invalidText}</div>
+    ) : null;
 
     const input = invalid ? (
       <input

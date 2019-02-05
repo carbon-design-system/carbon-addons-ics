@@ -49,7 +49,14 @@ export default class Search extends Component {
   };
 
   render() {
-    const { className, type, id, placeHolderText, labelText, ...other } = this.props;
+    const {
+      className,
+      type,
+      id,
+      placeHolderText,
+      labelText,
+      ...other
+    } = this.props;
 
     const { hasContent } = this.state;
 
@@ -66,7 +73,11 @@ export default class Search extends Component {
     return (
       <div className={searchClasses} role="search">
         <div className="bx--search-bar" role="presentation">
-          <Icon name="search" description="search" className="bx--search-magnifier" />
+          <Icon
+            name="search"
+            description="search"
+            className="bx--search-magnifier"
+          />
           <input
             {...other}
             type={type}

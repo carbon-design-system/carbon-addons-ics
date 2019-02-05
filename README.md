@@ -6,7 +6,7 @@
 
 ### Usage:
 
-carbon-addons-ics exists as a package on NPM. 
+carbon-addons-ics exists as a package on NPM.
 
 ```bash
 npm install carbon-addons-ics --save

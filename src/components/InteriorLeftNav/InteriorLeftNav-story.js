@@ -1,7 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { InteriorLeftNavItem, InteriorLeftNav, InteriorLeftNavList } from '../../index';
+import {
+  InteriorLeftNavItem,
+  InteriorLeftNav,
+  InteriorLeftNavList,
+} from '../../index';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 
@@ -13,7 +17,9 @@ storiesOf('Components|InteriorLeftNav', module)
       <InteriorLeftNav className="some-class">
         <InteriorLeftNavList title="Start here">
           <InteriorLeftNavItem>
-            <a target="_blank" href="https://github.com/carbon-design-system/carbon-addons-ics">
+            <a
+              target="_blank"
+              href="https://github.com/carbon-design-system/carbon-addons-ics">
               Developers
             </a>
           </InteriorLeftNavItem>
@@ -41,11 +47,10 @@ storiesOf('Components|InteriorLeftNav', module)
         <InteriorLeftNavItem>
           <a
             href="https://github.com/carbon-design-system/carbon-addons-ics/releases"
-            target="_blank"
-          >
+            target="_blank">
             Version tracker
           </a>
         </InteriorLeftNavItem>
       </InteriorLeftNav>
-    )),
+    ))
   );

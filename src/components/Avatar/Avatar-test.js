@@ -6,7 +6,11 @@ import TestUtils from 'react-dom/test-utils';
 describe('Avatar', () => {
   describe('Renders common props as expected', () => {
     const wrapper = shallow(
-      <Avatar size={'sm'} className={'extra-class'} description="Here is a description" />,
+      <Avatar
+        size={'sm'}
+        className={'extra-class'}
+        description="Here is a description"
+      />
     );
 
     it('Renders an Avatar', () => {
@@ -24,7 +28,9 @@ describe('Avatar', () => {
 
   describe('Renders sizes of container and icons as expected', () => {
     it('Renders extra small', () => {
-      const wrapper = mount(<Avatar size={'xs'} description="Here is a description" />);
+      const wrapper = mount(
+        <Avatar size={'xs'} description="Here is a description" />
+      );
 
       const containerStyle = wrapper.find('.bx--avatar').get(0).props.style;
       const iconStyle = wrapper.find('svg').get(0).props;
@@ -36,7 +42,9 @@ describe('Avatar', () => {
     });
 
     it('Renders small', () => {
-      const wrapper = mount(<Avatar size={'sm'} description="Here is a description" />);
+      const wrapper = mount(
+        <Avatar size={'sm'} description="Here is a description" />
+      );
 
       const containerStyle = wrapper.find('.bx--avatar').get(0).props.style;
       const iconStyle = wrapper.find('svg').get(0).props;
@@ -48,7 +56,9 @@ describe('Avatar', () => {
     });
 
     it('Renders medium', () => {
-      const wrapper = mount(<Avatar size={'md'} description="Here is a description" />);
+      const wrapper = mount(
+        <Avatar size={'md'} description="Here is a description" />
+      );
 
       const containerStyle = wrapper.find('.bx--avatar').get(0).props.style;
       const iconStyle = wrapper.find('svg').get(0).props;
@@ -60,7 +70,9 @@ describe('Avatar', () => {
     });
 
     it('Renders large', () => {
-      const wrapper = mount(<Avatar size={'lg'} description="Here is a description" />);
+      const wrapper = mount(
+        <Avatar size={'lg'} description="Here is a description" />
+      );
 
       const containerStyle = wrapper.find('.bx--avatar').get(0).props.style;
       const iconStyle = wrapper.find('svg').get(0).props;
@@ -72,7 +84,9 @@ describe('Avatar', () => {
     });
 
     it('Renders extra large', () => {
-      const wrapper = mount(<Avatar size={'xl'} description="Here is a description" />);
+      const wrapper = mount(
+        <Avatar size={'xl'} description="Here is a description" />
+      );
 
       const containerStyle = wrapper.find('.bx--avatar').get(0).props.style;
       const iconStyle = wrapper.find('svg').get(0).props;
@@ -84,7 +98,9 @@ describe('Avatar', () => {
     });
 
     it('Renders extra extra large', () => {
-      const wrapper = mount(<Avatar size={'xxl'} description="Here is a description" />);
+      const wrapper = mount(
+        <Avatar size={'xxl'} description="Here is a description" />
+      );
 
       const containerStyle = wrapper.find('.bx--avatar').get(0).props.style;
       const iconStyle = wrapper.find('svg').get(0).props;
@@ -97,20 +113,24 @@ describe('Avatar', () => {
   });
 
   describe('Renders colors, images and icons correctly', () => {
-    const wrapper = mount(<Avatar imgUrl={'image-url'} description="Here is a description" />);
+    const wrapper = mount(
+      <Avatar imgUrl={'image-url'} description="Here is a description" />
+    );
 
     it('OnImageError will call setState', () => {
       let component = TestUtils.renderIntoDocument(
-        <Avatar imgUrl={'image-url'} description="Here is a description" />,
+        <Avatar imgUrl={'image-url'} description="Here is a description" />
       );
-      spyOn(component, 'setState');
+      jest.spyOn(component, 'setState');
       component.onImgErr();
       expect(component.setState).toHaveBeenCalled();
     });
 
     it('onImgLoad 1x1 pixel', () => {
-      let component = TestUtils.renderIntoDocument(<Avatar description="description" />);
-      spyOn(component, 'onImgErr');
+      let component = TestUtils.renderIntoDocument(
+        <Avatar description="description" />
+      );
+      jest.spyOn(component, 'onImgErr');
       component.setState({ ImgLoaded: false });
 
       component.imageDOM = {
@@ -123,8 +143,10 @@ describe('Avatar', () => {
     });
 
     it('onImgLoad 100x100 pixel', () => {
-      let component = TestUtils.renderIntoDocument(<Avatar description="description" />);
-      spyOn(component, 'setState');
+      let component = TestUtils.renderIntoDocument(
+        <Avatar description="description" />
+      );
+      jest.spyOn(component, 'setState');
       component.setState({ ImgLoaded: false });
 
       component.imageDOM = {
@@ -138,18 +160,21 @@ describe('Avatar', () => {
 
     it('componentWillReceiveProps wont set the state', () => {
       let component = TestUtils.renderIntoDocument(
-        <Avatar description="description" imgUrl={''} />,
+        <Avatar description="description" imgUrl={''} />
       );
-      spyOn(component, 'setState');
-      component.componentWillReceiveProps({ description: 'description', imgUrl: '' });
+      jest.spyOn(component, 'setState');
+      component.componentWillReceiveProps({
+        description: 'description',
+        imgUrl: '',
+      });
       expect(component.setState).not.toHaveBeenCalled();
     });
 
     it('componentWillReceiveProps will set the state', () => {
       let component = TestUtils.renderIntoDocument(
-        <Avatar description="description" imgUrl={''} />,
+        <Avatar description="description" imgUrl={''} />
       );
-      spyOn(component, 'setState');
+      jest.spyOn(component, 'setState');
       component.componentWillReceiveProps({
         description: 'description',
         imgUrl: 'something-different',
@@ -158,16 +183,20 @@ describe('Avatar', () => {
     });
 
     it('onError', () => {
-      let component = mount(<Avatar imgUrl={'the-url'} description="Here is a description" />);
-      spyOn(component.instance(), 'onImgErr');
+      let component = mount(
+        <Avatar imgUrl={'the-url'} description="Here is a description" />
+      );
+      jest.spyOn(component.instance(), 'onImgErr');
       const image = component.find('img');
       image.simulate('error');
       expect(component.instance().onImgErr).toHaveBeenCalled();
     });
 
     it('onLoad', () => {
-      let component = mount(<Avatar imgUrl={'the-url'} description="Here is a description" />);
-      spyOn(component.instance(), 'onImgLoad');
+      let component = mount(
+        <Avatar imgUrl={'the-url'} description="Here is a description" />
+      );
+      jest.spyOn(component.instance(), 'onImgLoad');
       const image = component.find('img');
       image.simulate('load');
       expect(component.instance().onImgLoad).toHaveBeenCalled();

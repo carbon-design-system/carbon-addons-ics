@@ -25,7 +25,8 @@
   .#{$prefix}--btn {
     @include button-base;
     transition: background-color $transition--base $bx--ease-in,
-      color $transition--base $bx--ease-in, border-color $transition--base $bx--ease-in,
+      color $transition--base $bx--ease-in,
+      border-color $transition--base $bx--ease-in,
       box-shadow $transition--base $bx--ease-in;
   }
 

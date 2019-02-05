@@ -10,7 +10,7 @@ describe('CardMeta', () => {
         metaPrimary="primary text"
         metaSecondary="secondary text"
         metaPadding
-      />,
+      />
     );
 
     it('has the expected classes', () => {

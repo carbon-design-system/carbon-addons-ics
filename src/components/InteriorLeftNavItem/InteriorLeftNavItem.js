@@ -11,9 +11,18 @@ const newChild = (children, tabIndex) => {
   });
 };
 
-const InteriorLeftNavItem = ({ className, tabIndex, children, onClick, activeHref, ...rest }) => {
-  const childHref = children.props.href === undefined ? children.props.to : children.props.href;
-  const activePath = window.location && window.location.hash ? window.location.hash : activeHref;
+const InteriorLeftNavItem = ({
+  className,
+  tabIndex,
+  children,
+  onClick,
+  activeHref,
+  ...rest
+}) => {
+  const childHref =
+    children.props.href === undefined ? children.props.to : children.props.href;
+  const activePath =
+    window.location && window.location.hash ? window.location.hash : activeHref;
   const classNames = classnames('left-nav-list__item', className, {
     'left-nav-list__item--active': activePath === childHref,
   });
@@ -25,8 +34,7 @@ const InteriorLeftNavItem = ({ className, tabIndex, children, onClick, activeHre
       className={classNames}
       onClick={evt => onClick(evt, childHref)}
       onKeyPress={evt => onClick(evt, childHref)}
-      {...rest}
-    >
+      {...rest}>
       {newChild(children, tabIndex)}
     </li>
   );

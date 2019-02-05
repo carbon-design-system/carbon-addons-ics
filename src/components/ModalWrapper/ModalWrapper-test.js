@@ -21,7 +21,7 @@ describe('ModalWrapper', () => {
     const wrapper = mount(
       <ModalWrapper {...mockProps}>
         <p className="bx--modal-content__text">Text</p>
-      </ModalWrapper>,
+      </ModalWrapper>
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -30,7 +30,7 @@ describe('ModalWrapper', () => {
     const wrapper = mount(
       <ModalWrapper {...mockProps}>
         <p className="bx--modal-content__text">Text</p>
-      </ModalWrapper>,
+      </ModalWrapper>
     );
     wrapper.find({ children: mockProps.buttonTriggerText }).simulate('click');
     expect(wrapper.state('open')).toBe(true);
@@ -44,7 +44,7 @@ describe('ModalWrapper', () => {
     const wrapper = mount(
       <ModalWrapper {...mockProps}>
         <p className="bx--modal-content__text">Text</p>
-      </ModalWrapper>,
+      </ModalWrapper>
     );
     wrapper.find({ children: mockProps.buttonTriggerText }).simulate('click');
     expect(wrapper.state('open')).toBe(true);
@@ -57,7 +57,7 @@ describe('ModalWrapper', () => {
     const wrapper = mount(
       <ModalWrapper {...mockProps}>
         <p className="bx--modal-content__text">Text</p>
-      </ModalWrapper>,
+      </ModalWrapper>
     );
 
     wrapper.setState({ open: true });

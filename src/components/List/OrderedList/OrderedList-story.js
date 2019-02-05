@@ -23,7 +23,7 @@ storiesOf('Components|List', module)
           <ListItem>Third item</ListItem>
         </OrderedList>
       </div>
-    )),
+    ))
   )
   .add(
     'Ordered List - small',
@@ -41,5 +41,5 @@ storiesOf('Components|List', module)
           <ListItem>Third item</ListItem>
         </OrderedList>
       </div>
-    )),
+    ))
   );

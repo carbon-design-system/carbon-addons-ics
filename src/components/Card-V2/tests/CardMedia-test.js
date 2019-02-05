@@ -5,7 +5,12 @@ import { shallow, mount } from 'enzyme';
 describe('CardMedia', () => {
   describe('Renders as expected', () => {
     const wrapper = shallow(
-      <CardMedia className="extra-class" type="img" src="some link" altText="some alt text" />,
+      <CardMedia
+        className="extra-class"
+        type="img"
+        src="some link"
+        altText="some alt text"
+      />
     );
 
     it('has the expected classes', () => {

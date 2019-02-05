@@ -2,13 +2,13 @@
 
 Want to contribute to this repository? Please read below first:
 
- - [Issues and Bugs](#issues-and-bugs)
- - [Feature Requests](#feature-requests)
- - [Doc Fixes](#doc-fixes)
- - [Submission Guidelines](#submission-guidelines)
- - [Coding Standards](#coding-standards)
- - [Commit Message Guidelines](#commit-message-guidlines)
- - [Testing](#testing)
+- [Issues and Bugs](#issues-and-bugs)
+- [Feature Requests](#feature-requests)
+- [Doc Fixes](#doc-fixes)
+- [Submission Guidelines](#submission-guidelines)
+- [Coding Standards](#coding-standards)
+- [Commit Message Guidelines](#commit-message-guidlines)
+- [Testing](#testing)
 
 ## Issues and Bugs
 
@@ -37,19 +37,19 @@ If you want to help improve the docs, it's a good idea to let others know what y
 
 2. Navigate to your forked repository and copy the **SSH url**. Clone your fork by running the following in your terminal:
 
-	```
-	$ git clone git@github.com:{ YOUR_USERNAME }/carbon-addons-ics.git
-	$ cd carbon-addons-ics
-	```
+   ```
+   $ git clone git@github.com:{ YOUR_USERNAME }/carbon-addons-ics.git
+   $ cd carbon-addons-ics
+   ```
 
-	See [GitHub docs](https://help.github.com/articles/fork-a-repo/) for more details on forking a repository.
-	
+   See [GitHub docs](https://help.github.com/articles/fork-a-repo/) for more details on forking a repository.
+
 3. Once cloned, you will see `origin` as your default remote, pointing to your personal forked repository. Add a remote named `upstream` pointing to the main `carbon-addons-ics`:
 
-	```
-	$ git remote add upstream git@github.com:carbon-design-system/carbon-addons-ics.git
-	$ git remote -v
-	```
+   ```
+   $ git remote add upstream git@github.com:carbon-design-system/carbon-addons-ics.git
+   $ git remote -v
+   ```
 
 ### Submitting an Issue
 
@@ -63,47 +63,45 @@ If your issue appears to be a bug, and hasn't been reported, open a new issue. H
 
 2. Pull the latest master branch from `upstream`:
 
-	```
-	$ git pull upstream master
-	```
+   ```
+   $ git pull upstream master
+   ```
 
-3. Always work and submit pull requests from a branch. *Do not submit pull requests from the `master` branch of your fork*.
+3. Always work and submit pull requests from a branch. _Do not submit pull requests from the `master` branch of your fork_.
 
-	```
-	$ git checkout -b { YOUR_BRANCH_NAME } master
-	```
-	
-3. Create your patch or feature following our [development guidelines](/README.md#development). Make sure to also follow our [coding standards](#coding-standards).
+   ```
+   $ git checkout -b { YOUR_BRANCH_NAME } master
+   ```
 
-4. Test your branch and add new test cases where appropriate per the [testing guidelines](#testing).
+4. Create your patch or feature following our [development guidelines](/README.md#development). Make sure to also follow our [coding standards](#coding-standards).
 
-5. Commit your changes using a descriptive commit message.
+5. Test your branch and add new test cases where appropriate per the [testing guidelines](#testing).
 
-	```
-	$ git commit -a -m "Update header with newest designs, resolves #123"
-	```
- 
-	**Note:** the optional commit -a command line option will automatically "add" and "rm" edited files. See [Close a commit via commit message](https://help.github.com/articles/closing-issues-via-commit-messages/) and [writing good commit messages](https://github.com/erlang/otp/wiki/Writing-good-commit-messages) for more details on commit messages.
-	
-6. Once ready for feedback from other contributors and maintainers, **push your commits to your fork** (be sure to run `yarn run check` before pushing, to make sure your code passes linting and unit tests):
+6. Commit your changes using a descriptive commit message.
 
-	```
-	$ git push origin { YOUR_BRANCH_NAME }
-	```
-	
-7. In Github, navigate to [carbon-design-system/carbon-addons-ics](https://github.com/carbon-design-system/carbon-addons-ics) and click the button that reads "Compare & pull request".
+   ```
+   $ git commit -a -m "Update header with newest designs, resolves #123"
+   ```
 
-8. Write a title and description, the click "Create pull request".
-	
-	See [how to write the perfect pull request](https://github.com/blog/1943-how-to-write-the-perfect-pull-request) for more details on writing good PRs.
+   **Note:** the optional commit -a command line option will automatically "add" and "rm" edited files. See [Close a commit via commit message](https://help.github.com/articles/closing-issues-via-commit-messages/) and [writing good commit messages](https://github.com/erlang/otp/wiki/Writing-good-commit-messages) for more details on commit messages.
 
-9. Stay up to date with the activity in your pull request. Maintainers will be reviewing your work and making comments, asking questions and suggesting changes to be made before they merge your code. When you need to make a change, add, commit and push to your branch normally.
+7. Once ready for feedback from other contributors and maintainers, **push your commits to your fork** (be sure to run `yarn run check` before pushing, to make sure your code passes linting and unit tests):
 
-	Once all revisions to your pull request are complete, a maintainer will squash and merge your commits for you.
+   ```
+   $ git push origin { YOUR_BRANCH_NAME }
+   ```
 
+8. In Github, navigate to [carbon-design-system/carbon-addons-ics](https://github.com/carbon-design-system/carbon-addons-ics) and click the button that reads "Compare & pull request".
+
+9. Write a title and description, the click "Create pull request".
+
+   See [how to write the perfect pull request](https://github.com/blog/1943-how-to-write-the-perfect-pull-request) for more details on writing good PRs.
+
+10. Stay up to date with the activity in your pull request. Maintainers will be reviewing your work and making comments, asking questions and suggesting changes to be made before they merge your code. When you need to make a change, add, commit and push to your branch normally.
+
+    Once all revisions to your pull request are complete, a maintainer will squash and merge your commits for you.
 
 **That's it! Thank you for your contribution!**
-
 
 ## Coding Standards
 
@@ -135,21 +133,21 @@ If you add any features to our code, make sure to add tests so that your changes
 
 Test your changes by running our test commands:
 
-* Run linting:
+- Run linting:
 
   ```
   npm run lint
   ```
 
-* Run unit tests:
+- Run unit tests:
 
   ```
   npm run test
   ```
 
-	* to update the Jest snapshots when desired, run `npm run test -- -u`
+      	* to update the Jest snapshots when desired, run `npm run test -- -u`
 
-* Run both linting and unit tests:
+- Run both linting and unit tests:
 
   ```
   npm run check

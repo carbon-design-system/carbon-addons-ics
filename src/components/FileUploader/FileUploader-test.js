@@ -17,10 +17,14 @@ describe('FileUploader', () => {
     });
 
     it('renders with FileUploaderButton with disableLabelChanges set to true', () => {
-      expect(mountWrapper.find('FileUploaderButton').props().disableLabelChanges).toEqual(true);
+      expect(
+        mountWrapper.find('FileUploaderButton').props().disableLabelChanges
+      ).toEqual(true);
     });
     it('renders input with hidden prop', () => {
-      expect(mountWrapper.find('input').props().className).toEqual('bx--visually-hidden');
+      expect(mountWrapper.find('input').props().className).toEqual(
+        'bx--visually-hidden'
+      );
     });
     it('renders with empty div.bx--file-container by default', () => {
       expect(mountWrapper.find('div.bx--file-container').text()).toEqual('');

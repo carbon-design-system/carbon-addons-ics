@@ -22,5 +22,5 @@ storiesOf('Globals|Type', module)
           </div>
         </div>
       </div>
-    )),
+    ))
   );

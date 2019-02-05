@@ -45,7 +45,7 @@ storiesOf('Components|Tabs', module)
           </div>
         </Tab>
       </Tabs>
-    )),
+    ))
   )
   .add(
     'Selected Example',
@@ -53,7 +53,7 @@ storiesOf('Components|Tabs', module)
       `
       By using the selected prop on the Tabs component, you can switch which Tab gets
       rendered by default
-    `,
+    `
     )(() => (
       <Tabs {...props.tabs} selected={3}>
         <Tab {...props.tab} label="Overview">
@@ -77,5 +77,5 @@ storiesOf('Components|Tabs', module)
           </div>
         </Tab>
       </Tabs>
-    )),
+    ))
   );

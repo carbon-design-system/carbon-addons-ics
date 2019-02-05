@@ -27,8 +27,7 @@ class PagerListItem extends Component {
         }}
         className={classes}
         type="button"
-        ref={this.props.id}
-      >
+        ref={this.props.id}>
         {currentPage}
       </button>
     );
@@ -41,7 +40,10 @@ export default class Pager extends Component {
     const { totalItems, initialPage } = this.props;
     const lower = [2, 3];
     const higher = [totalItems - 2, totalItems - 1];
-    const pagesArr = Array.from(new Array(totalItems), (val, index) => index + 1);
+    const pagesArr = Array.from(
+      new Array(totalItems),
+      (val, index) => index + 1
+    );
     const maxDisplayPages = 5;
     const maxQueuePages = 3;
 
@@ -91,7 +93,7 @@ export default class Pager extends Component {
         },
         () => {
           this[pageFocus].focus();
-        },
+        }
       );
     } else if (activePage >= this.props.totalItems - maxQueuePages + 1) {
       this.setState(
@@ -103,7 +105,7 @@ export default class Pager extends Component {
         },
         () => {
           this[pageFocus].focus();
-        },
+        }
       );
     } else {
       this.setState(
@@ -114,7 +116,7 @@ export default class Pager extends Component {
         },
         () => {
           this[pageFocus].focus();
-        },
+        }
       );
     }
   };
@@ -160,7 +162,7 @@ export default class Pager extends Component {
       },
       () => {
         this.updatePageQueue();
-      },
+      }
     );
   };
 
@@ -190,8 +192,21 @@ export default class Pager extends Component {
   };
 
   render() {
-    const { className, totalItems, backwardText, forwardText, ...rest } = this.props;
-    const { activePage, activeQueue, truncate, showLower, showCenter, showHigher } = this.state;
+    const {
+      className,
+      totalItems,
+      backwardText,
+      forwardText,
+      ...rest
+    } = this.props;
+    const {
+      activePage,
+      activeQueue,
+      truncate,
+      showLower,
+      showCenter,
+      showHigher,
+    } = this.state;
 
     const classNames = classnames({
       'bx--pager': true,
@@ -230,7 +245,9 @@ export default class Pager extends Component {
       <div className={classNames} {...rest}>
         {activePage > 1 && (
           <div className="bx--pager__left">
-            <button className={this.setButtonClassNames('backward')} onClick={this.decrementPage}>
+            <button
+              className={this.setButtonClassNames('backward')}
+              onClick={this.decrementPage}>
               {this.buildTooltip(backwardIcon)}
             </button>
           </div>
@@ -253,21 +270,19 @@ export default class Pager extends Component {
               </li>
               {showLower && pageQueue}
               {(showLower || showCenter) && ellipsis}
-              {showCenter &&
-                activePage !== totalItems &&
-                activePage !== 1 && (
-                  <li key={`pager-${activePage}`} index={activePage}>
-                    <PagerListItem
-                      onClick={this.handleClick.bind(this)}
-                      onKeyUp={this.onKeyUp.bind(this)}
-                      selected={true}
-                      currentPage={activePage}
-                      id={button => {
-                        this[`pager-${activePage}`] = button;
-                      }}
-                    />
-                  </li>
-                )}
+              {showCenter && activePage !== totalItems && activePage !== 1 && (
+                <li key={`pager-${activePage}`} index={activePage}>
+                  <PagerListItem
+                    onClick={this.handleClick.bind(this)}
+                    onKeyUp={this.onKeyUp.bind(this)}
+                    selected={true}
+                    currentPage={activePage}
+                    id={button => {
+                      this[`pager-${activePage}`] = button;
+                    }}
+                  />
+                </li>
+              )}
               {(showHigher || showCenter) && ellipsis}
               {showHigher && pageQueue}
               <li key={`pager-${totalItems}`} index={totalItems}>
@@ -286,7 +301,9 @@ export default class Pager extends Component {
         </div>
         {activePage < totalItems && (
           <div className="bx--pager__right">
-            <button className={this.setButtonClassNames('forward')} onClick={this.incrementPage}>
+            <button
+              className={this.setButtonClassNames('forward')}
+              onClick={this.incrementPage}>
               {this.buildTooltip(forwardIcon)}
             </button>
           </div>
