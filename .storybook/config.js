@@ -8,18 +8,19 @@ setOptions({
   hierarchyRootSeparator: /\|/,
 });
 
-addDecorator((story, componentContext) =>
-  componentContext.kind === 'Welcome|Getting started' ||
-  componentContext.kind === 'Globals|Grid' ||
-  componentContext.kind === 'Globals|Icon' ||
-  componentContext.kind === 'Globals|Theme' ||
-  componentContext.kind === 'Globals|Layer' ? (
-    <div>{story()}</div>
-  ) : (
-    <div className="bx--grid" style={{ marginTop: '1rem' }}>
-      <div className="bx--row">{story()}</div>
-    </div>
-  )
+addDecorator(
+  (story, componentContext) =>
+    componentContext.kind === 'Welcome|Getting started' ||
+    componentContext.kind === 'Globals|Grid' ||
+    componentContext.kind === 'Globals|Icon' ||
+    componentContext.kind === 'Globals|Theme' ||
+    componentContext.kind === 'Globals|Layer' ? (
+      <div>{story()}</div>
+    ) : (
+      <div className="bx--grid" style={{ marginTop: '1rem' }}>
+        <div className="bx--row">{story()}</div>
+      </div>
+    )
 );
 
 function importAll(req) {

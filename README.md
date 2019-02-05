@@ -49,12 +49,12 @@ Component-specific Sass files are also included and can be imported in a similar
 
 carbon-addons-ics includes the following global elements:
 
-- ICS Theme & color
-- ICS Grid
-- ICS Icons
-- Type usage
-- Elevation & shadow
-- Bidi
+* ICS Theme & color
+* ICS Grid
+* ICS Icons
+* Type usage
+* Elevation & shadow
+* Bidi
 
 ## Component Support
 

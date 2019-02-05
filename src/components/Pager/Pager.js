@@ -270,19 +270,21 @@ export default class Pager extends Component {
               </li>
               {showLower && pageQueue}
               {(showLower || showCenter) && ellipsis}
-              {showCenter && activePage !== totalItems && activePage !== 1 && (
-                <li key={`pager-${activePage}`} index={activePage}>
-                  <PagerListItem
-                    onClick={this.handleClick.bind(this)}
-                    onKeyUp={this.onKeyUp.bind(this)}
-                    selected={true}
-                    currentPage={activePage}
-                    id={button => {
-                      this[`pager-${activePage}`] = button;
-                    }}
-                  />
-                </li>
-              )}
+              {showCenter &&
+                activePage !== totalItems &&
+                activePage !== 1 && (
+                  <li key={`pager-${activePage}`} index={activePage}>
+                    <PagerListItem
+                      onClick={this.handleClick.bind(this)}
+                      onKeyUp={this.onKeyUp.bind(this)}
+                      selected={true}
+                      currentPage={activePage}
+                      id={button => {
+                        this[`pager-${activePage}`] = button;
+                      }}
+                    />
+                  </li>
+                )}
               {(showHigher || showCenter) && ellipsis}
               {showHigher && pageQueue}
               <li key={`pager-${totalItems}`} index={totalItems}>

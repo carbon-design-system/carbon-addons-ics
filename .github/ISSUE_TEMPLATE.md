@@ -20,15 +20,15 @@ Describe in detail the issue you're having. Is this a feature request (new compo
 
 ## Steps to reproduce the issue
 
-1. Step one
-2. Step two
-3. Step three
-4. etc.
+1.  Step one
+2.  Step two
+3.  Step three
+4.  etc.
 
 ## Additional information
 
-- Screenshots or code
-- Notes
+* Screenshots or code
+* Notes
 
 ## Add labels
 
