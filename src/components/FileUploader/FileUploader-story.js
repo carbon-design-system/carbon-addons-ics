@@ -18,7 +18,7 @@ storiesOf('Components|FileUploader', module)
     withInfo(
       `
       The FileUploaderButton can be used as a standalone component if you do not need the extra UI that comes with FileUploader. The FileUploaderButton is used in FileUploader.
-    `,
+    `
     )(() => (
       <FileUploaderButton
         labelText="Add files"
@@ -27,14 +27,14 @@ storiesOf('Components|FileUploader', module)
         buttonKind="secondary"
         multiple
       />
-    )),
+    ))
   )
   .add(
     'FileUploader',
     withInfo(
       `
       The FileUploader components allow the user to upload any necessary files. This uses the FileUploaderButton and Filename components. Filename components will appear below the FileUploaderButton when files are added. Use the filenameStatus prop to control what icon appears in Filename ('edit', 'complete', or 'uploading').
-    `,
+    `
     )(() => (
       <FileUploader
         labelTitle="Upload"
@@ -44,14 +44,14 @@ storiesOf('Components|FileUploader', module)
         buttonKind="secondary"
         multiple
       />
-    )),
+    ))
   )
   .add(
     'FileUploader with Tooltip',
     withInfo(
       `
       The FileUploader components allow the user to upload any necessary files. This uses the FileUploaderButton and Filename components. Filename components will appear below the FileUploaderButton when files are added. Use the filenameStatus prop to control what icon appears in Filename ('edit', 'complete', or 'uploading').
-    `,
+    `
     )(() => (
       <FileUploader
         labelTitle="Upload a file"
@@ -62,5 +62,5 @@ storiesOf('Components|FileUploader', module)
         buttonKind="secondary"
         multiple
       />
-    )),
+    ))
   );

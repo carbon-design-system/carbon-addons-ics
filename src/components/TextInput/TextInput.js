@@ -7,7 +7,8 @@ export default class TextInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      labelMotion: !!props.defaultValue || !!props.value || props.defaultValue === 0,
+      labelMotion:
+        !!props.defaultValue || !!props.value || props.defaultValue === 0,
     };
     this.inputRef = null;
   }
@@ -109,7 +110,9 @@ export default class TextInput extends Component {
       </label>
     ) : null;
 
-    const error = invalid ? <div className="bx--form-requirement">{invalidText}</div> : null;
+    const error = invalid ? (
+      <div className="bx--form-requirement">{invalidText}</div>
+    ) : null;
 
     const input = invalid ? (
       <input

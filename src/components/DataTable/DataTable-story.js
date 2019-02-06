@@ -90,7 +90,9 @@ storiesOf('Components|DataTable', module)
                 <TableRow>
                   <TableSelectAll {...getSelectionProps()} />
                   {headers.map(header => (
-                    <TableHeader {...getHeaderProps({ header })}>{header.header}</TableHeader>
+                    <TableHeader {...getHeaderProps({ header })}>
+                      {header.header}
+                    </TableHeader>
                   ))}
                 </TableRow>
               </TableHead>
@@ -98,7 +100,9 @@ storiesOf('Components|DataTable', module)
                 {rows.map(row => (
                   <TableRow key={row.id}>
                     <TableSelectRow {...getSelectionProps({ row })} />
-                    {row.cells.map(cell => <TableCell key={cell.id}>{cell.value}</TableCell>)}
+                    {row.cells.map(cell => (
+                      <TableCell key={cell.id}>{cell.value}</TableCell>
+                    ))}
                   </TableRow>
                 ))}
               </TableBody>
@@ -106,7 +110,7 @@ storiesOf('Components|DataTable', module)
           </TableContainer>
         )}
       />
-    )),
+    ))
   )
   .add(
     'with sorting',
@@ -120,14 +124,18 @@ storiesOf('Components|DataTable', module)
               <TableHead>
                 <TableRow>
                   {headers.map(header => (
-                    <TableHeader {...getHeaderProps({ header })}>{header.header}</TableHeader>
+                    <TableHeader {...getHeaderProps({ header })}>
+                      {header.header}
+                    </TableHeader>
                   ))}
                 </TableRow>
               </TableHead>
               <TableBody>
                 {rows.map(row => (
                   <TableRow key={row.id}>
-                    {row.cells.map(cell => <TableCell key={cell.id}>{cell.value}</TableCell>)}
+                    {row.cells.map(cell => (
+                      <TableCell key={cell.id}>{cell.value}</TableCell>
+                    ))}
                   </TableRow>
                 ))}
               </TableBody>
@@ -135,7 +143,7 @@ storiesOf('Components|DataTable', module)
           </TableContainer>
         )}
       />
-    )),
+    ))
   )
   .add(
     'with selection',
@@ -150,7 +158,9 @@ storiesOf('Components|DataTable', module)
                 <TableRow>
                   <TableSelectAll {...getSelectionProps()} />
                   {headers.map(header => (
-                    <TableHeader {...getHeaderProps({ header })}>{header.header}</TableHeader>
+                    <TableHeader {...getHeaderProps({ header })}>
+                      {header.header}
+                    </TableHeader>
                   ))}
                 </TableRow>
               </TableHead>
@@ -158,7 +168,9 @@ storiesOf('Components|DataTable', module)
                 {rows.map(row => (
                   <TableRow key={row.id}>
                     <TableSelectRow {...getSelectionProps({ row })} />
-                    {row.cells.map(cell => <TableCell key={cell.id}>{cell.value}</TableCell>)}
+                    {row.cells.map(cell => (
+                      <TableCell key={cell.id}>{cell.value}</TableCell>
+                    ))}
                   </TableRow>
                 ))}
               </TableBody>
@@ -166,7 +178,7 @@ storiesOf('Components|DataTable', module)
           </TableContainer>
         )}
       />
-    )),
+    ))
   )
   .add(
     'with overflow',
@@ -181,7 +193,9 @@ storiesOf('Components|DataTable', module)
                 <TableRow>
                   <TableSelectAll {...getSelectionProps()} />
                   {headers.map(header => (
-                    <TableHeader {...getHeaderProps({ header })}>{header.header}</TableHeader>
+                    <TableHeader {...getHeaderProps({ header })}>
+                      {header.header}
+                    </TableHeader>
                   ))}
                   <th />
                 </TableRow>
@@ -190,14 +204,20 @@ storiesOf('Components|DataTable', module)
                 {rows.map(row => (
                   <TableRow key={row.id}>
                     <TableSelectRow {...getSelectionProps({ row })} />
-                    {row.cells.map(cell => <TableCell key={cell.id}>{cell.value}</TableCell>)}
+                    {row.cells.map(cell => (
+                      <TableCell key={cell.id}>{cell.value}</TableCell>
+                    ))}
                     <TableCell>
                       <OverflowMenu flipped floatingMenu>
                         <OverflowMenuItem itemText="Option 1" />
                         <OverflowMenuItem itemText="Option 2" />
                         <OverflowMenuItem itemText="Option 3" />
                         <OverflowMenuItem itemText="Option 4" />
-                        <OverflowMenuItem itemText="Danger option" hasDivider isDelete />
+                        <OverflowMenuItem
+                          itemText="Danger option"
+                          hasDivider
+                          isDelete
+                        />
                       </OverflowMenu>
                     </TableCell>
                   </TableRow>
@@ -207,5 +227,5 @@ storiesOf('Components|DataTable', module)
           </TableContainer>
         )}
       />
-    )),
+    ))
   );

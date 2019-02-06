@@ -22,7 +22,7 @@ storiesOf('Components|Link', module)
       <Link href="#" className={link} {...linkProps}>
         Link
       </Link>
-    )),
+    ))
   )
   .add(
     'Secondary link',
@@ -30,7 +30,7 @@ storiesOf('Components|Link', module)
       <Link href="#" className={(link, secondaryLink)} {...linkProps}>
         Link
       </Link>
-    )),
+    ))
   )
   .add(
     'Body Link',
@@ -38,5 +38,5 @@ storiesOf('Components|Link', module)
       <p>
         This is a paragraph with a <a href="#example">link</a>.
       </p>
-    )),
+    ))
   );

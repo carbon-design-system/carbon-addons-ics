@@ -22,7 +22,7 @@ describe('DataTable.TableHeader', () => {
             <TableHeader {...mockProps}>Header</TableHeader>
           </TableRow>
         </TableHead>
-      </Table>,
+      </Table>
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -37,7 +37,7 @@ describe('DataTable.TableHeader', () => {
             </TableHeader>
           </TableRow>
         </TableHead>
-      </Table>,
+      </Table>
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -52,7 +52,7 @@ describe('DataTable.TableHeader', () => {
             </TableHeader>
           </TableRow>
         </TableHead>
-      </Table>,
+      </Table>
     );
     expect(wrapper).toMatchSnapshot();
   });

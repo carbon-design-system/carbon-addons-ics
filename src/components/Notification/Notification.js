@@ -19,7 +19,10 @@ export class NotificationButton extends Component {
   render() {
     const { ariaLabel, className, iconDescription, name, ...rest } = this.props;
 
-    const classes = classNames('bx--toast-notification__close-button', className);
+    const classes = classNames(
+      'bx--toast-notification__close-button',
+      className
+    );
 
     return (
       <button {...rest} type="button" className={classes}>
@@ -68,7 +71,9 @@ export class NotificationTextDetails extends Component {
 
     if (notificationType === 'toast') {
       return (
-        <div {...rest} className={`bx--toast-notification__details ${className}`}>
+        <div
+          {...rest}
+          className={`bx--toast-notification__details ${className}`}>
           <Icon
             description={title}
             className="bx--toast-notification__icon"
@@ -155,7 +160,7 @@ export class ToastNotification extends Component {
     const classes = classNames(
       'bx--toast-notification',
       { [`bx--toast-notification--${this.props.kind}`]: this.props.kind },
-      className,
+      className
     );
 
     return (
@@ -210,7 +215,7 @@ export class InlineNotification extends Component {
     const classes = classNames(
       'bx--inline-notification',
       { [`bx--inline-notification--${this.props.kind}`]: this.props.kind },
-      className,
+      className
     );
 
     return (

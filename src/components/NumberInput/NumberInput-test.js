@@ -20,7 +20,7 @@ describe('NumberInput', () => {
           label="Number Input"
           className="extra-class"
           invalidText="invalid text"
-        />,
+        />
       );
 
       label = wrapper.find('label');
@@ -35,7 +35,9 @@ describe('NumberInput', () => {
       });
 
       it('has the expected classes', () => {
-        expect(inputWrapper.hasClass('bx--number-input__wrapper')).toEqual(true);
+        expect(inputWrapper.hasClass('bx--number-input__wrapper')).toEqual(
+          true
+        );
       });
 
       it('applies extra classes via className', () => {
@@ -90,7 +92,7 @@ describe('NumberInput', () => {
               id="test"
               label="Number Input"
               className="extra-class"
-            />,
+            />
           );
         const getNumberInput = wrapper => wrapper.find('input');
 
@@ -144,7 +146,8 @@ describe('NumberInput', () => {
         const iconDownText = wrapper.find('.down-icon title').text();
         const iconDescription = wrapper.prop('iconDescription');
 
-        const matches = iconDescription === iconUpText && iconDescription === iconDownText;
+        const matches =
+          iconDescription === iconUpText && iconDescription === iconDownText;
         expect(matches).toEqual(true);
       });
     });
@@ -166,7 +169,7 @@ describe('NumberInput', () => {
       const onChange = jest.fn();
 
       const wrapper = shallow(
-        <NumberInput id="test" onClick={onClick} onChange={onChange} disabled />,
+        <NumberInput id="test" onClick={onClick} onChange={onChange} disabled />
       );
 
       const input = wrapper.find('input');
@@ -207,7 +210,13 @@ describe('NumberInput', () => {
         onChange = jest.fn();
 
         wrapper = mount(
-          <NumberInput id="test" onClick={onClick} onChange={onChange} min={0} max={100} />,
+          <NumberInput
+            id="test"
+            onClick={onClick}
+            onChange={onChange}
+            min={0}
+            max={100}
+          />
         );
 
         input = wrapper.find('input');

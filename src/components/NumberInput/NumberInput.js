@@ -49,7 +49,10 @@ export default class NumberInput extends Component {
     this.state = {
       value,
       labelMotion:
-        !!props.defaultValue || !!props.value || props.defaultValue != null || props.value != null,
+        !!props.defaultValue ||
+        !!props.value ||
+        props.defaultValue != null ||
+        props.value != null,
     };
   }
 
@@ -71,17 +74,22 @@ export default class NumberInput extends Component {
         {
           value: evt.target.value,
           labelMotion:
-            evt.target.value === 0 ? Boolean(evt.target.value + 1) : Boolean(evt.target.value),
+            evt.target.value === 0
+              ? Boolean(evt.target.value + 1)
+              : Boolean(evt.target.value),
         },
         () => {
           this.props.onChange(evt);
-        },
+        }
       );
     }
   };
 
   handleArrowClick = (evt, direction) => {
-    let value = typeof this.state.value === 'string' ? Number(this.state.value) : this.state.value;
+    let value =
+      typeof this.state.value === 'string'
+        ? Number(this.state.value)
+        : this.state.value;
     const { disabled, min, max, step } = this.props;
     const conditional =
       direction === 'down'
@@ -100,7 +108,7 @@ export default class NumberInput extends Component {
         () => {
           this.props.onClick(evt, direction);
           this.props.onChange(evt, direction);
-        },
+        }
       );
     }
   };
@@ -170,11 +178,23 @@ export default class NumberInput extends Component {
 
     const buttonControls = (
       <div className="bx--number__controls">
-        <button {...buttonProps} onClick={evt => this.handleArrowClick(evt, 'up')}>
-          <Icon className="up-icon" name="up" description={this.props.iconDescription} />
+        <button
+          {...buttonProps}
+          onClick={evt => this.handleArrowClick(evt, 'up')}>
+          <Icon
+            className="up-icon"
+            name="up"
+            description={this.props.iconDescription}
+          />
         </button>
-        <button {...buttonProps} onClick={evt => this.handleArrowClick(evt, 'down')}>
-          <Icon className="down-icon" name="down" description={this.props.iconDescription} />
+        <button
+          {...buttonProps}
+          onClick={evt => this.handleArrowClick(evt, 'down')}>
+          <Icon
+            className="down-icon"
+            name="down"
+            description={this.props.iconDescription}
+          />
         </button>
       </div>
     );

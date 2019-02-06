@@ -23,7 +23,7 @@ storiesOf('Components|Action Icon', module)
         className="some-class"
         iconDescription="Search this page"
       />
-    )),
+    ))
   )
   .add(
     'selected',
@@ -35,19 +35,21 @@ storiesOf('Components|Action Icon', module)
         iconDescription="View page as a grid"
         selected
       />
-    )),
+    ))
   )
   .add(
     'disabled',
-    withInfo(`To disable, use the disabled prop, as seen in this example.`)(() => (
-      <ActionIcon
-        {...buttonEvents}
-        className="some-class"
-        icon="upload"
-        iconDescription="Upload a profile picture"
-        disabled
-      />
-    )),
+    withInfo(`To disable, use the disabled prop, as seen in this example.`)(
+      () => (
+        <ActionIcon
+          {...buttonEvents}
+          className="some-class"
+          icon="upload"
+          iconDescription="Upload a profile picture"
+          disabled
+        />
+      )
+    )
   )
   .add(
     'small',
@@ -61,14 +63,14 @@ storiesOf('Components|Action Icon', module)
         iconDescription="Add a new table row"
         small
       />
-    )),
+    ))
   )
   .add(
     'small selected',
     withInfo(
       `
         This is an example of a small, selected ActionIcon.
-      `,
+      `
     )(() => (
       <ActionIcon
         {...buttonEvents}
@@ -78,5 +80,5 @@ storiesOf('Components|Action Icon', module)
         small
         selected
       />
-    )),
+    ))
   );

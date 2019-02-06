@@ -14,7 +14,7 @@ describe('CardContent', () => {
     const wrapper = shallow(
       <CardContent {...props}>
         <div className="child">Test</div>
-      </CardContent>,
+      </CardContent>
     );
 
     it('renders children as expected', () => {
@@ -64,8 +64,12 @@ describe('CardContent', () => {
           expect(links.length).toBe(1);
           expect(links.getElement().type).toBe('a');
           expect(links.hasClass('bx--about__title--link')).toBe(true);
-          expect(links.props().href).toBe('http://test-card-link.mybluemix.net');
-          expect(links.props().children).toBe('http://test-card-link.mybluemix.net');
+          expect(links.props().href).toBe(
+            'http://test-card-link.mybluemix.net'
+          );
+          expect(links.props().children).toBe(
+            'http://test-card-link.mybluemix.net'
+          );
         });
       });
     });

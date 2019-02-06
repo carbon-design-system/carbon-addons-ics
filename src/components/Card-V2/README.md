@@ -16,4 +16,5 @@ const {
 ```
 
 ### About
+
 Cards are used to display an image or a thumbnail image of content along with meta data that is associated with the content. Cardv2 allows for more flexibility when organizing content. The CardMeta, CardText and CardMedia components can be placed in any order.

@@ -5,7 +5,9 @@ import { mount, shallow } from 'enzyme';
 
 describe('Search', () => {
   describe('renders as expected', () => {
-    const wrapper = mount(<Search id="test" className="extra-class" labelText="testlabel" />);
+    const wrapper = mount(
+      <Search id="test" className="extra-class" labelText="testlabel" />
+    );
 
     const label = wrapper.find('label');
     const textInput = wrapper.find('input');
@@ -82,7 +84,12 @@ describe('Search', () => {
     const onClick = jest.fn();
     const onChange = jest.fn();
     const wrapper = mount(
-      <Search id="test" labelText="testlabel" onClick={onClick} onChange={onChange} />,
+      <Search
+        id="test"
+        labelText="testlabel"
+        onClick={onClick}
+        onChange={onChange}
+      />
     );
 
     const input = wrapper.find('input');
@@ -107,7 +114,12 @@ describe('Search', () => {
       const onClick = jest.fn();
       const onChange = jest.fn();
       const wrapper = shallow(
-        <Search id="test" labelText="testlabel" onClick={onClick} onChange={onChange} />,
+        <Search
+          id="test"
+          labelText="testlabel"
+          onClick={onClick}
+          onChange={onChange}
+        />
       );
 
       const input = wrapper.find('input');

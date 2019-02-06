@@ -8,7 +8,7 @@ describe('OrderedList', () => {
     const list = shallow(
       <OrderedList className="some-class">
         <ListItem>Item</ListItem>
-      </OrderedList>,
+      </OrderedList>
     );
 
     it('should be an ol element', () => {

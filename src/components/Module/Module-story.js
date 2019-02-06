@@ -15,17 +15,18 @@ storiesOf('Components|Module', module)
         <ModuleHeader>Module Example</ModuleHeader>
         <ModuleBody>
           <p>
-            Lorem Ipsum is dummy text of the printing and typesetting industry. Lorem Ipsum has been
-            the industry&rsquo;s standard dummy text ever since the 1500s, when an unknown printer
-            took a galley of type and scrambled it to make a type specimen book.
+            Lorem Ipsum is dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry&rsquo;s standard dummy text ever
+            since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book.
           </p>
           <p>
-            It has survived not only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
+            It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged.
           </p>
         </ModuleBody>
       </Module>
-    )),
+    ))
   )
   .add(
     'Fixed width',
@@ -34,17 +35,18 @@ storiesOf('Components|Module', module)
         <ModuleHeader>Module Example</ModuleHeader>
         <ModuleBody>
           <p>
-            Lorem Ipsum is dummy text of the printing and typesetting industry. Lorem Ipsum has been
-            the industry&rsquo;s standard dummy text ever since the 1500s, when an unknown printer
-            took a galley of type and scrambled it to make a type specimen book.
+            Lorem Ipsum is dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry&rsquo;s standard dummy text ever
+            since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book.
           </p>
           <p>
-            It has survived not only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
+            It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged.
           </p>
         </ModuleBody>
       </Module>
-    )),
+    ))
   )
   .add(
     'Outer padding',
@@ -53,15 +55,16 @@ storiesOf('Components|Module', module)
         <ModuleHeader>Module Example</ModuleHeader>
         <ModuleBody>
           <p>
-            Lorem Ipsum is dummy text of the printing and typesetting industry. Lorem Ipsum has been
-            the industry&rsquo;s standard dummy text ever since the 1500s, when an unknown printer
-            took a galley of type and scrambled it to make a type specimen book.
+            Lorem Ipsum is dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry&rsquo;s standard dummy text ever
+            since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book.
           </p>
           <p>
-            It has survived not only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
+            It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged.
           </p>
         </ModuleBody>
       </Module>
-    )),
+    ))
   );

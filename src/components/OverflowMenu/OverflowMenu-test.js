@@ -9,7 +9,7 @@ describe('OverflowMenu', () => {
       <OverflowMenu className="extra-class">
         <div className="test-child" />
         <div className="test-child" />
-      </OverflowMenu>,
+      </OverflowMenu>
     );
     const menu = rootWrapper.childAt(0);
     const icon = menu.find(Icon);
@@ -49,7 +49,9 @@ describe('OverflowMenu', () => {
 
     it('should set ariaLabel if one is passed via props', () => {
       rootWrapper.setProps({ ariaLabel: 'test label' });
-      expect(rootWrapper.childAt(0).props()['aria-label']).toEqual('test label');
+      expect(rootWrapper.childAt(0).props()['aria-label']).toEqual(
+        'test label'
+      );
     });
 
     it('should set id if one is passed via props', () => {
@@ -61,7 +63,7 @@ describe('OverflowMenu', () => {
       const defaultMenu = shallow(
         <OverflowMenu>
           <div>Child</div>
-        </OverflowMenu>,
+        </OverflowMenu>
       ).childAt(0);
       expect(defaultMenu.props().tabIndex).toBe(0);
     });
@@ -79,7 +81,7 @@ describe('OverflowMenu', () => {
         <OverflowMenu>
           <div className="test-child" />
           <div className="test-child" />
-        </OverflowMenu>,
+        </OverflowMenu>
       );
       rootWrapper.setState({ open: true });
       rootWrapper.update();
@@ -93,7 +95,7 @@ describe('OverflowMenu', () => {
         <OverflowMenu>
           <div className="test-child" />
           <div className="test-child" />
-        </OverflowMenu>,
+        </OverflowMenu>
       );
       rootWrapper.setState({ open: true });
       rootWrapper.update();

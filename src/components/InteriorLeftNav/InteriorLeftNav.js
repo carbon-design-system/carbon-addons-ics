@@ -9,7 +9,8 @@ export default class InteriorLeftNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeHref: this.props.activeHref || (window.location && window.location.pathname),
+      activeHref:
+        this.props.activeHref || (window.location && window.location.pathname),
     };
   }
 
@@ -29,7 +30,8 @@ export default class InteriorLeftNav extends Component {
     evt.stopPropagation();
 
     // 13 = Enter, 32 = Spacebar
-    const acceptableEvent = evt.which === 13 || evt.which === 32 || evt.type === 'click';
+    const acceptableEvent =
+      evt.which === 13 || evt.which === 32 || evt.type === 'click';
     const diffHref = href !== this.state.activeHref;
     if (acceptableEvent && diffHref) {
       this.setState({ activeHref: href });
@@ -54,7 +56,9 @@ export default class InteriorLeftNav extends Component {
       const { href, to } = c.props.children.props;
       const childHref = href === undefined ? to : href;
       const activePath =
-        window.location && window.location.hash ? window.location.hash : this.state.activeHref;
+        window.location && window.location.hash
+          ? window.location.hash
+          : this.state.activeHref;
       if (childHref === activePath) open = true;
     });
 
@@ -110,8 +114,7 @@ export default class InteriorLeftNav extends Component {
         tabIndex={-1}
         aria-label="Interior Left Navigation"
         className={classNames}
-        {...rest}
-      >
+        {...rest}>
         <ul key="main_list" className="left-nav-list" role="menubar">
           {newChildren}
         </ul>
