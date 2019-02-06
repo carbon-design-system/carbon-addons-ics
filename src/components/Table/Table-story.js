@@ -56,5 +56,5 @@ storiesOf('Components|Table', module)
           </TableRow>
         </TableBody>
       </Table>
-    )),
+    ))
   );

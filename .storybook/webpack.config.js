@@ -39,12 +39,6 @@ module.exports = {
           {
             loader: 'babel-loader',
           },
-          {
-            loader: 'eslint-loader',
-            options: {
-              failOnError: false,
-            },
-          },
         ],
         include: path.resolve(__dirname, '../src'),
       },

@@ -26,7 +26,7 @@ exports[`DataTable.TableHeader should have an active and ascending class if sort
             >
               <TableHeader
                 isSortHeader={true}
-                onClick={[Function]}
+                onClick={[MockFunction]}
                 scope="col"
                 sortDirection="ASC"
                 translateWithId={[Function]}
@@ -36,7 +36,7 @@ exports[`DataTable.TableHeader should have an active and ascending class if sort
                 >
                   <button
                     className="bx--table-sort-v2 bx--table-sort-v2--active bx--table-sort-v2--ascending"
-                    onClick={[Function]}
+                    onClick={[MockFunction]}
                   >
                     <span
                       className="bx--table-header-label"
@@ -108,7 +108,7 @@ exports[`DataTable.TableHeader should have an active class if it is the sort hea
             >
               <TableHeader
                 isSortHeader={true}
-                onClick={[Function]}
+                onClick={[MockFunction]}
                 scope="col"
                 sortDirection="NONE"
                 translateWithId={[Function]}
@@ -118,7 +118,7 @@ exports[`DataTable.TableHeader should have an active class if it is the sort hea
                 >
                   <button
                     className="bx--table-sort-v2"
-                    onClick={[Function]}
+                    onClick={[MockFunction]}
                   >
                     <span
                       className="bx--table-header-label"
@@ -190,7 +190,7 @@ exports[`DataTable.TableHeader should render 1`] = `
             >
               <TableHeader
                 isSortHeader={false}
-                onClick={[Function]}
+                onClick={[MockFunction]}
                 scope="col"
                 sortDirection="NONE"
                 translateWithId={[Function]}
@@ -200,7 +200,7 @@ exports[`DataTable.TableHeader should render 1`] = `
                 >
                   <button
                     className="bx--table-sort-v2"
-                    onClick={[Function]}
+                    onClick={[MockFunction]}
                   >
                     <span
                       className="bx--table-header-label"

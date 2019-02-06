@@ -131,15 +131,18 @@ storiesOf('Components|Form', module)
         </FormGroup>
 
         <FormGroup {...fieldsetFileUploaderProps}>
-          <FileUploaderButton {...fileUploaderEvents} id="file-1" labelText="Choose Files..." />
+          <FileUploaderButton
+            {...fileUploaderEvents}
+            id="file-1"
+            labelText="Choose Files..."
+          />
         </FormGroup>
 
         <FormGroup {...fieldsetRadioProps}>
           <RadioButtonGroup
             onChange={action('onChange')}
             name="radio-button-group"
-            defaultSelected="default-selected"
-          >
+            defaultSelected="default-selected">
             <RadioButton
               value="standard"
               id="radio-1"
@@ -172,8 +175,16 @@ storiesOf('Components|Form', module)
         </FormGroup>
 
         <FormGroup {...fieldsetSelectProps}>
-          <Select {...selectProps} id="select-1" defaultValue="placeholder-item">
-            <SelectItem disabled hidden value="placeholder-item" text="Pick an option" />
+          <Select
+            {...selectProps}
+            id="select-1"
+            defaultValue="placeholder-item">
+            <SelectItem
+              disabled
+              hidden
+              value="placeholder-item"
+              text="Pick an option"
+            />
             <SelectItem value="option-1" text="Option 1" />
             <SelectItem value="option-2" text="Option 2" />
             <SelectItem value="option-3" text="Option 3" />
@@ -204,5 +215,5 @@ storiesOf('Components|Form', module)
           </Button>
         </div>
       </Form>
-    )),
+    ))
   );

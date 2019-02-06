@@ -27,7 +27,9 @@ describe('NotificationButton', () => {
     });
 
     it('button should have correct className by default', () => {
-      expect(wrapper.hasClass('bx--toast-notification__close-button')).toBe(true);
+      expect(wrapper.hasClass('bx--toast-notification__close-button')).toBe(
+        true
+      );
     });
 
     it('icon should have correct className by default', () => {
@@ -50,7 +52,9 @@ describe('NotificationTextDetails', () => {
     describe('When notificationType equals "inline"', () => {
       it('div shoudld have correct className', () => {
         wrapper.setProps({ notificationType: 'inline' });
-        expect(wrapper.hasClass('bx--inline-notification__text-wrapper')).toBe(true);
+        expect(wrapper.hasClass('bx--inline-notification__text-wrapper')).toBe(
+          true
+        );
       });
     });
   });
@@ -64,7 +68,7 @@ describe('ToastNotification', () => {
         title="this is a title"
         subtitle="this is a subtitle"
         caption="this is a caption"
-      />,
+      />
     );
     it('renders itself', () => {
       expect(toast.length).toEqual(1);
@@ -111,7 +115,7 @@ describe('ToastNotification', () => {
           title="this is a title"
           subtitle="this is a subtitle"
           caption="this is a caption"
-        />,
+        />
       );
 
       expect(mountedToast.state().open).toBe(true);
@@ -124,7 +128,7 @@ describe('ToastNotification', () => {
           title="this is a title"
           subtitle="this is a subtitle"
           caption="this is a caption"
-        />,
+        />
       );
 
       mountedToast.find('button').simulate('click');
@@ -138,7 +142,7 @@ describe('ToastNotification', () => {
           title="this is a title"
           subtitle="this is a subtitle"
           caption="this is a caption"
-        />,
+        />
       );
 
       mountedToast.setState({ open: false });
@@ -150,7 +154,11 @@ describe('ToastNotification', () => {
 describe('InlineNotification', () => {
   describe('Renders as expected', () => {
     const inline = shallow(
-      <InlineNotification title="this is a title" subtitle="this is a subtitle" kind="error" />,
+      <InlineNotification
+        title="this is a title"
+        subtitle="this is a subtitle"
+        kind="error"
+      />
     );
 
     it('renders itself', () => {
@@ -191,7 +199,9 @@ describe('InlineNotification', () => {
 
       kinds.forEach(kind => {
         inline.setProps({ kind });
-        expect(inline.hasClass(`bx--inline-notification--${kind}`)).toEqual(true);
+        expect(inline.hasClass(`bx--inline-notification--${kind}`)).toEqual(
+          true
+        );
       });
     });
 

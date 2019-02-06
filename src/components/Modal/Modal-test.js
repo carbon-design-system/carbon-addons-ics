@@ -41,18 +41,24 @@ describe('Modal', () => {
     });
 
     it('should have iconDescription match Icon component description prop', () => {
-      const matches = mounted.props().iconDescription === mounted.find(Icon).props().description;
+      const matches =
+        mounted.props().iconDescription ===
+        mounted.find(Icon).props().description;
       expect(matches).toEqual(true);
     });
 
     it('enables primary button by default', () => {
-      const primaryButton = mounted.find('.bx--modal__buttons-container .bx--btn').at(1);
+      const primaryButton = mounted
+        .find('.bx--modal__buttons-container .bx--btn')
+        .at(1);
       expect(primaryButton.prop('disabled')).toEqual(false);
     });
 
     it('disables primary button when diablePrimaryButton prop is passed', () => {
       mounted.setProps({ primaryButtonDisabled: true });
-      const primaryButton = mounted.find('.bx--modal__buttons-container .bx--btn').at(0);
+      const primaryButton = mounted
+        .find('.bx--modal__buttons-container .bx--btn')
+        .at(0);
       expect(primaryButton.props().disabled).toEqual(true);
     });
   });
@@ -65,8 +71,11 @@ describe('Modal', () => {
     });
 
     it('should set button text if one is passed via props', () => {
-      const wrapper = shallow(<Modal primaryButtonText="Submit" secondaryButtonText="Cancel" />);
-      const modalButtons = wrapper.find('.bx--modal__buttons-container').props().children;
+      const wrapper = shallow(
+        <Modal primaryButtonText="Submit" secondaryButtonText="Cancel" />
+      );
+      const modalButtons = wrapper.find('.bx--modal__buttons-container').props()
+        .children;
       expect(modalButtons[1].props.children).toEqual('Cancel');
       expect(modalButtons[0].props.children).toEqual('Submit');
     });

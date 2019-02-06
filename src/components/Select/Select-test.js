@@ -10,7 +10,7 @@ describe('Select', () => {
       <Select id="testing" labelText="Select" className="extra-class">
         <SelectItem />
         <SelectItem />
-      </Select>,
+      </Select>
     );
 
     const selectContainer = wrapper.find('.bx--form-item > div');
@@ -49,7 +49,9 @@ describe('Select', () => {
       });
 
       it('should have iconDescription match Icon component description prop', () => {
-        const matches = wrapper.props().iconDescription === wrapper.find(Icon).props().description;
+        const matches =
+          wrapper.props().iconDescription ===
+          wrapper.find(Icon).props().description;
         expect(matches).toEqual(true);
       });
     });
@@ -106,7 +108,7 @@ describe('Select', () => {
       <Select id="testing" labelText="Select" className="extra-class" inline>
         <SelectItem />
         <SelectItem />
-      </Select>,
+      </Select>
     );
 
     const selectContainer = wrapper.find('.bx--form-item > div');

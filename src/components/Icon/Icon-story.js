@@ -23,7 +23,9 @@ storiesOf('Components|Icon', module)
       <div className="bx--grid">
         <div className="bx--row">
           {icons.map(i => (
-            <div className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2" key={i.title}>
+            <div
+              className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2"
+              key={i.title}>
               <div style={boxStyle}>
                 <Icon name={i.title} />
                 <div className="ibm-type-a" style={{ paddingTop: '1rem' }}>
@@ -34,7 +36,7 @@ storiesOf('Components|Icon', module)
           ))}
         </div>
       </div>
-    )),
+    ))
   )
   .add(
     'Small icons',
@@ -42,7 +44,9 @@ storiesOf('Components|Icon', module)
       <div className="bx--grid">
         <div className="bx--row">
           {icons.map(i => (
-            <div className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2" key={i.title}>
+            <div
+              className="bx--col-xs-4 bx--col-sm-3 bx--col-md-2"
+              key={i.title}>
               <div style={boxStyle}>
                 <Icon name={i.title} height="16" width="16" />
                 <div className="ibm-type-a" style={{ paddingTop: '1rem' }}>
@@ -53,5 +57,5 @@ storiesOf('Components|Icon', module)
           ))}
         </div>
       </div>
-    )),
+    ))
   );

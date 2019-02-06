@@ -7,9 +7,13 @@ import { shallow, mount } from 'enzyme';
 
 describe('Dropdown', () => {
   describe('Renders as expected', () => {
-    const wrapper = shallow(<Dropdown className="extra-class" defaultText="Choose something.." />);
+    const wrapper = shallow(
+      <Dropdown className="extra-class" defaultText="Choose something.." />
+    );
     const dropdownWrapper = wrapper.childAt(0);
-    const mounted = mount(<Dropdown className="extra-class" defaultText="Choose something.." />);
+    const mounted = mount(
+      <Dropdown className="extra-class" defaultText="Choose something.." />
+    );
 
     it('renders a dropdown', () => {
       expect(wrapper.length).toEqual(1);
@@ -20,7 +24,9 @@ describe('Dropdown', () => {
     });
 
     it('has the expected classes when disabled', () => {
-      const wrapper = shallow(<Dropdown defaultText="Choose something.." disabled />).childAt(0);
+      const wrapper = shallow(
+        <Dropdown defaultText="Choose something.." disabled />
+      ).childAt(0);
 
       expect(wrapper.hasClass('bx--dropdown--disabled')).toEqual(true);
     });
@@ -34,7 +40,7 @@ describe('Dropdown', () => {
         <Dropdown>
           <div className="test-child" />
           <div className="test-child" />
-        </Dropdown>,
+        </Dropdown>
       );
       expect(dropdown.find('.test-child').length).toEqual(2);
     });
@@ -45,7 +51,7 @@ describe('Dropdown', () => {
           {null}
           <div className="test-child" />
           {null}
-        </Dropdown>,
+        </Dropdown>
       );
       expect(dropdown.find('.test-child').length).toEqual(1);
     });
@@ -65,7 +71,9 @@ describe('Dropdown', () => {
     });
 
     it('should have iconDescription match Icon component description prop', () => {
-      const matches = mounted.props().iconDescription === mounted.find(Icon).props().description;
+      const matches =
+        mounted.props().iconDescription ===
+        mounted.find(Icon).props().description;
       expect(matches).toEqual(true);
     });
 
@@ -73,7 +81,7 @@ describe('Dropdown', () => {
       const dropdown = shallow(
         <Dropdown defaultText="Choose something..." selectedText="Value">
           <DropdownItem itemText="Value" value="Value" />
-        </Dropdown>,
+        </Dropdown>
       );
       expect(dropdown.state().selectedText).toEqual('Value');
     });
@@ -82,7 +90,7 @@ describe('Dropdown', () => {
       const dropdown = shallow(
         <Dropdown defaultText="Choose something..." selectedText="NotValue">
           <DropdownItem itemText="Value" value="Value" />
-        </Dropdown>,
+        </Dropdown>
       );
       expect(dropdown.state().selectedText).toEqual('Choose something...');
     });
@@ -93,8 +101,12 @@ describe('Dropdown', () => {
 
     const wrapper = mount(
       <Dropdown onClick={onClick}>
-        <DropdownItem className="test-child" itemText="test-child" value="test-child" />
-      </Dropdown>,
+        <DropdownItem
+          className="test-child"
+          itemText="test-child"
+          value="test-child"
+        />
+      </Dropdown>
     );
 
     const dropdown = wrapper.find('.bx--dropdown');
@@ -102,23 +114,33 @@ describe('Dropdown', () => {
 
     it('should add the open dropdown class on click', () => {
       dropdown.simulate('click');
-      expect(wrapper.find('.bx--dropdown').hasClass('bx--dropdown--open')).toEqual(true);
+      expect(
+        wrapper.find('.bx--dropdown').hasClass('bx--dropdown--open')
+      ).toEqual(true);
     });
 
     it('should toggle the open dropdown class on Enter', () => {
       wrapper.setState({ open: false });
       dropdown.simulate('keypress', { which: 13 });
-      expect(wrapper.find('.bx--dropdown').hasClass('bx--dropdown--open')).toEqual(true);
+      expect(
+        wrapper.find('.bx--dropdown').hasClass('bx--dropdown--open')
+      ).toEqual(true);
       dropdown.simulate('keypress', { which: 13 });
-      expect(wrapper.find('.bx--dropdown').hasClass('bx--dropdown--open')).toEqual(false);
+      expect(
+        wrapper.find('.bx--dropdown').hasClass('bx--dropdown--open')
+      ).toEqual(false);
     });
 
     it('should toggle the open dropdown class on Space', () => {
       wrapper.setState({ open: false });
       dropdown.simulate('keypress', { which: 32 });
-      expect(wrapper.find('.bx--dropdown').hasClass('bx--dropdown--open')).toEqual(true);
+      expect(
+        wrapper.find('.bx--dropdown').hasClass('bx--dropdown--open')
+      ).toEqual(true);
       dropdown.simulate('keypress', { which: 32 });
-      expect(wrapper.find('.bx--dropdown').hasClass('bx--dropdown--open')).toEqual(false);
+      expect(
+        wrapper.find('.bx--dropdown').hasClass('bx--dropdown--open')
+      ).toEqual(false);
     });
 
     it('should update data value state when child item is clicked', () => {
@@ -136,8 +158,12 @@ describe('Dropdown', () => {
     it('should not open when disabled', () => {
       const wrapper = mount(
         <Dropdown onClick={onClick} disabled>
-          <DropdownItem className="test-child" itemText="test-child" value="test-child" />
-        </Dropdown>,
+          <DropdownItem
+            className="test-child"
+            itemText="test-child"
+            value="test-child"
+          />
+        </Dropdown>
       );
       const dropdown = wrapper.find('.bx--dropdown--disabled');
 

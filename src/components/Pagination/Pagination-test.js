@@ -5,7 +5,12 @@ import Pagination from '../Pagination';
 describe('Pagination', () => {
   describe('Renders common props as expected', () => {
     const wrapper = mount(
-      <Pagination totalItems={10} className="extra-class" backwardText="prev" forwardText="next" />,
+      <Pagination
+        totalItems={10}
+        className="extra-class"
+        backwardText="prev"
+        forwardText="next"
+      />
     );
 
     it('Renders the component as expected', () => {
@@ -21,11 +26,15 @@ describe('Pagination', () => {
     });
 
     it('Renders the expected increment text', () => {
-      expect(wrapper.find('.bx--pagination__right .bx--btn').text()).toEqual('next');
+      expect(wrapper.find('.bx--pagination__right .bx--btn').text()).toEqual(
+        'next'
+      );
     });
 
     it('Renders the expected decrement text', () => {
-      expect(wrapper.find('.bx--pagination__left .bx--btn').text()).toEqual('prev');
+      expect(wrapper.find('.bx--pagination__left .bx--btn').text()).toEqual(
+        'prev'
+      );
     });
 
     it('Renders the expected amount of tabs', () => {
@@ -66,7 +75,11 @@ describe('Pagination', () => {
         .find('.bx--tabs__nav-item')
         .first()
         .simulate('focus');
-      firstTab.simulate('keyDown', { key: 'ArrowRight', keyCode: 39, which: 39 });
+      firstTab.simulate('keyDown', {
+        key: 'ArrowRight',
+        keyCode: 39,
+        which: 39,
+      });
       expect(wrapper.state().page).toBe(2);
     });
 
@@ -75,7 +88,11 @@ describe('Pagination', () => {
         .find('.bx--tabs__nav-item')
         .first()
         .simulate('focus');
-      firstTab.simulate('keyDown', { key: 'ArrowLeft', keyCode: 37, which: 37 });
+      firstTab.simulate('keyDown', {
+        key: 'ArrowLeft',
+        keyCode: 37,
+        which: 37,
+      });
       expect(wrapper.state().page).toBe(10);
     });
 
@@ -97,7 +114,9 @@ describe('Pagination', () => {
         .find('.bx--tabs__nav-item')
         .first()
         .simulate('click');
-      expect(wrapper.find('.bx--pagination__left .bx--btn').props().disabled).toEqual(true);
+      expect(
+        wrapper.find('.bx--pagination__left .bx--btn').props().disabled
+      ).toEqual(true);
     });
 
     it('Renders to increment button as disabled if on last page', () => {
@@ -105,7 +124,9 @@ describe('Pagination', () => {
         .find('.bx--tabs__nav-item')
         .last()
         .simulate('click');
-      expect(wrapper.find('.bx--pagination__right .bx--btn').props().disabled).toEqual(true);
+      expect(
+        wrapper.find('.bx--pagination__right .bx--btn').props().disabled
+      ).toEqual(true);
     });
 
     it('Displays hint if tab is focused', () => {

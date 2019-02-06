@@ -20,7 +20,7 @@ addDecorator(
       <div className="bx--grid" style={{ marginTop: '1rem' }}>
         <div className="bx--row">{story()}</div>
       </div>
-    ),
+    )
 );
 
 function importAll(req) {

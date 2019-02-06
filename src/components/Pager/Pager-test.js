@@ -47,7 +47,11 @@ describe('Pager', () => {
         .find('.bx--pager__page-item')
         .first()
         .simulate('focus');
-      firstButton.simulate('keyUp', { key: 'ArrowRight', keyCode: 39, which: 39 });
+      firstButton.simulate('keyUp', {
+        key: 'ArrowRight',
+        keyCode: 39,
+        which: 39,
+      });
       expect(wrapper.state().activePage).toBe(2);
     });
 
@@ -56,7 +60,11 @@ describe('Pager', () => {
         .find('.bx--pager__page-item')
         .last()
         .simulate('focus');
-      firstButton.simulate('keyUp', { key: 'ArrowLeft', keyCode: 37, which: 37 });
+      firstButton.simulate('keyUp', {
+        key: 'ArrowLeft',
+        keyCode: 37,
+        which: 37,
+      });
       expect(wrapper.state().activePage).toBe(1);
     });
 

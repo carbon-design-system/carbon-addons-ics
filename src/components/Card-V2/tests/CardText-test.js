@@ -7,7 +7,7 @@ describe('CardText', () => {
     const wrapper = shallow(
       <CardText className="extra-class">
         <p>Dummy Text</p>
-      </CardText>,
+      </CardText>
     );
 
     it('has the expected classes', () => {

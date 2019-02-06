@@ -70,7 +70,7 @@ ActionIcon.propTypes = {
   iconDescription: props => {
     if (props.icon && !props.iconDescription) {
       return new Error(
-        'icon property specified without also providing an iconDescription property.',
+        'icon property specified without also providing an iconDescription property.'
       );
     }
     return undefined;

@@ -1,6 +1,6 @@
 ## ICS Grid
 
-ICS grid is a simple 12 column grid that works with Carbon's grid helper classes. 
+ICS grid is a simple 12 column grid that works with Carbon's grid helper classes.
 
 ```html
 <div class="bx--grid">
@@ -16,13 +16,10 @@ For usage information, view [Carbon's grid documentation](http://carbondesignsys
 
 ### ICS Breakpoints
 
-| Size            | Columns            | Gutters            | Outer margins      |
-| ----------------| -------------------| -------------------| -------------------|
-| xs (576px)      | 12                 | 12px + 12px = 24px | 0                  |
-| sm (768px)      | 12                 | 12px + 12px = 24px | 8px                |
-| md (1024px)     | 12                 | 12px + 12px = 24px | 36px               |
-| lg (1200px)     | 12                 | 12px + 12px = 24px | 36px               |
-| xl (1600px)     | 12                 | 12px + 12px = 24px | 36px               |
-
-
-
+| Size        | Columns | Gutters            | Outer margins |
+| ----------- | ------- | ------------------ | ------------- |
+| xs (576px)  | 12      | 12px + 12px = 24px | 0             |
+| sm (768px)  | 12      | 12px + 12px = 24px | 8px           |
+| md (1024px) | 12      | 12px + 12px = 24px | 36px          |
+| lg (1200px) | 12      | 12px + 12px = 24px | 36px          |
+| xl (1600px) | 12      | 12px + 12px = 24px | 36px          |

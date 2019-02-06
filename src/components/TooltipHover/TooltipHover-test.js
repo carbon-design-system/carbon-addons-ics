@@ -5,7 +5,9 @@ import { mount } from 'enzyme';
 
 describe('Tooltip', () => {
   describe('Renders as expected with defaults', () => {
-    const outerWrapper = mount(<TooltipHover text="Tooltip" iconName="warning" />);
+    const outerWrapper = mount(
+      <TooltipHover text="Tooltip" iconName="warning" />
+    );
 
     const innerWrapper = outerWrapper.find('.bx--tooltip--simple');
 
@@ -23,7 +25,9 @@ describe('Tooltip', () => {
   });
 
   describe('Renders as expected with specified properties', () => {
-    const outerWrapper = mount(<TooltipHover text="data-text" iconName="warning" position="top" />);
+    const outerWrapper = mount(
+      <TooltipHover text="data-text" iconName="warning" position="top" />
+    );
 
     describe('tooltip container', () => {
       it("sets the tooltip's data-tooltip-text attribute", () => {

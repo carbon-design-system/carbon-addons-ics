@@ -10,7 +10,7 @@ describe('Tooltip', () => {
       <Tooltip triggerText="Tooltip">
         <p className="bx--tooltip__label">Tooltip label</p>
         <p>Lorem ipsum dolor sit amet</p>
-      </Tooltip>,
+      </Tooltip>
     );
 
     const trigger = wrapper.find('.bx--tooltip__trigger');
@@ -34,12 +34,11 @@ describe('Tooltip', () => {
         triggerText="Tooltip"
         direction="bottom"
         menuOffset={{ left: 10, top: 15 }}
-        showIcon={false}
-      >
+        showIcon={false}>
         {' '}
         <p className="bx--tooltip__label">Tooltip label</p>
         <p>Lorem ipsum dolor sit amet</p>
-      </Tooltip>,
+      </Tooltip>
     );
 
     const trigger = wrapper.find('.bx--tooltip__trigger');
@@ -79,7 +78,9 @@ describe('Tooltip', () => {
     });
 
     it('if given openOnHover prop, changes state on hover', () => {
-      const wrapper = mount(<Tooltip openOnHover showIcon triggerText="Tooltip" />);
+      const wrapper = mount(
+        <Tooltip openOnHover showIcon triggerText="Tooltip" />
+      );
       const trigger = wrapper.find('.bx--tooltip__icon-container');
       trigger.simulate('mouseEnter');
       expect(wrapper.state().open).toEqual(true);

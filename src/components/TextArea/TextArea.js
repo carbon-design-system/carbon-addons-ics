@@ -33,10 +33,17 @@ const Textarea = ({
     </label>
   ) : null;
 
-  const error = invalid ? <div className="bx--form-requirement">{invalidText}</div> : null;
+  const error = invalid ? (
+    <div className="bx--form-requirement">{invalidText}</div>
+  ) : null;
 
   const input = invalid ? (
-    <textarea {...rest} {...textareaProps} className={textareaClasses} data-invalid />
+    <textarea
+      {...rest}
+      {...textareaProps}
+      className={textareaClasses}
+      data-invalid
+    />
   ) : (
     <textarea {...rest} {...textareaProps} className={textareaClasses} />
   );

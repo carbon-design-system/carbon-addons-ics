@@ -6,6 +6,7 @@ import { FileUploader } from 'carbon-addons-ics';
 ```
 
 To enable the `labelTooltip` prop add a prop to your `FileUploader` like so:
+
 ```js
 const data = {
   text: 'some text',

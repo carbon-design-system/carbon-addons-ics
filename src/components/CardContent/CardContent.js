@@ -42,7 +42,11 @@ const CardContent = ({
       <div className="bx--card__business-card">
         {cardAvatar && (
           <div className="bx--about__icon">
-            <img src={cardAvatar} alt="Avatar" className="bx--about__icon--img" />
+            <img
+              src={cardAvatar}
+              alt="Avatar"
+              className="bx--about__icon--img"
+            />
           </div>
         )}
         <div className="bx--card__business-card__title">

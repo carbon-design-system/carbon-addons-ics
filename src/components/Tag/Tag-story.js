@@ -28,8 +28,7 @@ class TagUpdate extends React.Component {
         <Tag
           action={this.state.action}
           actionFunction={this.tagClick}
-          actionDescription="Add a point"
-        >
+          actionDescription="Add a point">
           Offering Managment &middot; {this.state.count}
         </Tag>
       </TagWrapper>
@@ -56,7 +55,7 @@ storiesOf('Components|Tag', module)
         This example below shows how the Tag
         component can be used. Notice dark is used in this case since it's on a
         light background. To use multiple tags use the TagWrapper component.
-      `,
+      `
     )(() => (
       <TagWrapper light aria-label="Tags">
         <Tag className="some-class">Offering Managment &middot; 72</Tag>
@@ -65,14 +64,14 @@ storiesOf('Components|Tag', module)
         <Tag className="some-class">Littleton &middot; 33</Tag>
         <Tag className="some-class">Dublin &middot; 12</Tag>
       </TagWrapper>
-    )),
+    ))
   )
   .add(
     'remove',
     withInfo(
       `
         This shows how the Tag component can be used with a remove option.
-      `,
+      `
     )(() => (
       <TagWrapper light aria-label="Tags">
         <Tag remove className="some-class">
@@ -91,7 +90,7 @@ storiesOf('Components|Tag', module)
           Dublin
         </Tag>
       </TagWrapper>
-    )),
+    ))
   )
   .add(
     'with action',
@@ -99,7 +98,7 @@ storiesOf('Components|Tag', module)
       `
         The example below shows how the Tag component can be used with left side action icons.
         Actions include add, success and remove.
-      `,
+      `
     )(() => (
       <TagWrapper light aria-label="Tags">
         <Tag action={'add'} {...actionTagProps}>
@@ -112,7 +111,7 @@ storiesOf('Components|Tag', module)
           Design
         </Tag>
       </TagWrapper>
-    )),
+    ))
   )
   .add(
     'with action function',
@@ -120,15 +119,15 @@ storiesOf('Components|Tag', module)
       `
         The example below shows how the Tag component can be used with left side action icons.
         Actions include add, success and remove.
-      `,
-    )(() => <TagUpdate />),
+      `
+    )(() => <TagUpdate />)
   )
   .add(
     'light',
     withInfo(
       `
         The example below shows how the Tag component can be used on a dark background.
-      `,
+      `
     )(() => (
       <TagWrapper aria-label="Tags">
         <Tag style={'light'} className="some-class">
@@ -141,10 +140,9 @@ storiesOf('Components|Tag', module)
           style={'light'}
           action={'remove'}
           actionDescription={'Remove this tag'}
-          className="some-class"
-        >
+          className="some-class">
           Design
         </Tag>
       </TagWrapper>
-    )),
+    ))
   );

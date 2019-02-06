@@ -25,5 +25,5 @@ storiesOf('Components|Search', module)
           action('onChange');
         }}
       />
-    )),
+    ))
   );

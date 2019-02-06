@@ -1,6 +1,6 @@
 ## ICS Type
 
-Our type rules include font sizes, weights, line heights, maximum widths and letter spacing. 
+Our type rules include font sizes, weights, line heights, maximum widths and letter spacing.
 
 These values are based on Plex type usage guidelines. We currently use fixed values, rather than responsive font sizes.
 

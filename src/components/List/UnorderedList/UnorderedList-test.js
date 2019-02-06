@@ -8,7 +8,7 @@ describe('UnorderedList', () => {
     const list = shallow(
       <UnorderedList className="some-class">
         <ListItem>Item</ListItem>
-      </UnorderedList>,
+      </UnorderedList>
     );
 
     it('should be a ul element', () => {

@@ -19,7 +19,7 @@ storiesOf('Components|Buttons', module)
     withInfo(
       `
       This is an example of a primary button.
-    `,
+    `
     )(() => (
       <div>
         <Button {...buttonEvents} className="some-class">
@@ -31,25 +31,29 @@ storiesOf('Components|Buttons', module)
         </Button>
         &nbsp;
       </div>
-    )),
+    ))
   )
   .add(
     'Secondary Buttons',
     withInfo(
       `
       This is an example of a secondary button.
-    `,
+    `
     )(() => (
       <div>
         <Button kind="secondary" {...buttonEvents} className="some-class">
           Secondary Button
         </Button>
         &nbsp;
-        <Button kind="secondary" {...buttonEvents} className="some-class" disabled>
+        <Button
+          kind="secondary"
+          {...buttonEvents}
+          className="some-class"
+          disabled>
           Disabled Secondary
         </Button>
       </div>
-    )),
+    ))
   )
   .add(
     'Flat Buttons',
@@ -57,7 +61,11 @@ storiesOf('Components|Buttons', module)
       This is an example of a flat button.
     `)(() => (
       <div>
-        <Button kind="ghost" className="some-class" iconDescription="Add" {...buttonEvents}>
+        <Button
+          kind="ghost"
+          className="some-class"
+          iconDescription="Add"
+          {...buttonEvents}>
           Flat Button
         </Button>
         &nbsp;
@@ -66,12 +74,11 @@ storiesOf('Components|Buttons', module)
           className="some-class"
           iconDescription="Add"
           {...buttonEvents}
-          disabled
-        >
+          disabled>
           Disabled Flat
         </Button>
       </div>
-    )),
+    ))
   )
   .add(
     'Sets of Buttons',
@@ -90,5 +97,5 @@ storiesOf('Components|Buttons', module)
           Negative
         </Button>
       </div>
-    )),
+    ))
   );

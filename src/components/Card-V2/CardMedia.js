@@ -36,7 +36,9 @@ export default class CardMedia extends Component {
 
     return (
       <div {...rest} className={cardMediaClasses}>
-        {type === 'img' && <img src={src} alt={altText} className="bx--card__media-img" />}
+        {type === 'img' && (
+          <img src={src} alt={altText} className="bx--card__media-img" />
+        )}
         {children}
       </div>
     );

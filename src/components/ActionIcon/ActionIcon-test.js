@@ -10,7 +10,7 @@ describe('ActionIcon', () => {
         icon="info"
         iconDescription="information"
         tabIndex={-1}
-      />,
+      />
     );
 
     const wrapperHref = shallow(
@@ -20,7 +20,7 @@ describe('ActionIcon', () => {
         iconDescription="information"
         href="/style"
         tabIndex={-1}
-      />,
+      />
     );
 
     it('Renders an actionIcon', () => {
@@ -39,8 +39,12 @@ describe('ActionIcon', () => {
     });
 
     it('Renders a child with a classname', () => {
-      expect(wrapper.find('button').hasClass('bx--action-icon_btn')).toEqual(true);
-      expect(wrapperHref.find('a').hasClass('bx--action-icon_btn')).toEqual(true);
+      expect(wrapper.find('button').hasClass('bx--action-icon_btn')).toEqual(
+        true
+      );
+      expect(wrapperHref.find('a').hasClass('bx--action-icon_btn')).toEqual(
+        true
+      );
     });
 
     it('Renders with tab', () => {
@@ -56,11 +60,17 @@ describe('ActionIcon', () => {
 
   describe('Renders modifiers as expected', () => {
     const wrapper = shallow(
-      <ActionIcon small selected icon="info" iconDescription="information" />,
+      <ActionIcon small selected icon="info" iconDescription="information" />
     );
 
     const wrapperHref = shallow(
-      <ActionIcon href="/style" icon="info" iconDescription="information" small selected />,
+      <ActionIcon
+        href="/style"
+        icon="info"
+        iconDescription="information"
+        small
+        selected
+      />
     );
 
     it('Renders small', () => {
@@ -75,7 +85,9 @@ describe('ActionIcon', () => {
   });
 
   describe('Renders icons as expected', () => {
-    const iconButton = mount(<ActionIcon icon="info" iconDescription="information" />);
+    const iconButton = mount(
+      <ActionIcon icon="info" iconDescription="information" />
+    );
 
     const icon = iconButton.find('svg');
 
@@ -89,7 +101,7 @@ describe('ActionIcon', () => {
       };
       // eslint-disable-next-line quotes
       const error = new Error(
-        'icon property specified without also providing an iconDescription property.',
+        'icon property specified without also providing an iconDescription property.'
       );
       expect(ActionIcon.propTypes.iconDescription(props)).toEqual(error);
     });
