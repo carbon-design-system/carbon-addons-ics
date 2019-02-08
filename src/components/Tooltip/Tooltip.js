@@ -80,7 +80,7 @@ export default class Tooltip extends Component {
     const tooltipClasses = classNames(
       'bx--tooltip',
       { 'bx--tooltip--shown': this.state.open },
-      className,
+      className
     );
 
     let triggerProps = {
@@ -106,9 +106,12 @@ export default class Tooltip extends Component {
               className="bx--tooltip__icon-container"
               role="button"
               tabIndex="0"
-              {...triggerProps}
-            >
-              <Icon name={iconName} description={iconDescription} className="bx--tooltip__icon" />
+              {...triggerProps}>
+              <Icon
+                name={iconName}
+                description={iconDescription}
+                className="bx--tooltip__icon"
+              />
             </div>
           </div>
         ) : (
@@ -119,17 +122,18 @@ export default class Tooltip extends Component {
             }}
             role="button"
             tabIndex="0"
-            {...triggerProps}
-          >
+            {...triggerProps}>
             {triggerText}
           </div>
         )}
         <FloatingMenu
           menuPosition={this.state.triggerPosition}
           menuDirection={direction}
-          menuOffset={menuOffset}
-        >
-          <div className={tooltipClasses} {...rest} data-floating-menu-direction={direction}>
+          menuOffset={menuOffset}>
+          <div
+            className={tooltipClasses}
+            {...rest}
+            data-floating-menu-direction={direction}>
             {children}
           </div>
         </FloatingMenu>

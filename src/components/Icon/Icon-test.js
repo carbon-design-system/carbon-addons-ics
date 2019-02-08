@@ -1,5 +1,11 @@
 import React from 'react';
-import Icon, { findIcon, svgShapes, getSvgData, icons, isPrefixed } from './Icon';
+import Icon, {
+  findIcon,
+  svgShapes,
+  getSvgData,
+  icons,
+  isPrefixed,
+} from './Icon';
 import { mount } from 'enzyme';
 
 describe('Icon', () => {

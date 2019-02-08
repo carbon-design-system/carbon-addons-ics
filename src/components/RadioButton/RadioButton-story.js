@@ -17,7 +17,7 @@ storiesOf('Components|RadioButton', module)
     withInfo(
       `
        This shows how the Radio Button component can be used as an uncontrolled component that is initially checked by setting the defaultChecked property to true. To use the component in a controlled way, set the checked property instead.
-      `,
+      `
     )(() => (
       <RadioButton
         name="test"
@@ -27,14 +27,14 @@ storiesOf('Components|RadioButton', module)
         id="radio-1"
         {...radioProps}
       />
-    )),
+    ))
   )
   .add(
     'disabled',
     withInfo(
       `
       This example shows a disabled Radio Button component.
-    `,
+    `
     )(() => (
       <RadioButton
         name="test-2"
@@ -44,5 +44,5 @@ storiesOf('Components|RadioButton', module)
         disabled
         {...radioProps}
       />
-    )),
+    ))
   );

@@ -12,10 +12,10 @@ storiesOf('Components|Tooltip', module)
     withInfo(
       `
       This example shows the tooltip on hover.
-    `,
+    `
     )(() => (
       <div style={{ marginTop: '2rem' }}>
         <TooltipHover text="Change layout" iconName="info" />
       </div>
-    )),
+    ))
   );

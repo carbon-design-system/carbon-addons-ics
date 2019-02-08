@@ -26,9 +26,12 @@ storiesOf('Components|OverflowMenu', module)
         <OverflowMenuItem {...overflowMenuItemEvents} itemText="Stop App" />
         <OverflowMenuItem {...overflowMenuItemEvents} itemText="Restart App" />
         <OverflowMenuItem {...overflowMenuItemEvents} itemText="Rename App" />
-        <OverflowMenuItem {...overflowMenuItemEvents} itemText="Edit Routes and Access" />
+        <OverflowMenuItem
+          {...overflowMenuItemEvents}
+          itemText="Edit Routes and Access"
+        />
       </OverflowMenu>
-    )),
+    ))
   )
   .add(
     'Floating overflow',
@@ -36,13 +39,16 @@ storiesOf('Components|OverflowMenu', module)
       `
       Overflow Menu with the floatingMenu prop is used when you need to place an OverflowMenu
       inside a container with "overflow" CSS set.
-    `,
+    `
     )(() => (
       <OverflowMenu {...overflowMenuEvents} floatingMenu>
         <OverflowMenuItem {...overflowMenuItemEvents} itemText="Stop App" />
         <OverflowMenuItem {...overflowMenuItemEvents} itemText="Restart App" />
         <OverflowMenuItem {...overflowMenuItemEvents} itemText="Rename App" />
-        <OverflowMenuItem {...overflowMenuItemEvents} itemText="Edit Routes and Access" />
+        <OverflowMenuItem
+          {...overflowMenuItemEvents}
+          itemText="Edit Routes and Access"
+        />
       </OverflowMenu>
-    )),
+    ))
   );

@@ -30,13 +30,21 @@ storiesOf('Components|NumberInput', module)
       `
         ${introText}
         The example below shows an enabled Number Input component.
-      `,
+      `
     )(() => (
       <div>
-        <NumberInput {...numberInputProps} label={'One Step Example'} step={1} />
-        <NumberInput {...numberInputProps} label={'Ten Step Example'} value={42} />
+        <NumberInput
+          {...numberInputProps}
+          label={'One Step Example'}
+          step={1}
+        />
+        <NumberInput
+          {...numberInputProps}
+          label={'Ten Step Example'}
+          value={42}
+        />
       </div>
-    )),
+    ))
   )
   .add(
     'disabled',
@@ -44,8 +52,8 @@ storiesOf('Components|NumberInput', module)
       `
         ${introText}
         The example below shows an disabled Number Input component.
-      `,
-    )(() => <NumberInput {...numberInputProps} disabled value={null} />),
+      `
+    )(() => <NumberInput {...numberInputProps} disabled value={null} />)
   )
   .add(
     'invalid',
@@ -53,6 +61,6 @@ storiesOf('Components|NumberInput', module)
       `
         ${introText}
         The example below shows an disabled Number Input component.
-      `,
-    )(() => <NumberInput {...numberInputProps} invalid />),
+      `
+    )(() => <NumberInput {...numberInputProps} invalid />)
   );

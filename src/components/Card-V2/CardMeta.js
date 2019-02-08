@@ -16,7 +16,13 @@ export default class CardMeta extends Component {
   };
 
   render() {
-    const { className, metaPrimary, metaSecondary, metaPadding, ...rest } = this.props;
+    const {
+      className,
+      metaPrimary,
+      metaSecondary,
+      metaPadding,
+      ...rest
+    } = this.props;
 
     const cardMetaClasses = classNames({
       'bx--card__meta': true,

@@ -43,8 +43,14 @@ const hasCreatePortal = typeof ReactDOM.createPortal === 'function';
 const hasChangeInOffset = (oldMenuOffset = {}, menuOffset = {}) => {
   if (typeof oldMenuOffset !== typeof menuOffset) {
     return true;
-  } else if (Object(menuOffset) === menuOffset && typeof menuOffset !== 'function') {
-    return oldMenuOffset.top !== menuOffset.top || oldMenuOffset.left !== menuOffset.left;
+  } else if (
+    Object(menuOffset) === menuOffset &&
+    typeof menuOffset !== 'function'
+  ) {
+    return (
+      oldMenuOffset.top !== menuOffset.top ||
+      oldMenuOffset.left !== menuOffset.left
+    );
   }
   return oldMenuOffset !== menuOffset;
 };
@@ -213,7 +219,7 @@ class FloatingMenu extends React.Component {
     const menuBody = this._menuBody;
     warning(
       menuBody,
-      'The DOM node for menu body for calculating its position is not available. Skipping...',
+      'The DOM node for menu body for calculating its position is not available. Skipping...'
     );
     if (!menuBody) {
       return;
@@ -224,7 +230,11 @@ class FloatingMenu extends React.Component {
       menuOffset: oldMenuOffset = {},
       menuDirection: oldMenuDirection,
     } = prevProps;
-    const { menuPosition: refPosition = {}, menuOffset = {}, menuDirection } = this.props;
+    const {
+      menuPosition: refPosition = {},
+      menuOffset = {},
+      menuDirection,
+    } = this.props;
 
     if (
       oldRefPosition.top !== refPosition.top ||
@@ -237,7 +247,9 @@ class FloatingMenu extends React.Component {
     ) {
       const menuSize = menuBody.getBoundingClientRect();
       const offset =
-        typeof menuOffset !== 'function' ? menuOffset : menuOffset(menuBody, menuDirection);
+        typeof menuOffset !== 'function'
+          ? menuOffset
+          : menuOffset(menuBody, menuDirection);
       // Skips if either in the following condition:
       // a) Menu body has `display:none`
       // b) `menuOffset` as a callback returns `undefined` (The callback saw that it couldn't calculate the value)
@@ -260,13 +272,21 @@ class FloatingMenu extends React.Component {
   componentDidUpdate(prevProps) {
     const invokeOnPlace = () => {
       const { onPlace } = this.props;
-      if (this._placeInProgress && this.state.floatingPosition && typeof onPlace === 'function') {
+      if (
+        this._placeInProgress &&
+        this.state.floatingPosition &&
+        typeof onPlace === 'function'
+      ) {
         onPlace(this._menuBody);
         this._placeInProgress = false;
       }
     };
     if (!hasCreatePortal) {
-      ReactDOM.render(this._getChildrenWithProps(), this._menuContainer, invokeOnPlace);
+      ReactDOM.render(
+        this._getChildrenWithProps(),
+        this._menuContainer,
+        invokeOnPlace
+      );
     } else {
       this._updateMenuSize(prevProps);
       invokeOnPlace();
@@ -289,9 +309,13 @@ class FloatingMenu extends React.Component {
         this._placeInProgress = true;
         this._menuBody = this._menuContainer.firstChild;
         this._updateMenuSize();
-        ReactDOM.render(this._getChildrenWithProps(), this._menuContainer, () => {
-          menuRef && menuRef(this._menuBody);
-        });
+        ReactDOM.render(
+          this._getChildrenWithProps(),
+          this._menuContainer,
+          () => {
+            menuRef && menuRef(this._menuBody);
+          }
+        );
       });
     } else {
       if (this.el && this.el.firstChild) {

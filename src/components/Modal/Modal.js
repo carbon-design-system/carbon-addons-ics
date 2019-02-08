@@ -59,7 +59,9 @@ export default class Dialog extends Component {
       ...rest
     } = this.props;
 
-    const onSecondaryButtonClick = onSecondarySubmit ? onSecondarySubmit : onRequestClose;
+    const onSecondaryButtonClick = onSecondarySubmit
+      ? onSecondarySubmit
+      : onRequestClose;
 
     const modalClasses = classNames({
       'bx--modal': true,
@@ -69,8 +71,15 @@ export default class Dialog extends Component {
     });
 
     const modalButton = (
-      <button className="bx--modal-close" type="button" onClick={onRequestClose}>
-        <Icon name="close" className="bx--modal-close__icon" description={iconDescription} />
+      <button
+        className="bx--modal-close"
+        type="button"
+        onClick={onRequestClose}>
+        <Icon
+          name="close"
+          className="bx--modal-close__icon"
+          description={iconDescription}
+        />
       </button>
     );
 
@@ -79,8 +88,7 @@ export default class Dialog extends Component {
         ref={modal => {
           this.innerModal = modal;
         }}
-        className="bx--modal-container"
-      >
+        className="bx--modal-container">
         <div className="bx--modal-header">
           {passiveModal && modalButton}
           <h2 className="bx--modal-header__heading">{modalHeading}</h2>
@@ -90,7 +98,10 @@ export default class Dialog extends Component {
         {!passiveModal && (
           <div className="bx--modal-footer">
             <div className="bx--modal__buttons-container">
-              <Button kind="primary" disabled={primaryButtonDisabled} onClick={onRequestSubmit}>
+              <Button
+                kind="primary"
+                disabled={primaryButtonDisabled}
+                onClick={onRequestSubmit}>
                 {primaryButtonText}
               </Button>
               <Button kind="secondary" onClick={onSecondaryButtonClick}>
@@ -109,8 +120,7 @@ export default class Dialog extends Component {
         onClick={this.handleClick}
         className={modalClasses}
         role="presentation"
-        tabIndex={-1}
-      >
+        tabIndex={-1}>
         {modalBody}
       </div>
     );

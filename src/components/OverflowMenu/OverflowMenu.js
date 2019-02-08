@@ -115,9 +115,13 @@ export default class OverflowMenu extends Component {
       ...rest
     } = this.props;
 
-    const overflowMenuClasses = classNames(this.props.className, 'bx--overflow-menu', {
-      'bx--overflow-menu--open': this.state.open,
-    });
+    const overflowMenuClasses = classNames(
+      this.props.className,
+      'bx--overflow-menu',
+      {
+        'bx--overflow-menu--open': this.state.open,
+      }
+    );
 
     const overflowMenuOptionsClasses = classNames('bx--overflow-menu-options', {
       'bx--overflow-menu--flip': this.props.flipped,
@@ -125,20 +129,22 @@ export default class OverflowMenu extends Component {
       'bx--overflow-menu--basic': !this.props.floatingMenu,
     });
 
-    const overflowMenuIconClasses = classNames('bx--overflow-menu__icon', iconClass);
+    const overflowMenuIconClasses = classNames(
+      'bx--overflow-menu__icon',
+      iconClass
+    );
 
     const childrenWithProps = React.Children.toArray(children).map(child =>
       React.cloneElement(child, {
         closeMenu: this.closeMenu,
-      }),
+      })
     );
 
     const menuBody = floatingMenu ? (
       <FloatingMenu
         menuPosition={this.state.menuPosition}
         menuDirection="bottom"
-        menuOffset={flipped ? menuOffsetFlip : menuOffset}
-      >
+        menuOffset={flipped ? menuOffsetFlip : menuOffset}>
         <ul className={overflowMenuOptionsClasses}>{childrenWithProps}</ul>
       </FloatingMenu>
     ) : (
@@ -155,8 +161,7 @@ export default class OverflowMenu extends Component {
           aria-label={ariaLabel}
           id={id}
           tabIndex={tabIndex}
-          ref={this.bindMenuEl}
-        >
+          ref={this.bindMenuEl}>
           <Icon
             onClick={this.handleClick}
             className={overflowMenuIconClasses}

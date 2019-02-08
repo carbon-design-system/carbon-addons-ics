@@ -2,7 +2,11 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
-import { RadioButton, RadioButtonGroup, FormGroup } from 'carbon-components-react';
+import {
+  RadioButton,
+  RadioButtonGroup,
+  FormGroup,
+} from 'carbon-components-react';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 
@@ -23,15 +27,14 @@ storiesOf('Components|RadioButtonGroup', module)
 
        Use defaultSelected when you want a radio button to be selected initially, but don't need to set it
        at a later time. If you do need to set it dynamically at a later time, then use the valueSelected property instead.
-    `,
+    `
     )(() => (
       <FormGroup legendText="Radio Button heading">
         <RadioButtonGroup
           onChange={action('onChange')}
           name="radio-button-group"
           defaultSelected="default-selected"
-          legend="Group Legend"
-        >
+          legend="Group Legend">
           <RadioButton
             value="standard"
             id="radio-1"
@@ -53,5 +56,5 @@ storiesOf('Components|RadioButtonGroup', module)
           />
         </RadioButtonGroup>
       </FormGroup>
-    )),
+    ))
   );

@@ -10,7 +10,8 @@ export default class FileUploader extends Component {
     iconDescription: PropTypes.string,
     buttonLabel: PropTypes.string,
     buttonKind: PropTypes.oneOf(['primary', 'secondary']),
-    filenameStatus: PropTypes.oneOf(['edit', 'complete', 'uploading']).isRequired,
+    filenameStatus: PropTypes.oneOf(['edit', 'complete', 'uploading'])
+      .isRequired,
     labelDescription: PropTypes.string,
     labelTitle: PropTypes.string,
     multiple: PropTypes.bool,
@@ -52,7 +53,7 @@ export default class FileUploader extends Component {
 
   handleClick = (evt, index) => {
     const filteredArray = this.state.filenames.filter(
-      filename => filename !== this.nodes[index].innerText.trim(),
+      filename => filename !== this.nodes[index].innerText.trim()
     );
     this.setState({ filenames: filteredArray });
     this.props.onClick(evt);
@@ -94,8 +95,7 @@ export default class FileUploader extends Component {
               direction={labelTooltip.direction || 'bottom'}
               iconName={labelTooltip.iconName}
               className="bx--label-tooltip"
-              menuOffset={labelTooltip.menuOffset}
-            >
+              menuOffset={labelTooltip.menuOffset}>
               <p>{labelTooltip.text}</p>
             </Tooltip>
           )}
@@ -116,8 +116,7 @@ export default class FileUploader extends Component {
                   key={index}
                   className="bx--file__selected-file"
                   ref={node => (this.nodes[index] = node)} // eslint-disable-line
-                  {...rest}
-                >
+                  {...rest}>
                   <p className="bx--file-filename">{name}</p>
                   <span className="bx--file__state-container">
                     <Filename

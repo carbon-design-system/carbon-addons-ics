@@ -7,7 +7,7 @@ describe('Cardv2', () => {
     const wrapper = shallow(
       <Cardv2 className="extra-class">
         <div className="child">Test</div>
-      </Cardv2>,
+      </Cardv2>
     );
 
     it('renders children as expected', () => {

@@ -13,7 +13,9 @@ describe('InteriorLeftNav', () => {
     });
 
     it('has the expected classes', () => {
-      expect(wrapper.children().hasClass('bx--interior-left-nav-ics')).toEqual(true);
+      expect(wrapper.children().hasClass('bx--interior-left-nav-ics')).toEqual(
+        true
+      );
     });
 
     it('should add extra classes that are passed via className', () => {
@@ -24,10 +26,13 @@ describe('InteriorLeftNav', () => {
       const interiorLeftNav = mount(
         <InteriorLeftNav>
           <InteriorLeftNavList className="test-child" />
-          <InteriorLeftNavItem href="" title="test-title" className="test-child">
+          <InteriorLeftNavItem
+            href=""
+            title="test-title"
+            className="test-child">
             <a href="http://www.carbondesignsystem.com">test-title</a>
           </InteriorLeftNavItem>
-        </InteriorLeftNav>,
+        </InteriorLeftNav>
       );
       expect(interiorLeftNav.find('.left-nav-list').length).toEqual(2);
       expect(interiorLeftNav.find('.test-child').length).toEqual(4);
@@ -39,7 +44,7 @@ describe('InteriorLeftNav', () => {
       <InteriorLeftNav>
         <InteriorLeftNavList className="first" />
         <InteriorLeftNavList className="second" open />
-      </InteriorLeftNav>,
+      </InteriorLeftNav>
     );
     const first = () => twoLists.find('li.first');
     const second = () => twoLists.find('li.second');
@@ -58,7 +63,7 @@ describe('InteriorLeftNav', () => {
         <InteriorLeftNavItem>
           <a href="#first">test-title</a>
         </InteriorLeftNavItem>
-      </InteriorLeftNav>,
+      </InteriorLeftNav>
     );
 
     const item = interiorLeftNav.find(InteriorLeftNavItem).first();
@@ -87,7 +92,7 @@ describe('InteriorLeftNav', () => {
       <InteriorLeftNav>
         <InteriorLeftNavList className="first" isExpanded />
         <InteriorLeftNavList className="second" isExpanded open />
-      </InteriorLeftNav>,
+      </InteriorLeftNav>
     );
 
     const first = () => twoLists.find('li.first');

@@ -25,38 +25,38 @@ storiesOf('Components|TextInput', module)
       This example shows an enabled TextInput component. The default type is 'text' and its
       value can be either 'string' or 'number'. Notice there is no placeholder prop. The label is designed
       to be the placeholder.
-    `,
-    )(() => <TextInput {...TextInputProps} />),
+    `
+    )(() => <TextInput {...TextInputProps} />)
   )
   .add(
     'disabled',
     withInfo(
       `
       This example shows a disabled TextInput component.
-    `,
-    )(() => <TextInput disabled {...TextInputProps} />),
+    `
+    )(() => <TextInput disabled {...TextInputProps} />)
   )
   .add(
     'email',
     withInfo(
       `
       This example shows an enabled TextInput component with type 'email'.
-    `,
-    )(() => <TextInput {...TextInputProps} type={'email'} />),
+    `
+    )(() => <TextInput {...TextInputProps} type={'email'} />)
   )
   .add(
     'password',
     withInfo(
       `
       This example shows an enabled TextInput component with type 'password'.
-    `,
-    )(() => <TextInput {...TextInputProps} type={'password'} />),
+    `
+    )(() => <TextInput {...TextInputProps} type={'password'} />)
   )
   .add(
     'controlled',
     withInfo(
       `
       This example shows a controlled TextInput component (i.e. with a value prop)
-    `,
-    )(() => <TextInput {...TextInputProps} value={controlledValue} />),
+    `
+    )(() => <TextInput {...TextInputProps} value={controlledValue} />)
   );

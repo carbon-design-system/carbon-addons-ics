@@ -25,8 +25,8 @@ storiesOf('Components|TextArea', module)
       `
       This example shows an enabled
       Text Area component.
-    `,
-    )(() => <TextArea {...textareaProps} />),
+    `
+    )(() => <TextArea {...textareaProps} />)
   )
   .add(
     'disabled',
@@ -34,6 +34,6 @@ storiesOf('Components|TextArea', module)
       `
       This example shows an disabled
       Text Area component.
-    `,
-    )(() => <TextArea disabled {...textareaProps} placeholder={'Disabled'} />),
+    `
+    )(() => <TextArea disabled {...textareaProps} placeholder={'Disabled'} />)
   );

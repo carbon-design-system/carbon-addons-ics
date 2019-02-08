@@ -11,7 +11,8 @@ const translationKeys = {
 const translateWithId = (key, { sortDirection, isSortHeader, sortStates }) => {
   if (key === translationKeys.iconDescription) {
     if (isSortHeader) {
-      const order = sortDirection === sortStates.DESC ? 'descending' : 'ascending';
+      const order =
+        sortDirection === sortStates.DESC ? 'descending' : 'ascending';
       return `Sort rows by this header in ${order} order`;
     }
     return `Sort rows by this header in descending order`;
@@ -32,8 +33,10 @@ const TableHeader = ({
 }) => {
   const className = cx(headerClassName, {
     'bx--table-sort-v2': true,
-    'bx--table-sort-v2--active': isSortHeader && sortDirection !== sortStates.NONE,
-    'bx--table-sort-v2--ascending': isSortHeader && sortDirection === sortStates.ASC,
+    'bx--table-sort-v2--active':
+      isSortHeader && sortDirection !== sortStates.NONE,
+    'bx--table-sort-v2--ascending':
+      isSortHeader && sortDirection === sortStates.ASC,
   });
   return (
     <th scope={scope}>

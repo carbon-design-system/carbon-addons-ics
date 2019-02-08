@@ -12,9 +12,17 @@ const loadingProps = {
 
 storiesOf('Components|Loading', module)
   .addDecorator(withReadme(readme))
-  .add('Loading with overlay', withInfo(``)(() => <Loading {...loadingProps} size={'large'} />))
+  .add(
+    'Loading with overlay',
+    withInfo(``)(() => <Loading {...loadingProps} size={'large'} />)
+  )
   .add(
     'Loading without overlay',
-    withInfo(``)(() => <Loading {...loadingProps} size={'large'} withOverlay={false} />),
+    withInfo(``)(() => (
+      <Loading {...loadingProps} size={'large'} withOverlay={false} />
+    ))
   )
-  .add('Small loading', withInfo(``)(() => <Loading {...loadingProps} withOverlay={false} />));
+  .add(
+    'Small loading',
+    withInfo(``)(() => <Loading {...loadingProps} withOverlay={false} />)
+  );
