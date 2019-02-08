@@ -12,6 +12,7 @@
   }
 
   .#{$prefix}--avatar_img {
+    @include border-radius-type(c);
     -webkit-user-drag: none;
     position: relative;
     z-index: 1;
