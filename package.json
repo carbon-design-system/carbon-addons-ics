@@ -240,8 +240,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "prettier",
-      "eslint src",
+      "npm run prettier",
       "git add"
     ],
     "*.{css,scss,md,json}": [
