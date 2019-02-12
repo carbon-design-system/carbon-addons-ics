@@ -8,6 +8,7 @@ describe('DataTable.TableHeader', () => {
 
   beforeEach(() => {
     mockProps = {
+      isSortable: true,
       isSortHeader: false,
       onClick: jest.fn(),
       sortDirection: 'NONE',
