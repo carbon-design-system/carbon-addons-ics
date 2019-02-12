@@ -1,7 +1,7 @@
 ### Usage
 
 ```js
-import { TextArea } from 'carbon-addons-ics';
+import { TextArea } from 'carbon-components-react';
 ```
 
 ### About

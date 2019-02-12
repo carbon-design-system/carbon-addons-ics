@@ -26,8 +26,6 @@ export Pagination from './components/Pagination';
 export Search from './components/Search';
 export { Tag } from './components/Tag';
 export TagWrapper from './components/TagWrapper';
-export TextArea from './components/TextArea';
-export TextInput from './components/TextInput';
 export Tooltip from './components/Tooltip';
 export TooltipHover from './components/TooltipHover';
 export UnorderedList from './components/List/UnorderedList';
