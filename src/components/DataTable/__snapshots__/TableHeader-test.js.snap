@@ -25,8 +25,8 @@ exports[`DataTable.TableHeader should have an active and ascending class if sort
               className="bx--table-row bx--parent-row"
             >
               <TableHeader
-                isSortable={true}
                 isSortHeader={true}
+                isSortable={true}
                 onClick={[MockFunction]}
                 scope="col"
                 sortDirection="ASC"
@@ -108,8 +108,8 @@ exports[`DataTable.TableHeader should have an active class if it is the sort hea
               className="bx--table-row bx--parent-row"
             >
               <TableHeader
-                isSortable={true}
                 isSortHeader={true}
+                isSortable={true}
                 onClick={[MockFunction]}
                 scope="col"
                 sortDirection="NONE"
@@ -191,8 +191,8 @@ exports[`DataTable.TableHeader should render 1`] = `
               className="bx--table-row bx--parent-row"
             >
               <TableHeader
-                isSortable={true}
                 isSortHeader={false}
+                isSortable={true}
                 onClick={[MockFunction]}
                 scope="col"
                 sortDirection="NONE"
