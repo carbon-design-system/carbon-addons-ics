@@ -42,8 +42,8 @@
     "react-dom": "^15.3.2 || ^16.2.0"
   },
   "dependencies": {
-    "carbon-components": "^8.23.1",
-    "carbon-components-react": "^5.52.4",
+    "carbon-components": "^9.70.3",
+    "carbon-components-react": "^6.87.0",
     "flatpickr": "4.3.0"
   },
   "devDependencies": {
