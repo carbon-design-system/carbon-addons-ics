@@ -21,7 +21,6 @@ export OverflowMenu from './components/OverflowMenu';
 export OrderedList from './components/List/OrderedList';
 export Pager from './components/Pager';
 export Pagination from './components/Pagination';
-export Search from './components/Search';
 export { Tag } from './components/Tag';
 export TagWrapper from './components/TagWrapper';
 export Tooltip from './components/Tooltip';

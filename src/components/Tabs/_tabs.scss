@@ -1,2 +1,97 @@
 @import '../../globals/theme/ics-theme';
 @import 'carbon-components/src/components/tabs/_tabs.scss';
+@import 'carbon-components/src/globals/scss/layout';
+@import '../../globals/type/ics-typography';
+@import '../../globals/layer/ics-layer';
+
+@include exports('tabs--ics') {
+  .#{$prefix}--tabs {
+    color: $text-01;
+    @include breakpoint(bp--sm--major) {
+      min-height: rem(56px);
+    }
+  }
+
+  .#{$prefix}--tabs-trigger {
+    justify-content: flex-start;
+    background-color: transparent;
+  }
+
+  .#{$prefix}--tabs__nav {
+    @include layer('flat');
+    max-height: 100%;
+
+    @include breakpoint(bp--sm--major) {
+      margin: 0;
+    }
+  }
+
+  .#{$prefix}--tabs__nav-item {
+    @include breakpoint(bp--sm--major) {
+      padding: rem(10px) 0 rem(7px);
+
+      & + & {
+        margin-left: 1rem;
+        position: relative;
+
+        &:after {
+          content: '';
+          position: absolute;
+          height: 100%;
+          top: 0;
+          left: -1rem;
+          width: 1rem;
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  .#{$prefix}--tabs__nav-item--selected {
+    @include breakpoint(bp--sm--major) {
+      border-bottom: 3px solid $brand-01;
+    }
+
+    .#{$prefix}--tabs__nav-link {
+      color: $text-01;
+
+      &:focus {
+        color: $text-01;
+      }
+    }
+  }
+
+  .#{$prefix}--tabs__nav-item:hover {
+    .#{$prefix}--tabs__nav-link {
+      color: inherit;
+
+      &:hover {
+        color: $inverse-01;
+
+        @include breakpoint(bp--sm--major) {
+          color: $inverse-01;
+        }
+      }
+    }
+  }
+
+  .#{$prefix}--tabs__nav-link {
+    @include type-scale-item(b, false);
+    padding: rem(7px) rem(10px);
+    border: 1px solid transparent;
+    @include border-radius-type('a');
+
+    @include breakpoint(bp--sm--major) {
+      &:hover {
+        color: $inverse-01;
+        background: $brand-01;
+        border-color: $brand-01;
+      }
+
+      &:focus {
+        border-color: $brand-01;
+        box-shadow: none;
+      }
+    }
+  }
+}
