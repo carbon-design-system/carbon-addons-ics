@@ -4,11 +4,8 @@
 import { FileUploaderButton, FileUploader } from 'carbon-components-react';
 ```
 
-
 ```js
-<FileUploader
-  {...otherProps}
-/>
+<FileUploader {...otherProps} />
 ```
 
 ### About
