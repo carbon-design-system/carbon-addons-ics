@@ -39,7 +39,7 @@ const TableHeader = ({
       </th>
     );
   }
-  
+
   const className = cx(headerClassName, {
     'bx--table-sort-v2': true,
     'bx--table-sort-v2--active':
@@ -76,7 +76,7 @@ TableHeader.propTypes = {
    * Pass in children that will be embedded in the table header label
    */
   children: PropTypes.string,
-  
+
   /**
    * Specify whether this header is one through which a user can sort the table
    */
