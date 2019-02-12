@@ -1,7 +1,6 @@
 export ActionIcon from './components/ActionIcon';
 export Avatar from './components/Avatar';
 export Cardv2, { CardMeta, CardText, CardMedia } from './components/Card-V2';
-export Card from './components/Card';
 export CardContent from './components/CardContent';
 export TableHeader from './components/DataTable';
 export Dropdown from './components/Dropdown';
