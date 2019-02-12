@@ -25,7 +25,6 @@ export OrderedList from './components/List/OrderedList';
 export Pager from './components/Pager';
 export Pagination from './components/Pagination';
 export Search from './components/Search';
-export Select from './components/Select';
 export { Tag } from './components/Tag';
 export TagWrapper from './components/TagWrapper';
 export TextArea from './components/TextArea';

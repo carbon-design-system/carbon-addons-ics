@@ -1,8 +1,7 @@
 ### Usage
 
 ```js
-import { Select } from 'carbon-addons-ics';
-import { SelectItem, SelectItemGroup } from 'carbon-components-react';
+import { Select, SelectItem, SelectItemGroup } from 'carbon-components-react';
 ```
 
 ### About
