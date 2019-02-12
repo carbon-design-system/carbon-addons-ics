@@ -3,7 +3,6 @@ export Avatar from './components/Avatar';
 export Cardv2, { CardMeta, CardText, CardMedia } from './components/Card-V2';
 export CardContent from './components/CardContent';
 export TableHeader from './components/DataTable';
-export Dropdown from './components/Dropdown';
 export Icon from './components/Icon';
 export InteriorLeftNav from './components/InteriorLeftNav';
 export InteriorLeftNavList from './components/InteriorLeftNavList';
