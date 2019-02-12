@@ -44,7 +44,7 @@
       border-bottom: 1px solid $text-02;
     }
 
-    &.#{$prefix}--text-input--clearable {
+    &--clearable {
       width: calc(100% - #{$clear-width});
     }
 

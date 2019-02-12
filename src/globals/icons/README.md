@@ -59,7 +59,7 @@ For screen reader accessibility, use `<title>` element.
 </svg>
 ```
 
-* The `<title>` element describes the SVG and what it's used for. Make this as detailed as possible for screen-readers and overall accessibility.
+- The `<title>` element describes the SVG and what it's used for. Make this as detailed as possible for screen-readers and overall accessibility.
 
 # Contributing
 
@@ -71,10 +71,10 @@ These are contributing guidelines for adding ICS UI icons.
 
 We use the following naming convention for SVG filenames:
 
-* `name`: icon name (ex. `add.svg`)
-* `name--outline`: icon with an outline (ex. `add--outline.svg`)
-* `name--glyph`: icon that is a glyph (ex. `add--glyph`)
-* `name--modifier`: if none of the above names work for your icon, use whatever modifier name you like.
+- `name`: icon name (ex. `add.svg`)
+- `name--outline`: icon with an outline (ex. `add--outline.svg`)
+- `name--glyph`: icon that is a glyph (ex. `add--glyph`)
+- `name--modifier`: if none of the above names work for your icon, use whatever modifier name you like.
 
 ### Submitting new SVG icons
 
@@ -90,8 +90,8 @@ Icons should be able to be modified with CSS to change its **color** (`fill`) an
 Run SVG XML code through [SVGOMG](https://jakearchibald.github.io/svgomg/).
 Inspect the code and make sure that your XML doesn't include the following:
 
-* `<style>` tags
-* `<g>` tags
-* `class` attribtues
-* `stroke` attributes
-* `stroke-width` attributes
+- `<style>` tags
+- `<g>` tags
+- `class` attribtues
+- `stroke` attributes
+- `stroke-width` attributes

@@ -139,16 +139,31 @@ describe('TextInput', () => {
     });
 
     describe('clear input', () => {
-      const onClick = jest.fn();
-      const onClear = jest.fn();
+      let onClick;
+      let onClear;
+      let wrapper;
 
-      const wrapper = mount(
-        <TextInput labelText="testlabel" id="test" onClick={onClick} onClear={onClear} clearable />,
-      );
+      beforeEach(() => {
+        onClick = jest.fn();
+        onClear = jest.fn();
 
-      const renderedIcon = wrapper.find(Icon);
+        wrapper = mount(
+          <TextInput
+            labelText="testlabel"
+            id="test"
+            onClick={onClick}
+            onClear={onClear}
+            clearable
+          />
+        );
+      });
+
+      afterEach(() => {
+        wrapper.unmount();
+      });
 
       it('should invoke onClear when clear icon is clicked', () => {
+        const renderedIcon = wrapper.find(Icon);
         renderedIcon.simulate('click');
         expect(wrapper.state('labelMotion')).toBe(false);
         expect(onClear).toBeCalled();

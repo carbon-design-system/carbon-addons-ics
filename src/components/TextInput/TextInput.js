@@ -11,6 +11,7 @@ export default class TextInput extends Component {
         !!props.defaultValue || !!props.value || props.defaultValue === 0,
     };
     this.inputRef = null;
+    this.onClear = this.onClear.bind(this);
   }
   componentWillReceiveProps(nextProps) {
     const { value } = nextProps;
@@ -47,7 +48,7 @@ export default class TextInput extends Component {
     labelText: '',
     invalidText: 'Provide invalidText',
     clearable: false,
-    clearDescription: 'Clear',
+    clearDescription: 'Provide clearDescription',
     onClear: () => {},
   };
 
@@ -69,13 +70,14 @@ export default class TextInput extends Component {
     }
   };
 
-  onClear = () => {
-    if (!this.props.disabled) {
+  onClear() {
+    const { disabled, onClear } = this.props;
+    if (!disabled) {
       this.inputRef.value = '';
       this.setState({ labelMotion: false });
-      this.props.onClear();
+      onClear();
     }
-  };
+  }
 
   render() {
     const {
