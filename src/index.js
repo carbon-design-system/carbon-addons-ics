@@ -6,7 +6,6 @@ export Icon from './components/Icon';
 export InteriorLeftNav from './components/InteriorLeftNav';
 export InteriorLeftNavList from './components/InteriorLeftNavList';
 export InteriorLeftNavItem from './components/InteriorLeftNavItem';
-export ListItem from './components/List/ListItem';
 export { Loading, SpinnerLg, SpinnerSml } from './components/Loading';
 export Modal from './components/Modal';
 export ModalWrapper from './components/ModalWrapper';
@@ -17,12 +16,9 @@ export {
   NotificationButton,
   NotificationTextDetails,
 } from './components/Notification';
-export OverflowMenu from './components/OverflowMenu';
-export OrderedList from './components/List/OrderedList';
 export Pager from './components/Pager';
 export Pagination from './components/Pagination';
 export { Tag } from './components/Tag';
 export TagWrapper from './components/TagWrapper';
 export Tooltip from './components/Tooltip';
 export TooltipHover from './components/TooltipHover';
-export UnorderedList from './components/List/UnorderedList';

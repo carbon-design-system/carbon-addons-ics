@@ -1,7 +1,7 @@
 ### Usage
 
 ```js
-import { ListItem, OrderedList } from '../../../index';
+import { ListItem, OrderedList } from 'carbon-components-react';
 ```
 
 ### About

@@ -2,8 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
-import { OverflowMenu } from '../../index';
-import { OverflowMenuItem } from 'carbon-components-react';
+import { OverflowMenu, OverflowMenuItem } from 'carbon-components-react';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 
