@@ -2,64 +2,57 @@ $base-font-size: 16px !default; // Default, Use with em() and rem() functions
 @import 'carbon-components/scss/globals/scss/import-once';
 
 $ics-type-prescription-map: (
-  'h':
-    (
-      font-size: 2.25rem,
-      line-height: 2.75rem,
-      font-weight: 300,
-      max-width: 50.5rem,
-      margin-bottom: 2rem
-    ),
-  'g':
-    (
-      font-size: 1.75rem,
-      line-height: 2.25rem,
-      font-weight: 400,
-      max-width: 43rem,
-      margin-bottom: 1.5rem
-    ),
-  'e':
-    (
-      font-size: 1.25rem,
-      line-height: 1.625rem,
-      font-weight: 400,
-      max-width: 37.5rem,
-      margin-bottom: 1.5rem
-    ),
-  'd':
-    (
-      font-size: 1rem,
-      line-height: 1.375rem,
-      font-weight: 600,
-      max-width: 35rem,
-      margin-bottom: 1.5rem
-    ),
-  'c':
-    (
-      font-size: 1rem,
-      line-height: 1.5rem,
-      font-weight: 400,
-      max-width: 35rem,
-      margin-bottom: 1.5rem
-    ),
-  'b':
-    (
-      font-size: 0.875rem,
-      line-height: 1.25rem,
-      font-weight: 400,
-      max-width: 30rem,
-      letter-spacing: 0.01rem,
-      margin-bottom: 1rem
-    ),
-  'a':
-    (
-      font-size: 0.75rem,
-      line-height: 1rem,
-      font-weight: 400,
-      max-width: 26.5rem,
-      letter-spacing: 0.02rem,
-      margin-bottom: 1rem
-    )
+  'h': (
+    font-size: 2.25rem,
+    line-height: 2.75rem,
+    font-weight: 300,
+    max-width: 50.5rem,
+    margin-bottom: 2rem,
+  ),
+  'g': (
+    font-size: 1.75rem,
+    line-height: 2.25rem,
+    font-weight: 400,
+    max-width: 43rem,
+    margin-bottom: 1.5rem,
+  ),
+  'e': (
+    font-size: 1.25rem,
+    line-height: 1.625rem,
+    font-weight: 400,
+    max-width: 37.5rem,
+    margin-bottom: 1.5rem,
+  ),
+  'd': (
+    font-size: 1rem,
+    line-height: 1.375rem,
+    font-weight: 600,
+    max-width: 35rem,
+    margin-bottom: 1.5rem,
+  ),
+  'c': (
+    font-size: 1rem,
+    line-height: 1.5rem,
+    font-weight: 400,
+    max-width: 35rem,
+    margin-bottom: 1.5rem,
+  ),
+  'b': (
+    font-size: 0.875rem,
+    line-height: 1.25rem,
+    font-weight: 400,
+    max-width: 30rem,
+    letter-spacing: 0.01rem,
+    margin-bottom: 1rem,
+  ),
+  'a': (
+    font-size: 0.75rem,
+    line-height: 1rem,
+    font-weight: 400,
+    max-width: 26.5rem,
+    letter-spacing: 0.02rem,
+    margin-bottom: 1rem,
+  ),
 );
 @mixin disable-font-smoothing {
   -webkit-font-smoothing: subpixel-antialiased;

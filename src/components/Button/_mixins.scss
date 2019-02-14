@@ -50,11 +50,13 @@
     0 0 0 $outer-border-width $outer-border-color;
   border-color: transparent;
 }
+
 @mixin button-single-border($outer-border-color, $background, $text-color) {
   border-color: $outer-border-color;
   background: $background;
   color: $text-color;
 }
+
 @mixin button-darken($background, $text-color) {
   background: darken($background, 20%);
   border-color: darken($background, 20%);
