@@ -27,8 +27,8 @@ Describe in detail the issue you're having. Is this a feature request (new compo
 
 ## Additional information
 
-- Screenshots or code
-- Notes
+* Screenshots or code
+* Notes
 
 ## Add labels
 
