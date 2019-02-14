@@ -105,7 +105,7 @@
     "object-assign": "^4.1.1",
     "object.values": "^1.0.4",
     "postcss-loader": "^2.1.0",
-    "prettier": "^1.10.0",
+    "prettier": "^1.16.4",
     "promise": "^8.0.1",
     "prop-types": "^15.5.8",
     "react": "^16.3.0",
