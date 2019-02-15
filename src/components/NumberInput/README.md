@@ -1,7 +1,7 @@
 ### Usage
 
 ```js
-import { NumberInput } from 'carbon-addons-ics';
+import { NumberInput } from 'carbon-components-react';
 ```
 
 ### About

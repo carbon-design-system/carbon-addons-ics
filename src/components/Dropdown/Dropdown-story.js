@@ -1,8 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { Dropdown } from '../../index';
-import { DropdownItem } from 'carbon-components-react';
+import { Dropdown, DropdownItem } from 'carbon-components-react';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 

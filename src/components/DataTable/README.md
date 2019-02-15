@@ -1,12 +1,12 @@
 ### Usage
 
 ```js
-import { TableHeader } from 'carbon-addons-ics';
 import { DataTable } from 'carbon-components-react';
 const {
   Table,
   TableContainer,
   TableHead,
+  TableHeader,
   TableBody,
   TableCell,
   TableRow,

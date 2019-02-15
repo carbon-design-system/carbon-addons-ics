@@ -1,7 +1,7 @@
 ### Usage
 
 ```js
-import { TextInput } from 'carbon-addons-ics';
+import { TextInput } from 'carbon-components-react';
 ```
 
 ### About

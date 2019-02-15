@@ -36,13 +36,13 @@ $ui-05: #595859 !default;
 $text-01: #000000 !default; // black-100
 $text-02: #595859 !default; // gray-60
 $text-03: #777677 !default; // gray-50
-$field-01: transparent !default; // neutral-white-2
+$field-01: #f9f9f9 !default; // neutral-white-2
 $support-01: #e62325 !default; // red-50
 $support-02: #34bc6e !default; // green-30
 $support-03: #e3bc13 !default; // yellow-20
 $support-04: #3c6df0 !default; // ultramarine-50
 // Global
-$input-border: 1px solid $ui-04 !default;
+$input-border: 1px solid transparent !default;
 $input-label-weight: 500 !default;
 // Button Theme Variables
 $button-font-weight: 400 !default;

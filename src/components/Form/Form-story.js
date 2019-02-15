@@ -12,8 +12,10 @@ import {
   FileUploaderButton,
   RadioButton,
   RadioButtonGroup,
+  Select,
+  TextInput,
+  TextArea,
 } from 'carbon-components-react';
-import { Search, Select, TextInput, TextArea } from '../../index';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 
@@ -47,15 +49,6 @@ const radioProps = {
 const fieldsetRadioProps = {
   className: 'some-class',
   legendText: 'Radio Button',
-};
-
-const searchProps = {
-  className: 'some-class',
-};
-
-const fieldsetSearchProps = {
-  className: 'some-class',
-  legendText: 'Search',
 };
 
 const selectProps = {
@@ -163,15 +156,6 @@ storiesOf('Components|Form', module)
               {...radioProps}
             />
           </RadioButtonGroup>
-        </FormGroup>
-
-        <FormGroup {...fieldsetSearchProps}>
-          <Search
-            {...searchProps}
-            id="search-1"
-            labelText="Search"
-            placeHolderText="Search Bluemix Offerings"
-          />
         </FormGroup>
 
         <FormGroup {...fieldsetSelectProps}>

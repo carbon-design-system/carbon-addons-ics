@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
-import { TextInput } from '../../index';
+import { TextInput } from 'carbon-components-react';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';
 

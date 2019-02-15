@@ -2,11 +2,13 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
-import { ModalWrapper, TextInput, Select } from '../../index';
+import { ModalWrapper } from '../../index';
 import {
   SelectItem,
   RadioButtonGroup,
   RadioButton,
+  TextInput,
+  Select,
 } from 'carbon-components-react';
 import { withReadme } from 'storybook-readme';
 import readme from './README.md';

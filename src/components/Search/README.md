@@ -1,7 +1,7 @@
 ### Usage
 
 ```js
-import { Search } from 'carbon-addons-ics';
+import { Search } from 'carbon-components-react';
 ```
 
 ### About

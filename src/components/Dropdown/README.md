@@ -1,8 +1,7 @@
 ### Usage
 
 ```js
-import { Dropdown } from 'carbon-addons-ics';
-import { DropdownItem } from 'carbon-components-react';
+import { Dropdown, DropdownItem } from 'carbon-components-react';
 ```
 
 ### About

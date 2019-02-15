@@ -1,4 +1,6 @@
 // Test with Carbon using this file
-@import '../src/globals/theme/_ics-theme.scss';
-@import '~carbon-components/scss/globals/scss/styles.scss';
-@import '../src/index.scss';
+@import '../src/index-themed';
+
+body {
+  background: $ui-01;
+}

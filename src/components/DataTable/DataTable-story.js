@@ -1,13 +1,16 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { DataTable } from 'carbon-components-react';
-import { TableHeader, OverflowMenu } from '../../index';
-import { OverflowMenuItem } from 'carbon-components-react';
+import {
+  DataTable,
+  OverflowMenuItem,
+  OverflowMenu,
+} from 'carbon-components-react';
 const {
   Table,
   TableContainer,
   TableHead,
+  TableHeader,
   TableBody,
   TableCell,
   TableRow,
