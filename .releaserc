@@ -1,0 +1,10 @@
+{
+  branches: [
+    'master',
+    {
+      name: 'v2',
+      prerelease: 'prerelease',
+      channel: 'next',
+    },
+  ]
+}
