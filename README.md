@@ -1,5 +1,7 @@
 # carbon-addons-ics
 
+pre-release
+
 [![Build Status](https://travis-ci.org/carbon-design-system/carbon-addons-ics.svg?branch=master)](https://travis-ci.org/carbon-design-system/carbon-addons-ics)
 
 > Carbon add-on for IBM Collaboration Solutions
