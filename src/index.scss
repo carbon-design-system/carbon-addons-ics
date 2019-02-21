@@ -4,12 +4,9 @@
 
 $css--plex: true !default;
 $css--body: true !default;
-
-$css--use-layer: false !default;
-$ics--use-layer: true !default;
-
 $css--typography: false !default;
 $ics--typography: true !default;
+$css--use-layer: true !default;
 
 $direction: ltr !default;
 
@@ -26,7 +23,6 @@ $direction: ltr !default;
 
 @import 'globals/mixins';
 @import 'globals/bidi/bidi';
-@import 'globals/layer/ics-layer';
 @import 'globals/type/ics-typography';
 @import 'globals/grid/ics-grid';
 @import 'globals/theme/ics_border-radius';

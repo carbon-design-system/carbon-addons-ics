@@ -1,7 +1,7 @@
 @import '../../globals/theme/ics-theme';
 @import '../../globals/type/ics-typography';
 @import '../../globals/bidi/bidi';
-@import '../../globals/layer/ics-layer';
+@import 'carbon-components/scss/globals/scss/layer';
 
 // Nested atoms
 @import '../Button/button';

@@ -3,7 +3,7 @@
 @import 'mixins';
 @import '../../globals/type/ics-typography';
 @import '../../globals/icons/icon-reset';
-@import '../../globals/layer/ics-layer';
+@import 'carbon-components/scss/globals/scss/layer';
 
 @include exports('toast-notification--ics') {
   .#{$prefix}--toast-notification {

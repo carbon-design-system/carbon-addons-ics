@@ -2,7 +2,7 @@
 @import 'carbon-components/src/globals/scss/helper-mixins';
 @import 'carbon-components/src/globals/scss/import-once';
 @import '../../globals/type/ics-typography';
-@import '../../globals/layer/ics-layer';
+@import 'carbon-components/scss/globals/scss/layer';
 
 @include exports('module--ics') {
   .#{$prefix}--module-ics {
