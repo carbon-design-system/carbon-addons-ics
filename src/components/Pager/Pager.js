@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { TooltipHover } from '../../index';
+import { ActionIcon } from '../../index';
 
 class PagerListItem extends Component {
   static propTypes = {
@@ -172,25 +172,6 @@ export default class Pager extends Component {
     this.props.onClick({ page });
   };
 
-  buildTooltip = iconInfo => {
-    return (
-      <TooltipHover
-        text={iconInfo.description}
-        iconName={iconInfo.name}
-        className="bx--pager__button-icon"
-      />
-    );
-  };
-
-  setButtonClassNames = type => {
-    return classnames({
-      'bx--btn': true,
-      'bx--btn--secondary': true,
-      'bx--pager__button': true,
-      [`bx--pager__button--${type}`]: true,
-    });
-  };
-
   render() {
     const {
       className,
@@ -245,11 +226,13 @@ export default class Pager extends Component {
       <div className={classNames} {...rest}>
         {activePage > 1 && (
           <div className="bx--pager__left">
-            <button
-              className={this.setButtonClassNames('backward')}
-              onClick={this.decrementPage}>
-              {this.buildTooltip(backwardIcon)}
-            </button>
+            <ActionIcon
+              iconDescription={backwardIcon.description}
+              onClick={this.decrementPage}
+              name={backwardIcon.name}
+              icon={backwardIcon.name}
+              className="bx--pager__button-icon"
+            />
           </div>
         )}
 
@@ -301,11 +284,13 @@ export default class Pager extends Component {
         </div>
         {activePage < totalItems && (
           <div className="bx--pager__right">
-            <button
-              className={this.setButtonClassNames('forward')}
-              onClick={this.incrementPage}>
-              {this.buildTooltip(forwardIcon)}
-            </button>
+            <ActionIcon
+              iconDescription={forwardIcon.description}
+              onClick={this.incrementPage}
+              name={forwardIcon.name}
+              icon={forwardIcon.name}
+              className="bx--pager__button-icon"
+            />
           </div>
         )}
       </div>
