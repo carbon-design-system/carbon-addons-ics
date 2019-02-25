@@ -2,7 +2,7 @@
 @import 'carbon-components/src/components/tabs/_tabs.scss';
 @import 'carbon-components/src/globals/scss/layout';
 @import '../../globals/type/ics-typography';
-@import '../../globals/layer/ics-layer';
+@import 'carbon-components/scss/globals/scss/layer';
 
 @include exports('tabs--ics') {
   .#{$prefix}--tabs {

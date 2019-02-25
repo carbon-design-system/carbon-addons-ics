@@ -29,16 +29,17 @@ describe('Pager', () => {
 
   describe('Changes between page values as expected', () => {
     const wrapper = mount(<Pager totalItems={10} />);
+    const instance = wrapper.instance();
 
     it('Increases the page value on increment', () => {
       expect(wrapper.state().activePage).toBe(1);
-      wrapper.find('.bx--pager__button--forward').simulate('click');
+      instance.incrementPage();
       expect(wrapper.state().activePage).toBe(2);
     });
 
     it('Decreases the page value on decrement', () => {
       expect(wrapper.state().activePage).toBe(2);
-      wrapper.find('.bx--pager__button--backward').simulate('click');
+      instance.decrementPage();
       expect(wrapper.state().activePage).toBe(1);
     });
 

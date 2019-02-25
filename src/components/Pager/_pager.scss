@@ -8,6 +8,8 @@
 @include exports('pager--ics') {
   .#{$prefix}--pager {
     @include reset;
+    display: flex;
+    align-items: center;
     width: 100%;
     border: none;
     @include type-scale-item(c);
@@ -64,6 +66,7 @@
 
   .#{$prefix}--pager__button {
     @include border-radius-type('c');
+    @include button-reset();
     border: 1px solid $field-01;
     margin: 0 rem(5px);
     height: rem(24px);
