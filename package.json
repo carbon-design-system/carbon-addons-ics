@@ -113,7 +113,7 @@
     "react-test-renderer": "^16.1.0",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.5",
-    "semantic-release": "^12.4.1",
+    "semantic-release": "^17.2.3",
     "storybook-readme": "^4.0.5",
     "style-loader": "^0.20.1",
     "svgson": "^2.1.1",
